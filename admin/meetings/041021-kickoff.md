@@ -45,5 +45,15 @@ Agenda: (~60min)
     - Next meeting time pending. Time2meet comming.
     - Future meeting suggestions:
         - Small team-bodning at the beginning of each one
-        
+
+## Attendence
+ - [X] Aman Arora
+ - [X] Andres Gutierrez
+ - [X] Beilei He
+ - [X] Richard Yang
+ - [X] Rudy Thurston
+ - [X] Ryan Lay
+ - [X] Sanjai Subramanian
+ - [ ] Tony Liu
+ - [X] Yotam Blum
     
