@@ -35,8 +35,14 @@ Agenda: (~60min)
     - cold
     - ice
 - Logistics
+    - What to expect from meetings
+        - Partner pairs for accountability + weekly report
+        - Revire of assignments for the week
     - Note taker: Beilei 
     - One person for submission
         - Andres
         - Suggested that to avoid possible confusion and mismatch, we should have one person to submit the assignment for this quarter
     - Next meeting time pending. Time2meet comming.
+    - Future meeting suggestions:
+        - Small team-bodning at the beginning of each one
+    
