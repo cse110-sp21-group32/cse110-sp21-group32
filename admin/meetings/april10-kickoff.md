@@ -19,3 +19,25 @@ Agenda: (~60min)
 - (~??min) Suggestions and/or concerns
 
 ## Notes
+
+Theme Ideas:
+- 32 degrees
+- cold
+- ice
+- something about Skrillex joining unexpectedly
+
+Domain Ideas:
+- food journal
+- diary
+- moode journal
+- day planner
+- notebook
+- training
+- habit
+- goal tracker
+- reading tracker
+- budget tracker
+- event planner
+
+> Notetaker nomination: Beilei (Bill)
+> Assignment submitter: Andres
