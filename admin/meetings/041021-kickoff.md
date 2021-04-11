@@ -45,4 +45,5 @@ Agenda: (~60min)
     - Next meeting time pending. Time2meet comming.
     - Future meeting suggestions:
         - Small team-bodning at the beginning of each one
+        
     
