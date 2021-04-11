@@ -19,6 +19,12 @@ Agenda: (~60min)
 - (~??min) Suggestions and/or concerns
 
 ## Notes
+What to expect from meetings
+- Partner pairs for accountability + weekly report
+- Review of assignments for the week
+
+Future meeting suggestions:
+- Small team-bonding at the beginning of each one
 
 Theme Ideas:
 - 32 degrees
@@ -40,4 +46,5 @@ Domain Ideas:
 - event planner
 
 > Notetaker nomination: Beilei (Bill)
+
 > Assignment submitter: Andres
