@@ -19,3 +19,24 @@ Agenda: (~60min)
 - (~??min) Suggestions and/or concerns
 
 ## Notes
+- Possible Domain:
+    - Food journal
+    - Diary
+    - Day Planner
+    - Notebook(class, research)
+    - Training journal
+    - Habit journal
+    - Goal traker
+    - Reading palnner/tracker
+    - Budget Tracker
+    - Event Planner
+- Ideas for brand names/icon
+    - 32 degree
+    - cold
+    - ice
+- Logistics
+    - Note taker: Beilei 
+    - One person for submission
+        - Andres
+        - Suggested that to avoid possible confusion and mismatch, we should have one person to submit the assignment for this quarter
+    - Next meeting time pending. Time2meet comming.
