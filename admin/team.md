@@ -12,14 +12,14 @@ Frozone
 * Mutal Respect
 * Hardword Hardwork Haedwork
 
-## Rosers
-Aman Singh Arora,asa001@ucsd.edu\
+## Roster
+Aman Singh Arora,asa001@ucsd.edu, https://amansingh1720.github.io/CSE-110-GitHub-Pages-project/ \
 Andres Gutierrez,a8gutier@ucsd.edu, https://gtierrezandres.github.io/ \
-Ryan Lay,lay@ucsd.edu\
+Ryan Lay, rlay@ucsd.edu, https://higgins-codes.github.io/CSE110-Lab1/ \
 Yotam Blum,yblum@ucsd.edu\
-Richard Yang,r1yang@ucsd.edu\
+Richard Yang,r1yang@ucsd.edu https://richardy2971.github.io/CSE110-Lab1/ \
 Rudy Thurston,rlthurst@ucsd.edu, https://rlthurst.github.io/Intro/ \
-Tony Liu,tsl001@ucsd.edu\
+Tony Liu,tsl001@ucsd.edu\, https://tsl001.github.io/CSE-110-Lab-Week-1/ \
 Sanjai Subramanian, s8subram@ucsd.edu\
 Beilei He,behe@ucsd.edu, https://hebilli.github.io/GitHub-Pages-project/
 

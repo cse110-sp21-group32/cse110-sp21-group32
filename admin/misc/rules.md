@@ -42,5 +42,3 @@
     * Acceptable:
         * Missing meetings but letting us know
         * Communicating why things didn’t work
-
-
