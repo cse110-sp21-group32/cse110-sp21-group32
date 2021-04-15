@@ -14,7 +14,7 @@ Frozone
 
 ## Rosers
 Aman Singh Arora,asa001@ucsd.edu\
-Andres Gutierrez,a8gutier@ucsd.edu, https://gtierrezandres.github.io/
+Andres Gutierrez,a8gutier@ucsd.edu, https://gtierrezandres.github.io/ \
 Ryan Lay,lay@ucsd.edu\
 Yotam Blum,yblum@ucsd.edu\
 Richard Yang,r1yang@ucsd.edu\
