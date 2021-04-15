@@ -2,6 +2,7 @@
 Frozone
 
 ## Brand
+![img](branding/frozone32.png)
 
 ## Values
 * Communication is the key

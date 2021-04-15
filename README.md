@@ -2,7 +2,7 @@
 **Frozone**
 
 # Initial Brand
-
+![img](admin/branding/frozone32.png)
 
 # Links to Team Members Page
 
