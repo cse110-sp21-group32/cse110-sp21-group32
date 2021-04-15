@@ -2,9 +2,21 @@
 
 @[zoom](https://ucsd.zoom.us/j/96538978981)
 
-## Objective 
-Finish up Branding, Group Page and Video.
-Finish up Group Contract.
+## Objective(tasks)
+- Team Brand
+  - Branding material at /admin/branding 
+- Team page
+  - /admin
+- Team intro video
+  - 2.5 min max
+  - /admin/videos/teamintro.mp4
+- Team Contract
+  - what is expected to be on the team
+  - how to address situations where group "rules" are not being followed
+  - every group member will have to upload a signed copy (PDF) of the rules to the repo.
+  - /admin/misc/rules.md
+  - /admin/misc/rules-studentname.pdf
+
 
 ## Agenda for today (~90min)
 * (10-20min) Decide on Team Brand and what kinda materials we're making/theming
