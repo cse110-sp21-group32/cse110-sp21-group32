@@ -13,8 +13,6 @@ Frozone
 * Hardword Hardwork Haedwork
 
 ## Rosers
-|name|email|page|
-|bb|h|j|
 Aman Singh Arora,asa001@ucsd.edu\
 Andres Gutierrez,a8gutier@ucsd.edu\
 Ryan Lay,lay@ucsd.edu\
