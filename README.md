@@ -4,8 +4,6 @@
 # Initial Brand
 ![img](admin/branding/frozone32.png)
 
-# Links to Team Members Page
-
 # Slack
 - [Slack Link](cse110-sp21-group32.slack.com)
 

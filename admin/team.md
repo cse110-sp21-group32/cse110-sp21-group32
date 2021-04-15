@@ -13,12 +13,12 @@ Frozone
 * Hardword Hardwork Haedwork
 
 ## Rosers
-Aman Singh Arora,   asa001@ucsd.edu\
-Andres Gutierrez,   a8gutier@ucsd.edu\
-Beilei He,          behe@ucsd.edu\
-Ryan Lay,           rlay@ucsd.edu\
-Yotam Blum,         yblum@ucsd.edu\
-Richard Yang,       r1yang@ucsd.edu\
-Rudy Thurston,      rlthurst@ucsd.edu\
-Tony Liu,           tsl001@ucsd.edu\
-Sanjai Subramanian, s8subram@ucsd.edu
+Aman Singh Arora,asa001@ucsd.edu\
+Andres Gutierrez,a8gutier@ucsd.edu\
+Ryan Lay,lay@ucsd.edu\
+Yotam Blum,yblum@ucsd.edu\
+Richard Yang,r1yang@ucsd.edu\
+Rudy Thurston,rlthurst@ucsd.edu\
+Tony Liu,tsl001@ucsd.edu\
+Sanjai Subramanian, s8subram@ucsd.edu\
+[Beilei He](https://hebilli.github.io/GitHub-Pages-project/),behe@ucsd.edu\
