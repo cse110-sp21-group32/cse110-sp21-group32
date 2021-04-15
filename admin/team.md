@@ -21,4 +21,4 @@ Richard Yang,r1yang@ucsd.edu\
 Rudy Thurston,rlthurst@ucsd.edu\
 Tony Liu,tsl001@ucsd.edu\
 Sanjai Subramanian, s8subram@ucsd.edu\
-[Beilei He](https://hebilli.github.io/GitHub-Pages-project/),behe@ucsd.edu\
+Beilei He,behe@ucsd.edu,https://hebilli.github.io/GitHub-Pages-project/\
