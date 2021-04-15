@@ -13,7 +13,7 @@ Frozone
 * Hardword Hardwork Haedwork
 
 ## Roster
-Aman Singh Arora,asa001@ucsd.edu, https://amansingh1720.github.io/CSE-110-GitHub-Pages-project/
+Aman Singh Arora,asa001@ucsd.edu, https://amansingh1720.github.io/CSE-110-GitHub-Pages-project/ \
 Andres Gutierrez,a8gutier@ucsd.edu, https://gtierrezandres.github.io/ \
 Ryan Lay, rlay@ucsd.edu, https://higgins-codes.github.io/CSE110-Lab1/ \
 Yotam Blum,yblum@ucsd.edu\
