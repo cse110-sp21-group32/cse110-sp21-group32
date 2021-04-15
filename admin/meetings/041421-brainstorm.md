@@ -26,3 +26,21 @@
 * Miro-board brainstorming/research/set-up
 
 ## Notes
+* Bryan will modify the logo a little bit and push it to the repo. **/admin/branding**
+* Team name: **Frozone**
+* Monday 4pm possible interaction with TA
+* Interaction in the course is important
+* Todo: Sign the contract, settle the branding, and video uploading
+
+
+## Attendence
+ - [X] Aman Arora
+ - [X] Andres Gutierrez
+ - [X] Beilei He
+ - [X] Richard Yang
+ - [ ] Rudy Thurston
+ - [X] Ryan Lay
+ - [X] Sanjai Subramanian
+ - [X] Tony Liu
+ - [X] Yotam Blum
+

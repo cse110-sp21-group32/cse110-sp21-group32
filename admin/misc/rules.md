@@ -1,5 +1,46 @@
-## Team Rules
-Instruction: (from canvas):
-There are other forms you may adopt as well, this is just a starting off point.  The main issue we will look for is clarity of your group's "rules" and actually agreement to them.  Your kickoff meeting would be a good place to debate what goes in this document (rules.md) and task out any research or writing to complete it.  To verify agreement to what the contract defines, every group member will have to upload a signed copy (PDF) of the rules to the repo.
+# Team Contract
 
-Place your team rules in your repo at /admin/misc/rules.md and then each member should add their version named as /admin/misc/rules-studentname.pdf and it should include a signed version of the printed rules.   If I was on your team my file would /admin/misc/rules-thomaspowell.pdf as an example of the format.
+## Logistics
+* Tentative regular formal meeting: on Wednesday at 8:00pm
+* Means of communication
+    * Primary, slack
+    * Secondary, email/phone
+    * Respond to slack messages within 24 hours
+* Two meetings Planned per week
+    * Wednesday, formal meeting, try to be present.
+        * assignment focused
+        * team report
+        * assignment updates
+        * (Maybe) Work meeting
+    * Monday, light meetingworking, optional
+        * separate meeting for bonding (keep it light)
+        * assignments
+        * soft updates
+
+
+
+## Agreement
+* Show up to meetings on time
+* No shade
+* Check slack once a day
+* Show up to meetings on time
+* No shade
+* Check slack once a day
+* On due days, keep notification on
+* Make sure you let the team know about your progress (if you need help, ask for it)
+* Keep the slack and github organized (push to the right sections only)
+* Try to participate in meeting
+* For individual problems: talk with each other, then team leaders, and finally TA or Professors
+* For team-wide problems, three levels of procedures
+    * Verval Warning
+    * Written/documentaed Warning
+    * Report to TA/Prof if following happens:
+        * Missing 2 consecutive meetings (without letting us know)
+        * Max missed meetings 3 (without letting us know)
+        * Generally lack of communication
+        * Missing (team) deadlines
+    * Acceptable:
+        * Missing meetings but letting us know
+        * Communicating why things didn’t work
+
+

@@ -1,6 +1,7 @@
-# (Team Name)
+# Team Name
+**Frozone**
 
-# (Initial Brand)
+# Initial Brand
 
 
 # Links to Team Members Page
