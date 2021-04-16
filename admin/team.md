@@ -24,6 +24,6 @@ Sanjai Subramanian, s8subram@ucsd.edu, https://s8subram.github.io/CSE-110-Lab-1/
 Beilei He,behe@ucsd.edu, https://hebilli.github.io/GitHub-Pages-project/
 
 ### Team intro video link
-Also can be found at admin/videos
+Also can be found at admin/videos\
 https://youtu.be/I6zUeu2LwII
 
