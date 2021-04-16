@@ -1,6 +1,8 @@
 # 4/10 Kick Off Meeting
 
-@[zoom](https://ucsd.zoom.us/j/8490446762)
+Team 32 Frozon
+
+@[zoom](https://ucsd.zoom.us/j/8490446762), started at 7pm, finished around 8pm
 
 ## Objective
 Have a good time and get to know each other as a team. 
@@ -56,4 +58,4 @@ Agenda: (~60min)
  - [X] Sanjai Subramanian
  - [ ] Tony Liu
  - [X] Yotam Blum
-    
+   

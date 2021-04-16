@@ -1,6 +1,8 @@
 # 4/14 Brainstorm Meeting
 
-@[zoom](https://ucsd.zoom.us/j/96538978981)
+Team 32 Frozone
+
+@[zoom](https://ucsd.zoom.us/j/96538978981), Started at 8pm, finished around 10pm
 
 ## Objective(tasks)
 - Team Brand
