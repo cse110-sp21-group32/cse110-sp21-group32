@@ -2,7 +2,7 @@
 **Frozone**
 
 # Initial Brand
-![img](admin/branding/frozone32.png)
+<img src="admin/branding/teamLogo.png" height="200" width="200">
 
 # Slack
 - [Slack Link](https://cse110-sp21-group32.slack.com/)
