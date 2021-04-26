@@ -6,30 +6,38 @@ Team 32 Frozone
 
 
 ## Agenda: (~1hr)
- - Figuring out constraints
- - Tying solution back to first principles
+ - （10min)Productivity Paradigms (Elon Musk, Ben Franklin, and Teddy Roosevelt)
+ - (20min)Project Constraints
+ - (10min)Potential Audience
+ - (10min)Competitors (Looking at other note taking/ bullet journal apps)
+ - Monday Social
+ - (10min)Lab Partner set up
 
 ## Notes
-* First, lets try to think about our first principles
-    * Using tree analogy. Start from fruit to the root to the soil.
-* Decided our domain to be **day planer**
-* Brainstorm 
- * First find the problems
- * Then reverse the problem
- * How to make these reversed problems worse
- * Reverse the previous step, reverse ideas
- * Identity solutions
- * Find more exmples and features from other resources and apps that we thinkn solves our problems
+ -  Review what are the specific points in competitors that worth mentioning
+    - Ability to create subtasks
+    - Share notes
+    - Clean and simple
+    - Easy to reschedule incomplete tasks
+    - Concise Review of tasks and overview of tasks
+ - Target users:
+    - Age: 20 ~ 60
+    - Internet user, get used to technology
+    - College students
+    - Working class
+    - ** Accommodate visually impared users ** 
+
+
 
 
 ## Attendence
- - [X] Aman Arora
+ - [ ] Aman Arora
  - [X] Andres Gutierrez
  - [X] Beilei He
  - [X] Richard Yang
  - [X] Rudy Thurston
  - [X] Ryan Lay
- - [X] Sanjai Subramanian
+ - [ ] Sanjai Subramanian
  - [X] Tony Liu
  - [X] Yotam Blum
 
