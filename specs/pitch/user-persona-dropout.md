@@ -1,6 +1,6 @@
 # Jennifer Zeleneski
 
-<img src="./user-persona-droupout.jpg">
+<img src="user-img/user-persona-droupout.jpg">
 
 ## Frustrations
 * Remembering details is difficult because she always loses things
