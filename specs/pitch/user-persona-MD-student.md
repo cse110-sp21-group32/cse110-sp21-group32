@@ -1,6 +1,6 @@
 # Carmen Geddit
 
-<img src="user-img/user-persona-MD-student.jpg.jpg>
+<img src="user-img/user-persona-MD-student.jpg>
 
 ## Frustations
 - Can't keep track of all her deadlines
