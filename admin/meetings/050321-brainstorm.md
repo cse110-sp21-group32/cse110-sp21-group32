@@ -1,8 +1,8 @@
-# 5/04 Brainstorm Meeting
+# 5/3 Brainstorm Meeting
 
 Team 32 Frozone
 
-@[zoom](https://ucsd.zoom.us/j/92475331458), Started at 6:30pm
+@[zoom](https://ucsd.zoom.us/j/92475331458), Started at 7:00pm, ended around 10:00pm
 
 
 ## Agenda: (~1hr)
