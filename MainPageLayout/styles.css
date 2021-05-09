@@ -1,0 +1,206 @@
+/* This is a style css to the index.html in the root*/
+body {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    margin: -1rem;
+    display: grid;
+    grid-template-areas: "plus      main cateMa"
+                         "overdue   main cateMa"
+                         "footer    main cateMa";
+    grid-template-rows: 0.5fr 2fr 1.5fr;
+    grid-template-columns: 1fr 2fr 1fr;
+ }
+ .cell-1 {
+    height: 5rem;
+    background: rgb(14, 195, 255);
+    grid-area: plus;
+ }
+ .cell-2 {
+    background-color: aqua;
+    grid-area: overdue;
+ }
+ .cell-3 {
+
+    background: limegreen;
+    grid-area: footer;
+ }
+ .cell-4 {
+    background: gold;
+    grid-area: main;
+ }
+ .cell-5 {
+    background: rgb(250, 151, 230);
+    grid-area: cateMa;
+ }
+ .cell {
+    color: black;
+    text-align: center;
+    padding:1em
+ }
+
+ .sectionContainer{
+
+    text-align: left;
+    margin-top: 0em;
+ }
+
+ .sectionHeader {
+    color: rgb(152, 66, 66);
+    font-size: 2em;
+    margin: 0%;
+
+ }
+ .sectionHeaderMain {
+    color: rgb(152, 66, 66);
+    font-size: 4em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+ }
+
+ .jornalBoxOverdue{
+     
+     margin-top: 0.3em;
+     padding:0.5em;
+
+     height: 28rem;
+     
+     overflow-x: hidden;
+     overflow-y: auto;
+     text-align:justify;
+
+     border-width: 2px;
+     border-style: solid;
+     border-color:  rgb(40, 25, 3);
+     border-radius: 1em;     
+
+ }
+ .jornalBoxOverdue::-webkit-scrollbar { 
+    display: none;
+}
+
+.bullet{
+    height: 1.5em;
+    text-align: center;
+    font-size: 1.4em;
+    background-color: antiquewhite;
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 0.5em;  
+    margin:0.3rem
+}
+
+.graphBox{
+     
+    margin-top: 0.3em;
+    padding:0.5em;
+
+    height: 15rem;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color:  rgb(40, 25, 3);
+    border-radius: 1em;     
+
+}
+.graphBox::-webkit-scrollbar { 
+   display: none;
+}
+
+.jornalMainBox{
+     
+    margin-top: 0.3em;
+    padding:0.5em;
+
+    height: 52rem;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+
+    border-style: solid;
+    border-color:  rgb(40, 25, 3);
+    border-radius: 1em;  
+}
+.jornalMainBox::-webkit-scrollbar { 
+   display: none;
+}
+
+.MonthSection{
+    margin-top: 0.3rem;
+    margin-bottom: 1.5rem;
+    border-width: 2px;
+   
+}
+
+.BigButton{
+    font-size: 1.5em;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
+
+    height: 3rem;
+    background-color: rgb(170, 177, 182);
+    border-radius: 0.3em;
+    
+    margin-top:1.2rem;
+    margin-bottom:1rem;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+
+
+}
+
+.categoryBox{
+     
+    margin-top: 0.3em;
+    padding:0.5em;
+
+    height: 40rem;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+
+    border-style: solid;
+    border-color:  rgb(40, 25, 3);
+    border-radius: 1em;  
+}
+
+.categoryBox::-webkit-scrollbar { 
+    display: none;
+ }
+
+.categotyDemo{
+    height: 3.5em;
+    font-size: 1.4em;
+    background-color: antiquewhite;
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 0.5em;  
+    margin:0.3rem;
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+button {
+    line-height: 5rem;
+    font-size: 2rem;
+    background-color: aquamarine;
+}
+  
+button::before {
+    content: "➕";
+}
