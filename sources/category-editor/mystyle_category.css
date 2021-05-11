@@ -1,0 +1,38 @@
+* {
+    background-color: lightblue; /* make the background light blue */
+  }
+
+h1 {
+    color: navy; /* make all h1 elements navy colored */
+    margin: auto;
+    width: 120px;
+    text-align: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+
+  form {
+    text-align: center;
+    width: 20%;
+    flex: 1; 
+  }
+  main{
+      display: flex;
+      flex-direction: row;
+  }
+  select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+  input{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: white;
+  }
+  input[type=submit]{
+    background-color: red;
+  }
+  input[type=reset]{
+    background-color: red;
+  }
