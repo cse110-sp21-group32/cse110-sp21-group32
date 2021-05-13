@@ -26,6 +26,15 @@ Agenda (1hr):
 
 
 ## Notes
+ - Big week, lots of assignments 
+ - One meeting on weekends, three tasks
+    - Retrospective - One md file
+    - Sprint Review Meetings - One md file
+    - Sprint Review Meeting - One video file
+ - Codes go into sources
+    - HTML CSS Stays at the root level
+    - All scripts go into folder scripts
+
 
 
 ## TODO
