@@ -46,13 +46,3 @@ The category items are the place holders for users custom categories
 The files are in editors-layout branch
 
 ---
-# Name, Name
-*Submit by 10pm Monday Night*
-
-What's Done:
-
-What will be worked on:
-
-Other notes:
-
----
