@@ -22,22 +22,27 @@ Agenda:
 
 
 ## Notes
-
+ * CICD Pipeline Initialization 
+    * Ask TA for the specific requirement of the checkpoint1. Do we need to inlcude three piesce finished? (mp4, md, png)
+    * Confirmation from TA: Pending
+ * Having more mini meetings within task group, forcusing more on implementation detials of the application
+ * Next meeting for task distribution details of next sprint
+ * Decide the storage plan next meeting
 
 
 
 ## TODO
-
+ * Beilie updates the remaining time of the video for preview section
 
 
 ## Attendence
- - [] Aman Arora
- - [] Andres Gutierrez
- - [] Beilei He
- - [] Richard Yang
- - [] Rudy Thurston
- - [] Ryan Lay
- - [] Sanjai Subramanian
- - [] Tony Liu
- - [] Yotam Blum
+ - [X] Aman Arora
+ - [X] Andres Gutierrez
+ - [X] Beilei He
+ - [X] Richard Yang
+ - [X] Rudy Thurston
+ - [X] Ryan Lay
+ - [X] Sanjai Subramanian
+ - [X] Tony Liu
+ - [X] Yotam Blum
 
