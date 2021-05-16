@@ -1,4 +1,4 @@
-# 5/16 Retrospective Meeting
+# 5/15 Retrospective Meeting
 
 ### Highlights
 * Pair programming set up
