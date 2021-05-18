@@ -23,6 +23,8 @@ npm test
 The Lint Code Base job is set to run in parallel. This one is a github repo called [Super Linter](https://github.com/github/super-linter)that is able to run a linter on every programmming language available in our repo. 
 
 Our current diagram looks like this:
+![pipeline-diagram](phase1.drawio.png)
+
 ![phase1-diagram](phase1.png)
 
 Additionally, we chose to setup our repo with a code quality tool, [Codacy](https://app.codacy.com/organizations/gh/cse110-sp21-group32/repositories).
