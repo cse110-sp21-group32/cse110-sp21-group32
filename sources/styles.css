@@ -4,7 +4,8 @@ body {
     overflow-x: auto;
 }
 
-.container {
+
+body.mainView main .container {
     height: 100vh;
     width: 100vw;
     margin: -1rem;
@@ -15,47 +16,47 @@ body {
     grid-template-rows: 0.5fr 2fr 1.5fr;
     grid-template-columns: 1fr 2fr 1fr;
  }
- .cell-1 {
+ body.mainView main .cell-1 {
     height: 5rem;
     background: rgb(14, 195, 255);
     grid-area: plus;
  }
- .cell-2 {
+ body.mainView main .cell-2 {
     background-color: aqua;
     grid-area: overdue;
  }
- .cell-3 {
+ body.mainView main .cell-3 {
 
     background: limegreen;
     grid-area: footer;
  }
- .cell-4 {
+ body.mainView main .cell-4 {
     background: gold;
     grid-area: main;
  }
- .cell-5 {
+ body.mainView main .cell-5 {
     background: rgb(250, 151, 230);
     grid-area: cateMa;
  }
- .cell {
+ body.mainView main .cell {
     color: black;
     text-align: center;
     padding:1em
  }
 
- .sectionContainer{
+ body.mainView main .sectionContainer{
 
     text-align: left;
     margin-top: 0em;
  }
 
- .sectionHeader {
+ body.mainView main .sectionHeader {
     color: rgb(152, 66, 66);
     font-size: 2em;
     margin: 0%;
 
  }
- .sectionHeaderMain {
+ body.mainView main .sectionHeaderMain {
     color: rgb(152, 66, 66);
     font-size: 4em;
     margin-top: 1rem;
@@ -63,7 +64,7 @@ body {
 
  }
 
- .jornalBoxOverdue{
+ body.mainView main .jornalBoxOverdue{
      
      margin-top: 0.3em;
      padding:0.5em;
@@ -80,11 +81,11 @@ body {
      border-radius: 1em;     
 
  }
- .jornalBoxOverdue::-webkit-scrollbar { 
+body.mainView main .jornalBoxOverdue::-webkit-scrollbar { 
     display: none;
 }
 
-.bullet{
+body.mainView main .bullet{
     height: 1.5em;
     text-align: center;
     font-size: 1.4em;
@@ -95,7 +96,7 @@ body {
     margin:0.3rem
 }
 
-.graphBox{
+body.mainView main .graphBox{
      
     margin-top: 0.3em;
     padding:0.5em;
@@ -112,11 +113,11 @@ body {
     border-radius: 1em;     
 
 }
-.graphBox::-webkit-scrollbar { 
+body.mainView main .graphBox::-webkit-scrollbar { 
    display: none;
 }
 
-.jornalMainBox{
+body.mainView main .jornalMainBox{
      
     margin-top: 0.3em;
     padding:0.5em;
@@ -131,18 +132,18 @@ body {
     border-color:  rgb(40, 25, 3);
     border-radius: 1em;  
 }
-.jornalMainBox::-webkit-scrollbar { 
+body.mainView main .jornalMainBox::-webkit-scrollbar { 
    display: none;
 }
 
-.MonthSection{
+body.mainView main .MonthSection{
     margin-top: 0.3rem;
     margin-bottom: 1.5rem;
     border-width: 2px;
    
 }
 
-.BigButton{
+body.mainView main .BigButton{
     font-size: 1.5em;
     display: grid;
     justify-items: center;
@@ -157,11 +158,13 @@ body {
     margin-bottom:1rem;
     margin-left: 0.6rem;
     margin-right: 0.6rem;
-
-
 }
 
-.categoryBox{
+body.mainView main .BigButton:hover{
+    background-color: rgb(114, 99, 80);
+}
+
+body.mainView main .categoryBox{
      
     margin-top: 0.3em;
     padding:0.5em;
@@ -177,11 +180,11 @@ body {
     border-radius: 1em;  
 }
 
-.categoryBox::-webkit-scrollbar { 
+body.mainView main .categoryBox::-webkit-scrollbar { 
     display: none;
  }
 
-.categotyDemo{
+body.mainView main .categotyDemo{
     height: 3.5em;
     font-size: 1.4em;
     background-color: antiquewhite;
@@ -193,14 +196,40 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+
 }
 
-button {
+
+body.mainView main button {
     line-height: 5rem;
     font-size: 2rem;
     background-color: aquamarine;
 }
   
-button::before {
+body.mainView main button::before {
     content: "➕";
 }
+
+body.mainView bullet-editor-page {
+    display: none;
+}
+
+
+
+/* Bullet Editor CSS Start */
+body.bulletEditor main{
+    display: none;
+}
+
+body.bulletEditor bullet-editor-page {
+    display: block;
+}
+
+body.bulletEditor * {
+    background-color: lightblue; /* make the background light blue */
+}
+/* Bullet Editor CSS End */
+
+
+
+

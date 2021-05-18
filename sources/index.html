@@ -9,35 +9,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="mainView">
     <main>
         <div class="container">
             <div class="cell cell-1">
-                <button>Add</button>
+                <button id="addBulletButton">Add</button>
             </div>
             <div class="cell cell-2">
                 <div class="sectionContainer">
                     <h2 class="sectionHeader">Overdue</h2>
                     <div class="jornalBoxOverdue">
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
                         <div class="bullet">demo</div>
                         <div class="bullet">demo</div>
                         <div class="bullet">demo</div>
@@ -65,41 +46,17 @@
                 <div class="sectionContainer">
                     <h2 class="sectionHeaderMain">Focus</h2>
                     <div class="jornalMainBox">
-                        <div class="MonthSection">
-                            <div class="sectionHeader">Sept</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
 
-                        </div>
-                        <div class="MonthSection">
-                            <div class="sectionHeader">Oct</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                        </div>
-                        <div class="MonthSection">
-                            <div class="sectionHeader">Nov</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-
-                        </div>
-                        <div class="MonthSection">
-                            <div class="sectionHeader">Dec</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-                            <div class="bullet">demo</div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -142,6 +99,20 @@
         </div>
 
     </main>
+
+    <bullet-editor-page></bullet-editor-page>
+
+
+
+
+    <!-- journal-entry web component -->
+    <script src="./components/bulletEditorPage.js" type="module"></script>
+
+    <!-- Router Script -->
+    <script src="./scripts/router.js" type="module"></script>
+
+    <!-- Main Script -->
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 
 </html>

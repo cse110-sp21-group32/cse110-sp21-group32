@@ -1,0 +1,50 @@
+/* Add styling to the whole page */
+*{
+  background-color: lightblue; /* make the background light blue */
+}
+
+/* Add styling to h1 elements */
+h1{
+  color: navy; /* make all h1 elements navy colored */
+  margin: auto;
+  width: 120px;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+/* Add styling to form element */
+form {
+  text-align: center;
+  width: 20%;
+  flex: 1; 
+}
+/* Add styling to main element */
+main{
+  display: flex;
+  flex-direction: row;
+}
+/* Add styling to select input fields */
+select{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+/* Add styling to input elements */
+input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+/* Add styling to the submit button */
+input[type=submit]{
+  background-color: red;
+}
+/* Add styling to the reset button */ 
+input[type=reset]{
+  background-color: red;
+}
+/* Add styling to the dropdown options */ 
+option{
+  background-color: white;
+}
