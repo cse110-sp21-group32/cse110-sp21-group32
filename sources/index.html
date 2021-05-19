@@ -63,7 +63,7 @@
             <div class="cell cell-5">
                 <div class="sectionContainer">
                     <h2 class="sectionHeaderMain">Categories</h2>
-                    <div class="BigButton">
+                    <div class="BigButton" id="addCateButton">
                         Add Category
                     </div>
                     <div class="categoryBox">
@@ -101,12 +101,14 @@
     </main>
 
     <bullet-editor-page></bullet-editor-page>
-
+    <cate-editor-page></cate-editor-page>
 
 
 
     <!-- journal-entry web component -->
     <script src="./components/bulletEditorPage.js" type="module"></script>
+    <script src="./components/categoryEditorPage.js" type="module"></script>
+
 
     <!-- Router Script -->
     <script src="./scripts/router.js" type="module"></script>

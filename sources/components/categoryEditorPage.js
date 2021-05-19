@@ -110,8 +110,8 @@ class categoryEditorPage extends HTMLElement {
                   <option value="pink">Pink</option>
                   <option value="light blue">Light Blue</option>
                 </select><br>
-                <button id="submit_btn">
-                <input type="reset" id="reset_btn">        
+                <input type="submit" value="Confirm" id="submit_btn" class="backMain">
+                <input type="reset" id="reset_btn" class="backMain">       
               </form>
             </main>
 

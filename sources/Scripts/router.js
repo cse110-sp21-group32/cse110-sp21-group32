@@ -10,8 +10,9 @@ export const router = {};
 router.setState = function (inputString) {
 
   if (inputString.startsWith('BulletEditor')) {
-
+    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
+    document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
 
     let entryPageOld = document.querySelector('bullet-editor-page');
@@ -20,9 +21,21 @@ router.setState = function (inputString) {
     document.querySelector("body").appendChild(entryPage);
 
   }else if (inputString.startsWith('backMain')) {
-
+    history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5500/sources/#mainpage");
     document.querySelector("body").classList.remove("bulletEditor");
+    document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("mainView");
+
+  }else if (inputString.startsWith('CateEditor')) {
+    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#cateEditor");
+    document.querySelector("body").classList.remove("bulletEditor");
+    document.querySelector("body").classList.remove("mainView");
+    document.querySelector("body").classList.add("cateEditor");
+
+    let entryPageOld = document.querySelector('cate-editor-page');
+    entryPageOld.parentNode.removeChild(entryPageOld);
+    let entryPage = document.createElement('cate-editor-page');
+    document.querySelector("body").appendChild(entryPage);
 
   }
   // if(inputString == "entry"){

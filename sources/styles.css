@@ -210,6 +210,9 @@ body.mainView main button::before {
     content: "➕";
 }
 
+body.mainView cate-editor-page {
+    display: none;
+}
 body.mainView bullet-editor-page {
     display: none;
 }
@@ -218,6 +221,10 @@ body.mainView bullet-editor-page {
 
 /* Bullet Editor CSS Start */
 body.bulletEditor main{
+    display: none;
+}
+
+body.bulletEditor cate-editor-page{
     display: none;
 }
 
@@ -231,5 +238,21 @@ body.bulletEditor * {
 /* Bullet Editor CSS End */
 
 
+/* Cate Editor CSS Start */
+body.cateEditor bullet-editor-page{
+    display: none;
+}
+body.cateEditor main{
+    display: none;
+}
+
+body.bulletEditor bullet-editor-page {
+    display: block;
+}
+
+body.bulletEditor * {
+    background-color: lightblue; /* make the background light blue */
+}
+/* Cate Editor CSS End */
 
 

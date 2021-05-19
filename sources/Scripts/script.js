@@ -9,13 +9,35 @@ var bulletAddButton = document.getElementById("addBulletButton");
 bulletAddButton.addEventListener('click', addBulletHandler);
 function addBulletHandler() {
   setState("BulletEditor");
-
 }
 
+var cateAddButton = document.getElementById("addCateButton");
+cateAddButton.addEventListener('click', addCateHandler);
+function addCateHandler() {
+  setState("CateEditor");
+}
+
+
+addEventListener('DOMContentLoaded', () => {
+
+  setState("backMain",false);
+});
+
 document.addEventListener('click', (e) => {
-  var check = document.getElementsByClassName('bulletEditor')
-  if (check.length != 0) {
+  var checkBullet = document.getElementsByClassName('bulletEditor')
+  if (checkBullet.length != 0) {
     const searchModule = document.querySelector('bullet-editor-page');
+    const searchModuleRoot = searchModule && searchModule.shadowRoot;
+    form = searchModuleRoot.querySelector("form");
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      setState("backMain");
+    });
+  }
+
+  var checkBullet = document.getElementsByClassName('cateEditor')
+  if (checkBullet.length != 0) {
+    const searchModule = document.querySelector('cate-editor-page');
     const searchModuleRoot = searchModule && searchModule.shadowRoot;
     form = searchModuleRoot.querySelector("form");
     form.addEventListener('submit', (e) => {
