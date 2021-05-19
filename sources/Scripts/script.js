@@ -24,9 +24,12 @@ addEventListener('DOMContentLoaded', () => {
 });
 
 
-var haveCalledSubmit = 0;
+var haveCalledSubmitBullet = 0;
+var haveCalledSubmitCate = 0;
 document.addEventListener('click', (e) => {
-  haveCalledSubmit = 0;
+  haveCalledSubmitBullet = 0;
+  haveCalledSubmitCate = 0;
+
 
   //Action only in bullet ediot page
   var checkBullet = document.getElementsByClassName('bulletEditor')
@@ -36,10 +39,10 @@ document.addEventListener('click', (e) => {
     form = searchModuleRoot.querySelector("form");
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      if (haveCalledSubmit == 1) {
+      if (haveCalledSubmitBullet == 1) {
         return;
       } else {
-        haveCalledSubmit = 1;
+        haveCalledSubmitBullet = 1;
       }
       let name = searchModuleRoot.getElementById("name").value;
       let description = searchModuleRoot.getElementById("description").value;
@@ -55,7 +58,7 @@ document.addEventListener('click', (e) => {
       mainPane.appendChild(newEntry);
 
       detailButtonHelper();
-      editButtonHelper();
+      editBulletButtonHelper();
       completeBoxHelper();
     });
 
@@ -68,8 +71,25 @@ document.addEventListener('click', (e) => {
     const searchModuleRoot = searchModule && searchModule.shadowRoot;
     form = searchModuleRoot.querySelector("form");
     form.addEventListener('submit', (e) => {
+      if (haveCalledSubmitCate == 1) {
+        return;
+      } else {
+        haveCalledSubmitCate = 1;
+      }
       e.preventDefault();
+
+
+      let tile = searchModuleRoot.getElementById("name").value;
+      let color = searchModuleRoot.getElementById("color").value;
+      let category = { title: tile, color: color }
       setState("backMain");
+
+      let newEntry = document.createElement("category-entry");
+      let mainPane = document.querySelector(".categoryBox");
+      newEntry.category = category;
+      mainPane.appendChild(newEntry);
+
+      editCategoryButtonHelper();
     });
   }
 
@@ -81,29 +101,29 @@ document.addEventListener('click', (e) => {
       const searchModules = document.querySelectorAll('bullet-entry');
 
 
-      let searchModule = searchModules.item(searchModules.length-1);
+      let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
       let detailButton = searchModuleRoot.querySelector(".bulletDetailButton");
       detailButton.addEventListener('click', () => {
         var des = detailButton.parentElement.parentElement.querySelector(".des");
-        if(des.style.display == "block"){
+        if (des.style.display == "block") {
           des.style.display = "none";
-        }else{
+        } else {
           des.style.display = "block";
         }
-        
+
       });
     }
   }
 
   // Add eventListener for edit buttons
-  function editButtonHelper() {
+  function editBulletButtonHelper() {
     let checkBullet = document.querySelector('bullet-entry');
     if (checkBullet != null) {
 
       const searchModules = document.querySelectorAll('bullet-entry');
 
-      let searchModule = searchModules.item(searchModules.length-1);
+      let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
       let detailButton = searchModuleRoot.querySelector(".editBulletButton");
       detailButton.addEventListener('click', () => {
@@ -113,34 +133,58 @@ document.addEventListener('click', (e) => {
         var category = detailButton.parentElement.querySelector(".category").innerHTML;
         var completedCheck = detailButton.parentElement.querySelector(".completedCheck").innerHTML;
         var type = detailButton.parentElement.querySelector(".type").innerHTML;
-        let bullet = {  title: title,
-                        category: category, type: type, date: date,
-                        completedCheck:completedCheck, description:des  };
-        setState("BulletEditor",bullet);
+        let bullet = {
+          title: title,
+          category: category, type: type, date: date,
+          completedCheck: completedCheck, description: des
+        };
+        setState("BulletEditor", bullet);
         detailButton.parentElement.parentElement.remove();
       });
     }
-  }  
+  }
 
-    // Add eventListener for edit buttons
-    function completeBoxHelper() {
-      let checkBullet = document.querySelector('bullet-entry');
-      if (checkBullet != null) {
-  
-        const searchModules = document.querySelectorAll('bullet-entry');
-  
-        let searchModule = searchModules.item(searchModules.length-1);
-        const searchModuleRoot = searchModule && searchModule.shadowRoot;
-        let completeBox = searchModuleRoot.querySelector(".checkbox");
-        completeBox.addEventListener('change', () => {
-          if(completeBox.checked){
-            completeBox.parentElement.querySelector(".completedCheck").innerHTML = 1;
-          }else{
-            completeBox.parentElement.querySelector(".completedCheck").innerHTML = 0;
-          }
-        });
-      }
-    }  
+  // Add eventListener for edit buttons
+  function completeBoxHelper() {
+    let checkBullet = document.querySelector('bullet-entry');
+    if (checkBullet != null) {
+
+      const searchModules = document.querySelectorAll('bullet-entry');
+
+      let searchModule = searchModules.item(searchModules.length - 1);
+      const searchModuleRoot = searchModule && searchModule.shadowRoot;
+      let completeBox = searchModuleRoot.querySelector(".checkbox");
+      completeBox.addEventListener('change', () => {
+        if (completeBox.checked) {
+          completeBox.parentElement.querySelector(".completedCheck").innerHTML = 1;
+        } else {
+          completeBox.parentElement.querySelector(".completedCheck").innerHTML = 0;
+        }
+      });
+    }
+  }
+
+  function editCategoryButtonHelper() {
+    let checkCate = document.querySelector('category-entry');
+    if (checkCate != null) {
+
+      const searchModules = document.querySelectorAll('category-entry');
+
+      let searchModule = searchModules.item(searchModules.length - 1);
+      const searchModuleRoot = searchModule && searchModule.shadowRoot;
+      let detailButton = searchModuleRoot.querySelector(".CateButton");
+      detailButton.addEventListener('click', () => {
+        var title = detailButton.parentElement.querySelector(".title").innerHTML;
+        var color = detailButton.parentElement.querySelector(".color").innerHTML;;
+        let category = {
+          title: title,
+          color: color
+        };
+        setState("CateEditor", category);
+        detailButton.parentElement.parentElement.remove();
+      });
+    }
+  }
 
 });
 

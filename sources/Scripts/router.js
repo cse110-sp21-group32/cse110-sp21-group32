@@ -7,9 +7,9 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function (inputString,bullet) {
+router.setState = function (inputString,entry) {
 
-  if (inputString.startsWith('BulletEditor') && bullet==null) {
+  if (inputString.startsWith('BulletEditor') && entry==null) {
     history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.remove("cateEditor");
@@ -26,7 +26,7 @@ router.setState = function (inputString,bullet) {
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("mainView");
 
-  }else if (inputString.startsWith('CateEditor')) {
+  }else if (inputString.startsWith('CateEditor')&& entry==null) {
     history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
     document.querySelector("body").classList.remove("mainView");
@@ -37,7 +37,7 @@ router.setState = function (inputString,bullet) {
     let entryPage = document.createElement('cate-editor-page');
     document.querySelector("body").appendChild(entryPage);
     
-  }else if (inputString.startsWith('BulletEditor') && bullet!=null) {
+  }else if (inputString.startsWith('BulletEditor') && entry!=null) {
     history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.remove("cateEditor");
@@ -46,9 +46,19 @@ router.setState = function (inputString,bullet) {
     let entryPageOld = document.querySelector('bullet-editor-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('bullet-editor-page');
-    entryPage.bullet=bullet;
+    entryPage.bullet=entry;
     document.querySelector("body").appendChild(entryPage);
+  }else if (inputString.startsWith('CateEditor') && entry!=null) {
+    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#CateEditor");
+    document.querySelector("body").classList.remove("mainView");
+    document.querySelector("body").classList.add("cateEditor");
+    document.querySelector("body").classList.remove("bulletEditor");
 
+    let entryPageOld = document.querySelector('cate-editor-page');
+    entryPageOld.parentNode.removeChild(entryPageOld);
+    let entryPage = document.createElement('cate-editor-page');
+    entryPage.category=entry;
+    document.querySelector("body").appendChild(entryPage);
   }
   // if(inputString == "entry"){
   //   history.pushState({page: 1}, "Settings", "http://127.0.0.1:5500/#settings");

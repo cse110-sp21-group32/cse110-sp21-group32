@@ -132,17 +132,6 @@ class bulletEditorPage extends HTMLElement {
     }else{
       this.shadowRoot.getElementById("name_check_box").checked = true;
     }
-
-
-
-
-
-    
-    
-
-    // let bullet = {  title: title,       description: description,
-    //   category: category, type: type,               date: date,
-    //   checkbox:checkBox,  description:des  };
   }
 
 

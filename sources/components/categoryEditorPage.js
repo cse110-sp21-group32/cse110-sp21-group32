@@ -122,6 +122,14 @@ class categoryEditorPage extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 
+  get category(){
+    return null;
+  }
+
+  set category(inputCategory){
+    this.shadowRoot.getElementById("name").value = inputCategory.title;
+    this.shadowRoot.getElementById("color").value = inputCategory.color;
+  }
 
 }
 

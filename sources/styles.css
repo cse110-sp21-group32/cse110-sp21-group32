@@ -106,9 +106,6 @@ body.mainView main .des{
     align-items: center;
     height: auto;
 
-
-
-   
     background-color: rgb(136, 123, 105);
     font-size: 0.9em;
     border-width: 0.5px;
@@ -228,17 +225,26 @@ body.mainView main .categoryBox::-webkit-scrollbar {
 
 body.mainView main .categotyDemo{
     height: 3.5em;
-    font-size: 1.4em;
+    font-size: 2em;
     background-color: antiquewhite;
     border-width: 0.5px;
     border-style: solid;
     border-radius: 0.5em;  
     margin:0.3rem;
 
-    display: grid;
+    display: flex;
     justify-items: center;
     align-items: center;
 
+    padding: 0.5rem;
+
+}
+
+body.mainView main .CateButton {
+    margin: 0.5rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    background-color: aquamarine;
 }
 
 
