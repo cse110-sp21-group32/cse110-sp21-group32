@@ -86,14 +86,56 @@ body.mainView main .jornalBoxOverdue::-webkit-scrollbar {
 }
 
 body.mainView main .bullet{
-    height: 1.5em;
-    text-align: center;
+
+    display: flex;
+    align-items: center;
+    height: 2em;
     font-size: 1.4em;
     background-color: antiquewhite;
     border-width: 0.5px;
     border-style: solid;
     border-radius: 0.5em;  
-    margin:0.3rem
+    margin:0.3rem;
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+body.mainView main .des{
+    overflow:expand;
+    /* display: flex; */
+    align-items: center;
+    height: auto;
+
+
+
+   
+    background-color: rgb(136, 123, 105);
+    font-size: 0.9em;
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 0.5em;  
+    margin:0.5rem;
+    text-align: center;
+    padding: 0.5rem;
+
+    display: none;
+}
+
+body.mainView main .BulletButton {
+    margin: 0.5rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    background-color: aquamarine;
+}
+
+body.mainView main .title {
+    text-align: center;
+    width: 90%;
+}
+
+body.mainView main .description {
+    position: relative;
+    width: 100%;
 }
 
 body.mainView main .graphBox{
@@ -200,13 +242,13 @@ body.mainView main .categotyDemo{
 }
 
 
-body.mainView main button {
+body.mainView main #addBulletButton {
     line-height: 5rem;
     font-size: 2rem;
     background-color: aquamarine;
 }
   
-body.mainView main button::before {
+body.mainView main #addBulletButton::before {
     content: "➕";
 }
 

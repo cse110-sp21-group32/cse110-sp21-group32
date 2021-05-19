@@ -71,21 +71,6 @@ class bulletEditorPage extends HTMLElement {
                   font-size: 25px;
                   cursor: pointer;
               }
-
-              .editorSection .star:before {
-                  content: "1️⃣";
-                  position: absolute;
-                  visibility: visible;
-                  margin-top: -11px;
-                  margin-left: -5px;
-
-              }
-
-              .editorSection .star:checked:before {
-                  content: "0️⃣";
-                  position: absolute;
-
-              }
           </style>
           <section class="editorSection">
             <header>
@@ -117,9 +102,7 @@ class bulletEditorPage extends HTMLElement {
                 <label for="dueDate">Due Date:</label>
                 <input type="date" id="dueDate" name="dueDate"><br>
             
-                <!-- Star Checkbox -->
-                <input class="star" type="checkbox" title="important_task">
-            
+                <!-- Star Checkbox -->            
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="description"><br>
             
