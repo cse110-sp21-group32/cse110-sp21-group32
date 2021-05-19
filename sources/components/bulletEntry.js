@@ -49,13 +49,31 @@ class BulletEntry extends HTMLElement {
                 text-align: center;
                 padding: 0.5rem;
             }
+            .bulletEntry .date{
+                display:none;
+            }
+            .bulletEntry .category{
+                display:none;
+            }
+            .bulletEntry .type{
+                display:none;
+            }
+            .bulletEntry .completedCheck{
+                display:none;
+            }
           </style>
           <section class="bulletEntry">
             <div class="bullet">
-                <input class="checkbox" type="checkbox"">
+                <input class="checkbox" type="checkbox">
                 <span class="title">demo</span>
                 <button class="BulletButton editBulletButton">edit</button>
                 <button class="BulletButton bulletDetailButton">detail</button>
+                <span class="date">demo</span>
+                <span class="category">demo</span>
+                <span class="type">demo</span>
+                <span class="completedCheck">demo</span>
+
+
             </div>
             <div class="des">
             </div>
@@ -76,20 +94,15 @@ class BulletEntry extends HTMLElement {
   
     set bullet(newBullet) {
       this.shadowRoot.querySelector('.title').innerText =newBullet.title;
-      this.shadowRoot.querySelector('.checkbox').checked = false;
+      this.shadowRoot.querySelector('.completedCheck').innerText = 0;
       this.shadowRoot.querySelector('.des').innerText = newBullet.description;
-      this.date=newBullet.date;
-      this.category=newBullet.category;
-    //   this.description = newBullet.description;
+      this.shadowRoot.querySelector('.date').innerText = newBullet.date;
+      this.shadowRoot.querySelector('.category').innerText = newBullet.category;
+      this.shadowRoot.querySelector('.type').innerText = newBullet.type;
+
     }
 
-    // showDes(){
-    //     this.shadowRoot.querySelector('.des').innerText = this.description;
-    // }
 
-    // hideDes(){
-    //     this.shadowRoot.querySelector('.des').innerText = null;
-    // }
 
   
   }

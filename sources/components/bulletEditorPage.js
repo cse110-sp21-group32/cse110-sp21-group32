@@ -117,6 +117,34 @@ class bulletEditorPage extends HTMLElement {
 
   }
 
+  get bullet(){
+    return null;
+  }
+
+  set bullet(inputBullet){
+    this.shadowRoot.getElementById("description").value = inputBullet.description;
+    this.shadowRoot.getElementById("name").value = inputBullet.title;
+    this.shadowRoot.getElementById("category").value = inputBullet.category;
+    this.shadowRoot.getElementById("type").value = inputBullet.type;
+    this.shadowRoot.getElementById("dueDate").value = inputBullet.date;
+    if(inputBullet.completedCheck == 0){
+      this.shadowRoot.getElementById("name_check_box").checked = false;
+    }else{
+      this.shadowRoot.getElementById("name_check_box").checked = true;
+    }
+
+
+
+
+
+    
+    
+
+    // let bullet = {  title: title,       description: description,
+    //   category: category, type: type,               date: date,
+    //   checkbox:checkBox,  description:des  };
+  }
+
 
 }
 

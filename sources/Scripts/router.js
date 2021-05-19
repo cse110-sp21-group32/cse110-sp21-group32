@@ -7,9 +7,9 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function (inputString) {
+router.setState = function (inputString,bullet) {
 
-  if (inputString.startsWith('BulletEditor')) {
+  if (inputString.startsWith('BulletEditor') && bullet==null) {
     history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.remove("cateEditor");
@@ -35,6 +35,18 @@ router.setState = function (inputString) {
     let entryPageOld = document.querySelector('cate-editor-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('cate-editor-page');
+    document.querySelector("body").appendChild(entryPage);
+    
+  }else if (inputString.startsWith('BulletEditor') && bullet!=null) {
+    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
+    document.querySelector("body").classList.remove("mainView");
+    document.querySelector("body").classList.remove("cateEditor");
+    document.querySelector("body").classList.add("bulletEditor");
+
+    let entryPageOld = document.querySelector('bullet-editor-page');
+    entryPageOld.parentNode.removeChild(entryPageOld);
+    let entryPage = document.createElement('bullet-editor-page');
+    entryPage.bullet=bullet;
     document.querySelector("body").appendChild(entryPage);
 
   }

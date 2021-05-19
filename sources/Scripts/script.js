@@ -49,12 +49,14 @@ document.addEventListener('click', (e) => {
 
       setState("backMain");
       let newEntry = document.createElement("bullet-entry");
-      var mainPane = document.querySelector(".jornalMainBox");
-      var bullet = { title: name, description: description, category: category, type: type, date: date }
+      let mainPane = document.querySelector(".jornalMainBox");
+      let bullet = { title: name, description: description, category: category, type: type, date: date }
       newEntry.bullet = bullet;
       mainPane.appendChild(newEntry);
 
-      helperFunction();
+      detailButtonHelper();
+      editButtonHelper();
+      completeBoxHelper();
     });
 
   }
@@ -71,9 +73,9 @@ document.addEventListener('click', (e) => {
     });
   }
 
-  // Action only after adding bullet entries
-  function helperFunction() {
-    var checkBullet = document.querySelector('bullet-entry');
+  // Add eventListener for detial buttons
+  function detailButtonHelper() {
+    let checkBullet = document.querySelector('bullet-entry');
     if (checkBullet != null) {
 
       const searchModules = document.querySelectorAll('bullet-entry');
@@ -94,7 +96,55 @@ document.addEventListener('click', (e) => {
     }
   }
 
+  // Add eventListener for edit buttons
+  function editButtonHelper() {
+    let checkBullet = document.querySelector('bullet-entry');
+    if (checkBullet != null) {
+
+      const searchModules = document.querySelectorAll('bullet-entry');
+
+      let searchModule = searchModules.item(searchModules.length-1);
+      const searchModuleRoot = searchModule && searchModule.shadowRoot;
+      let detailButton = searchModuleRoot.querySelector(".editBulletButton");
+      detailButton.addEventListener('click', () => {
+        var des = detailButton.parentElement.parentElement.querySelector(".des").innerHTML;
+        var title = detailButton.parentElement.querySelector(".title").innerHTML;
+        var date = detailButton.parentElement.querySelector(".date").innerHTML;
+        var category = detailButton.parentElement.querySelector(".category").innerHTML;
+        var completedCheck = detailButton.parentElement.querySelector(".completedCheck").innerHTML;
+        var type = detailButton.parentElement.querySelector(".type").innerHTML;
+        let bullet = {  title: title,
+                        category: category, type: type, date: date,
+                        completedCheck:completedCheck, description:des  };
+        setState("BulletEditor",bullet);
+        detailButton.parentElement.parentElement.remove();
+      });
+    }
+  }  
+
+    // Add eventListener for edit buttons
+    function completeBoxHelper() {
+      let checkBullet = document.querySelector('bullet-entry');
+      if (checkBullet != null) {
+  
+        const searchModules = document.querySelectorAll('bullet-entry');
+  
+        let searchModule = searchModules.item(searchModules.length-1);
+        const searchModuleRoot = searchModule && searchModule.shadowRoot;
+        let completeBox = searchModuleRoot.querySelector(".checkbox");
+        completeBox.addEventListener('change', () => {
+          if(completeBox.checked){
+            completeBox.parentElement.querySelector(".completedCheck").innerHTML = 1;
+          }else{
+            completeBox.parentElement.querySelector(".completedCheck").innerHTML = 0;
+          }
+        });
+      }
+    }  
+
 });
+
+
 
 
 
