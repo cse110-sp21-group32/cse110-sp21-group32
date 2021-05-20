@@ -10,7 +10,7 @@ export const router = {};
 router.setState = function (inputString,entry) {
 
   if (inputString.startsWith('BulletEditor') && entry==null) {
-    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
+    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
@@ -21,13 +21,13 @@ router.setState = function (inputString,entry) {
     document.querySelector("body").appendChild(entryPage);
 
   }else if (inputString.startsWith('backMain')) {
-    history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5500/sources/#mainpage");
+    history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5501/sources/#mainpage");
     document.querySelector("body").classList.remove("bulletEditor");
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("mainView");
 
   }else if (inputString.startsWith('CateEditor')&& entry==null) {
-    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#cateEditor");
+    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.add("cateEditor");
@@ -38,7 +38,7 @@ router.setState = function (inputString,entry) {
     document.querySelector("body").appendChild(entryPage);
     
   }else if (inputString.startsWith('BulletEditor') && entry!=null) {
-    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#bulletEditor");
+    history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
@@ -49,7 +49,7 @@ router.setState = function (inputString,entry) {
     entryPage.bullet=entry;
     document.querySelector("body").appendChild(entryPage);
   }else if (inputString.startsWith('CateEditor') && entry!=null) {
-    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5500/sources/#CateEditor");
+    history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#CateEditor");
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.add("cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
