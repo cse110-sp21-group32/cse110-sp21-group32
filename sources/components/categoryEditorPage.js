@@ -144,20 +144,20 @@ class categoryEditorPage extends HTMLElement {
 
 }
 
-customElements.define('cate-editor-page', categoryEditorPage);
+customElements.define("cate-editor-page", categoryEditorPage);
 
 /**
  * JSON Format:
  * image and audio will only sometimes be there
  *
  * {
- *   title: 'foo',
- *   date: 'foo',
- *   content: 'foo',
+ *   title: "foo",
+ *   date: "foo",
+ *   content: "foo",
  *   image: {
- *     src: 'foo.com/bar.jpg',
- *     alt: 'foo'
+ *     src: "foo.com/bar.jpg",
+ *     alt: "foo"
  *   },
- *   audio: 'foo.com/bar.mp3'
+ *   audio: "foo.com/bar.mp3"
  * }
  */

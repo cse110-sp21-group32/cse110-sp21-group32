@@ -86,12 +86,12 @@ class BulletEntry extends HTMLElement {
   
     get bullet() {
       let bullet = {
-        "title": this.shadowRoot.querySelector('.title').innerText,
-        "description":this.shadowRoot.querySelector('.des').innerText,
-        'completedCheck':this.shadowRoot.querySelector('.completedCheck').innerText,
-        "date":this.shadowRoot.querySelector('.date').innerText,
-        'category':this.shadowRoot.querySelector('.category').innerText,
-        "type":this.shadowRoot.querySelector('.type').innerText
+        "title": this.shadowRoot.querySelector(".title").innerText,
+        "description":this.shadowRoot.querySelector(".des").innerText,
+        "completedCheck":this.shadowRoot.querySelector(".completedCheck").innerText,
+        "date":this.shadowRoot.querySelector(".date").innerText,
+        "category":this.shadowRoot.querySelector(".category").innerText,
+        "type":this.shadowRoot.querySelector(".type").innerText
       };
   
       return bullet;
@@ -99,12 +99,12 @@ class BulletEntry extends HTMLElement {
   
     set bullet(newBullet) {
       //Set up the bullet html content
-      this.shadowRoot.querySelector('.title').innerText =newBullet.title;
-      this.shadowRoot.querySelector('.completedCheck').innerText = 0;
+      this.shadowRoot.querySelector(".title").innerText =newBullet.title;
+      this.shadowRoot.querySelector(".completedCheck").innerText = 0;
       this.shadowRoot.querySelector(".des").innerText = newBullet.description;
       this.shadowRoot.querySelector(".date").innerText = newBullet.date;
-      this.shadowRoot.querySelector('.category').innerText = newBullet.category;
-      this.shadowRoot.querySelector('.type').innerText = newBullet.type;
+      this.shadowRoot.querySelector(".category").innerText = newBullet.category;
+      this.shadowRoot.querySelector(".type").innerText = newBullet.type;
 
       //Update variable property
       this.title=newBullet.title;
@@ -128,14 +128,14 @@ class BulletEntry extends HTMLElement {
    * image and audio will only sometimes be there
    *
    * {
-   *   title: 'foo',
-   *   date: 'foo',
-   *   content: 'foo',
+   *   title: "foo",
+   *   date: "foo",
+   *   content: "foo",
    *   image: {
-   *     src: 'foo.com/bar.jpg',
-   *     alt: 'foo'
+   *     src: "foo.com/bar.jpg",
+   *     alt: "foo"
    *   },
-   *   audio: 'foo.com/bar.mp3'
+   *   audio: "foo.com/bar.mp3"
    * }
    */
   

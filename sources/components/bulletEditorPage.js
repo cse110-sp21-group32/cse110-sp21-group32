@@ -162,20 +162,20 @@ class bulletEditorPage extends HTMLElement {
 
 }
 
-customElements.define('bullet-editor-page', bulletEditorPage);
+customElements.define("bullet-editor-page", bulletEditorPage);
 
 /**
  * JSON Format:
  * image and audio will only sometimes be there
  *
  * {
- *   title: 'foo',
- *   date: 'foo',
- *   content: 'foo',
+ *   title: "foo",
+ *   date: "foo",
+ *   content: "foo",
  *   image: {
- *     src: 'foo.com/bar.jpg',
- *     alt: 'foo'
+ *     src: "foo.com/bar.jpg",
+ *     alt: "foo"
  *   },
- *   audio: 'foo.com/bar.mp3'
+ *   audio: "foo.com/bar.mp3"
  * }
  */

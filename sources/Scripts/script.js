@@ -28,7 +28,7 @@ var haveCalledSubmitBullet = 0;
 var haveCalledSubmitCate = 0;
 
 //Add event handler for each button in side category entry and bullet entry
-document.addEventListener('click', (e) => {
+document.addEventListener("click", (e) => {
   haveCalledSubmitBullet = 0;
   haveCalledSubmitCate = 0;
 
@@ -42,7 +42,7 @@ document.addEventListener('click', (e) => {
     form = searchModuleRoot.querySelector("form");
 
     //Look for the submit event
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (haveCalledSubmitBullet == 1) {
         return;
@@ -83,7 +83,7 @@ document.addEventListener('click', (e) => {
 
     //Look for the submit event
     form = searchModuleRoot.querySelector("form");
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       if (haveCalledSubmitCate == 1) {
         return;
       } else {
@@ -112,9 +112,9 @@ document.addEventListener('click', (e) => {
 
   // Add eventListener for detial buttons of bullet 
   function detail_button_helper() {
-    let checkBullet = document.querySelector('bullet-entry');
+    let checkBullet = document.querySelector("bullet-entry");
     if (checkBullet != null) {
-      const searchModules = document.querySelectorAll('bullet-entry');
+      const searchModules = document.querySelectorAll("bullet-entry");
       //Only add event listeners to the newly added bullet
       let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
@@ -137,10 +137,10 @@ document.addEventListener('click', (e) => {
 
   // Add eventListener for edit buttons of bullet
   function edit_bullet_button_helper() {
-    let checkBullet = document.querySelector('bullet-entry');
+    let checkBullet = document.querySelector("bullet-entry");
     if (checkBullet != null) {
 
-      const searchModules = document.querySelectorAll('bullet-entry');
+      const searchModules = document.querySelectorAll("bullet-entry");
 
       //Only add event listeners to the newly added bullet
       let searchModule = searchModules.item(searchModules.length - 1);
@@ -148,7 +148,7 @@ document.addEventListener('click', (e) => {
       let detailButton = searchModuleRoot.querySelector(".editBulletButton");
 
       //Add listeners
-      detailButton.addEventListener('click', () => {
+      detailButton.addEventListener("click", () => {
         var des = detailButton.parentElement.parentElement.querySelector(".des").innerHTML;
         var title = detailButton.parentElement.querySelector(".title").innerHTML;
         var date = detailButton.parentElement.querySelector(".date").innerHTML;
@@ -173,10 +173,10 @@ document.addEventListener('click', (e) => {
 
   // Add eventListener for edit buttons of bullet
   function complete_box_helper() {
-    let checkBullet = document.querySelector('bullet-entry');
+    let checkBullet = document.querySelector("bullet-entry");
     if (checkBullet != null) {
 
-      const searchModules = document.querySelectorAll('bullet-entry');
+      const searchModules = document.querySelectorAll("bullet-entry");
 
       //Only add event listeners to the newly added bullet
       let searchModule = searchModules.item(searchModules.length - 1);
@@ -207,7 +207,7 @@ document.addEventListener('click', (e) => {
       
       //Locate the button
       let detailButton = searchModuleRoot.querySelector(".CateButton");
-      detailButton.addEventListener('click', () => {
+      detailButton.addEventListener("click", () => {
         //Record information of the current category
         var title = detailButton.parentElement.querySelector(".title").innerHTML;
         var color = detailButton.parentElement.querySelector(".color").innerHTML;;
@@ -227,18 +227,3 @@ document.addEventListener('click', (e) => {
   }
 
 });
-
-
-
-
-
-// if(document.getElementsByClassName('bulletEditor')){
-//   console.log("Check");
-// }
-
-
-// var backMain = document.querySelector("backMain");
-// backMain.addEventListener('click', () => {
-//   // setState("backMain");
-//   console.log("Check");
-// });

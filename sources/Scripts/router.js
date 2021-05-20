@@ -7,7 +7,7 @@ export const router = {};
 //Change the state of html
 router.setState = function (inputString, entry) {
 
-  if (inputString.startsWith('BulletEditor') && entry == null) {
+  if (inputString.startsWith("BulletEditor") && entry == null) {
     //Bullet editor page for new entry
     history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
@@ -33,9 +33,9 @@ router.setState = function (inputString, entry) {
     document.querySelector("body").classList.remove("mainView");
     document.querySelector("body").classList.add("cateEditor");
 
-    let entryPageOld = document.querySelector('cate-editor-page');
+    let entryPageOld = document.querySelector("cate-editor-page");
     entryPageOld.parentNode.removeChild(entryPageOld);
-    let entryPage = document.createElement('cate-editor-page');
+    let entryPage = document.createElement("cate-editor-page");
     document.querySelector("body").appendChild(entryPage);
 
   }else if (inputString.startsWith("BulletEditor") && entry!=null) {
@@ -45,9 +45,9 @@ router.setState = function (inputString, entry) {
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
 
-    let entryPageOld = document.querySelector('bullet-editor-page');
+    let entryPageOld = document.querySelector("bullet-editor-page");
     entryPageOld.parentNode.removeChild(entryPageOld);
-    let entryPage = document.createElement('bullet-editor-page');
+    let entryPage = document.createElement("bullet-editor-page");
     entryPage.bullet = entry;
     document.querySelector("body").appendChild(entryPage);
   }else if (inputString.startsWith("CateEditor") && entry!=null) {
@@ -57,9 +57,9 @@ router.setState = function (inputString, entry) {
     document.querySelector("body").classList.add("cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
 
-    let entryPageOld = document.querySelector('cate-editor-page');
+    let entryPageOld = document.querySelector("cate-editor-page");
     entryPageOld.parentNode.removeChild(entryPageOld);
-    let entryPage = document.createElement('cate-editor-page');
+    let entryPage = document.createElement("cate-editor-page");
     entryPage.category = entry;
     document.querySelector("body").appendChild(entryPage);
   }

@@ -3,7 +3,7 @@ class CategoryEntry extends HTMLElement {
     constructor() {
       super();
   
-      const template = document.createElement('template');
+      const template = document.createElement("template");
   
       template.innerHTML = `
           <style>
@@ -48,21 +48,21 @@ class CategoryEntry extends HTMLElement {
           </section>
           `;
   
-      this.attachShadow({ mode: 'open' })
+      this.attachShadow({ mode: "open" })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
   
     get category() {
       let category ={
-        'title':this.shadowRoot.querySelector('.title').innerText,
-        'color':this.shadowRoot.querySelector('.color').innerText
+        "title":this.shadowRoot.querySelector(".title").innerText,
+        "color":this.shadowRoot.querySelector(".color").innerText
       };
     }
   
     set category(newCategory) {
       //Set up the new category html element
       this.shadowRoot.querySelector(".title").innerText =newCategory.title;
-      this.shadowRoot.querySelector('.color').innerText =newCategory.color;
+      this.shadowRoot.querySelector(".color").innerText =newCategory.color;
 
       //Set up the variable property
       this.title=newCategory.tile;
@@ -75,7 +75,7 @@ class CategoryEntry extends HTMLElement {
   
   }
   
-  customElements.define('category-entry', CategoryEntry);
+  customElements.define("category-entry", CategoryEntry);
   
   /**
    * JSON Format:
