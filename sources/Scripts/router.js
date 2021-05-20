@@ -26,7 +26,7 @@ router.setState = function (inputString, entry) {
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("mainView");
 
-  } else if (inputString.startsWith('CateEditor') && entry == null) {
+  }else if (inputString.startsWith("CateEditor")&& entry==null) {
     //Category page for new entry
     history.pushState({ page: "CateEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
