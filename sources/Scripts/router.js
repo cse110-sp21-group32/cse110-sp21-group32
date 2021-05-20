@@ -19,7 +19,7 @@ router.setState = function (inputString, entry) {
     let entryPage = document.createElement('bullet-editor-page');
     document.querySelector("body").appendChild(entryPage);
 
-  } else if (inputString.startsWith('backMain')) {
+  }else if (inputString.startsWith("backMain")) {
     //Main Page
     history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5501/sources/#mainpage");
     document.querySelector("body").classList.remove("bulletEditor");
