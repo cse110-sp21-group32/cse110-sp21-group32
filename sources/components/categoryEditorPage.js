@@ -3,7 +3,7 @@ class categoryEditorPage extends HTMLElement {
   constructor() {
     super();
 
-    const template = document.createElement('template');
+    const template = document.createElement("template");
 
     template.innerHTML = `
           <style>
