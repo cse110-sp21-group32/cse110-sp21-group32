@@ -16,7 +16,7 @@ router.setState = function (inputString, entry) {
 
     let entryPageOld = document.querySelector("bullet-editor-page");
     entryPageOld.parentNode.removeChild(entryPageOld);
-    let entryPage = document.createElement('bullet-editor-page');
+    let entryPage = document.createElement("bullet-editor-page");
     document.querySelector("body").appendChild(entryPage);
 
   }else if (inputString.startsWith("backMain")) {
