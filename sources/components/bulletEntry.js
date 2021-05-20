@@ -80,7 +80,7 @@ class BulletEntry extends HTMLElement {
           </section>
           `;
   
-      this.attachShadow({ mode: 'open' })
+      this.attachShadow({ mode: "open" })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
   
