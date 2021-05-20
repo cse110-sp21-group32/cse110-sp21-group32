@@ -196,7 +196,7 @@ document.addEventListener('click', (e) => {
 
   // Add eventListener for edit buttons of category
   function edit_category_button_helper() {
-    let checkCate = document.querySelector('category-entry');
+    let checkCate = document.querySelector("category-entry");
     if (checkCate != null) {
 
       const searchModules = document.querySelectorAll('category-entry');
