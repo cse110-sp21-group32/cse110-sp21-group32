@@ -158,7 +158,7 @@ document.addEventListener("click", (e) => {
         let bullet = {
           title: title,
           category: category, type: type, date: date,
-          completedCheck: completedCheck, description: des
+          completedCheck, description: des
         };
 
         //Go to editor page with the current bullet information
