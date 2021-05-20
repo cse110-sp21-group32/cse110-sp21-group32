@@ -1,3 +1,4 @@
+// Class for the bullet Editor Page
 class bulletEditorPage extends HTMLElement {
   constructor() {
     super();
@@ -118,10 +119,21 @@ class bulletEditorPage extends HTMLElement {
   }
 
   get bullet(){
-    return null;
+    //Return the obeject whith variable settup
+    let currentBullet ={
+      "title":this.shadowRoot.getElementById("name").value,
+      "description":this.shadowRoot.getElementById("description").value,
+      "category":this.shadowRoot.getElementById("category").value,
+      "type":this.shadowRoot.getElementById("type").value,
+      "dueDate":this.shadowRoot.getElementById("dueDate").value,
+      "checked":this.shadowRoot.getElementById("name_check_box").checked
+
+    };
+    return currentBullet;
   }
 
   set bullet(inputBullet){
+    //Set up the bullet Editor page if edit an existing bullet
     this.shadowRoot.getElementById("description").value = inputBullet.description;
     this.shadowRoot.getElementById("name").value = inputBullet.title;
     this.shadowRoot.getElementById("category").value = inputBullet.category;
@@ -131,6 +143,19 @@ class bulletEditorPage extends HTMLElement {
       this.shadowRoot.getElementById("name_check_box").checked = false;
     }else{
       this.shadowRoot.getElementById("name_check_box").checked = true;
+    }
+
+    //Update variable properties
+    this.description = inputBullet.description;
+    this.title = inputBullet.title;
+    this.category = inputBullet.category;
+    this.type = inputBullet.type;
+    this.date = inputBullet.date;
+
+    if(inputBullet.completedCheck == 0){
+      this.checked = false;
+    }else{
+      this.checked = true;
     }
   }
 

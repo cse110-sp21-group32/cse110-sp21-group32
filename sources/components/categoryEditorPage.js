@@ -1,3 +1,4 @@
+// Class for the category editor page
 class categoryEditorPage extends HTMLElement {
   constructor() {
     super();
@@ -122,13 +123,23 @@ class categoryEditorPage extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 
-  get category(){
-    return null;
+  get category() {  
+    let category={
+      "name": this.shadowRoot.getElementById("name").value,
+      "color": this.shadowRoot.getElementById("color").value
+    };
+
+    return category;
   }
 
-  set category(inputCategory){
+  set category(inputCategory) {
+    //Set up the Category Editor page if edit an existing bullet
     this.shadowRoot.getElementById("name").value = inputCategory.title;
     this.shadowRoot.getElementById("color").value = inputCategory.color;
+
+    //Update variable property
+    this.name = inputCategory.title;
+    this.color = inputCategory.color;
   }
 
 }

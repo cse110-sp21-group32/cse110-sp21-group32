@@ -1,4 +1,4 @@
-
+//Custom class for each category entry
 class CategoryEntry extends HTMLElement {
     constructor() {
       super();
@@ -53,13 +53,20 @@ class CategoryEntry extends HTMLElement {
     }
   
     get category() {
-
-      return null;
+      let category ={
+        'title':this.shadowRoot.querySelector('.title').innerText,
+        'color':this.shadowRoot.querySelector('.color').innerText
+      };
     }
   
     set category(newCategory) {
+      //Set up the new category html element
       this.shadowRoot.querySelector('.title').innerText =newCategory.title;
       this.shadowRoot.querySelector('.color').innerText =newCategory.color;
+
+      //Set up the variable property
+      this.title=newCategory.tile;
+      this.color=newCategory.color;
       
     }
 

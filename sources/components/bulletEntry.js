@@ -1,4 +1,4 @@
-
+// Custom class for each Bullet entry
 class BulletEntry extends HTMLElement {
     constructor() {
       super();
@@ -85,20 +85,34 @@ class BulletEntry extends HTMLElement {
     }
   
     get bullet() {
-      let entryObj = {
-        'title': this.shadowRoot.querySelector('.bulletEntry').innerText,
+      let bullet = {
+        'title': this.shadowRoot.querySelector('.title').innerText,
+        'description':this.shadowRoot.querySelector('.des').innerText,
+        'completedCheck':this.shadowRoot.querySelector('.completedCheck').innerText,
+        'date':this.shadowRoot.querySelector('.date').innerText,
+        'category':this.shadowRoot.querySelector('.category').innerText,
+        'type':this.shadowRoot.querySelector('.type').innerText
       };
   
-      return entryObj;
+      return bullet;
     }
   
     set bullet(newBullet) {
+      //Set up the bullet html content
       this.shadowRoot.querySelector('.title').innerText =newBullet.title;
       this.shadowRoot.querySelector('.completedCheck').innerText = 0;
       this.shadowRoot.querySelector('.des').innerText = newBullet.description;
       this.shadowRoot.querySelector('.date').innerText = newBullet.date;
       this.shadowRoot.querySelector('.category').innerText = newBullet.category;
       this.shadowRoot.querySelector('.type').innerText = newBullet.type;
+
+      //Update variable property
+      this.title=newBullet.title;
+      this.completedCheck=0;
+      this.description=newBullet.description;
+      this.category=newBullet.category;
+      this.date=newBullet.date;
+      this.type=newBullet.type;
 
     }
 
