@@ -304,6 +304,7 @@ body.bulletEditor * {
   /* make the background light blue */
   background-color: lightblue;
 }
+
 /* Bullet Editor CSS End */
 
 /* Cate Editor CSS Start */
@@ -315,7 +316,4 @@ body.cateEditor main {
   display: none;
 }
 
-body.bulletEditor bullet-editor-page {
-  display: block;
-}
 /* Cate Editor CSS End */
