@@ -91,7 +91,7 @@ class BulletEntry extends HTMLElement {
         'completedCheck':this.shadowRoot.querySelector('.completedCheck').innerText,
         'date':this.shadowRoot.querySelector('.date').innerText,
         'category':this.shadowRoot.querySelector('.category').innerText,
-        'type':this.shadowRoot.querySelector('.type').innerText
+        "type":this.shadowRoot.querySelector('.type').innerText
       };
   
       return bullet;
