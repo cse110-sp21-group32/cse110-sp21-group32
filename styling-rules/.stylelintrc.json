@@ -7,7 +7,7 @@
       2,                                            // Space 2 tabbing
       {
         "baseIndentLevel": 1,                       // Indent child elements
-        "auto": true
+        // "auto": true
       }
     ],
 
