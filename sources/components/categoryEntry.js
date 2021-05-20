@@ -61,7 +61,7 @@ class CategoryEntry extends HTMLElement {
   
     set category(newCategory) {
       //Set up the new category html element
-      this.shadowRoot.querySelector('.title').innerText =newCategory.title;
+      this.shadowRoot.querySelector(".title").innerText =newCategory.title;
       this.shadowRoot.querySelector('.color').innerText =newCategory.color;
 
       //Set up the variable property
