@@ -23,6 +23,7 @@ Agenda:
  - Branch clean up:
     - For now we agree to delete all branches except main, ci-pipeline, cate-entry-detial
     - Beilie will clean up the repo structure of cate-entry-detial branch latter (delete duplicate and add comment)
+ - Decide on going for local storage now
 
 ## Attendence
  - [X] Aman Arora
