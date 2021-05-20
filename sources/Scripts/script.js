@@ -13,7 +13,7 @@ function add_bullet_handler() {
 
 //Event handler for add button of new category entry
 var cateAddButton = document.getElementById("addCateButton");
-cateAddButton.addEventListener('click', add_cate_handler);
+cateAddButton.addEventListener("click", add_cate_handler);
 function add_cate_handler() {
   setState("CateEditor");
 }
