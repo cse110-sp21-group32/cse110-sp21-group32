@@ -212,7 +212,7 @@ document.addEventListener("click", (e) => {
         var title = detailButton.parentElement.querySelector(".title").innerHTML;
         var color = detailButton.parentElement.querySelector(".color").innerHTML;;
         let category = {
-          title: title,
+          title,
           color: color
         };
 
