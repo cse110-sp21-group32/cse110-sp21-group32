@@ -39,7 +39,7 @@ body.mainView main .cell-3 {
   grid-area: footer;
 }
 
-/*Stlying for the fourth cell (Center cell, Focus) */
+/* Stlying for the fourth cell (Center cell, Focus) */
 
 body.mainView main .cell-4 {
   background: gold;
@@ -65,7 +65,6 @@ body.mainView main .cell {
 
 body.mainView main .sectionContainer {
   text-align: left;
-
 }
 
 /* Styling for the headers in the left cells (Overdue and Graph) */
@@ -302,16 +301,12 @@ body.bulletEditor bullet-editor-page {
 }
 
 body.bulletEditor * {
-
   /* make the background light blue */
   background-color: lightblue;
-  
 }
-
 /* Bullet Editor CSS End */
 
 /* Cate Editor CSS Start */
-
 body.cateEditor bullet-editor-page {
   display: none;
 }
@@ -323,10 +318,4 @@ body.cateEditor main {
 body.bulletEditor bullet-editor-page {
   display: block;
 }
-
-body.bulletEditor * {
-  background-color: lightblue;
-  /* make the background light blue */
-}
-
 /* Cate Editor CSS End */
