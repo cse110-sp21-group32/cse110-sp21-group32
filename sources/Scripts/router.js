@@ -38,7 +38,7 @@ router.setState = function (inputString, entry) {
     let entryPage = document.createElement('cate-editor-page');
     document.querySelector("body").appendChild(entryPage);
 
-  } else if (inputString.startsWith('BulletEditor') && entry != null) {
+  }else if (inputString.startsWith("BulletEditor") && entry!=null) {
     //Bullet editor page to change existing bullet
     history.pushState({ page: "bulletEditor" }, "MainPage", "http://127.0.0.1:5501/sources/#bulletEditor");
     document.querySelector("body").classList.remove("mainView");
