@@ -6,7 +6,7 @@ var form;
 
 //Event handler for add button of new bullet entry
 var bulletAddButton = document.getElementById("addBulletButton");
-bulletAddButton.addEventListener('click', add_bullet_handler);
+bulletAddButton.addEventListener("click", add_bullet_handler);
 function add_bullet_handler() {
   setState("BulletEditor");
 }
