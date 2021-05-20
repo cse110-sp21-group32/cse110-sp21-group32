@@ -94,7 +94,7 @@ document.addEventListener("click", (e) => {
       //Record the information from input 
       let tile = searchModuleRoot.getElementById("name").value;
       let color = searchModuleRoot.getElementById("color").value;
-      let category = { title: tile, color: color }
+      let category = { title: tile, color }
       setState("backMain");
 
       //Add the information to the entry 
