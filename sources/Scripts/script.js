@@ -199,7 +199,7 @@ document.addEventListener('click', (e) => {
     let checkCate = document.querySelector("category-entry");
     if (checkCate != null) {
 
-      const searchModules = document.querySelectorAll('category-entry');
+      const searchModules = document.querySelectorAll("category-entry");
 
       //Only add listener to the newly added category entry
       let searchModule = searchModules.item(searchModules.length - 1);
