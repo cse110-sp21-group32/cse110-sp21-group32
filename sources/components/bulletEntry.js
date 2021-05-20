@@ -121,7 +121,7 @@ class BulletEntry extends HTMLElement {
   
   }
   
-  customElements.define('bullet-entry', BulletEntry);
+  customElements.define("bullet-entry", BulletEntry);
   
   /**
    * JSON Format:
