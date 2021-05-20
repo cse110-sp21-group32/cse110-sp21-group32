@@ -96,14 +96,14 @@ let objConfig; // Object Literals
 
 
 ## HTML/CSS
-* Space 2 tabbing
-* Keep `JS` out of these
-* Indent child elements
-* Every selector in CSS should have a comment explaining what it's for
-* Element names should be lower case
-* Attribute names should be lower case
-* Quote attribute values
-* Always specify `alt` width and height dimensions for images
+[X] Space 2 tabbing
+[X] Keep `JS` out of these
+[X] Indent child elements
+[ ] Every selector in CSS should have a comment explaining what it's for
+[X] Element names should be lower case
+[X] Attribute names should be lower case
+[X] Quote attribute values
+[X] Always specify `alt` width and height dimensions for images
 
 * Class: [BEM "Block Element Modifier"](https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/)
   * Block: general name of the base HTML tag that we're working with: `journal-entry`
