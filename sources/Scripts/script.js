@@ -121,7 +121,7 @@ document.addEventListener('click', (e) => {
       let detailButton = searchModuleRoot.querySelector(".bulletDetailButton");
 
       //Add listeners
-      detailButton.addEventListener('click', () => {
+      detailButton.addEventListener("click", () => {
         var des = detailButton.parentElement.parentElement.querySelector(".des");
 
         // Toggle detial box
