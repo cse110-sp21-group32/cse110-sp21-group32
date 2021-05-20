@@ -18,13 +18,11 @@ Agenda:
 
 
 ## Notes
- * CICD Pipeline Initialization 
-
-
-
-## TODO
- * Beilie updates the remaining time of the video for preview section
-
+ - CICD Pipeline Initialization 
+    - Test pipline will be ready to be deployed soon
+ - Branch clean up:
+    - For now we agree to delete all branches except main, ci-pipeline, cate-entry-detial
+    - Beilie will clean up the repo structure of cate-entry-detial branch latter (delete duplicate and add comment)
 
 ## Attendence
  - [X] Aman Arora
