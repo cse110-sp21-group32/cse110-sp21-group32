@@ -87,7 +87,7 @@ class BulletEntry extends HTMLElement {
     get bullet() {
       let bullet = {
         "title": this.shadowRoot.querySelector('.title').innerText,
-        'description':this.shadowRoot.querySelector('.des').innerText,
+        "description":this.shadowRoot.querySelector('.des').innerText,
         'completedCheck':this.shadowRoot.querySelector('.completedCheck').innerText,
         'date':this.shadowRoot.querySelector('.date').innerText,
         'category':this.shadowRoot.querySelector('.category').innerText,
