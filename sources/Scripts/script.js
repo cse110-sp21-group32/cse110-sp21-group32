@@ -78,7 +78,7 @@ document.addEventListener('click', (e) => {
   //Action after leaving category editor
   var checkBullet = document.getElementsByClassName("cateEditor");
   if (checkBullet.length != 0) {
-    const searchModule = document.querySelector('cate-editor-page');
+    const searchModule = document.querySelector("cate-editor-page");
     const searchModuleRoot = searchModule && searchModule.shadowRoot;
 
     //Look for the submit event
