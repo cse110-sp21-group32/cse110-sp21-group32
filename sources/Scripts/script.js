@@ -63,7 +63,7 @@ document.addEventListener("click", (e) => {
       //Add bullet to main page
       let newEntry = document.createElement("bullet-entry");
       let mainPane = document.querySelector(".jornalMainBox");
-      let bullet = { title: name, description, category: category, type: type, date: date }
+      let bullet = { title: name, description, category, type: type, date: date }
       newEntry.bullet = bullet;
       mainPane.appendChild(newEntry);
 
