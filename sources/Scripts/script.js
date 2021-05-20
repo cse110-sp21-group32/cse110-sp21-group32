@@ -94,7 +94,7 @@ document.addEventListener("click", (e) => {
       //Record the information from input 
       let tile = searchModuleRoot.getElementById("name").value;
       let color = searchModuleRoot.getElementById("color").value;
-      let category = { title: tile, color: color }
+      let category = { title: tile, color }
       setState("backMain");
 
       //Add the information to the entry 
@@ -156,9 +156,9 @@ document.addEventListener("click", (e) => {
         var completedCheck = detailButton.parentElement.querySelector(".completedCheck").innerHTML;
         var type = detailButton.parentElement.querySelector(".type").innerHTML;
         let bullet = {
-          title: title,
+          title,
           category: category, type: type, date: date,
-          completedCheck: completedCheck, description: des
+          completedCheck, description: des
         };
 
         //Go to editor page with the current bullet information
