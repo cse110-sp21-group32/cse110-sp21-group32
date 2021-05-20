@@ -101,7 +101,7 @@ class BulletEntry extends HTMLElement {
       //Set up the bullet html content
       this.shadowRoot.querySelector('.title').innerText =newBullet.title;
       this.shadowRoot.querySelector('.completedCheck').innerText = 0;
-      this.shadowRoot.querySelector('.des').innerText = newBullet.description;
+      this.shadowRoot.querySelector(".des").innerText = newBullet.description;
       this.shadowRoot.querySelector('.date').innerText = newBullet.date;
       this.shadowRoot.querySelector('.category').innerText = newBullet.category;
       this.shadowRoot.querySelector('.type').innerText = newBullet.type;
