@@ -99,7 +99,7 @@ let objConfig; // Object Literals
 - [X] Space 2 tabbing
 - [X] Keep `JS` out of these
 - [X] Indent child elements
-- explaining what it's for
+- [ ] Every selector in CSS should have a comment explaining what it's for
 - [X] Element names should be lower case
 - [X] Attribute names should be lower case
 - [X] Quote attribute values
