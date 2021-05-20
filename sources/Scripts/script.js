@@ -19,7 +19,7 @@ function add_cate_handler() {
 }
 
 //Set the main page url when the page is loaded
-addEventListener('DOMContentLoaded', () => {
+addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
 });
 
