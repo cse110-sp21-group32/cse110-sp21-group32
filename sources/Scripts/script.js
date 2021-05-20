@@ -37,7 +37,7 @@ document.addEventListener('click', (e) => {
   var checkBullet = document.getElementsByClassName('bulletEditor');
   if (checkBullet.length != 0) {
     //Dive into the shadow root of bullet editor page
-    const searchModule = document.querySelector('bullet-editor-page');
+    const searchModule = document.querySelector("bullet-editor-page");
     const searchModuleRoot = searchModule && searchModule.shadowRoot;
     form = searchModuleRoot.querySelector("form");
 
