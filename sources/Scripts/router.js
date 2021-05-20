@@ -14,7 +14,7 @@ router.setState = function (inputString, entry) {
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
 
-    let entryPageOld = document.querySelector('bullet-editor-page');
+    let entryPageOld = document.querySelector("bullet-editor-page");
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('bullet-editor-page');
     document.querySelector("body").appendChild(entryPage);
