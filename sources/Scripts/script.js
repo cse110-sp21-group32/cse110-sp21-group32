@@ -156,7 +156,7 @@ document.addEventListener("click", (e) => {
         var completedCheck = detailButton.parentElement.querySelector(".completedCheck").innerHTML;
         var type = detailButton.parentElement.querySelector(".type").innerHTML;
         let bullet = {
-          title: title,
+          title,
           category: category, type: type, date: date,
           completedCheck, description: des
         };
