@@ -184,7 +184,7 @@ document.addEventListener('click', (e) => {
       let completeBox = searchModuleRoot.querySelector(".checkbox");
 
       //Update the inner hidden html element when toggle the check box
-      completeBox.addEventListener('change', () => {
+      completeBox.addEventListener("change", () => {
         if (completeBox.checked) {
           completeBox.parentElement.querySelector(".completedCheck").innerHTML = 1;
         } else {
@@ -242,5 +242,4 @@ document.addEventListener('click', (e) => {
 //   // setState("backMain");
 //   console.log("Check");
 // });
-
 
