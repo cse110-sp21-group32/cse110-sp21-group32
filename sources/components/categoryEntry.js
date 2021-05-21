@@ -7,7 +7,7 @@ class CategoryEntry extends HTMLElement {
   
       template.innerHTML = `
           <style>
-           .cateEntry .categotyDemo{
+           .cate-entry .categoty-entry{
               height: 3.5em;
               font-size: 2em;
               background-color: antiquewhite;
@@ -24,25 +24,25 @@ class CategoryEntry extends HTMLElement {
           
             }
           
-            .cateEntry .CateButton {
+            .cate-entry .cate-edit-button {
               margin: 0.5rem;
               line-height: 3rem;
               font-size: 1rem;
               background-color: aquamarine;
             }
-            .cateEntry .color {
+            .cate-entry .color {
               display:none
             }
-            .cateEntry .title {
+            .cate-entry .title {
               text-align: center;
               width: 90%;
           }
           </style>
-          <section class="cateEntry">
-            <div class="categotyDemo">
+          <section class="cate-entry">
+            <div class="categoty-entry">
               <input class="checkbox" type="checkbox">
               <span class="title">demo</span>
-              <button class="CateButton">edit</button>
+              <button class="cate-edit-button">edit</button>
               <span class="color">demo</span>
             </div>
           </section>

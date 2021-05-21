@@ -8,7 +8,7 @@ class categoryEditorPage extends HTMLElement {
     template.innerHTML = `
           <style>
               /* Add styling to h1 elements */
-              .editorSection h1 {
+              .editor-section h1 {
                   color: navy;
                   /* make all h1 elements navy colored */
                   margin: auto;
@@ -19,61 +19,61 @@ class categoryEditorPage extends HTMLElement {
               }
 
               /* Add styling to form element */
-              .editorSection form {
+              .editor-section form {
                   text-align: center;
                   width: 20%;
                   flex: 1;
               }
 
               /* Add styling to main element */
-              .editorSection main {
+              .editor-section main {
                   display: flex;
                   flex-direction: row;
               }
 
               /* Add styling to input elements */
-              .editorSection input {
+              .editor-section input {
                   margin-top: 10px;
                   margin-bottom: 10px;
                   background-color: white;
               }
 
               /* Add styling to select input fields */
-              .editorSection select {
+              .editor-section select {
                   margin-top: 10px;
                   margin-bottom: 10px;
                   background-color: white;
               }
 
               /* Add styling to the submit button */
-              .editorSection input[type=submit] {
+              .editor-section input[type=submit] {
                   background-color: red;
               }
 
               /* Add styling to the reset button */
-              .editorSection input[type=reset] {
+              .editor-section input[type=reset] {
                   background-color: red;
               }
 
               /* Add styling to the dropdown options */
-              .editorSection option {
+              .editor-section option {
                   background-color: white;
               }
 
               /* Add styling to the star option */
-              .editorSection p {
+              .editor-section p {
                   /*font-size: 30;*/
                   font: larger;
               }
 
               /* Styling for star checkbox */
-              .editorSection .star {
+              .editor-section .star {
                   visibility: hidden;
                   font-size: 25px;
                   cursor: pointer;
               }
 
-              .editorSection .star:before {
+              .editor-section .star:before {
                   content: "1️⃣";
                   position: absolute;
                   visibility: visible;
@@ -82,13 +82,13 @@ class categoryEditorPage extends HTMLElement {
 
               }
 
-              .editorSection .star:checked:before {
+              .editor-section .star:checked:before {
                   content: "0️⃣";
                   position: absolute;
 
               }
           </style>
-          <section class="editorSection">
+          <section class="editor-section">
               
             <header>
               <h1>
@@ -111,8 +111,8 @@ class categoryEditorPage extends HTMLElement {
                   <option value="pink">Pink</option>
                   <option value="light blue">Light Blue</option>
                 </select><br>
-                <input type="submit" value="Confirm" id="submit_btn" class="backMain">
-                <input type="reset" id="reset_btn" class="backMain">       
+                <input type="submit" value="confirm" id="submit-btn" class="back-main">
+                <input type="reset" id="reset-btn" class="back-main">       
               </form>
             </main>
 

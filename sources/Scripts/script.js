@@ -20,7 +20,7 @@ function add_cate_handler() {
 
 //Set the main page url when the page is loaded
 addEventListener("DOMContentLoaded", () => {
-  setState("backMain", false);
+  setState("back-main", false);
 });
 
 //Variables to prevent multiple submit fires from form
@@ -55,10 +55,10 @@ document.addEventListener("click", (e) => {
       let description = searchModuleRoot.getElementById("description").value;
       let category = searchModuleRoot.getElementById("category").value;
       let type = searchModuleRoot.getElementById("type").value;
-      let date = searchModuleRoot.getElementById("dueDate").value;
+      let date = searchModuleRoot.getElementById("due-date").value;
 
       //Go back to main page
-      setState("backMain");
+      setState("back-main");
 
       //Add bullet to main page
       let newEntry = document.createElement("bullet-entry");
@@ -95,7 +95,7 @@ document.addEventListener("click", (e) => {
       let tile = searchModuleRoot.getElementById("name").value;
       let color = searchModuleRoot.getElementById("color").value;
       let category = { title: tile, color }
-      setState("backMain");
+      setState("back-main");
 
       //Add the information to the entry
       let newEntry = document.createElement("category-entry");
@@ -118,7 +118,7 @@ document.addEventListener("click", (e) => {
       //Only add event listeners to the newly added bullet
       let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
-      let detailButton = searchModuleRoot.querySelector(".bulletDetailButton");
+      let detailButton = searchModuleRoot.querySelector(".bullet-detail-button");
 
       //Add listeners
       detailButton.addEventListener("click", () => {
@@ -145,7 +145,7 @@ document.addEventListener("click", (e) => {
       //Only add event listeners to the newly added bullet
       let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
-      let detailButton = searchModuleRoot.querySelector(".editBulletButton");
+      let detailButton = searchModuleRoot.querySelector(".edit-bullet-button");
 
       //Add listeners
       detailButton.addEventListener("click", () => {
@@ -153,7 +153,7 @@ document.addEventListener("click", (e) => {
         var title = detailButton.parentElement.querySelector(".title").innerHTML;
         var date = detailButton.parentElement.querySelector(".date").innerHTML;
         var category = detailButton.parentElement.querySelector(".category").innerHTML;
-        var completedCheck = detailButton.parentElement.querySelector(".completedCheck").innerHTML;
+        var completedCheck = detailButton.parentElement.querySelector(".completed-check").innerHTML;
         var type = detailButton.parentElement.querySelector(".type").innerHTML;
         let bullet = {
           title,
@@ -186,9 +186,9 @@ document.addEventListener("click", (e) => {
       //Update the inner hidden html element when toggle the check box
       completeBox.addEventListener("change", () => {
         if (completeBox.checked) {
-          completeBox.parentElement.querySelector(".completedCheck").innerHTML = 1;
+          completeBox.parentElement.querySelector(".completed-check").innerHTML = 1;
         } else {
-          completeBox.parentElement.querySelector(".completedCheck").innerHTML = 0;
+          completeBox.parentElement.querySelector(".completed-check").innerHTML = 0;
         }
       });
     }
@@ -206,7 +206,7 @@ document.addEventListener("click", (e) => {
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
 
       //Locate the button
-      let detailButton = searchModuleRoot.querySelector(".CateButton");
+      let detailButton = searchModuleRoot.querySelector(".cate-edit-button");
       detailButton.addEventListener("click", () => {
         //Record information of the current category
         var title = detailButton.parentElement.querySelector(".title").innerHTML;

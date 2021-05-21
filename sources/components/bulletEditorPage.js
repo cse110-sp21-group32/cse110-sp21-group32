@@ -8,7 +8,7 @@ class bulletEditorPage extends HTMLElement {
     template.innerHTML = `
           <style>
               /* Add styling to h1 elements */
-              .editorSection h1 {
+              .editor-section h1 {
                   color: navy;
                   /* make all h1 elements navy colored */
                   margin: auto;
@@ -19,61 +19,61 @@ class bulletEditorPage extends HTMLElement {
               }
 
               /* Add styling to form element */
-              .editorSection form {
+              .editor-section form {
                   text-align: center;
                   width: 20%;
                   flex: 1;
               }
 
               /* Add styling to main element */
-              .editorSection main {
+              .editor-section main {
                   display: flex;
                   flex-direction: row;
               }
 
               /* Add styling to input elements */
-              .editorSection input {
+              .editor-section input {
                   margin-top: 10px;
                   margin-bottom: 10px;
                   background-color: white;
               }
 
               /* Add styling to select input fields */
-              .editorSection select {
+              .editor-section select {
                   margin-top: 10px;
                   margin-bottom: 10px;
                   background-color: white;
               }
 
               /* Add styling to the submit button */
-              .editorSection input[type=submit] {
+              .editor-section input[type=submit] {
                   background-color: red;
               }
 
               /* Add styling to the reset button */
-              .editorSection input[type=reset] {
+              .editor-section input[type=reset] {
                   background-color: red;
               }
 
               /* Add styling to the dropdown options */
-              .editorSection option {
+              .editor-section option {
                   background-color: white;
               }
 
               /* Add styling to the star option */
-              .editorSection p {
+              .editor-section p {
                   /*font-size: 30;*/
                   font: larger;
               }
 
               /* Styling for star checkbox */
-              .editorSection .star {
+              .editor-section .star {
                   visibility: hidden;
                   font-size: 25px;
                   cursor: pointer;
               }
           </style>
-          <section class="editorSection">
+          <section class="editor-section">
             <header>
               <h1>
                 Bullet Editor
@@ -82,7 +82,7 @@ class bulletEditorPage extends HTMLElement {
 
             <main>
               <form>
-                <input type="checkbox" id="name_check_box" name="name_check_box" value="checked">
+                <input type="checkbox" id="name-check-box" name="name-check-box" value="checked">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"><br>
                 <label for="category">Category:</label>
@@ -100,15 +100,15 @@ class bulletEditorPage extends HTMLElement {
                   <option value="task">Task</option>
                 </select><br>
             
-                <label for="dueDate">Due Date:</label>
-                <input type="date" id="dueDate" name="dueDate"><br>
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date"><br>
             
                 <!-- Star Checkbox -->            
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="description"><br>
             
-                <input type="submit" value="Confirm" id="submit_btn" class="backMain">
-                <input type="reset" id="reset_btn" class="backMain">
+                <input type="submit" value="confirm" id="submit-btn" class="back-main">
+                <input type="reset" id="reset-btn" class="back-main">
               </form>
             </main>
           </section>
@@ -125,8 +125,8 @@ class bulletEditorPage extends HTMLElement {
       "description":this.shadowRoot.getElementById("description").value,
       "category":this.shadowRoot.getElementById("category").value,
       "type":this.shadowRoot.getElementById("type").value,
-      "dueDate":this.shadowRoot.getElementById("dueDate").value,
-      "checked":this.shadowRoot.getElementById("name_check_box").checked
+      "due-date":this.shadowRoot.getElementById("due-date").value,
+      "checked":this.shadowRoot.getElementById("name-check-box").checked
 
     };
     return currentBullet;
@@ -138,11 +138,11 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("name").value = inputBullet.title;
     this.shadowRoot.getElementById("category").value = inputBullet.category;
     this.shadowRoot.getElementById("type").value = inputBullet.type;
-    this.shadowRoot.getElementById("dueDate").value = inputBullet.date;
+    this.shadowRoot.getElementById("due-date").value = inputBullet.date;
     if(inputBullet.completedCheck == 0){
-      this.shadowRoot.getElementById("name_check_box").checked = false;
+      this.shadowRoot.getElementById("name-check-box").checked = false;
     }else{
-      this.shadowRoot.getElementById("name_check_box").checked = true;
+      this.shadowRoot.getElementById("name-check-box").checked = true;
     }
 
     //Update variable properties

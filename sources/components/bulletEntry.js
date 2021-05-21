@@ -8,7 +8,7 @@ class BulletEntry extends HTMLElement {
       template.innerHTML = `
           <style>
 
-            .bulletEntry .bullet{
+            .bullet-entry .bullet{
                 display: flex;
                 align-items: center;
                 height: 2em;
@@ -23,18 +23,18 @@ class BulletEntry extends HTMLElement {
             
             }
             
-            .bulletEntry .BulletButton {
+            .bullet-entry .bullet-button {
                 margin: 0.5rem;
                 line-height: 1rem;
                 font-size: 1rem;
                 background-color: aquamarine;
             }
             
-            .bulletEntry .title {
+            .bullet-entry .title {
                 text-align: center;
                 width: 90%;
             }
-            .bulletEntry .des{
+            .bullet-entry .des{
                 overflow:expand;
                 display:none;
                 align-items: center;
@@ -49,29 +49,29 @@ class BulletEntry extends HTMLElement {
                 text-align: center;
                 padding: 0.5rem;
             }
-            .bulletEntry .date{
+            .bullet-entry .date{
                 display:none;
             }
-            .bulletEntry .category{
+            .bullet-entry .category{
                 display:none;
             }
-            .bulletEntry .type{
+            .bullet-entry .type{
                 display:none;
             }
-            .bulletEntry .completedCheck{
+            .bullet-entry .completed-check{
                 display:none;
             }
           </style>
-          <section class="bulletEntry">
+          <section class="bullet-entry">
             <div class="bullet">
                 <input class="checkbox" type="checkbox">
                 <span class="title">demo</span>
-                <button class="BulletButton editBulletButton">edit</button>
-                <button class="BulletButton bulletDetailButton">detail</button>
+                <button class="bullet-button edit-bullet-button">edit</button>
+                <button class="bullet-button bullet-detail-button">detail</button>
                 <span class="date">demo</span>
                 <span class="category">demo</span>
                 <span class="type">demo</span>
-                <span class="completedCheck">demo</span>
+                <span class="completed-check">demo</span>
 
 
             </div>
@@ -88,7 +88,7 @@ class BulletEntry extends HTMLElement {
       let bullet = {
         "title": this.shadowRoot.querySelector(".title").innerText,
         "description":this.shadowRoot.querySelector(".des").innerText,
-        "completedCheck":this.shadowRoot.querySelector(".completedCheck").innerText,
+        "completedCheck":this.shadowRoot.querySelector(".completed-check").innerText,
         "date":this.shadowRoot.querySelector(".date").innerText,
         "category":this.shadowRoot.querySelector(".category").innerText,
         "type":this.shadowRoot.querySelector(".type").innerText
@@ -100,7 +100,7 @@ class BulletEntry extends HTMLElement {
     set bullet(newBullet) {
       //Set up the bullet html content
       this.shadowRoot.querySelector(".title").innerText =newBullet.title;
-      this.shadowRoot.querySelector(".completedCheck").innerText = 0;
+      this.shadowRoot.querySelector(".completed-check").innerText = 0;
       this.shadowRoot.querySelector(".des").innerText = newBullet.description;
       this.shadowRoot.querySelector(".date").innerText = newBullet.date;
       this.shadowRoot.querySelector(".category").innerText = newBullet.category;
