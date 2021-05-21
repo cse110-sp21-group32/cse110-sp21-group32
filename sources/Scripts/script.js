@@ -23,7 +23,7 @@ addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
 });
 
-//Variables to prevent multiple submit fires from form 
+//Variables to prevent multiple submit fires from form
 var haveCalledSubmitBullet = 0;
 var haveCalledSubmitCate = 0;
 
@@ -91,13 +91,13 @@ document.addEventListener("click", (e) => {
       }
       e.preventDefault();
 
-      //Record the information from input 
+      //Record the information from input
       let tile = searchModuleRoot.getElementById("name").value;
       let color = searchModuleRoot.getElementById("color").value;
       let category = { title: tile, color }
       setState("backMain");
 
-      //Add the information to the entry 
+      //Add the information to the entry
       let newEntry = document.createElement("category-entry");
       let mainPane = document.querySelector(".category-box");
       newEntry.category = category;
@@ -105,12 +105,12 @@ document.addEventListener("click", (e) => {
       //Add to main page
       mainPane.appendChild(newEntry);
 
-      //Add handler to the editor button in category item entry 
+      //Add handler to the editor button in category item entry
       edit_category_button_helper();
     });
   }
 
-  // Add eventListener for detial buttons of bullet 
+  // Add eventListener for detial buttons of bullet
   function detail_button_helper() {
     let checkBullet = document.querySelector("bullet-entry");
     if (checkBullet != null) {
@@ -164,7 +164,7 @@ document.addEventListener("click", (e) => {
         //Go to editor page with the current bullet information
         setState("BulletEditor", bullet);
 
-        //Remove the orginal bullet 
+        //Remove the orginal bullet
         //Not optimal solution
         detailButton.parentElement.parentElement.remove();
       });
@@ -204,7 +204,7 @@ document.addEventListener("click", (e) => {
       //Only add listener to the newly added category entry
       let searchModule = searchModules.item(searchModules.length - 1);
       const searchModuleRoot = searchModule && searchModule.shadowRoot;
-      
+
       //Locate the button
       let detailButton = searchModuleRoot.querySelector(".CateButton");
       detailButton.addEventListener("click", () => {
@@ -212,15 +212,15 @@ document.addEventListener("click", (e) => {
         var title = detailButton.parentElement.querySelector(".title").innerHTML;
         var color = detailButton.parentElement.querySelector(".color").innerHTML;;
         let category = {
-          title: title,
+          title,
           color: color
         };
 
         //Go to category editor page
         setState("CateEditor", category);
-        
+
         //Remove the old category entry
-        //Not optimal 
+        //Not optimal
         detailButton.parentElement.parentElement.remove();
       });
     }
