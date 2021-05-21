@@ -5,14 +5,14 @@ const setState = router.setState;
 var form;
 
 //Event handler for add button of new bullet entry
-var bulletAddButton = document.getElementById("addBulletButton");
+var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", add_bullet_handler);
 function add_bullet_handler() {
   setState("BulletEditor");
 }
 
 //Event handler for add button of new category entry
-var cateAddButton = document.getElementById("addCateButton");
+var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", add_cate_handler);
 function add_cate_handler() {
   setState("CateEditor");
@@ -62,7 +62,7 @@ document.addEventListener("click", (e) => {
 
       //Add bullet to main page
       let newEntry = document.createElement("bullet-entry");
-      let mainPane = document.querySelector(".jornalMainBox");
+      let mainPane = document.querySelector(".jornal-main-box");
       let bullet = { title: name, description, category: category, type: type, date: date }
       newEntry.bullet = bullet;
       mainPane.appendChild(newEntry);
@@ -99,7 +99,7 @@ document.addEventListener("click", (e) => {
 
       //Add the information to the entry 
       let newEntry = document.createElement("category-entry");
-      let mainPane = document.querySelector(".categoryBox");
+      let mainPane = document.querySelector(".category-box");
       newEntry.category = category;
 
       //Add to main page
