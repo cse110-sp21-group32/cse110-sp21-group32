@@ -213,7 +213,7 @@ document.addEventListener("click", (e) => {
         var color = detailButton.parentElement.querySelector(".color").innerHTML;;
         let category = {
           title,
-          color: color
+          color
         };
 
         //Go to category editor page
