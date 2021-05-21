@@ -57,6 +57,7 @@ class CategoryEntry extends HTMLElement {
         "title":this.shadowRoot.querySelector(".title").innerText,
         "color":this.shadowRoot.querySelector(".color").innerText
       };
+      return category;
     }
   
     set category(newCategory) {
