@@ -1,0 +1,113 @@
+/* Add styling to the whole page */
+* {
+    background-color: rgb(255, 255, 255); /* make the background white */
+}
+/* Add styling to h1 elements */
+h1 {
+  color: navy; /* make all h1 elements navy colored */
+  margin: auto;
+  width: 300px;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+/* Add styling to form element */
+form {
+  text-align: center;
+  width: 100%;
+  flex: 1;
+}
+/* Add styling to main element */
+main{
+    display: flex;
+    flex-direction: row;
+}
+/* Add styling to input elements */
+input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+/* Add styling to select input fields */
+select{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+/* Add styling to the submit button */
+input[type=submit]{
+  background-color: red;
+}
+/* Add styling to the reset button */ 
+input[type=reset]{
+  background-color: red;
+}
+/* Add styling to the dropdown options */ 
+option{
+  background-color: white;
+}
+/* Add styling to the star option */ 
+p{
+  /*font-size: 30;*/
+  font: larger;
+}
+
+/* Styling for star checkbox */
+.star {
+  visibility:hidden;
+  font-size:25px;
+  cursor:pointer;
+}
+.star:before {
+ content: "\2605";
+ position: absolute;
+ visibility:visible;
+ margin-top: -11px;
+ margin-left: -5px;
+
+}
+.star:checked:before {
+ content: "\2606";
+ position: absolute;
+ 
+}
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: auto;
+  border: 2px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  padding-right: 20px;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+
+<head>
+    <title>Bullet Journal</title>
+    <meta name="keywords" content="journal">
+    <meta name="author" content="Frozon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="mainView defaultView">
+    <main>
+        <div class="container">
+            <div class="cell cell-1">
+                <button id="addBulletButton">Add</button>
+            </div>
+            <div class="cell cell-2">
+                <div class="sectionContainer">
+                    <h2 class="sectionHeader">Overdue</h2>
+                    <div class="jornalBoxOverdue">
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell cell-3">
+                <div class="sectionContainer">
+                    <h2 class="sectionHeader">Graph</h2>
+                    <div class="graphBox">
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+                        <div class="bullet">demo</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell cell-4">
+                <div class="sectionContainer">
+                    <h2 class="sectionHeaderMain">Focus</h2>
+                    <div class="jornalMainBox"></div>
+                </div>
+            </div>
+            <div class="cell cell-5">
+                <div class="sectionContainer">
+                    <h2 class="sectionHeaderMain">Categories</h2>
+                    <div class="BigButton" id="addCateButton">
+                        Add Category
+                    </div>
+                    <div class="categoryBox"></div>
+                    <div class="BigButton">
+                        Select All
+                    </div>
+                    <div class="BigButton">
+                        Deselect All
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <bullet-editor-page></bullet-editor-page>
+    <cate-editor-page></cate-editor-page>
+
+
+
+    <!-- journal-entry web component -->
+    <script src="./components/bulletEditorPage.js" type="module"></script>
+    <script src="./components/categoryEditorPage.js" type="module"></script>
+    <script src="./components/bulletEntry.js" type="module"></script>
+    <script src="./components/categoryEntry.js" type="module"></script>
+
+
+
+
+    <!-- Router Script -->
+    <script src="./scripts/router.js" type="module"></script>
+
+    <!-- Main Script -->
+    <script src="./scripts/script.js" type="module"></script>
+</body>
+
+</html>
