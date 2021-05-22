@@ -106,7 +106,7 @@ class categoryEditorPage extends HTMLElement {
               <h1 class="modal-title">Category Editor</h4>
             </div>
             <form onsubmit="return false">
-              <input type="checkbox" id="name_check_box" class="checkbox" style="display: none">
+              <input type="checkbox" id="name-check-box" class="checkbox" style="display: none">
               <label for="name">Name:</label>
               <input type="text" id="name" name="name"><br>
               <label for="color">Color:</label>
@@ -120,8 +120,8 @@ class categoryEditorPage extends HTMLElement {
                 <option value="pink">Pink</option>
                 <option value="light blue">Light Blue</option>
               </select><br>
-              <input type="submit" value="Confirm" id="cateSubmit">
-              <input type="reset" id="reset_btn">        
+              <input type="submit" value="Confirm" id="cate-submit">
+              <input type="reset" id="reset-btn">        
             </form>
             
 

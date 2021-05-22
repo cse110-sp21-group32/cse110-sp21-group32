@@ -4,12 +4,12 @@ import { router } from './router.js'; // Router imported so you can use it to ma
 const setState = router.setState;
 
 // We can move these to other event listener if we want
-var bulletAddButton = document.getElementById("addBulletButton");
+var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener('click', addBulletHandler);
 function addBulletHandler() {
   setState("BulletEditor");
 }
-var cateAddButton = document.getElementById("addCateButton");
+var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener('click', addCateHandler);
 function addCateHandler() {
   setState("CateEditor");
@@ -27,15 +27,15 @@ document.addEventListener('click', (e) => {
   // console.log(e.composedPath());
 
   // Click editBullet button
-  if(e.composedPath()[0].className == 'BulletButton editBulletButton'){
+  if(e.composedPath()[0].className == 'bullet-button edit-bullet-button'){
     editBullet(e.composedPath()[0]);
   }
   // Click showDetail button
-  if(e.composedPath()[0].className == 'BulletButton bulletDetailButton'){
+  if(e.composedPath()[0].className == 'bullet-button bullet-detail-button'){
     showDetail(e.composedPath()[0]);
   }
   // Click editCategory button
-  if(e.composedPath()[0].className == 'CateButton'){
+  if(e.composedPath()[0].className == 'cate-button'){
     editCategory(e.composedPath()[0]);
   }
   // Submit bullet editor event
@@ -43,7 +43,7 @@ document.addEventListener('click', (e) => {
     submitBullet(e.composedPath()[1]);
   }
   // Submit category editor event
-  if(e.composedPath()[0].id == 'cateSubmit'){
+  if(e.composedPath()[0].id == 'cate-submit'){
     submitCategory(e.composedPath()[1]);
   }
   // Close bulletEditor or categoryEditor modal
@@ -93,7 +93,7 @@ function submitCategory(formObj){
   setState("backMain");
 
   let newEntry = document.createElement("category-entry");
-  let mainPane = document.querySelector(".categoryBox");
+  let mainPane = document.querySelector(".category-box");
   newEntry.category = category;
   mainPane.appendChild(newEntry);
 }
@@ -108,7 +108,7 @@ function closeModal(editorObj){
     let mainPane;
     if(editorObj.tagName == 'CATE-EDITOR-PAGE'){
       newEntry = document.createElement("category-entry");
-      mainPane = document.querySelector(".categoryBox");
+      mainPane = document.querySelector(".category-box");
       newEntry.category = uneditedEntry;
     } else{
       newEntry = document.createElement("bullet-entry");

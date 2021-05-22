@@ -1,10 +1,10 @@
-/* This is a style css to the index.html in the root*/
+/* This is a style css to the index.html in the root */
 body {
     overflow-y: auto;
     overflow-x: auto;
 }
-/* Styling for the main container that will hold all our cells*/
-body.mainView main .container {
+/* Styling for the main container that will hold all our cells */
+body.main-view main .container {
     height: 100vh;
     width: 100vw;
     margin: -1rem;
@@ -19,57 +19,57 @@ body.mainView main .container {
 
  }
  /* Stlying for the first cell(top left cell, add button) */
- body.mainView main .cell-1 {
+ body.main-view main .cell-1 {
     height: 5rem;
     background: rgb(14, 195, 255);
     grid-area: plus;
  }
- /* Stlying for the second cell (Middle left cell, Overdue)*/
- body.mainView main .cell-2 {
+ /* Stlying for the second cell (Middle left cell, Overdue) */
+ body.main-view main .cell-2 {
     background-color: aqua;
     grid-area: overdue;
  }
-  /* Stlying for the third cell (Bottom left cell, Graph)*/
- body.mainView main .cell-3 {
+  /* Stlying for the third cell (Bottom left cell, Graph) */
+ body.main-view main .cell-3 {
     background: limegreen;
     grid-area: footer;
  }
-  /*Stlying for the fourth cell (Center cell, Focus)*/
- body.mainView main .cell-4 {
+  /*Stlying for the fourth cell (Center cell, Focus) */
+ body.main-view main .cell-4 {
     background: gold;
     grid-area: main;
  }
-  /* Stlying for the fith cell(right cell, Categories)*/
- body.mainView main .cell-5 {
+  /* Stlying for the fith cell(right cell, Categories) */
+ body.main-view main .cell-5 {
     background: rgb(250, 151, 230);
     grid-area: cateMa;
  }
-  /* Styling for all the non-header text*/
- body.mainView main .cell {
+  /* Styling for all the non-header text */
+ body.main-view main .cell {
     color: black;
     text-align: center;
     padding:1em
  }
- /* Styling for the Section containers*/
- body.mainView main .sectionContainer{
+ /* Styling for the Section containers */
+ body.main-view main .section-container{
     text-align: left;
     margin-top: 0em;
  }
-/* Styling for the headers in the left cells (Overdue and Graph)*/
- body.mainView main .sectionHeader {
+/* Styling for the headers in the left cells (Overdue and Graph) */
+ body.main-view main .section-header {
     color: rgb(152, 66, 66);
     font-size: 2em;
     margin: 0%;
  }
   /* Styling for the headers in the middle and left cells (Focus and Categories) */
- body.mainView main .sectionHeaderMain {
+ body.main-view main .section-header-main {
     color: rgb(152, 66, 66);
     font-size: 4em;
     margin-top: 1rem;
     margin-bottom: 1rem;
  }
- /* Styling for the journal entries shown in the overdue box*/
- body.mainView main .jornalBoxOverdue{
+ /* Styling for the journal entries shown in the overdue box */
+ body.main-view main .jornal-box-overdue{
      margin-top: 0.3em;
      padding:0.5em;
      height: 28rem;
@@ -81,12 +81,12 @@ body.mainView main .container {
      border-color:  rgb(40, 25, 3);
      border-radius: 1em;     
  }
-  /* Setting the display for the overdue box scrollbar*/
-body.mainView main .jornalBoxOverdue::-webkit-scrollbar { 
+  /* Setting the display for the overdue box scrollbar */
+body.main-view main .jornal-box-overdue::-webkit-scrollbar { 
     display: none;
 }
- /* Styling for bullet entries that appear in all cells*/
-body.mainView main .bullet{
+ /* Styling for bullet entries that appear in all cells */
+body.main-view main .bullet{
     display: flex;
     align-items: center;
     height: 2em;
@@ -99,25 +99,25 @@ body.mainView main .bullet{
     text-align: left;
     padding-left: 0.5rem;
 }
- /* Styling for the buttons next to bullet (edit and detail)*/
-body.mainView main .BulletButton {
+ /* Styling for the buttons next to bullet (edit and detail) */
+body.main-view main .bullet-button {
     margin: 0.5rem;
     line-height: 1rem;
     font-size: 1rem;
     background-color: aquamarine;
 }
- /* Stlying for the title of the categories in cell 5*/
-body.mainView main .title {
+ /* Stlying for the title of the categories in cell 5 */
+body.main-view main .title {
     text-align: center;
     width: 90%;
 }
-/* Styling for bullet description*/
-body.mainView main .description {
+/* Styling for bullet description */
+body.main-view main .description {
     position: relative;
     width: 100%;
 }
- /* Styling for the box that contains journal entries in cell 3 (Graph)*/
-body.mainView main .graphBox{
+ /* Styling for the box that contains journal entries in cell 3 (Graph) */
+body.main-view main .graph-box{
     margin-top: 0.3em;
     padding:0.5em;
     height: 15rem;
@@ -129,12 +129,12 @@ body.mainView main .graphBox{
     border-color:  rgb(40, 25, 3);
     border-radius: 1em;     
 }
- /* Setting the display for the graph box scrollbar*/
-body.mainView main .graphBox::-webkit-scrollbar { 
+ /* Setting the display for the graph box scrollbar */
+body.main-view main .graph-box::-webkit-scrollbar { 
    display: none;
 }
- /* Styling for the box that contains journal entries in the main cell, cell 4 (Focus)*/
-body.mainView main .jornalMainBox{
+ /* Styling for the box that contains journal entries in the main cell, cell 4 (Focus) */
+body.main-view main .jornalMainBox{
     margin-top: 0.3em;
     padding:0.5em;
     height: 52rem;
@@ -145,18 +145,18 @@ body.mainView main .jornalMainBox{
     border-color:  rgb(40, 25, 3);
     border-radius: 1em;  
 }
- /* Setting the display for the graph box scrollbar*/
-body.mainView main .jornalMainBox::-webkit-scrollbar { 
+ /* Setting the display for the graph box scrollbar */
+body.main-view main .jornalMainBox::-webkit-scrollbar { 
    display: none;
 }
  /* Styling for month selection (Not currently used) */
-body.mainView main .MonthSection{
+body.main-view main .MonthSection{
     margin-top: 0.3rem;
     margin-bottom: 1.5rem;
     border-width: 2px;
 }
- /* Styling for the big buttons (Add Category, select all, deselect all)*/
-body.mainView main .BigButton{
+ /* Styling for the big buttons (Add Category, select all, deselect all) */
+body.main-view main .big-button{
     font-size: 1.5em;
     display: grid;
     justify-items: center;
@@ -169,12 +169,12 @@ body.mainView main .BigButton{
     margin-left: 0.6rem;
     margin-right: 0.6rem;
 }
- /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all)*/
-body.mainView main .BigButton:hover{
+ /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
+body.main-view main .big-button:hover{
     background-color: rgb(114, 99, 80);
 }
- /* Stlying for box containing the categories in cell 5*/
-body.mainView main .categoryBox{
+ /* Stlying for box containing the categories in cell 5 */
+body.main-view main .category-box{
     margin-top: 0.3em;
     padding:0.5em;
     height: 40rem;
@@ -185,12 +185,12 @@ body.mainView main .categoryBox{
     border-color:  rgb(40, 25, 3);
     border-radius: 1em;  
 }
- /* Setting the display for the category box scrollbar*/
-body.mainView main .categoryBox::-webkit-scrollbar { 
+ /* Setting the display for the category box scrollbar */
+body.main-view main .category-box::-webkit-scrollbar { 
     display: none;
  }
- /* Styling for our demo Category*/
-body.mainView main .categotyDemo{
+ /* Styling for our demo Category */
+body.main-view main .category-inner-entry{
     height: 3.5em;
     font-size: 2em;
     background-color: antiquewhite;
@@ -203,29 +203,29 @@ body.mainView main .categotyDemo{
     align-items: center;
     padding: 0.5rem;
 }
- /* Stlying for category edit button*/
-body.mainView main .CateButton {
+ /* Stlying for category edit button */
+body.main-view main .cate-button {
     margin: 0.5rem;
     line-height: 3rem;
     font-size: 1rem;
     background-color: aquamarine;
 }
- /* Styling for add bullet button in top left corner*/
-body.mainView main #addBulletButton {
+ /* Styling for add bullet button in top left corner */
+body.main-view main #add-bullet-button {
     line-height: 5rem;
     font-size: 2rem;
     background-color: aquamarine;
 }
-/* Adding bit "+" symbol to add button*/
-body.mainView main #addBulletButton::before {
+/* Adding bit "+" symbol to add button */
+body.main-view main #add-bullet-button::before {
     content: "➕";
 }
 
-/* Default mainView */
-body.defaultView cate-editor-page{
+/* Default main-view */
+body.default-view cate-editor-page{
     display: none;
 }
-body.defaultView bullet-editor-page {
+body.default-view bullet-editor-page {
     display: none;
 }
 
@@ -237,10 +237,6 @@ body.bulletEditor cate-editor-page{
 body.bulletEditor bullet-editor-page {
     display: block;
 }
-/*
-body.bulletEditor * {
-    background-color: lightblue;
-}
 /* Bullet Editor CSS End */
 
 
@@ -250,10 +246,6 @@ body.cateEditor bullet-editor-page{
 }
 body.cateEditor cate-editor-page {
     display: block;
-}
-/*
-body.bulletEditor * {
-    background-color: lightblue;
 }
 /* Cate Editor CSS End */
 

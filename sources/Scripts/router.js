@@ -8,7 +8,7 @@ export const router = {};
 router.setState = function (inputString,entry) {
 
   if (inputString.startsWith('BulletEditor') && entry==null) {
-    document.querySelector("body").classList.remove("defaultView");
+    document.querySelector("body").classList.remove("default-view");
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
 
@@ -20,11 +20,11 @@ router.setState = function (inputString,entry) {
   }else if (inputString.startsWith('backMain')) {
     document.querySelector("body").classList.remove("bulletEditor");
     document.querySelector("body").classList.remove("cateEditor");
-    document.querySelector("body").classList.add("defaultView");
+    document.querySelector("body").classList.add("default-view");
 
   }else if (inputString.startsWith('CateEditor')&& entry==null) {
     document.querySelector("body").classList.remove("bulletEditor");
-    document.querySelector("body").classList.remove("defaultView");
+    document.querySelector("body").classList.remove("default-view");
     document.querySelector("body").classList.add("cateEditor");
 
     let entryPageOld = document.querySelector('cate-editor-page');
@@ -33,7 +33,7 @@ router.setState = function (inputString,entry) {
     document.querySelector("body").appendChild(entryPage);
     
   }else if (inputString.startsWith('BulletEditor') && entry!=null) {
-    document.querySelector("body").classList.remove("defaultView");
+    document.querySelector("body").classList.remove("default-view");
     document.querySelector("body").classList.remove("cateEditor");
     document.querySelector("body").classList.add("bulletEditor");
 
@@ -44,7 +44,7 @@ router.setState = function (inputString,entry) {
     entryPage.old=entry;
     document.querySelector("body").appendChild(entryPage);
   }else if (inputString.startsWith('CateEditor') && entry!=null) {
-    document.querySelector("body").classList.remove("defaultView");
+    document.querySelector("body").classList.remove("default-view");
     document.querySelector("body").classList.add("cateEditor");
     document.querySelector("body").classList.remove("bulletEditor");
 
