@@ -1,15 +1,13 @@
 /* Add styling to the whole page */
-*{
-  background-color: rgb(255, 255, 255); /* make the background white */
-}
+
 
 /* Add styling to h1 elements */
 h1{
-  color: navy; /* make all h1 elements navy colored */
+  color: (9, 44, 82);  
   margin: auto;
   width: auto;
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: 1rem;
   padding-top: 40px;
 }
 
@@ -38,11 +36,22 @@ input{
 }
 /* Add styling to the submit button */
 input[type=submit]{
-  background-color: red;
+  margin: 1rem;
+  width:5rem;
+
+  border: none;
+  background-color: rgb(75, 164, 220);
+  padding: 0.7rem;
 }
 /* Add styling to the reset button */ 
 input[type=reset]{
-  background-color: red;
+  margin: 1rem;
+  width:5rem;
+  border: none;
+
+  background-color: rgb(75, 164, 220);
+  padding: 0.7rem;
+
 }
 /* Add styling to the dropdown options */ 
 option{
@@ -61,25 +70,22 @@ option{
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.65); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgb(173, 210, 244); /* make the background white */
+  border-radius: 3em; 
   margin: auto;
-  padding: auto;
+  padding: 3rem;
   border: 1px solid #888;
   width: 50%;
 }
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
-  padding-right: 28px;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  display: none;
 }
 
 .close:hover,

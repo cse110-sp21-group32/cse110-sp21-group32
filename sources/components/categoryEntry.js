@@ -10,9 +10,7 @@ class CategoryEntry extends HTMLElement {
            .cate-entry .category-inner-entry{
               height: 3.5em;
               font-size: 2em;
-              background-color: antiquewhite;
-              border-width: 0.5px;
-              border-style: solid;
+              background-color:  rgba(167, 200, 220, 0.925);
               border-radius: 0.5em;  
               margin:0.3rem;
           
@@ -26,9 +24,15 @@ class CategoryEntry extends HTMLElement {
           
             .cate-entry .cate-button {
               margin: 0.5rem;
-              line-height: 3rem;
               font-size: 1rem;
-              background-color: aquamarine;
+              border: none;
+              margin: 0.5rem;
+              line-height: 1rem;
+              font-size: 1rem;
+              border-radius: 0.5em;  
+              padding: 8px;
+              background-color: rgb(204, 225, 243);
+              line-height: 3rem;
             }
             .cate-entry .color {
               display:none
@@ -36,7 +40,24 @@ class CategoryEntry extends HTMLElement {
             .cate-entry .title {
               text-align: center;
               width: 90%;
-          }
+            }
+            .checkbox {
+              -webkit-appearance: none;
+              background-color: #fafafa;
+              padding: 15px;
+              border-radius: 3px;
+              display: inline-block;
+              position: relative;
+            }
+            
+            .checkbox:checked:after {
+              content: "\u2714";
+              font-size: 50px;
+              position: absolute;
+              top: -20px;
+              left: 5px;
+              color: #0994ff;
+            }
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">

@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
-
-<head>
+  <head>
     <title>Bullet Journal</title>
-    <meta name="keywords" content="journal">
-    <meta name="author" content="Frozon">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <meta name="keywords" content="journal" />
+    <meta name="author" content="Frozon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body class="main-view default-view">
+  <body class="main-view default-view">
+    <div class="header">Bullet Jornal</div>
     <main>
-        <div class="container">
-            <div class="cell cell-1">
-                <button id="add-bullet-button">Add</button>
+      <div class="container">
+        <div class="cell cell-2">
+          <div class="section-container">
+            <h2 class="section-header-side">Day</h2>
+            <div class="jornal-box-history">
+              <div class="bullet">demo</div>
+              <div class="bullet">demo</div>
+              <div class="bullet">demo</div>
+              <div class="bullet">demo</div>
+              <div class="bullet">demo</div>
             </div>
-            <div class="cell cell-2">
-                <div class="section-container">
-                    <h2 class="section-header">Overdue</h2>
-                    <div class="jornal-box-overdue">
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell cell-3">
-                <div class="section-container">
-                    <h2 class="section-header">Graph</h2>
-                    <div class="graph-box">
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-                        <div class="bullet">demo</div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="cell cell-4">
-                <div class="section-container">
-                    <h2 class="section-header-main">Focus</h2>
-                    <div class="jornalMainBox"></div>
-                </div>
-            </div>
-            <div class="cell cell-5">
-                <div class="section-container">
-                    <h2 class="section-header-main">Categories</h2>
-                    <div class="big-button" id="add-cate-button">
-                        Add Category
-                    </div>
-                    <div class="category-box"></div>
-                    <div class="big-button">
-                        Select All
-                    </div>
-                    <div class="big-button">
-                        Deselect All
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
 
+        <div class="cell cell-4">
+          <div class="section-container">
+            <h2 class="section-header-main">Focus</h2>
+            <div class="jornal-main-box">
+                <div class="entry-list">
+                </div>
+                <div class="bullet new-button" id="add-bullet-button">New Bullet</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="cell cell-5">
+          <div class="section-container">
+            <h2 class="section-header-side">Categories</h2>
+            <div class="category-box"></div>
+            <div class="big-button new-button" id="add-cate-button">Add Category</div>
+            <div class="big-button">Select All</div>
+            <div class="big-button">Deselect All</div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <bullet-editor-page></bullet-editor-page>
     <cate-editor-page></cate-editor-page>
-
-
 
     <!-- journal-entry web component -->
     <script src="./components/bulletEditorPage.js" type="module"></script>
@@ -78,14 +56,10 @@
     <script src="./components/bulletEntry.js" type="module"></script>
     <script src="./components/categoryEntry.js" type="module"></script>
 
-
-
-
     <!-- Router Script -->
     <script src="./scripts/router.js" type="module"></script>
 
     <!-- Main Script -->
     <script src="./scripts/script.js" type="module"></script>
-</body>
-
+  </body>
 </html>

@@ -81,7 +81,7 @@ function submitBullet(formObj){
   let bullet = formObj.getRootNode().host.bullet;
   setState("backMain");
   let newEntry = document.createElement("bullet-entry");
-  let mainPane = document.querySelector(".jornalMainBox");
+  let mainPane = document.querySelector(".entry-list");
   newEntry.bullet = bullet;
   
   mainPane.appendChild(newEntry);
@@ -112,7 +112,7 @@ function closeModal(editorObj){
       newEntry.category = uneditedEntry;
     } else{
       newEntry = document.createElement("bullet-entry");
-      mainPane = document.querySelector(".jornalMainBox");
+      mainPane = document.querySelector(".entry-list");
       newEntry.bullet = uneditedEntry;
     }
     mainPane.appendChild(newEntry);

@@ -2,99 +2,103 @@ class categoryEditorPage extends HTMLElement {
   constructor() {
     super();
 
-    const template = document.createElement('template');
+    const template = document.createElement("template");
 
     template.innerHTML = `
           <style>
-          *{
-            background-color: rgb(255, 255, 255); /* make the background white */
-          }
-          
-          /* Add styling to h1 elements */
-          h1{
-            color: navy; /* make all h1 elements navy colored */
-            margin: auto;
-            width: auto;
-            text-align: center;
-            padding-bottom: 40px;
-            padding-top: 40px;
-          }
-          
-          /* Add styling to form element */
-          form {
-            text-align: center;
-            width: 100%;
-            flex: 1; 
-          }
-          /* Add styling to main element */
-          main{
-            display: flex;
-            flex-direction: row;
-          }
-          /* Add styling to select input fields */
-          select{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background-color: white;
-          }
-          /* Add styling to input elements */
-          input{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background-color: white;
-          }
-          /* Add styling to the submit button */
-          input[type=submit]{
-            background-color: red;
-          }
-          /* Add styling to the reset button */ 
-          input[type=reset]{
-            background-color: red;
-          }
-          /* Add styling to the dropdown options */ 
-          option{
-            background-color: white;
-          }
-          
-          /* The Modal (background) */
-          .modal {
-            display: block; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-          }
-          
-          /* Modal Content */
-          .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: auto;
-            border: 1px solid #888;
-            width: 50%;
-          }
-          
-          /* The Close Button */
-          .close {
-            color: #aaaaaa;
-            padding-right: 28px;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-          }
-          
-          .close:hover,
-          .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-          }
+            /* Add styling to h1 elements */
+            h1{
+              color: (9, 44, 82);  
+              margin: auto;
+              width: auto;
+              text-align: center;
+              padding-bottom: 1rem;
+              padding-top: 40px;
+            }
+            
+            /* Add styling to form element */
+            form {
+              text-align: center;
+              width: 100%;
+              flex: 1; 
+            }
+            /* Add styling to main element */
+            main{
+              display: flex;
+              flex-direction: row;
+            }
+            /* Add styling to select input fields */
+            select{
+              margin-top: 10px;
+              margin-bottom: 10px;
+              background-color: white;
+            }
+            /* Add styling to input elements */
+            input{
+              margin-top: 10px;
+              margin-bottom: 10px;
+              background-color: white;
+            }
+            /* Add styling to the submit button */
+            input[type=submit]{
+              margin: 1rem;
+              width:5rem;
+            
+              border: none;
+              background-color: rgb(75, 164, 220);
+              padding: 0.7rem;
+            }
+            /* Add styling to the reset button */ 
+            input[type=reset]{
+              margin: 1rem;
+              width:5rem;
+              border: none;
+            
+              background-color: rgb(75, 164, 220);
+              padding: 0.7rem;
+            
+            }
+            /* Add styling to the dropdown options */ 
+            option{
+              background-color: white;
+            }
+            
+            /* The Modal (background) */
+            .modal {
+              display: block; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 1; /* Sit on top */
+              padding-top: 100px; /* Location of the box */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.65); /* Black w/ opacity */
+            }
+            
+            /* Modal Content */
+            .modal-content {
+              background-color: rgb(173, 210, 244); /* make the background white */
+              border-radius: 3em; 
+              margin: auto;
+              padding: 3rem;
+              border: 1px solid #888;
+              width: 50%;
+            }
+            
+            /* The Close Button */
+            .close {
+              display: none;
+            }
+            
+            .close:hover,
+            .close:focus {
+              color: #000;
+              text-decoration: none;
+              cursor: pointer;
+            }
           </style>
           <div id="myModal" class="modal">
           
@@ -132,47 +136,47 @@ class categoryEditorPage extends HTMLElement {
         </div>
           `;
 
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
-  get old(){
-    if(!this.shadowRoot.querySelector(".checkbox").dataset.old){
+  get old() {
+    if (!this.shadowRoot.querySelector(".checkbox").dataset.old) {
       return null;
     }
     let categoryForm = {
-      'title': this.shadowRoot.getElementById("name").dataset.old,
-      'color': this.shadowRoot.getElementById("color").dataset.old,
-      'checked': this.shadowRoot.querySelector(".checkbox").dataset.old,
+      title: this.shadowRoot.getElementById("name").dataset.old,
+      color: this.shadowRoot.getElementById("color").dataset.old,
+      checked: this.shadowRoot.querySelector(".checkbox").dataset.old,
     };
     return categoryForm;
   }
 
-  set old(inputCategory){
+  set old(inputCategory) {
     this.shadowRoot.getElementById("name").dataset.old = inputCategory.title;
     this.shadowRoot.getElementById("color").dataset.old = inputCategory.color;
-    this.shadowRoot.querySelector(".checkbox").dataset.old = inputCategory.checked;
+    this.shadowRoot.querySelector(".checkbox").dataset.old =
+      inputCategory.checked;
   }
 
-  get category(){
+  get category() {
     let categoryForm = {
-      'title': this.shadowRoot.getElementById("name").value,
-      'color': this.shadowRoot.getElementById("color").value,
-      'checked': this.shadowRoot.querySelector(".checkbox").checked,
+      title: this.shadowRoot.getElementById("name").value,
+      color: this.shadowRoot.getElementById("color").value,
+      checked: this.shadowRoot.querySelector(".checkbox").checked,
     };
     return categoryForm;
   }
 
-  set category(inputCategory){
+  set category(inputCategory) {
     this.shadowRoot.getElementById("name").value = inputCategory.title;
     this.shadowRoot.getElementById("color").value = inputCategory.color;
     this.shadowRoot.querySelector(".checkbox").checked = inputCategory.checked;
   }
-
 }
 
-customElements.define('cate-editor-page', categoryEditorPage);
+customElements.define("cate-editor-page", categoryEditorPage);
 
 /**
  * JSON Format:
