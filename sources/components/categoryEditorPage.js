@@ -35,9 +35,12 @@ class categoryEditorPage extends HTMLElement {
             }
             /* Add styling to input elements */
             input{
+              padding:10px;
               margin-top: 10px;
               margin-bottom: 10px;
               background-color: white;
+              border:0;
+              box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
             }
             /* Add styling to the submit button */
             input[type=submit]{
@@ -99,6 +102,19 @@ class categoryEditorPage extends HTMLElement {
               text-decoration: none;
               cursor: pointer;
             }
+            
+            /* Add styling to select input fields */
+            select {
+              padding: 10px;
+              width: 10.5rem;
+              height: 3rem;
+              box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+              margin-top: 10px;
+              margin-bottom: 10px;
+              background-color: white;
+              color: rgb(130, 130, 130);
+            
+            }
           </style>
           <div id="myModal" class="modal">
           
@@ -111,10 +127,9 @@ class categoryEditorPage extends HTMLElement {
             </div>
             <form onsubmit="return false">
               <input type="checkbox" id="name-check-box" class="checkbox" style="display: none">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name"><br>
-              <label for="color">Color:</label>
+              <input type="text" id="name" name="name" placeholder="Name"><br>
               <select id="color" name="color">
+                <option value="placeholder">Select a color</option>
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
                 <option value="yellow">Yellow</option>
@@ -128,11 +143,10 @@ class categoryEditorPage extends HTMLElement {
               <input type="reset" id="reset-btn">        
             </form>
             
-
+        
           <!-- Main Script -->
           <script src="script.js" type="module"></script>  
-          </div>
-        
+          </div>        
         </div>
           `;
 

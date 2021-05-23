@@ -31,20 +31,18 @@ class bulletEditorPage extends HTMLElement {
             }
             /* Add styling to input elements */
             input {
+              padding:10px;
               margin-top: 10px;
               margin-bottom: 10px;
               background-color: white;
+              border:0;
+              box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
             }
-            /* Add styling to select input fields */
-            select {
-              margin-top: 10px;
-              margin-bottom: 10px;
-              background-color: white;
-            }
+            
             /* Add styling to the submit button */
             input[type="submit"] {
             
-              margin: 1rem;
+              margin: 0.5rem;
               width: 5rem;
               border: none;
               font-size: 1rem;
@@ -111,49 +109,61 @@ class bulletEditorPage extends HTMLElement {
               text-decoration: none;
               cursor: pointer;
             }
+            
+            /* Add styling to select input fields */
+            select {
+              padding: 10px;
+              width: 10.5rem;
+              height: 3rem;
+              box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+              margin-top: 10px;
+              margin-bottom: 10px;
+              background-color: white;
+              color: rgb(130, 130, 130);
+            
+            }
+            
           </style>
           <!-- The Modal -->
           <div id="myModal" class="modal">
           
             <!-- Modal content -->
             <div class="modal-content">
-              <span class="close">&times;</span>    
-              <div class="modal-header">
-                <h1 class="modal-title">Bullet Editor</h4>
-                  <form onsubmit="return false">
-              
-                    <input type="checkbox" id="name-check-box" name="name-check-box">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name"><br>
-                    <label for="category">Category:</label>
-                    <select id="category" name="category">
-                      <option value="Category1">Category1</option>
-                      <option value="Category2">Category2</option>
-                      <option value="Category3">Category3</option>
-                      <option value="Category4">Category4</option>
-                    </select><br>
-              
-                    <label for="type">Type of Item:</label>
-                    <select id="type" name="type">
-                      <option value="note">Note</option>
-                      <option value="event">Event</option>
-                      <option value="task">Task</option>
-                    </select><br>
-              
-                    <label for="due-date">Due Date:</label>
-                    <input type="date" id="due-date" name="due-date"><br>
-
-                    <label for="description">Description:</label>
-                    <input type="text" id="description" name="description"><br>
-              
-                    <input type="submit" value="Confirm" id="bulletSubmit">
-                    <input type="reset" id="reset-btn">
-                  </form>
-              
-                <!-- Main Script -->
-                <script src="script.js" type="module"></script>
-              
-            </div>
+            <span class="close">&times;</span>    
+            <div class="modal-header">
+              <h1 class="modal-title">Bullet Editor</h4>
+                <form onsubmit="return false">
+                  <!-- <input type="checkbox" id="name-check-box" name="name-check-box"> -->
+                  <input type="text" id="name" name="name" placeholder="Title"><br>
+                  <input type="text" id="description" name="description" placeholder="Detail"><br>
+        
+        
+                  <select id="category" name="category">
+                    <option value="placeholder">Select a category</option>
+                    <option value="Category1">Category1</option>
+                    <option value="Category2">Category2</option>
+                    <option value="Category3">Category3</option>
+                    <option value="Category4">Category4</option>
+                  </select><br>
+            
+                  <select id="type" name="type">
+                    <option value="placeholder">Select a type</option>
+                    <option value="note">Note</option>
+                    <option value="event">Event</option>
+                    <option value="task">Task</option>
+                  </select><br>
+            
+                  <input type="date" id="due-date" name="due-date" placeholder="DueDate"><br>
+        
+            
+                  <input type="submit" value="Confirm" id="bulletSubmit">
+                  <input type="reset" id="reset-btn">
+                </form>
+            
+              <!-- Main Script -->
+              <script src="script.js" type="module"></script>
+            
+          </div>
           
           </div>
           `;
@@ -172,7 +182,7 @@ class bulletEditorPage extends HTMLElement {
       category: this.shadowRoot.getElementById("category").dataset.old,
       type: this.shadowRoot.getElementById("type").dataset.old,
       date: this.shadowRoot.getElementById("due-date").dataset.old,
-      checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
+      // checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
     };
     return bulletForm;
   }
@@ -185,8 +195,8 @@ class bulletEditorPage extends HTMLElement {
       inputBullet.category;
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
     this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
-    this.shadowRoot.getElementById("name-check-box").dataset.old =
-      inputBullet.checked;
+    // this.shadowRoot.getElementById("name-check-box").dataset.old =
+      // inputBullet.checked;
   }
 
   get bullet() {
@@ -196,7 +206,7 @@ class bulletEditorPage extends HTMLElement {
       category: this.shadowRoot.getElementById("category").value,
       type: this.shadowRoot.getElementById("type").value,
       date: this.shadowRoot.getElementById("due-date").value,
-      checked: this.shadowRoot.getElementById("name-check-box").checked,
+      // checked: this.shadowRoot.getElementById("name-check-box").checked,
     };
     return bulletForm;
   }
@@ -208,17 +218,9 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("category").value = inputBullet.category;
     this.shadowRoot.getElementById("type").value = inputBullet.type;
     this.shadowRoot.getElementById("due-date").value = inputBullet.date;
-    this.shadowRoot.getElementById("name-check-box").checked =
-      inputBullet.checked;
+    // this.shadowRoot.getElementById("name-check-box").checked =
+    //   inputBullet.checked;
   }
-
-  // set category(catagoryList){
-  //   this.shadowRoot.getElementById("category").removeChild();
-  //   for(){
-  //     this.shadowRoot.getElementById("category").addoption(CaL[i]);
-  //   }
-
-  // }
 }
 
 customElements.define("bullet-editor-page", bulletEditorPage);

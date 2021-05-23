@@ -30,9 +30,12 @@ select{
 }
 /* Add styling to input elements */
 input{
+  padding:10px;
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 /* Add styling to the submit button */
 input[type=submit]{
@@ -93,4 +96,17 @@ option{
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Add styling to select input fields */
+select {
+  padding: 10px;
+  width: 10.5rem;
+  height: 3rem;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  color: rgb(130, 130, 130);
+
 }
