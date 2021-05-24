@@ -84,6 +84,7 @@ body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
   font-size: 5em;
   margin-bottom: 8px;
+  margin-top: auto;
 }
 
 /* Styling for the journal entries shown in the history box */
