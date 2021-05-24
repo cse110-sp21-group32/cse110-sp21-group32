@@ -123,6 +123,9 @@ class BulletEntry extends HTMLElement {
   }
 
 
+
+
+
   
 }
 

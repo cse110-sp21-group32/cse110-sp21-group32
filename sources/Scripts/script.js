@@ -7,7 +7,13 @@ const setState = router.setState;
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener('click', addBulletHandler);
 function addBulletHandler() {
-  setState("BulletEditor");
+  let categoryList=[];
+  let catagories = document.querySelectorAll("category-entry");
+  for(let i = 0; i < catagories.length;i++){
+    categoryList.push(catagories[i].category.title);
+  }
+  console.log(categoryList);
+  setState("BulletEditor",null,categoryList);
 }
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener('click', addCateHandler);

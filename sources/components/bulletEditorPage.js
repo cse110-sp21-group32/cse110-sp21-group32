@@ -122,6 +122,10 @@ class bulletEditorPage extends HTMLElement {
               color: rgb(130, 130, 130);
             
             }
+
+            #name-check-box {
+              display:none;
+            }
             
           </style>
           <!-- The Modal -->
@@ -133,7 +137,7 @@ class bulletEditorPage extends HTMLElement {
             <div class="modal-header">
               <h1 class="modal-title">Bullet Editor</h4>
                 <form onsubmit="return false">
-                  <!-- <input type="checkbox" id="name-check-box" name="name-check-box"> -->
+                  <input type="checkbox" id="name-check-box" name="name-check-box">
                   <input type="text" id="name" name="name" placeholder="Title"><br>
                   <input type="text" id="description" name="description" placeholder="Detail"><br>
         
@@ -171,9 +175,6 @@ class bulletEditorPage extends HTMLElement {
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
   get old() {
-    if (!this.shadowRoot.getElementById("name-check-box").dataset.old) {
-      return null;
-    }
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").dataset.old,
       title: this.shadowRoot.getElementById("name").dataset.old,
@@ -194,7 +195,7 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
     // this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").dataset.old =
-      // inputBullet.checked;
+    // inputBullet.checked;
   }
 
   get bullet() {
@@ -208,7 +209,7 @@ class bulletEditorPage extends HTMLElement {
     };
     return bulletForm;
   }
-
+  
   set bullet(inputBullet) {
     this.shadowRoot.getElementById("description").value =
       inputBullet.description;
@@ -218,6 +219,29 @@ class bulletEditorPage extends HTMLElement {
     // this.shadowRoot.getElementById("due-date").value = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").checked =
     //   inputBullet.checked;
+  }
+
+  //Set the category list of the editor page
+  set catagoryList(inputList) {
+    let categorySelect = this.shadowRoot.getElementById("category");
+    var length = categorySelect.options.length;
+    for (let i = length - 1; i >= 0; i--) {
+      categorySelect.options[i] = null;
+    }
+
+    inputList.forEach((cateName) => {
+      // create new option element
+      var opt = document.createElement("option");
+
+      // create text node to add to option element (opt)
+      opt.appendChild(document.createTextNode(cateName));
+
+      // set value property of opt
+      opt.value = cateName;
+
+      // add opt to end of select box (sel)
+      categorySelect.appendChild(opt);
+    });
   }
 }
 
