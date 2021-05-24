@@ -10,13 +10,11 @@ body {
   margin-top: -0.5rem;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
-
   width: 98%;
   background-color: rgb(9, 65, 114);
   text-align: center;
   font-size: 2rem;
   padding: 20px;
-
   color: rgb(246, 248, 250);
 }
 
@@ -38,32 +36,26 @@ body.main-view main .container {
 /* Stlying for the first cell(top left cell, add button) */
 body.main-view main .cell-1 {
   height: 5rem;
-
-  /* background: rgb(14, 195, 255); */
   grid-area: plus;
 }
 
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
-  /* background-color: aqua; */
   grid-area: history;
 }
 
 /* Stlying for the third cell (Bottom left cell, Graph) */
 body.main-view main .cell-3 {
-  /* background: limegreen; */
   grid-area: footer;
 }
 
-/*Stlying for the fourth cell (Center cell, Focus) */
+/* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
-  /* background: gold; */
   grid-area: main;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
-  /* background: rgb(250, 151, 230); */
   grid-area: cateMa;
 }
 
@@ -73,10 +65,10 @@ body.main-view main .cell {
   text-align: center;
   padding: 1em;
 }
+
 /* Styling for the Section containers */
 body.main-view main .section-container {
   text-align: left;
-  margin-top: 0em;
 }
 
 /* Styling for the headers in the left cells (Overdue and Graph) */
@@ -91,7 +83,6 @@ body.main-view main .section-header-side {
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
   font-size: 5em;
-  margin-top: 0rem;
   margin-bottom: 8px;
 }
 
@@ -286,6 +277,7 @@ body.main-view main .new-button:active {
 body.default-view cate-editor-page {
   display: none;
 }
+
 body.default-view bullet-editor-page {
   display: none;
 }
@@ -298,15 +290,18 @@ body.bulletEditor cate-editor-page {
 body.bulletEditor bullet-editor-page {
   display: block;
 }
+
 /* Bullet Editor CSS End */
 
 /* Cate Editor CSS Start */
 body.cateEditor bullet-editor-page {
   display: none;
 }
+
 body.cateEditor cate-editor-page {
   display: block;
 }
+
 /* Cate Editor CSS End */
 
 /* For Testing Purpose */
@@ -315,7 +310,6 @@ body.cateEditor cate-editor-page {
   display: none;
   align-items: center;
   height: auto;
-
   background-color: rgba(167, 200, 220, 0.925);
   font-size: 1em;
   border-radius: 0.5em;
@@ -336,7 +330,7 @@ body.cateEditor cate-editor-page {
   position: relative;
 }
 
-.checkbox:checked:after {
+.checkbox::checked::after {
   content: "\2714";
   font-size: 50px;
   position: absolute;
