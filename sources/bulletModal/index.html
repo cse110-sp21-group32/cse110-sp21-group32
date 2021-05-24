@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Bullet Editor</title>
+  <link rel="stylesheet" href="mystyle_bullet.css">
+</head>
+
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>    
+    <div class="modal-header">
+      <h1 class="modal-title">Bullet Editor</h4>
+        <form onsubmit="return false">
+    
+          <!-- <input type="checkbox" id="name-check-box" name="name-check-box"> -->
+          <input type="text" id="name" name="name" placeholder="Title"><br>
+          <input type="text" id="description" name="description" placeholder="Detail"><br>
+
+
+          <select id="category" name="category">
+            <option value="placeholder">Select a category</option>
+            <option value="Category1">Category1</option>
+            <option value="Category2">Category2</option>
+            <option value="Category3">Category3</option>
+            <option value="Category4">Category4</option>
+          </select><br>
+    
+          <select id="type" name="type">
+            <option value="placeholder">Select a type</option>
+            <option value="note">Note</option>
+            <option value="event">Event</option>
+            <option value="task">Task</option>
+          </select><br>
+    
+          <input type="date" id="due-date" name="due-date" placeholder="DueDate"><br>
+
+    
+          <input type="submit" value="Confirm" id="bulletSubmit">
+          <input type="reset" id="reset-btn">
+        </form>
+    
+      <!-- Main Script -->
+      <script src="script.js" type="module"></script>
+    
+  </div>
+
+</div>
+
+<footer>
+
+</footer>
+
+
+
+
