@@ -330,7 +330,7 @@ body.cateEditor cate-editor-page {
   position: relative;
 }
 
-.checkbox::checked::after {
+.checkbox:checked::after {
   content: "\2714";
   font-size: 50px;
   position: absolute;
