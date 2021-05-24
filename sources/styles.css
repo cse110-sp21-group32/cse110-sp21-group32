@@ -330,6 +330,7 @@ body.cateEditor cate-editor-page {
   position: relative;
 }
 
+/* Stlying for category edit button */
 .checkbox:checked::after {
   content: "\2714";
   font-size: 50px;
