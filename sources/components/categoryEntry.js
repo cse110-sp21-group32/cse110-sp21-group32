@@ -84,7 +84,13 @@ class CategoryEntry extends HTMLElement {
     set category(newCategory) {
       this.shadowRoot.querySelector('.title').innerText =newCategory.title;
       this.shadowRoot.querySelector('.color').innerText =newCategory.color;
-      this.shadowRoot.querySelector('.checkbox').checked =newCategory.checked;
+
+      //Set the default showing option to true
+      this.shadowRoot.querySelector('.checkbox').checked =true;
+    }
+
+    get checked(){
+      return this.shadowRoot.querySelector('.checkbox').checked;
     }
 
 

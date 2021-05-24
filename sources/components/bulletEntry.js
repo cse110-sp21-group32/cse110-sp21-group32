@@ -122,6 +122,12 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
   }
 
+  get category(){
+    return  this.shadowRoot.querySelector(".category").innerText;
+  }
+
+
+
 
 
 
