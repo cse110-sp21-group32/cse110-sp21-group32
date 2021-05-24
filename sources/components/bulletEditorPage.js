@@ -152,8 +152,6 @@ class bulletEditorPage extends HTMLElement {
                     <option value="event">Event</option>
                     <option value="task">Task</option>
                   </select><br>
-            
-                  <input type="date" id="due-date" name="due-date" placeholder="DueDate"><br>
         
             
                   <input type="submit" value="Confirm" id="bulletSubmit">
@@ -181,7 +179,7 @@ class bulletEditorPage extends HTMLElement {
       title: this.shadowRoot.getElementById("name").dataset.old,
       category: this.shadowRoot.getElementById("category").dataset.old,
       type: this.shadowRoot.getElementById("type").dataset.old,
-      date: this.shadowRoot.getElementById("due-date").dataset.old,
+      // date: this.shadowRoot.getElementById("due-date").dataset.old,
       // checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
     };
     return bulletForm;
@@ -194,7 +192,7 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("category").dataset.old =
       inputBullet.category;
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
-    this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
+    // this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").dataset.old =
       // inputBullet.checked;
   }
@@ -205,7 +203,7 @@ class bulletEditorPage extends HTMLElement {
       title: this.shadowRoot.getElementById("name").value,
       category: this.shadowRoot.getElementById("category").value,
       type: this.shadowRoot.getElementById("type").value,
-      date: this.shadowRoot.getElementById("due-date").value,
+      // date: this.shadowRoot.getElementById("due-date").value,
       // checked: this.shadowRoot.getElementById("name-check-box").checked,
     };
     return bulletForm;
@@ -217,7 +215,7 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("name").value = inputBullet.title;
     this.shadowRoot.getElementById("category").value = inputBullet.category;
     this.shadowRoot.getElementById("type").value = inputBullet.type;
-    this.shadowRoot.getElementById("due-date").value = inputBullet.date;
+    // this.shadowRoot.getElementById("due-date").value = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").checked =
     //   inputBullet.checked;
   }
