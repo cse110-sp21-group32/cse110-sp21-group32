@@ -49,11 +49,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, and test
+      - name: Install npm dependencies
         run:
+          npm init -y
           npm install
-          npm test
-    
+      - name: Install jest
+          npm install --save-dev jest
+      - name: Install execa for e2e testing
+          npm install --save execa
+      - name: Install babel
+          npm install --save-dev jest babel-jest @babel/core @babel/preset-env
+      - name: Run tests
+          npm run test
+          
+          
   styling:
     name: Lint code base
     runs-on: ubuntu-latest
@@ -70,3 +79,24 @@ jobs:
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_JSCPD: false
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+          
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build doc generation
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./sources
+          recurse: true
+          output_dir: ./specs/docs
+          template: minami
+          front_page: README.md
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./out
