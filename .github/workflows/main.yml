@@ -54,12 +54,16 @@ jobs:
           npm init -y
           npm install
       - name: Install jest
+        run:
           npm install --save-dev jest
       - name: Install execa for e2e testing
+        run:
           npm install --save execa
       - name: Install babel
+        run:
           npm install --save-dev jest babel-jest @babel/core @babel/preset-env
       - name: Run tests
+        run:
           npm run test
           
           
