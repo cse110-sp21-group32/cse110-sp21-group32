@@ -51,8 +51,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install npm dependencies
         run:
-          npm init -y
-#           npm install
+#           npm init -y
+          npm install
       - name: Install jest
         run:
           npm install --save-dev jest
@@ -96,11 +96,11 @@ jobs:
           source_dir: ./sources
           recurse: true
           output_dir: ./specs/docs
-          template: minami
-          front_page: README.md
+#           template: minami
+#           front_page: README.md
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-#           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./specs/docs
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+# #           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+#           publish_dir: ./specs/docs
