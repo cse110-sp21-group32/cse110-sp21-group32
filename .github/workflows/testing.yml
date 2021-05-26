@@ -4,13 +4,8 @@
 name: CI/CD Pipeline
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
-      - main
-      - CI-pipeline
       - Unit_Testing
 
 jobs:
