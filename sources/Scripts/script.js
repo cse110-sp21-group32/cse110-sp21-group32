@@ -29,7 +29,7 @@ addEventListener("DOMContentLoaded", () => {
 // Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
-  // console.log(e.composedPath());
+  console.log(e.composedPath());
 
   // Click editBullet button
   if (e.composedPath()[0].className == "bullet-button edit-bullet-button") {
@@ -61,7 +61,13 @@ document.addEventListener("click", (e) => {
 
   // Check category event
   if (e.composedPath()[0].className == "checkbox") {
-    refreshEntryOnCategory();
+    filterEntries();
+  }
+
+  // Check category event
+  if (e.composedPath()[0].className == "date") {
+    changeActiveDate(e.composedPath()[2].getRootNode().host);
+    filterEntries();
   }
 });
 
@@ -106,14 +112,23 @@ function submitBullet(formObj) {
   let targetColor;
   let catagories = document.querySelectorAll("category-entry");
   for (let i = 0; i < catagories.length; i++) {
-    if(catagories[i].category.title==bullet.category){
-      targetColor=catagories[i].category.color;
+    if (catagories[i].category.title == bullet.category) {
+      targetColor = catagories[i].category.color;
     }
   }
-  newEntry.color=targetColor;
+  newEntry.color = targetColor;
   mainPane.appendChild(newEntry);
   refreshDateSelector();
 
+  //Reset the active date
+  let daties = document.querySelectorAll("date-entry");
+  for (let i = 0; i < daties.length; i++) {
+    console.log(daties.checkActive);
+    daties[i].active = false;
+  }
+  daties[0].active = true;
+
+  filterEntries();
 }
 
 // Helper function for submitting new/edited category entry
@@ -148,27 +163,52 @@ function closeModal(editorObj) {
   }
 }
 
-function refreshEntryOnCategory(){
-  let activeCatrgories=[];
+function filterEntries() {
+  let activeCatrgories = [];
   let catagories = document.querySelectorAll("category-entry");
-  for (let i = 0; i < catagories.length; i++) {
-    if(catagories[i].checked){
-      activeCatrgories.push(catagories[i].category.title);
+
+  //Filter on category
+  if (catagories.length != 0) {
+    for (let i = 0; i < catagories.length; i++) {
+      if (catagories[i].checked) {
+        activeCatrgories.push(catagories[i].category.title);
+      }
+    }
+
+    let entryList = document.querySelectorAll("bullet-entry");
+    for (let i = 0; i < entryList.length; i++) {
+      if (!activeCatrgories.includes(entryList[i].category)) {
+        entryList[i].style.display = "none";
+      } else {
+        entryList[i].style.display = "grid";
+      }
+    }
+  }
+
+  //Filter on date
+  let dayEntryiesRaw = document.querySelectorAll("date-entry");
+  let activeDate;
+
+  for (let i = 0; i < dayEntryiesRaw.length; i++) {
+    if (dayEntryiesRaw[i].checkActive) {
+      activeDate = dayEntryiesRaw[i].date;
     }
   }
 
   let entryList = document.querySelectorAll("bullet-entry");
   for (let i = 0; i < entryList.length; i++) {
-    if(!activeCatrgories.includes(entryList[i].category)){
-      entryList[i].style.display="none";
-    }else{
-      entryList[i].style.display="grid";
+    if (activeDate != entryList[i].bullet.date) {
+      entryList[i].style.display = "none";
+    } else {
+      if (activeCatrgories.includes(entryList[i].category)) {
+        entryList[i].style.display = "grid";
+      }
     }
   }
 }
 
 //Refresh the day selector
-function refreshDateSelector(){
+function refreshDateSelector() {
   let dayEntryiesRaw = document.querySelectorAll("date-entry");
   let dayEntryies = [];
 
@@ -178,12 +218,25 @@ function refreshDateSelector(){
 
   let entryList = document.querySelectorAll("bullet-entry");
   for (let i = 0; i < entryList.length; i++) {
-    if(!dayEntryies.includes(entryList[i].bullet.date)){
-      let newDateEntry = document.createElement('date-entry');
-      newDateEntry.date=entryList[i].bullet.date;
-      let historyBox= document.querySelector(".jornal-box-history");
+    if (!dayEntryies.includes(entryList[i].bullet.date)) {
+      let newDateEntry = document.createElement("date-entry");
+      newDateEntry.date = entryList[i].bullet.date;
+      let historyBox = document.querySelector(".jornal-box-history");
       historyBox.insertBefore(newDateEntry, historyBox.firstChild);
     }
   }
 }
 
+function changeActiveDate(date) {
+  let dayEntryiesRaw = document.querySelectorAll("date-entry");
+
+  for (let i = 0; i < dayEntryiesRaw.length; i++) {
+    let currentDate = dayEntryiesRaw[i].date;
+    let targetDate = date.date;
+    if (dayEntryiesRaw[i].date == date.date) {
+      dayEntryiesRaw[i].active = true;
+    } else {
+      dayEntryiesRaw[i].active = false;
+    }
+  }
+}
