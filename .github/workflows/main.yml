@@ -100,7 +100,7 @@ jobs:
       - uses: actions/upload-artifact@main
         with:
           name: documentation
-          path: ~/specs/docs
+          path: ./specs/docs
 #           template: minami
 #           front_page: README.md
 
