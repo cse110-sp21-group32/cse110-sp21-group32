@@ -9,9 +9,9 @@ on:
 #       - main
   push:
     branches:
-#       - main
-#       - CI-pipeline
-      - 'refs/remotes/origin/Unit-Testing'
+      - main
+      - CI-pipeline
+      - Unit-Testing
 
 jobs:
   build:
