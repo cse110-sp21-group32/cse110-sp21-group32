@@ -102,6 +102,16 @@ function submitBullet(formObj) {
   let mainPane = document.querySelector(".entry-list");
   newEntry.bullet = bullet;
 
+  //Find corresponfing category color
+  let targetColor;
+  let catagories = document.querySelectorAll("category-entry");
+  for (let i = 0; i < catagories.length; i++) {
+    if(catagories[i].category.title==bullet.category){
+      targetColor=catagories[i].category.color;
+    }
+  }
+  newEntry.color=targetColor;
+
   mainPane.appendChild(newEntry);
 }
 
