@@ -97,6 +97,10 @@ jobs:
           source_dir: ./sources
           recurse: true
           output_dir: ./specs/docs
+      - uses: actions/upload-artifact@main
+        with:
+          name: documentation
+          path: ~/specs/docs
 #           template: minami
 #           front_page: README.md
 
