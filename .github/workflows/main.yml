@@ -11,7 +11,7 @@ on:
     branches:
       - main
       - CI-pipeline
-      - refs/remotes/origin/Unit-Testing
+      - 'refs/remotes/origin/Unit-Testing'
 
 jobs:
   build:
