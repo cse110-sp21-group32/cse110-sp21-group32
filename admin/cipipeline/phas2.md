@@ -16,6 +16,8 @@ Currently, we have successfully implemented the base functionalities of our CI/C
 * implemented linting for specific directory source
 * wrote basic unit tests
 
+All the tests were written in the "Unit Test" branch until the rest of the integration is ready and are stored in a top level directory `__tests__`
+
 ## What's happening
 
 Our workflow has 3 jobs: build, test, and Lint Code Base. As of right now, the build job does a simple npm install and npm build:
