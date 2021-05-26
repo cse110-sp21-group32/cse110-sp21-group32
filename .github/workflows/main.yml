@@ -11,6 +11,7 @@ on:
     branches:
       - main
       - CI-pipeline
+      - Unit_Testing
 
 jobs:
   build:
