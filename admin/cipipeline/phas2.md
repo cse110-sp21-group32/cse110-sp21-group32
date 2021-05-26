@@ -43,7 +43,7 @@ Our initial diagram looked like this:
 ![phase1-diagram](phase1.png)
 
 Our updated pipeline looks like this:
-![pipeline-diagram](phase1.drawio.png)
+![pipeline-diagram2](phase2.drawio.png)
 
 Additionally, we chose to setup our repo with a code quality tool, [Codacy](https://app.codacy.com/organizations/gh/cse110-sp21-group32/repositories).
 
