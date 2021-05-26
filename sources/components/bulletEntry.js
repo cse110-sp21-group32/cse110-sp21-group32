@@ -87,9 +87,9 @@ class BulletEntry extends HTMLElement {
                 <span class="title">demo</span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
-                <span class="date">demo</span>
                 <span class="category">demo</span>
                 <span class="type">demo</span>
+                <span class="date">demo</span>
 
             </div>
             <div class="des">
@@ -110,6 +110,7 @@ class BulletEntry extends HTMLElement {
       date: this.shadowRoot.querySelector(".date").innerText,
       category: this.shadowRoot.querySelector(".category").innerText,
       type: this.shadowRoot.querySelector(".type").innerText,
+      date: this.shadowRoot.querySelector(".date").innerText
     };
     return entryObj;
   }
@@ -122,6 +123,7 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
+    this.shadowRoot.querySelector(".date").innerText = newBullet.date;
   }
 
   

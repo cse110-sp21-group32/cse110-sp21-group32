@@ -111,8 +111,9 @@ function submitBullet(formObj) {
     }
   }
   newEntry.color=targetColor;
-
   mainPane.appendChild(newEntry);
+  refreshDateSelector();
+
 }
 
 // Helper function for submitting new/edited category entry
@@ -162,6 +163,26 @@ function refreshEntryOnCategory(){
       entryList[i].style.display="none";
     }else{
       entryList[i].style.display="grid";
+    }
+  }
+}
+
+//Refresh the day selector
+function refreshDateSelector(){
+  let dayEntryiesRaw = document.querySelectorAll("date-entry");
+  let dayEntryies = [];
+
+  for (let i = 0; i < dayEntryiesRaw.length; i++) {
+    dayEntryies.push(dayEntryiesRaw[i].date);
+  }
+
+  let entryList = document.querySelectorAll("bullet-entry");
+  for (let i = 0; i < entryList.length; i++) {
+    if(!dayEntryies.includes(entryList[i].bullet.date)){
+      let newDateEntry = document.createElement('date-entry');
+      newDateEntry.date=entryList[i].bullet.date;
+      let historyBox= document.querySelector(".jornal-box-history");
+      historyBox.insertBefore(newDateEntry, historyBox.firstChild);
     }
   }
 }

@@ -199,6 +199,8 @@ class bulletEditorPage extends HTMLElement {
   }
 
   get bullet() {
+    let current = new Date();
+    let min = current.getMinutes();
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").value,
       title: this.shadowRoot.getElementById("name").value,
@@ -206,6 +208,7 @@ class bulletEditorPage extends HTMLElement {
       type: this.shadowRoot.getElementById("type").value,
       // date: this.shadowRoot.getElementById("due-date").value,
       // checked: this.shadowRoot.getElementById("name-check-box").checked,
+      date: min
     };
     return bulletForm;
   }
