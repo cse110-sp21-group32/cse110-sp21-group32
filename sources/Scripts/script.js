@@ -68,7 +68,12 @@ document.addEventListener("click", (e) => {
 // Helper function for passing right parameters to edit bullet form
 function editBullet(editButton) {
   let bullet = editButton.getRootNode().host.bullet;
-  setState("BulletEditor", bullet);
+  let categoryList = [];
+  let catagories = document.querySelectorAll("category-entry");
+  for (let i = 0; i < catagories.length; i++) {
+    categoryList.push(catagories[i].category.title);
+  }
+  setState("BulletEditor", bullet, categoryList);
   editButton.getRootNode().host.remove();
 }
 

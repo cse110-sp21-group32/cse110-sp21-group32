@@ -209,12 +209,22 @@ class bulletEditorPage extends HTMLElement {
     };
     return bulletForm;
   }
-  
+
   set bullet(inputBullet) {
     this.shadowRoot.getElementById("description").value =
       inputBullet.description;
     this.shadowRoot.getElementById("name").value = inputBullet.title;
-    this.shadowRoot.getElementById("category").value = inputBullet.category;
+
+    //Set the correct category
+    let sel = this.shadowRoot.getElementById("category");
+    let opts = sel.options;
+    for (var opt, j = 0; (opt = opts[j]); j++) {
+      if (opt.value == inputBullet.category) {
+        sel.selectedIndex = j;
+        break;
+      }
+    }
+    
     this.shadowRoot.getElementById("type").value = inputBullet.type;
     // this.shadowRoot.getElementById("due-date").value = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").checked =
