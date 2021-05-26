@@ -29,13 +29,7 @@ Our current diagram looks like this:
 
 Additionally, we chose to setup our repo with a code quality tool, [Codacy](https://app.codacy.com/organizations/gh/cse110-sp21-group32/repositories).
 
-After phase1 checkpoint, we have worked on to further improve the codacy styling checking to make sure its rules match our established stlying guide.
-
-In addtion, we added the documentation generation and started to added more unit testing.
-
-The unit testing is still pending for the functionaility to be settled. We are still discussing the final logisitcs of our application
-
 ## What is planned/in progress?
-
 1. Improve Unit Tests and Automatic Documentation Generation. 
-2. To discuss with our stakeholders about pipeline design 
+2. Improve codecy
+3. To discuss with our stakeholders about pipeline design 
