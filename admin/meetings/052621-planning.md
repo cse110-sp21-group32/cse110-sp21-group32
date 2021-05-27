@@ -21,3 +21,7 @@ Agenda:
 
 ## Notes
  - Standup updates
+ - We will move toward inline editor
+  - Not easy to implement
+ - For the pull request, we need to proveide more description
+ - We will allow duplicate name for category
