@@ -6,8 +6,7 @@ on:
       - main
   push:
     branches:
-      - main
-      - Unit-Testing
+      - '*'
 
 jobs:
   build:
