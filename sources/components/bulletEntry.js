@@ -87,9 +87,9 @@ class BulletEntry extends HTMLElement {
                 <span class="title">demo</span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
-                <span class="date">demo</span>
                 <span class="category">demo</span>
                 <span class="type">demo</span>
+                <span class="date">demo</span>
 
             </div>
             <div class="des">
@@ -101,6 +101,7 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  //Return the current bullet information
   get bullet() {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
@@ -109,10 +110,12 @@ class BulletEntry extends HTMLElement {
       date: this.shadowRoot.querySelector(".date").innerText,
       category: this.shadowRoot.querySelector(".category").innerText,
       type: this.shadowRoot.querySelector(".type").innerText,
+      date: this.shadowRoot.querySelector(".date").innerText
     };
     return entryObj;
   }
 
+  //Set the bullet information
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
@@ -120,10 +123,27 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
+    this.shadowRoot.querySelector(".date").innerText = newBullet.date;
   }
 
-
   
+  //Shortcut to return entry category
+  get category(){
+    return  this.shadowRoot.querySelector(".category").innerText;
+  }
+
+  //Set the color of current entry
+  set color(color){
+    if(color=="red"){
+      this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 127, 127,0.925)";
+      this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 127, 127,0.925)";
+
+    }else if(color=="yellow"){
+      this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 178, 110,0.925)";
+      this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 178, 110,0.925)";
+
+    }
+  }  
 }
 
 customElements.define("bullet-entry", BulletEntry);

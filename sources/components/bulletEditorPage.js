@@ -122,6 +122,10 @@ class bulletEditorPage extends HTMLElement {
               color: rgb(130, 130, 130);
             
             }
+
+            #name-check-box {
+              display:none;
+            }
             
           </style>
           <!-- The Modal -->
@@ -133,7 +137,7 @@ class bulletEditorPage extends HTMLElement {
             <div class="modal-header">
               <h1 class="modal-title">Bullet Editor</h4>
                 <form onsubmit="return false">
-                  <!-- <input type="checkbox" id="name-check-box" name="name-check-box"> -->
+                  <input type="checkbox" id="name-check-box" name="name-check-box">
                   <input type="text" id="name" name="name" placeholder="Title"><br>
                   <input type="text" id="description" name="description" placeholder="Detail"><br>
         
@@ -171,9 +175,6 @@ class bulletEditorPage extends HTMLElement {
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
   get old() {
-    if (!this.shadowRoot.getElementById("name-check-box").dataset.old) {
-      return null;
-    }
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").dataset.old,
       title: this.shadowRoot.getElementById("name").dataset.old,
@@ -194,10 +195,12 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
     // this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").dataset.old =
-      // inputBullet.checked;
+    // inputBullet.checked;
   }
 
   get bullet() {
+    let current = new Date();
+    let min = current.getMinutes();
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").value,
       title: this.shadowRoot.getElementById("name").value,
@@ -205,6 +208,7 @@ class bulletEditorPage extends HTMLElement {
       type: this.shadowRoot.getElementById("type").value,
       // date: this.shadowRoot.getElementById("due-date").value,
       // checked: this.shadowRoot.getElementById("name-check-box").checked,
+      date: min
     };
     return bulletForm;
   }
@@ -213,11 +217,44 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("description").value =
       inputBullet.description;
     this.shadowRoot.getElementById("name").value = inputBullet.title;
-    this.shadowRoot.getElementById("category").value = inputBullet.category;
+
+    //Set the correct category
+    let sel = this.shadowRoot.getElementById("category");
+    let opts = sel.options;
+    for (var opt, j = 0; (opt = opts[j]); j++) {
+      if (opt.value == inputBullet.category) {
+        sel.selectedIndex = j;
+        break;
+      }
+    }
+    
     this.shadowRoot.getElementById("type").value = inputBullet.type;
     // this.shadowRoot.getElementById("due-date").value = inputBullet.date;
     // this.shadowRoot.getElementById("name-check-box").checked =
     //   inputBullet.checked;
+  }
+
+  //Set the category list of the editor page
+  set catagoryList(inputList) {
+    let categorySelect = this.shadowRoot.getElementById("category");
+    var length = categorySelect.options.length;
+    for (let i = length - 1; i >= 0; i--) {
+      categorySelect.options[i] = null;
+    }
+
+    inputList.forEach((cateName) => {
+      // create new option element
+      var opt = document.createElement("option");
+
+      // create text node to add to option element (opt)
+      opt.appendChild(document.createTextNode(cateName));
+
+      // set value property of opt
+      opt.value = cateName;
+
+      // add opt to end of select box (sel)
+      categorySelect.appendChild(opt);
+    });
   }
 }
 

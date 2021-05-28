@@ -71,7 +71,8 @@ class CategoryEntry extends HTMLElement {
       this.attachShadow({ mode: 'open' })
       this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
-  
+    
+    //Get the category information
     get category() {
       let categoryObj = {
         'title': this.shadowRoot.querySelector('.title').innerText,
@@ -80,11 +81,23 @@ class CategoryEntry extends HTMLElement {
       };
       return categoryObj;
     }
-  
+
+    //Set the category information
     set category(newCategory) {
       this.shadowRoot.querySelector('.title').innerText =newCategory.title;
       this.shadowRoot.querySelector('.color').innerText =newCategory.color;
-      this.shadowRoot.querySelector('.checkbox').checked =newCategory.checked;
+      if(newCategory.color=="red"){
+        this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 127, 127,0.925)";
+      }else if(newCategory.color=="yellow"){
+        this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 178, 110,0.925)";
+      }
+
+      this.shadowRoot.querySelector('.checkbox').checked =true;
+    }
+
+    //Quickly check if this category is checked
+    get checked(){
+      return this.shadowRoot.querySelector('.checkbox').checked;
     }
 
 

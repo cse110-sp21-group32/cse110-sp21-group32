@@ -5,7 +5,7 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function (inputString,entry) {
+router.setState = function (inputString,entry,list) {
 
   if (inputString.startsWith('BulletEditor') && entry==null) {
     document.querySelector("body").classList.remove("default-view");
@@ -15,6 +15,7 @@ router.setState = function (inputString,entry) {
     let entryPageOld = document.querySelector('bullet-editor-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('bullet-editor-page');
+    entryPage.catagoryList=list;
     document.querySelector("body").appendChild(entryPage);
 
   }else if (inputString.startsWith('backMain')) {
@@ -40,8 +41,8 @@ router.setState = function (inputString,entry) {
     let entryPageOld = document.querySelector('bullet-editor-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('bullet-editor-page');
+    entryPage.catagoryList=list;
     entryPage.bullet=entry;
-
     entryPage.old=entry;
     document.querySelector("body").appendChild(entryPage);
   }else if (inputString.startsWith('CateEditor') && entry!=null) {
@@ -56,5 +57,4 @@ router.setState = function (inputString,entry) {
     entryPage.old=entry;
     document.querySelector("body").appendChild(entryPage);
   }
-
 }
