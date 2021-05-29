@@ -143,11 +143,7 @@ class bulletEditorPage extends HTMLElement {
         
         
                   <select id="category" name="category">
-                    <option value="placeholder">Select a category</option>
-                    <option value="Category1">Category1</option>
-                    <option value="Category2">Category2</option>
-                    <option value="Category3">Category3</option>
-                    <option value="Category4">Category4</option>
+                    <option value=""></option>
                   </select><br>
             
                   <select id="type" name="type">
@@ -156,7 +152,9 @@ class bulletEditorPage extends HTMLElement {
                     <option value="event">Event</option>
                     <option value="task">Task</option>
                   </select><br>
-        
+
+                  <label for="due-date">Due Date:</label>
+                  <input type="date" id="due-date" name="due-date"><br>
             
                   <input type="submit" value="Confirm" id="bulletSubmit">
                   <input type="reset" id="reset-btn">
@@ -175,13 +173,16 @@ class bulletEditorPage extends HTMLElement {
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
   get old() {
+    if(!this.shadowRoot.getElementById("name-check-box").dataset.old){
+      return null;
+    }
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").dataset.old,
       title: this.shadowRoot.getElementById("name").dataset.old,
       category: this.shadowRoot.getElementById("category").dataset.old,
       type: this.shadowRoot.getElementById("type").dataset.old,
-      // date: this.shadowRoot.getElementById("due-date").dataset.old,
-      // checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
+      date: this.shadowRoot.getElementById("due-date").dataset.old,
+      checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
     };
     return bulletForm;
   }
@@ -193,22 +194,19 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("category").dataset.old =
       inputBullet.category;
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
-    // this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
-    // this.shadowRoot.getElementById("name-check-box").dataset.old =
-    // inputBullet.checked;
+    this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
+    this.shadowRoot.getElementById("name-check-box").dataset.old =
+     inputBullet.checked;
   }
 
   get bullet() {
-    let current = new Date();
-    let min = current.getMinutes();
     let bulletForm = {
-      description: this.shadowRoot.getElementById("description").value,
       title: this.shadowRoot.getElementById("name").value,
+      checked: this.shadowRoot.getElementById("name-check-box").checked,
+      description: this.shadowRoot.getElementById("description").value,
+      date: this.shadowRoot.getElementById("due-date").value,
       category: this.shadowRoot.getElementById("category").value,
       type: this.shadowRoot.getElementById("type").value,
-      // date: this.shadowRoot.getElementById("due-date").value,
-      // checked: this.shadowRoot.getElementById("name-check-box").checked,
-      date: min
     };
     return bulletForm;
   }
@@ -229,28 +227,23 @@ class bulletEditorPage extends HTMLElement {
     }
     
     this.shadowRoot.getElementById("type").value = inputBullet.type;
-    // this.shadowRoot.getElementById("due-date").value = inputBullet.date;
-    // this.shadowRoot.getElementById("name-check-box").checked =
-    //   inputBullet.checked;
+    this.shadowRoot.getElementById("due-date").value = inputBullet.date;
+    this.shadowRoot.getElementById("name-check-box").checked =
+      inputBullet.checked;
   }
 
   //Set the category list of the editor page
   set catagoryList(inputList) {
     let categorySelect = this.shadowRoot.getElementById("category");
-    var length = categorySelect.options.length;
-    for (let i = length - 1; i >= 0; i--) {
-      categorySelect.options[i] = null;
-    }
-
-    inputList.forEach((cateName) => {
+    inputList.forEach(function(item) {
       // create new option element
       var opt = document.createElement("option");
 
       // create text node to add to option element (opt)
-      opt.appendChild(document.createTextNode(cateName));
+      opt.appendChild(document.createTextNode(item.title+' ('+item.color+')'));
 
       // set value property of opt
-      opt.value = cateName;
+      opt.value = JSON.stringify({title: item.title, color: item.color});
 
       // add opt to end of select box (sel)
       categorySelect.appendChild(opt);

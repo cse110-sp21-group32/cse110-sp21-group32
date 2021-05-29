@@ -150,6 +150,9 @@ class categoryEditorPage extends HTMLElement {
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
   get old() {
+    if(!this.shadowRoot.getElementById("color").dataset.old){
+      return null;
+    }
     let categoryForm = {
       title: this.shadowRoot.getElementById("name").dataset.old,
       color: this.shadowRoot.getElementById("color").dataset.old,

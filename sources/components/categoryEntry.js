@@ -60,10 +60,10 @@ class CategoryEntry extends HTMLElement {
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">
-              <input class="checkbox" type="checkbox">
-              <span class="title">demo</span>
+              <input class="checkbox" type="checkbox" id="category-check">
+              <span class="title" id="category-title">demo</span>
               <button class="cate-button">edit</button>
-              <span class="color">demo</span>
+              <span class="color" id="category-color">demo</span>
             </div>
           </section>
           `;
@@ -75,29 +75,29 @@ class CategoryEntry extends HTMLElement {
     //Get the category information
     get category() {
       let categoryObj = {
-        'title': this.shadowRoot.querySelector('.title').innerText,
-        'color': this.shadowRoot.querySelector('.color').innerText,
-        'checked': this.shadowRoot.querySelector('.checkbox').checked,
+        title: this.shadowRoot.getElementById('category-title').innerText,
+        color: this.shadowRoot.getElementById('category-color').innerText,
+        checked: this.shadowRoot.getElementById('category-check').checked,
       };
       return categoryObj;
     }
 
     //Set the category information
     set category(newCategory) {
-      this.shadowRoot.querySelector('.title').innerText =newCategory.title;
-      this.shadowRoot.querySelector('.color').innerText =newCategory.color;
+      this.shadowRoot.getElementById('category-title').innerText =newCategory.title;
+      this.shadowRoot.getElementById('category-color').innerText =newCategory.color;
       if(newCategory.color=="red"){
         this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 127, 127,0.925)";
       }else if(newCategory.color=="yellow"){
         this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 178, 110,0.925)";
       }
 
-      this.shadowRoot.querySelector('.checkbox').checked =true;
+      this.shadowRoot.getElementById('category-check').checked =newCategory.checked;
     }
 
     //Quickly check if this category is checked
     get checked(){
-      return this.shadowRoot.querySelector('.checkbox').checked;
+      return this.shadowRoot.getElementById('category-check').checked;
     }
 
 
