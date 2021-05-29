@@ -122,7 +122,18 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
-    // TODO implement color using category JSON text
+
+    if(newBullet.category != ""){
+      let category = JSON.parse(newBullet.category);
+      if(category.color=="red"){
+        this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 127, 127,0.925)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 127, 127,0.925)";
+  
+      }else if(category.color=="yellow"){
+        this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 178, 110,0.925)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 178, 110,0.925)";
+      }
+    }
   }
 
   

@@ -28,7 +28,7 @@ addEventListener("DOMContentLoaded", () => {
 // Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
-  console.log(e.composedPath());
+  // console.log(e.composedPath());
 
   // Click showDetail button
   if (e.composedPath()[0].className == "bullet-button bullet-detail-button") {
