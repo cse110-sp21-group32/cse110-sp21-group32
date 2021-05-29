@@ -1,3 +1,5 @@
+import * as storage from "../scripts/storage.js";
+
 class bulletEditorPage extends HTMLElement {
   constructor() {
     super();
@@ -143,7 +145,7 @@ class bulletEditorPage extends HTMLElement {
         
         
                   <select id="category" name="category">
-                    <option value=""></option>
+                    <option value='{"title":"Default","color":"blue"}'>Default</option>
                   </select><br>
             
                   <select id="type" name="type">

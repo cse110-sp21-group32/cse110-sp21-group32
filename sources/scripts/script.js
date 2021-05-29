@@ -1,5 +1,5 @@
 // script.js
-import * as storage from './storage.js';
+import * as storage from "./storage.js";
 import { router } from "./router.js"; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
 
@@ -22,6 +22,7 @@ function addCateHandler() {
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
   storage.buildDefault();
+
 });
 
 // Will check for click events in entire document
@@ -37,7 +38,7 @@ document.addEventListener("click", (e) => {
 
   // Click editBullet button
   if (e.composedPath()[0].className == "bullet-button edit-bullet-button") {
-    let bulletObj = e.composedPath()[0].getRootNode().host
+    let bulletObj = e.composedPath()[0].getRootNode().host;
     setState("BulletEditor", bulletObj, storage.categoryArr);
     lastReferencedElement = bulletObj;
   }
@@ -74,6 +75,24 @@ document.addEventListener("click", (e) => {
     setState("backMain");
   }
 
+  // Select all categories
+  if (e.composedPath()[0].id == "select-all") {
+    let categoryElements = document.querySelectorAll("category-entry");
+    categoryElements.forEach(element => {
+      element.active="true";
+      storage.updateActiveCategories(element);
+    });
+  }
+
+    // Deselect all categories
+    if (e.composedPath()[0].id == "deselect-all") {
+      let categoryElements = document.querySelectorAll("category-entry");
+      categoryElements.forEach(element => {
+        element.active="false";
+        storage.updateActiveCategories(element);
+      });
+    }
+
   // Check category event
   if (e.composedPath()[0].id == "category-check") {
     let categoryElement = e.composedPath()[0].getRootNode().host;
@@ -101,17 +120,41 @@ function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
   setState("backMain");
   // If not called from editBullet, create new bullet
-  if(!bulletEdit.old){
+  if (!bulletEdit.old) {
     let newEntry = document.createElement("bullet-entry");
     let mainPane = document.querySelector(".entry-list");
     newEntry.bullet = bulletEdit.bullet;
     mainPane.appendChild(newEntry);
     // add bullet storage
     storage.addBullet(newEntry);
+
+    //Update category storage if needed
+    if(bulletEdit.bullet.category="default"){
+      let noDefault = true;
+      storage.categoryArr.forEach(element => {
+        if(element.title=="Default"){
+          noDefault = false;
+        }
+      });
+      if(noDefault){
+        let newCategory = document.createElement("category-entry");
+        let defaultCategory={
+          title: "Default",
+          color: "blue",
+          checked: true
+        }
+        newCategory.category=defaultCategory;
+        let mainPane = document.querySelector(".category-box");
+        mainPane.appendChild(newCategory);
+        storage.addCategory(newCategory);
+      }
+
+    }
+
     // TODO maybe shouldnt always be appended??
   }
-  // Else if called from editBullet, edit 
-  else{
+  // Else if called from editBullet, edit
+  else {
     storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
     lastReferencedElement.bullet = bulletEdit.bullet;
   }
@@ -123,7 +166,7 @@ function submitCategory(formObj) {
   setState("backMain");
 
   // If not called from editBullet, create new bullet
-  if(!categoryEdit.old){
+  if (!categoryEdit.old) {
     let newEntry = document.createElement("category-entry");
     let mainPane = document.querySelector(".category-box");
     newEntry.category = categoryEdit.category;
@@ -131,17 +174,17 @@ function submitCategory(formObj) {
     storage.addCategory(newEntry);
   }
   // Else if called from editCategory, edit
-  else{
-    storage.editCategory(categoryEdit.category,lastReferencedElement.category);
+  else {
+    storage.editCategory(categoryEdit.category, lastReferencedElement.category);
     lastReferencedElement.category = categoryEdit.category;
   }
 }
 
-function deleteBullet(bulletObj){
+function deleteBullet(bulletObj) {
   storage.deleteBullet(bulletObj);
   bulletObj.remove();
 }
-function deleteCategory(categoryObj){
+function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
   categoryObj.remove();
 }

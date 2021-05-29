@@ -7,33 +7,33 @@ var dateArr;
 var activeCategories = new Map();
 var activeDates = new Map();
 
-if (myStorage.getItem('bulletArr')) {
-  bulletArr = JSON.parse(myStorage.getItem('bulletArr'));
+if (myStorage.getItem("bulletArr")) {
+  bulletArr = JSON.parse(myStorage.getItem("bulletArr"));
   console.log(bulletArr);
 } else {
   bulletArr = [];
 }
-if (myStorage.getItem('categoryArr')) {
-  categoryArr = JSON.parse(myStorage.getItem('categoryArr'));
+if (myStorage.getItem("categoryArr")) {
+  categoryArr = JSON.parse(myStorage.getItem("categoryArr"));
   console.log(categoryArr);
 } else {
   categoryArr = [];
 }
-if (myStorage.getItem('dateArr')) {
-  dateArr = JSON.parse(myStorage.getItem('dateArr'));
+if (myStorage.getItem("dateArr")) {
+  dateArr = JSON.parse(myStorage.getItem("dateArr"));
   console.log(dateArr);
 } else {
   dateArr = [];
 }
 
 export function updateBullet() {
-  myStorage.setItem('bulletArr', JSON.stringify(bulletArr));
+  myStorage.setItem("bulletArr", JSON.stringify(bulletArr));
 }
 export function updateCategory() {
-  myStorage.setItem('categoryArr', JSON.stringify(categoryArr));
+  myStorage.setItem("categoryArr", JSON.stringify(categoryArr));
 }
 export function updateDate() {
-  myStorage.setItem('dateArr', JSON.stringify(dateArr));
+  myStorage.setItem("dateArr", JSON.stringify(dateArr));
 }
 
 // Delete bullet from storage
@@ -87,7 +87,7 @@ export function deleteCategory(obj) {
       activeCategories.delete(categoryKey);
       break;
     }
-    index++
+    index++;
   }
   updateCategory();
   buildCurrent();
@@ -178,7 +178,7 @@ export function editCategory(newCategory, oldCategory) {
       }
       break;
     }
-    index++
+    index++;
   }
   updateCategory();
   buildCurrent();
@@ -197,14 +197,14 @@ export function addBullet(obj) {
     }
   });
   if (!dateExists) {
-    let newDateObj = { date: newBullet.date, active: 'false' };
+    let newDateObj = { date: newBullet.date, active: "false" };
     dateArr.push(newDateObj);
     updateDate();
     // Update historyPane with new date
     let historyPane = document.querySelector(".jornal-box-history");
     let newDate = document.createElement("date-entry");
     newDate.date = newBullet.date;
-    newDate.active = 'false';
+    newDate.active = "false";
     historyPane.appendChild(newDate);
   }
 }
@@ -226,18 +226,26 @@ export function buildDefault() {
   const historyPane = document.querySelector(".jornal-box-history");
   activeCategories.clear();
   activeDates.clear();
+
+  let noDefault=true;
   categoryArr.forEach(function (item, index) {
     let newCategory = document.createElement("category-entry");
-    categoryArr[index].checked = false;
-    item.checked = false;
+    categoryArr[index].checked = true;
+    item.checked = true;
     newCategory.category = item;
     categoryPane.appendChild(newCategory);
+    updateActiveCategories(newCategory);
+    if(item.title == "Default"){
+      noDefault = false;
+    }
   });
+
+
   dateArr.forEach(function (item, index) {
     let newDate = document.createElement("date-entry");
-    dateArr[index].active = 'false';
+    dateArr[index].active = "false";
     newDate.date = item.date;
-    newDate.active = 'false';
+    newDate.active = "false";
     historyPane.appendChild(newDate);
   });
 
@@ -255,28 +263,28 @@ export function buildCurrent() {
 
   // all/today
   if (activeCategories.size == 0 && activeDates.size == 0) {
-    let today = new Date();
-    let date;
-    if (today.getMonth() + 1 < 10) {
-      date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-'
-        + today.getDate();
-    } else {
-      date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
-        + today.getDate();
-    }
-    bulletArr.forEach(function (item) {
-      if (item.date == date) {
-        let newBullet = document.createElement('bullet-entry');
-        newBullet.bullet = item;
-        mainPane.appendChild(newBullet);
-      }
-    });
+    // let today = new Date();
+    // let date;
+    // if (today.getMonth() + 1 < 10) {
+    //   date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-'
+    //     + today.getDate();
+    // } else {
+    //   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
+    //     + today.getDate();
+    // }
+    // bulletArr.forEach(function (item) {
+    //   if (item.date == date) {
+    //     let newBullet = document.createElement('bullet-entry');
+    //     newBullet.bullet = item;
+    //     mainPane.appendChild(newBullet);
+    //   }
+    // });
   }
   // all/selected days (TODO PUT SORT FUNCTION HERE)
   else if (activeCategories.size == 0) {
     bulletArr.forEach(function (item) {
       if (activeDates.has(item.date)) {
-        let newBullet = document.createElement('bullet-entry');
+        let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
         mainPane.appendChild(newBullet);
       }
@@ -286,7 +294,7 @@ export function buildCurrent() {
   else if (activeDates.size == 0) {
     bulletArr.forEach(function (item) {
       if (activeCategories.has(item.category)) {
-        let newBullet = document.createElement('bullet-entry');
+        let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
         mainPane.appendChild(newBullet);
       }
@@ -296,7 +304,7 @@ export function buildCurrent() {
   else {
     bulletArr.forEach(function (item) {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
-        let newBullet = document.createElement('bullet-entry');
+        let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
         mainPane.appendChild(newBullet);
       }
@@ -315,14 +323,15 @@ export function updateActiveCategories(categoryObj) {
   }
   buildCurrent();
 }
+
 // Update storage when toggling active dates
 export function updateActiveDates(dateObj) {
-  if (dateObj.active == 'true') {
+  if (dateObj.active == "true") {
     activeDates.delete(dateObj.date);
-    dateObj.active = 'false'
+    dateObj.active = "false";
   } else {
     activeDates.set(dateObj.date);
-    dateObj.active = 'true';
+    dateObj.active = "true";
   }
   buildCurrent();
 }

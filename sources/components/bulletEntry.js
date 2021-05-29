@@ -1,3 +1,5 @@
+import * as storage from "../scripts/storage.js";
+
 class BulletEntry extends HTMLElement {
   constructor() {
     super();
@@ -138,30 +140,13 @@ class BulletEntry extends HTMLElement {
 
   
   //Shortcut to return entry category
-  get category(){
-    return  this.shadowRoot.querySelector(".category").innerText;
+  get category() {
+    return this.shadowRoot.querySelector(".category").innerText;
   }
 
-  set category(newCategory){
+  set category(newCategory) {
     this.shadowRoot.querySelector(".category").innerText = newCategory;
   }
-
 }
 
 customElements.define("bullet-entry", BulletEntry);
-
-/**
- * JSON Format:
- * image and audio will only sometimes be there
- *
- * {
- *   title: 'foo',
- *   date: 'foo',
- *   content: 'foo',
- *   image: {
- *     src: 'foo.com/bar.jpg',
- *     alt: 'foo'
- *   },
- *   audio: 'foo.com/bar.mp3'
- * }
- */

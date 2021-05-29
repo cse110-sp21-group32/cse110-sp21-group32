@@ -100,6 +100,14 @@ class CategoryEntry extends HTMLElement {
       return this.shadowRoot.getElementById('category-check').checked;
     }
 
+    set active(flag){
+      if(flag == "true"){
+        this.shadowRoot.getElementById('category-check').checked =true;
+      }else{
+        this.shadowRoot.getElementById('category-check').checked =false;
+      }
+    }
+
 
 
   

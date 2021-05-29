@@ -198,6 +198,10 @@ body.main-view main .big-button {
 body.main-view main .big-button:hover {
   background-color: rgb(72, 116, 142);
 }
+
+body.main-view main .big-button:active {
+  background-color: rgb(47, 77, 94);
+}
 /* Stlying for box containing the categories in cell 5 */
 body.main-view main .category-box {
   background-color: rgb(210, 221, 232);
