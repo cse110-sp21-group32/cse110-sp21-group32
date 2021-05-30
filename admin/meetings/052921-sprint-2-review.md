@@ -3,10 +3,35 @@
 ### Team Tasks Updates:
 
 ### Implementation team
+#### What's done:
+- Storage integration working for our edit, add, delete functionality. All categories, dates, and bullets will be saved from visit to visit.
+On page refresh, all selected categories and dates reset.
+- Journal typo corrected
+- Select all / deselect all buttons functional
+- note/event/task now have different symbols.
+- Default category implemented. Discrete category item in the box. can not be deleted once created
+- Delete function completed (both on bullet and category, ugly button added). Delete on category will auto assign bullets of deleted bullets to default category
+- Detail will be hidden once uncheck its category.
+- Day filter is a soft filter meaning if no day is selected, auto select all days. Category is a hard filter. if no category selected, no bullets will show up. (user can quickly select and deselect all category)
+#### Will do:
+- Start to work on user experience experience
+
 
 ### CICD team
 
-### UIUX Team
+
+### UIUX team
+#### What’s done:
+- Finished implementing linting for CSS, HMTL
+implemented linting for specific directory source
+finished writing basic unit tests
+deliverables for phase 2 check in
+Integrating unit tests into GitHub actions
+implement documentation generation
+branch reviews
+#### Will do
+rewriting unit tests to test functions as well
+helping the UI/UX team
 
 
 
