@@ -31,6 +31,10 @@ class BulletEntry extends HTMLElement {
               padding: 8px;
               background-color: rgb(204, 225, 243)
             }
+
+            .bullet-entry .bullet-button:hover {
+              background-color: rgb(234, 243, 250)
+            }
             
             .bullet-entry .title {
               text-align: left;
@@ -89,6 +93,8 @@ class BulletEntry extends HTMLElement {
                 <span class="title">demo</span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
+                <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
+
                 <span class="category">demo</span>
                 <span class="type">demo</span>
                 <span class="date">demo</span>
@@ -125,7 +131,7 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
 
-    if(newBullet.category != ""){
+    if(newBullet.category != "Default"){
       let category = JSON.parse(newBullet.category);
       if(category.color=="red"){
         this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 127, 127,0.925)";

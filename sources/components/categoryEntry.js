@@ -62,7 +62,9 @@ class CategoryEntry extends HTMLElement {
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
               <span class="title" id="category-title">demo</span>
-              <button class="cate-button">edit</button>
+              <button class="cate-button" id="cate-edit">edit</button>
+              <button class="cate-button" id="cate-delete">delete</button>
+
               <span class="color" id="category-color">demo</span>
             </div>
           </section>

@@ -155,7 +155,7 @@ class bulletEditorPage extends HTMLElement {
                     <option value="task">Task</option>
                   </select><br>
 
-                  <label for="due-date">Due Date:</label>
+                  <label for="due-date">Fast day entry for testing:</label>
                   <input type="date" id="due-date" name="due-date"><br>
             
                   <input type="submit" value="Confirm" id="bulletSubmit">
@@ -248,7 +248,10 @@ class bulletEditorPage extends HTMLElement {
       opt.value = JSON.stringify({title: item.title, color: item.color});
 
       // add opt to end of select box (sel)
-      categorySelect.appendChild(opt);
+      // Skip default
+      if(item.title != "Default"){
+        categorySelect.appendChild(opt);
+      }
     });
   }
 }
