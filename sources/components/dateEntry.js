@@ -44,40 +44,47 @@ class DateEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  /**
+   * Set the date information
+   */
   set date(date) {
     this.shadowRoot.querySelector(".date").innerText = date;
     this.shadowRoot.querySelector(".active").innerText = "false";
 
   }
 
+  /**
+   * Get the date information
+   */
   get date() {
     return this.shadowRoot.querySelector(".date").innerText;
   }
 
+  /**
+   * Checks if active is set to true or false
+   */
   get checkActive() {
     if (this.shadowRoot.querySelector(".active").innerText == "true") {
       return true;
     } else {
       return false;
     }
-
   }
 
-  //Toggle the active of date
+  /**
+   * Toggle the active of date
+   */
   set active(active) {
     if (active) {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
         "rgba(60, 77, 87, 0.925)";
       this.shadowRoot.querySelector(".active").innerText = "true";
-
     } else {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
         "rgba(167, 200, 220, 0.925)";
       this.shadowRoot.querySelector(".active").innerHTML = "false";
-
     }
   }
-
 }
 
 customElements.define("date-entry", DateEntry);

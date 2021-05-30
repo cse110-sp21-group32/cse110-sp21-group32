@@ -6,6 +6,7 @@ const setState = router.setState;
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
+
 /**
  * When the add bullet button is clicked, this function is called to set the state so that the add
  * bullet modal pops up
@@ -21,6 +22,7 @@ function addBulletHandler() {
 
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
+
 /**
  * When the add category button is clicked, this function is called to set the state so that the add
  * category modal pops up
@@ -34,8 +36,10 @@ addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
 });
 
-// Will check for click events in entire document
-// Note that submit events also register as clicks
+/**
+ * Will check for click events in entire document
+ * Note that submit events also register as clicks
+ */
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
   console.log(e.composedPath());
@@ -108,7 +112,6 @@ function showDetail(detailButton) {
   }
 }
 
-
 /**
  * Helper function for passing right parameters to edit category form
  * @param {*} editButton - edit button from selected category
@@ -118,7 +121,6 @@ function editCategory(editButton) {
   setState("CateEditor", category);
   editButton.getRootNode().host.remove();
 }
-
 
 /**
  * Helper function for submitting new/edited bullet entry
@@ -170,6 +172,7 @@ function submitCategory(formObj) {
   newEntry.category = category;
   mainPane.appendChild(newEntry);
 }
+
 /**
  * This function is used to close the modal, it first checks if the modal appeared from clicking an edit button
  * if it has then it recreates the old entry and adds it
