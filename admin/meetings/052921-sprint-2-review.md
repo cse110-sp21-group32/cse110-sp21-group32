@@ -14,24 +14,36 @@ On page refresh, all selected categories and dates reset.
 - Detail will be hidden once uncheck its category.
 - Day filter is a soft filter meaning if no day is selected, auto select all days. Category is a hard filter. if no category selected, no bullets will show up. (user can quickly select and deselect all category)
 #### Will do:
-- Start to work on user experience experience
+- Start to work on user experience
+- Fix the category bug 
+
 
 
 ### CICD team
+#### What’s done:
+- Finished implementing linting for CSS, HMTL
+- implemented linting for specific directory source
+- finished writing basic unit tests
+- deliverables for phase 2 check in
+- Integrating unit tests into GitHub actions
+- implement documentation generation
+- branch reviews
+#### Will do
+- rewriting unit tests to test functions as well
+- helping the UI/UX team
 
 
 ### UIUX team
 #### What’s done:
-- Finished implementing linting for CSS, HMTL
-implemented linting for specific directory source
-finished writing basic unit tests
-deliverables for phase 2 check in
-Integrating unit tests into GitHub actions
-implement documentation generation
-branch reviews
+- Started plan the layout of hidden menu
+- Faded add new bullet button for inline editor 
 #### Will do
-rewriting unit tests to test functions as well
-helping the UI/UX team
+- Start to work on the user experience
+- Pick pre-select colors
 
+### Documentation
+#### What’s done:
+- Have documented most functions in the scripts
+- Documentation auto generation is completed
 
 

@@ -11,28 +11,8 @@ Agenda:
 
 
 ## Notes
- - Standup updates
- - We will move toward inline editor
-  - Not easy to implement
- - For the pull request, we need to proveide more description
- - We will allow duplicate name for category
-  - But will reject the category with the same name and same color
- - Collapse the detial box after uncheck the category
-  - So it will look clean after recheck the category
- - Defualt category
-  - The defualt category will be auto selected and pre-defined. NOT EDITABLE
- - Select all and deselect all categories 
-  - Will be implemented
- - Delete function
-  - Will be implemented
-  - Deleted category bullets should be reassigned to default category
- - Task distribution
-   - Logistics implementation detials
-   - Input inline editor
-   - Unit testing
-   - Documentation
-   - Date view improvement
-   - Storage integration with date-slector branch
+- Team update
+ - Next sprint will focus on the inline editor
 
 
 ## Attendence
@@ -40,8 +20,8 @@ Agenda:
  - [X] Andres Gutierrez
  - [X] Beilei He
  - [X] Richard Yang
- - [X] Rudy Thurston
+ - [ ] Rudy Thurston
  - [X] Ryan Lay
- - [C] Sanjai Subramanian
- - [X] Tony Liu
+ - [X] Sanjai Subramanian
+ - [ ] Tony Liu
  - [X] Yotam Blum
