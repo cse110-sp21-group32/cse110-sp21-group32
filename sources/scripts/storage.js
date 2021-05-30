@@ -71,11 +71,18 @@ export function deleteCategory(obj) {
   // Default all bullets with category to be deleted
   let categoryKey = JSON.stringify(
     { title: obj.category.title, color: obj.category.color });
+
+  // Change old bullets of the deleted category to defualt
+  // Can not delete default
+  if(obj.category.title == "Default"){
+    return
+  }
   bulletArr.forEach(function (item, index) {
     if (categoryKey == item.category) {
-      bulletArr[index].category = "";
+      bulletArr[index].category = "default";
     }
   });
+  
   updateBullet();
 
   let index = 0;
@@ -210,6 +217,7 @@ export function addBullet(obj) {
 }
 export function addCategory(obj) {
   const newCategory = obj.category;
+  obj.active="true"
   categoryArr.push(newCategory);
   updateCategory();
   // If category is active update activeCategories
@@ -261,8 +269,14 @@ export function buildCurrent() {
     mainPane.firstChild.remove();
   }
 
+  //If no day and category select no entry showup
+  //If only no day select, show all day with the category
+  //If no category select, show no entry
+  //Categroy as hard filter, day as soft filter
+
   // all/today
   if (activeCategories.size == 0 && activeDates.size == 0) {
+
     // let today = new Date();
     // let date;
     // if (today.getMonth() + 1 < 10) {

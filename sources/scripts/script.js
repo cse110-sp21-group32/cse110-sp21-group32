@@ -43,7 +43,7 @@ document.addEventListener("click", (e) => {
     lastReferencedElement = bulletObj;
   }
   // Click editCategory button
-  if (e.composedPath()[0].className == "cate-button") {
+  if (e.composedPath()[0].id == "cate-edit") {
     let categoryObj = e.composedPath()[0].getRootNode().host;
     setState("CateEditor", categoryObj, null);
     lastReferencedElement = categoryObj;
@@ -129,7 +129,8 @@ function submitBullet(formObj) {
     storage.addBullet(newEntry);
 
     //Update category storage if needed
-    if(bulletEdit.bullet.category="default"){
+    let currentCate = JSON.parse(bulletEdit.bullet.category);
+    if(currentCate.title=="Default"){
       let noDefault = true;
       storage.categoryArr.forEach(element => {
         if(element.title=="Default"){
@@ -186,5 +187,13 @@ function deleteBullet(bulletObj) {
 }
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
-  categoryObj.remove();
+  if(categoryObj.category.title != "Default"){
+    categoryObj.remove();
+  }
+  
+  // Set all bullets of deleted category to default
+  let bulletElements = document.querySelectorAll("bullet-entry");
+  bulletElements.forEach(element => {
+    element.category="Default";
+  });
 }
