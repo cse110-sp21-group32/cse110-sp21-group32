@@ -85,11 +85,22 @@ class BulletEntry extends HTMLElement {
               left: 5px;
               color: #0994ff;
             }
+            .dash{
+              display:none;
+              padding:15px;
+            }
+
+            .dot{
+              display:none;
+              padding:15px;
+            }
             
           </style>
           <section class="bullet-entry">
             <div class="bullet">
                 <input class="checkbox" type="checkbox">
+                <span class="dash">-</span>
+                <span class="dot">&#8226;</span>
                 <span class="title">demo</span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
@@ -141,6 +152,26 @@ class BulletEntry extends HTMLElement {
         this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 178, 110,0.925)";
         this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 178, 110,0.925)";
       }
+    }
+
+    //Set the bullet type
+    if(newBullet.type == "note"){
+      this.shadowRoot.querySelector(".checkbox").style.display="none";
+      this.shadowRoot.querySelector(".dash").style.display="grid";
+      this.shadowRoot.querySelector(".dot").style.display="none";
+
+
+    }else if(newBullet.type == "task"){
+      this.shadowRoot.querySelector(".checkbox").style.display="grid";
+      this.shadowRoot.querySelector(".dash").style.display="none";
+      this.shadowRoot.querySelector(".dot").style.display="none";
+
+
+    }else{
+      this.shadowRoot.querySelector(".dot").style.display="grid";
+      this.shadowRoot.querySelector(".checkbox").style.display="none";
+      this.shadowRoot.querySelector(".dash").style.display="none";
+
     }
   }
 

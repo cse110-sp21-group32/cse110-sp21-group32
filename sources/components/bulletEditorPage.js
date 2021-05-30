@@ -149,10 +149,9 @@ class bulletEditorPage extends HTMLElement {
                   </select><br>
             
                   <select id="type" name="type">
-                    <option value="placeholder">Select a type</option>
+                    <option value="task">Task</option>
                     <option value="note">Note</option>
                     <option value="event">Event</option>
-                    <option value="task">Task</option>
                   </select><br>
 
                   <label for="due-date">Fast day entry for testing:</label>
