@@ -9,8 +9,7 @@ on:
       - main
   push:
     branches:
-      - main
-      - CI-pipeline
+      - '*'
 
 jobs:
   build:
