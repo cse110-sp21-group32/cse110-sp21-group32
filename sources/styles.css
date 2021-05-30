@@ -266,6 +266,7 @@ body.main-view main .new-button:active {
 body.default-view cate-editor-page {
   display: none;
 }
+
 body.default-view bullet-editor-page {
   display: none;
 }
@@ -284,6 +285,7 @@ body.bulletEditor bullet-editor-page {
 body.cateEditor bullet-editor-page {
   display: none;
 }
+
 body.cateEditor cate-editor-page {
   display: block;
 }
@@ -323,6 +325,7 @@ body.cateEditor cate-editor-page {
 	left: 5px;
 	color: #0994ff;
 }
+
 body.main-view main .date {
   display: grid;
   align-items: center;
