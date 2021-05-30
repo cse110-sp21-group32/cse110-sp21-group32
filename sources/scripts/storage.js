@@ -77,9 +77,11 @@ export function deleteCategory(obj) {
   if(obj.category.title == "Default"){
     return
   }
+
+
   bulletArr.forEach(function (item, index) {
     if (categoryKey == item.category) {
-      bulletArr[index].category = "default";
+      bulletArr[index].category = '{"title":"Default","color":"blue"}';
     }
   });
   

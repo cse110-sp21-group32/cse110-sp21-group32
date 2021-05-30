@@ -194,6 +194,8 @@ function deleteCategory(categoryObj) {
   // Set all bullets of deleted category to default
   let bulletElements = document.querySelectorAll("bullet-entry");
   bulletElements.forEach(element => {
-    element.category="Default";
+    if(element.bullet.category == categoryObj.category.title){
+      element.category="Default";
+    }
   });
 }
