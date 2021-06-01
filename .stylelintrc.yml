@@ -4,10 +4,9 @@ rules:
     no-duplicate-selectors: false
     function-name-case: "lower"
     string-quotes: "double"
-    selector-class-pattern: "foo-[a-z]+"
     property-case: "lower"
     selector-pseudo-class-case: "lower"
     selector-pseudo-element-case: "lower"
-    selector-type-case": "lower"
+    selector-type-case: "lower"
     unit-case: "lower"
     value-keyword-case: "lower"
