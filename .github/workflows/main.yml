@@ -11,7 +11,6 @@ on:
       - '*'
 
 # All of our jobs will be tested on ubuntu-latest and node versions [10.x, 12.x, 14.x, 15.x]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -62,14 +61,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run Super-Linter 
-        uses: github/super-linter@v3
+        uses: docker://ghcr.io/github/super-linter:slim-v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: '.'
           FILTER_REGEX_INCLUDE: .*sources/.*
+          LINTER_RULES_PATH: '.'
+          VALIDATE_CSS: True
+          VALIDATE_HTML: True
+          VALIDATE_JAVASCRIPT_ES: True
           CSS_FILE_NAME: .stylelintrc.yml
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_JSCPD: false
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
           
   documentation:
