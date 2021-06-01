@@ -64,6 +64,7 @@ jobs:
       - name: Run Super-Linter 
         uses: github/super-linter@v3
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: '.'
           FILTER_REGEX_INCLUDE: .*sources/.*
           CSS_FILE_NAME: .stylelintrc.yml
