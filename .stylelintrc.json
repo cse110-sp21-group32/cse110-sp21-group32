@@ -18,6 +18,7 @@
     "selector-pseudo-element-case": "lower",
     "selector-type-case": "lower",
     "unit-case": "lower",
-    "value-keyword-case": "lower"
+    "value-keyword-case": "lower",
+    "no-duplicate-selectors": false
   }
 }
