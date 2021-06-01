@@ -1,8 +1,7 @@
 /* Add styling to the whole page */
 
-
 /* Add styling to h1 elements */
-h1{
+h1 {
   color: (9, 44, 82);  
   margin: auto;
   width: auto;
@@ -17,47 +16,50 @@ form {
   width: 100%;
   flex: 1; 
 }
+
 /* Add styling to main element */
-main{
+main {
   display: flex;
   flex-direction: row;
 }
+
 /* Add styling to select input fields */
-select{
+select {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
 }
+
 /* Add styling to input elements */
-input{
+input {
   padding:10px;
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
-  border:0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
+
 /* Add styling to the submit button */
 input[type=submit]{
   margin: 1rem;
   width:5rem;
-
   border: none;
   background-color: rgb(75, 164, 220);
   padding: 0.7rem;
 }
+
 /* Add styling to the reset button */ 
 input[type=reset]{
   margin: 1rem;
-  width:5rem;
+  width: 5rem;
   border: none;
-
   background-color: rgb(75, 164, 220);
   padding: 0.7rem;
-
 }
+
 /* Add styling to the dropdown options */ 
-option{
+option {
   background-color: white;
 }
 
@@ -72,8 +74,8 @@ option{
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.65); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.65); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -103,10 +105,9 @@ select {
   padding: 10px;
   width: 10.5rem;
   height: 3rem;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
   color: rgb(130, 130, 130);
-
 }

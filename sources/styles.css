@@ -4,20 +4,17 @@ body {
   overflow-x: auto;
   background-color: rgb(173, 210, 244);
 }
+
 /* Stlying for the first cell(top left cell, add button) */
 .header {
-
   margin-top: -0.5rem;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
-
-
   width: 98%;
   background-color: rgb(9, 65, 114);
   text-align: center;
   font-size: 2rem;
   padding: 20px;
-
   color: rgb(246, 248, 250);
 }
 
@@ -43,37 +40,44 @@ body.main-view main .cell-1 {
   /* background: rgb(14, 195, 255); */
   grid-area: plus;
 }
+
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   /* background-color: aqua; */
   grid-area: history;
 }
+
 /* Stlying for the third cell (Bottom left cell, Graph) */
 body.main-view main .cell-3 {
   /* background: limegreen; */
   grid-area: footer;
 }
+
 /*Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   /* background: gold; */
   grid-area: main;
 }
+
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   /* background: rgb(250, 151, 230); */
   grid-area: cateMa;
 }
+
 /* Styling for all the non-header text */
 body.main-view main .cell {
   color: black;
   text-align: center;
   padding: 1em;
 }
+
 /* Styling for the Section containers */
 body.main-view main .section-container {
   text-align: left;
   margin-top: 0em;
 }
+
 /* Styling for the headers in the left cells (Overdue and Graph) */
 body.main-view main .section-header-side {
   color: rgb(120, 120, 120);
@@ -81,6 +85,7 @@ body.main-view main .section-header-side {
   margin-top: 2rem;
   margin-bottom: 15px;
 }
+
 /* Styling for the headers in the middle and left cells (Focus and Categories) */
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
@@ -88,6 +93,7 @@ body.main-view main .section-header-main {
   margin-top: 0rem;
   margin-bottom: 8px;
 }
+
 /* Styling for the journal entries shown in the history box */
 body.main-view main .jornal-box-history {
   background-color: rgb(210, 221, 232);
@@ -102,10 +108,12 @@ body.main-view main .jornal-box-history {
   border-color: rgb(40, 25, 3);
   border-radius: 1em;
 }
+
 /* Setting the display for the history box scrollbar */
 body.main-view main .jornal-box-history::-webkit-scrollbar {
   display: none;
 }
+
 /* Styling for bullet entries that appear in all cells */
 body.main-view main .bullet {
   display: flex;
@@ -118,6 +126,7 @@ body.main-view main .bullet {
   text-align: left;
   padding-left: 0.5rem;
 }
+
 /* Styling for the buttons next to bullet (edit and detail) */
 body.main-view main .bullet-button {
   border: none;
@@ -128,17 +137,20 @@ body.main-view main .bullet-button {
   padding: 8px;
   background-color: rgb(204, 225, 243);
 }
+
 /* Stlying for the title of the categories in cell 5 */
 body.main-view main .title {
   text-align: left;
   padding-left: 1rem;
   width: 90%;
 }
+
 /* Styling for bullet description */
 body.main-view main .description {
   position: relative;
   width: 100%;
 }
+
 /* Styling for the box that contains journal entries in cell 3 (Graph) */
 body.main-view main .graph-box {
   margin-top: 0.3em;
@@ -152,10 +164,12 @@ body.main-view main .graph-box {
   border-color: rgb(40, 25, 3);
   border-radius: 1em;
 }
+
 /* Setting the display for the graph box scrollbar */
 body.main-view main .graph-box::-webkit-scrollbar {
   display: none;
 }
+
 /* Styling for the box that contains journal entries in the main cell, cell 4 (Focus) */
 body.main-view main .jornal-main-box {
   background-color: rgb(210, 221, 232);
@@ -169,16 +183,19 @@ body.main-view main .jornal-main-box {
   border-color: rgb(40, 25, 3);
   border-radius: 1em;
 }
+
 /* Setting the display for the graph box scrollbar */
 body.main-view main .jornal-main-box::-webkit-scrollbar {
   display: none;
 }
+
 /* Styling for month selection (Not currently used) */
 body.main-view main .MonthSection {
   margin-top: 0.3rem;
   margin-bottom: 1.5rem;
   border-width: 2px;
 }
+
 /* Styling for the big buttons (Add Category, select all, deselect all) */
 body.main-view main .big-button {
   cursor: pointer;
@@ -194,6 +211,7 @@ body.main-view main .big-button {
   margin-left: 0.6rem;
   margin-right: 0.6rem;
 }
+
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
 body.main-view main .big-button:hover {
   background-color: rgb(72, 116, 142);
@@ -202,6 +220,7 @@ body.main-view main .big-button:hover {
 body.main-view main .big-button:active {
   background-color: rgb(47, 77, 94);
 }
+
 /* Stlying for box containing the categories in cell 5 */
 body.main-view main .category-box {
   background-color: rgb(210, 221, 232);
@@ -215,10 +234,12 @@ body.main-view main .category-box {
   border-color: rgb(40, 25, 3);
   border-radius: 1em;
 }
+
 /* Setting the display for the category box scrollbar */
 body.main-view main .category-box::-webkit-scrollbar {
   display: none;
 }
+
 /* Styling for our demo Category */
 body.main-view main .category-inner-entry {
   height: 3.5em;
@@ -233,6 +254,7 @@ body.main-view main .category-inner-entry {
   align-items: center;
   padding: 0.5rem;
 }
+
 /* Stlying for category edit button */
 body.main-view main .cate-button {
   margin: 0.5rem;
@@ -240,6 +262,7 @@ body.main-view main .cate-button {
   font-size: 1rem;
   background-color: aquamarine;
 }
+
 /* Styling for add bullet button in top left corner */
 body.main-view main #add-bullet-button {
   display: grid;
@@ -297,7 +320,6 @@ body.cateEditor cate-editor-page {
   display: none;
   align-items: center;
   height: auto;
-
   background-color: rgba(167, 200, 220, 0.925);
   font-size: 1em;
   border-radius: 0.5em;

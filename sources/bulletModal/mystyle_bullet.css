@@ -27,7 +27,7 @@ input {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
-  border:0;
+  border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
@@ -98,7 +98,8 @@ p {
   display: none;
 }
 
-.close:hover, .close:focus {
+.close:hover, 
+.close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
