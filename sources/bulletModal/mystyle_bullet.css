@@ -98,7 +98,7 @@ p {
   display: none;
 }
 
-.close:hover, 
+.close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;

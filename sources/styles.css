@@ -22,7 +22,7 @@ body {
 body.main-view main .container {
   height: 90vh;
   width: 97.6vw;
-  margin: 0rem;
+  /* margin: 0rem; */
   display: grid;
   grid-template-areas:
     "history      main cateMa"
@@ -53,7 +53,7 @@ body.main-view main .cell-3 {
   grid-area: footer;
 }
 
-/*Stlying for the fourth cell (Center cell, Focus) */
+/* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   /* background: gold; */
   grid-area: main;
@@ -75,7 +75,7 @@ body.main-view main .cell {
 /* Styling for the Section containers */
 body.main-view main .section-container {
   text-align: left;
-  margin-top: 0em;
+  /* margin-top: 0em; */
 }
 
 /* Styling for the headers in the left cells (Overdue and Graph) */
@@ -90,7 +90,7 @@ body.main-view main .section-header-side {
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
   font-size: 5em;
-  margin-top: 0rem;
+  /* margin-top: 0rem; */
   margin-bottom: 8px;
 }
 
@@ -302,6 +302,7 @@ body.bulletEditor cate-editor-page {
 body.bulletEditor bullet-editor-page {
   display: block;
 }
+
 /* Bullet Editor CSS End */
 
 /* Cate Editor CSS Start */
@@ -312,6 +313,7 @@ body.cateEditor bullet-editor-page {
 body.cateEditor cate-editor-page {
   display: block;
 }
+
 /* Cate Editor CSS End */
 
 /* For Testing Purpose */
@@ -331,21 +333,21 @@ body.cateEditor cate-editor-page {
 }
 
 .checkbox {
-	-webkit-appearance: none;
-	background-color: #fafafa;
-	padding: 15px;
-	border-radius: 3px;
-	display: inline-block;
-	position: relative;
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  padding: 15px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
 }
 
 .checkbox:checked:after {
-	content: '\2714';
-	font-size: 50px;
-	position: absolute;
-	top: -20px;
-	left: 5px;
-	color: #0994ff;
+  content: '\2714';
+  font-size: 50px;
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  color: #0994ff;
 }
 
 body.main-view main .date {
