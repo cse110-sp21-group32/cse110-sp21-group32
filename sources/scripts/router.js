@@ -45,8 +45,8 @@ router.setState = function (inputString,entry,list) {
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('bullet-editor-page');
     entryPage.catagoryList=list;
-    entryPage.bullet=entry;
-    entryPage.old=entry;
+    entryPage.bullet=entry.bullet;
+    entryPage.old=entry.bullet;
     document.querySelector("body").appendChild(entryPage);
   }else if (inputString.startsWith('CateEditor') && entry!=null) {
     document.querySelector("body").classList.remove("default-view");
@@ -56,8 +56,8 @@ router.setState = function (inputString,entry,list) {
     let entryPageOld = document.querySelector('cate-editor-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
     let entryPage = document.createElement('cate-editor-page');
-    entryPage.category=entry;
-    entryPage.old=entry;
+    entryPage.category=entry.category;
+    entryPage.old=entry.category;
     document.querySelector("body").appendChild(entryPage);
   }
 }

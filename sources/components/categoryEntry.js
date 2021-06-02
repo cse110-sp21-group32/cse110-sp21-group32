@@ -60,10 +60,12 @@ class CategoryEntry extends HTMLElement {
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">
-              <input class="checkbox" type="checkbox">
-              <span class="title">demo</span>
-              <button class="cate-button">edit</button>
-              <span class="color">demo</span>
+              <input class="checkbox" type="checkbox" id="category-check">
+              <span class="title" id="category-title">demo</span>
+              <button class="cate-button" id="cate-edit">edit</button>
+              <button class="cate-button" id="cate-delete">delete</button>
+
+              <span class="color" id="category-color">demo</span>
             </div>
           </section>
           `;
@@ -77,9 +79,9 @@ class CategoryEntry extends HTMLElement {
      */
     get category() {
       let categoryObj = {
-        'title': this.shadowRoot.querySelector('.title').innerText,
-        'color': this.shadowRoot.querySelector('.color').innerText,
-        'checked': this.shadowRoot.querySelector('.checkbox').checked,
+        title: this.shadowRoot.getElementById('category-title').innerText,
+        color: this.shadowRoot.getElementById('category-color').innerText,
+        checked: this.shadowRoot.getElementById('category-check').checked,
       };
       return categoryObj;
     }
@@ -88,8 +90,8 @@ class CategoryEntry extends HTMLElement {
      * Set the category information
      */
     set category(newCategory) {
-      this.shadowRoot.querySelector('.title').innerText =newCategory.title;
-      this.shadowRoot.querySelector('.color').innerText =newCategory.color;
+      this.shadowRoot.getElementById('category-title').innerText =newCategory.title;
+      this.shadowRoot.getElementById('category-color').innerText =newCategory.color;
       if(newCategory.color=="red"){
         this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 127, 127,0.925)";
       }else if(newCategory.color=="yellow"){
@@ -102,7 +104,15 @@ class CategoryEntry extends HTMLElement {
      * Quickly check if this category is checked
      */
     get checked(){
-      return this.shadowRoot.querySelector('.checkbox').checked;
+      return this.shadowRoot.getElementById('category-check').checked;
+    }
+
+    set active(flag){
+      if(flag == "true"){
+        this.shadowRoot.getElementById('category-check').checked =true;
+      }else{
+        this.shadowRoot.getElementById('category-check').checked =false;
+      }
     }
   }
   

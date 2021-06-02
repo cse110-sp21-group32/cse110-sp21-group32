@@ -1,7 +1,10 @@
 // script.js
-
+import * as storage from "./storage.js";
 import { router } from "./router.js"; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
+
+// Use to handle editBullet and editCategory events
+var lastReferencedElement;
 
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
@@ -12,12 +15,7 @@ bulletAddButton.addEventListener("click", addBulletHandler);
  * bullet modal pops up
  */
 function addBulletHandler() {
-  let categoryList = [];
-  let catagories = document.querySelectorAll("category-entry");
-  for (let i = 0; i < catagories.length; i++) {
-    categoryList.push(catagories[i].category.title);
-  }
-  setState("BulletEditor", null, categoryList);
+  setState("BulletEditor", null, storage.categoryArr);
 }
 
 var cateAddButton = document.getElementById("add-cate-button");
@@ -34,6 +32,8 @@ function addCateHandler() {
 // TODO build from local storage
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
+  storage.buildDefault();
+
 });
 
 /**
@@ -42,20 +42,26 @@ addEventListener("DOMContentLoaded", () => {
  */
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
-  console.log(e.composedPath());
+  // console.log(e.composedPath());
 
-  // Click editBullet button
-  if (e.composedPath()[0].className == "bullet-button edit-bullet-button") {
-    editBullet(e.composedPath()[0]);
-  }
   // Click showDetail button
   if (e.composedPath()[0].className == "bullet-button bullet-detail-button") {
     showDetail(e.composedPath()[0]);
   }
-  // Click editCategory button
-  if (e.composedPath()[0].className == "cate-button") {
-    editCategory(e.composedPath()[0]);
+
+  // Click editBullet button
+  if (e.composedPath()[0].className == "bullet-button edit-bullet-button") {
+    let bulletObj = e.composedPath()[0].getRootNode().host;
+    setState("BulletEditor", bulletObj, storage.categoryArr);
+    lastReferencedElement = bulletObj;
   }
+  // Click editCategory button
+  if (e.composedPath()[0].id == "cate-edit") {
+    let categoryObj = e.composedPath()[0].getRootNode().host;
+    setState("CateEditor", categoryObj, null);
+    lastReferencedElement = categoryObj;
+  }
+
   // Submit bullet editor event
   if (e.composedPath()[0].id == "bulletSubmit") {
     submitBullet(e.composedPath()[1]);
@@ -64,23 +70,51 @@ document.addEventListener("click", (e) => {
   if (e.composedPath()[0].id == "cate-submit") {
     submitCategory(e.composedPath()[1]);
   }
+
+  // Delete bullet event
+  if (e.composedPath()[0].id == "bullet-delete") {
+    deleteBullet(e.composedPath()[0].getRootNode().host);
+  }
+  // Delete category event
+  if (e.composedPath()[0].id == "cate-delete") {
+    deleteCategory(e.composedPath()[0].getRootNode().host);
+  }
+
   // Close bulletEditor or categoryEditor modal
   if (
     e.composedPath()[0].className == "modal" ||
     e.composedPath()[0].className == "close"
   ) {
-    closeModal(e.composedPath()[0].getRootNode().host);
+    setState("backMain");
   }
 
-  // Check category event
-  if (e.composedPath()[0].className == "checkbox") {
-    filterEntries();
+  // Select all categories
+  if (e.composedPath()[0].id == "select-all") {
+    let categoryElements = document.querySelectorAll("category-entry");
+    categoryElements.forEach(element => {
+      element.active="true";
+      storage.updateActiveCategories(element);
+    });
   }
 
+    // Deselect all categories
+    if (e.composedPath()[0].id == "deselect-all") {
+      let categoryElements = document.querySelectorAll("category-entry");
+      categoryElements.forEach(element => {
+        element.active="false";
+        storage.updateActiveCategories(element);
+      });
+    }
+
   // Check category event
+  if (e.composedPath()[0].id == "category-check") {
+    let categoryElement = e.composedPath()[0].getRootNode().host;
+    storage.updateActiveCategories(categoryElement);
+  }
+  // Select date event
   if (e.composedPath()[0].className == "date") {
-    changeActiveDate(e.composedPath()[2].getRootNode().host);
-    filterEntries();
+    let dateElement = e.composedPath()[0].getRootNode().host;
+    storage.updateActiveDates(dateElement);
   }
 });
 
@@ -129,33 +163,48 @@ function editCategory(editButton) {
  * @param {*} formObj 
  */
 function submitBullet(formObj) {
-  let bullet = formObj.getRootNode().host.bullet;
+  let bulletEdit = formObj.getRootNode().host;
   setState("backMain");
-  let newEntry = document.createElement("bullet-entry");
-  let mainPane = document.querySelector(".entry-list");
-  newEntry.bullet = bullet;
+  // If not called from editBullet, create new bullet
+  if (!bulletEdit.old) {
+    let newEntry = document.createElement("bullet-entry");
+    let mainPane = document.querySelector(".entry-list");
+    newEntry.bullet = bulletEdit.bullet;
+    mainPane.appendChild(newEntry);
+    // add bullet storage
+    storage.addBullet(newEntry);
 
-  //Find corresponfing category color
-  let targetColor;
-  let catagories = document.querySelectorAll("category-entry");
-  for (let i = 0; i < catagories.length; i++) {
-    if (catagories[i].category.title == bullet.category) {
-      targetColor = catagories[i].category.color;
+    //Update category storage if needed
+    let currentCate = JSON.parse(bulletEdit.bullet.category);
+    if(currentCate.title=="Default"){
+      let noDefault = true;
+      storage.categoryArr.forEach(element => {
+        if(element.title=="Default"){
+          noDefault = false;
+        }
+      });
+      if(noDefault){
+        let newCategory = document.createElement("category-entry");
+        let defaultCategory={
+          title: "Default",
+          color: "blue",
+          checked: true
+        }
+        newCategory.category=defaultCategory;
+        let mainPane = document.querySelector(".category-box");
+        mainPane.appendChild(newCategory);
+        storage.addCategory(newCategory);
+      }
+
     }
-  }
-  newEntry.color = targetColor;
-  mainPane.appendChild(newEntry);
-  refreshDateSelector();
 
-  //Reset the active date
-  let daties = document.querySelectorAll("date-entry");
-  for (let i = 0; i < daties.length; i++) {
-    console.log(daties.checkActive);
-    daties[i].active = false;
+    // TODO maybe shouldnt always be appended??
   }
-  daties[0].active = true;
-
-  filterEntries();
+  // Else if called from editBullet, edit
+  else {
+    storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
+    lastReferencedElement.bullet = bulletEdit.bullet;
+  }
 }
 
 /**
@@ -181,21 +230,13 @@ function submitCategory(formObj) {
 function closeModal(editorObj) {
   setState("backMain");
 
-  // If modal is reached from edit button, recreate old entry
-  if (editorObj.old) {
-    let uneditedEntry = editorObj.old;
-    let newEntry;
-    let mainPane;
-    if (editorObj.tagName == "CATE-EDITOR-PAGE") {
-      newEntry = document.createElement("category-entry");
-      mainPane = document.querySelector(".category-box");
-      newEntry.category = uneditedEntry;
-    } else {
-      newEntry = document.createElement("bullet-entry");
-      mainPane = document.querySelector(".entry-list");
-      newEntry.bullet = uneditedEntry;
-    }
+  // If not called from editBullet, create new bullet
+  if (!categoryEdit.old) {
+    let newEntry = document.createElement("category-entry");
+    let mainPane = document.querySelector(".category-box");
+    newEntry.category = categoryEdit.category;
     mainPane.appendChild(newEntry);
+    storage.addCategory(newEntry);
   }
 }
 

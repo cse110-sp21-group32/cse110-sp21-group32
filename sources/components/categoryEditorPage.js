@@ -116,7 +116,7 @@ class categoryEditorPage extends HTMLElement {
             
             }
           </style>
-          <div id="myModal" class="modal">
+          <div id="my-modal" class="modal">
           
 
           <!-- Modal content -->
@@ -153,6 +153,9 @@ class categoryEditorPage extends HTMLElement {
    * This is needed if editor is closed w/o submitting
    */
   get old() {
+    if(!this.shadowRoot.getElementById("color").dataset.old){
+      return null;
+    }
     let categoryForm = {
       title: this.shadowRoot.getElementById("name").dataset.old,
       color: this.shadowRoot.getElementById("color").dataset.old,

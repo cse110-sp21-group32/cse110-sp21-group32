@@ -1,3 +1,5 @@
+import * as storage from "../scripts/storage.js";
+
 class BulletEntry extends HTMLElement {
   constructor() {
     super();
@@ -28,6 +30,10 @@ class BulletEntry extends HTMLElement {
               border-radius: 0.5em;  
               padding: 8px;
               background-color: rgb(204, 225, 243)
+            }
+
+            .bullet-entry .bullet-button:hover {
+              background-color: rgb(234, 243, 250)
             }
             
             .bullet-entry .title {
@@ -79,14 +85,27 @@ class BulletEntry extends HTMLElement {
               left: 5px;
               color: #0994ff;
             }
+            .dash{
+              display:none;
+              padding:15px;
+            }
+
+            .dot{
+              display:none;
+              padding:15px;
+            }
             
           </style>
           <section class="bullet-entry">
             <div class="bullet">
                 <input class="checkbox" type="checkbox">
+                <span class="dash">-</span>
+                <span class="dot">&#8226;</span>
                 <span class="title">demo</span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
+                <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
+
                 <span class="category">demo</span>
                 <span class="type">demo</span>
                 <span class="date">demo</span>
@@ -112,7 +131,6 @@ class BulletEntry extends HTMLElement {
       date: this.shadowRoot.querySelector(".date").innerText,
       category: this.shadowRoot.querySelector(".category").innerText,
       type: this.shadowRoot.querySelector(".type").innerText,
-      date: this.shadowRoot.querySelector(".date").innerText
     };
     return entryObj;
   }
@@ -127,9 +145,8 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
-    this.shadowRoot.querySelector(".date").innerText = newBullet.date;
   }
-
+    
   /**
    * Shortcut to return entry category
    */
@@ -148,23 +165,17 @@ class BulletEntry extends HTMLElement {
       this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 178, 110,0.925)";
       this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 178, 110,0.925)";
     }
-  }  
+  }
+
+  
+  //Shortcut to return entry category
+  get category() {
+    return this.shadowRoot.querySelector(".category").innerText;
+  }
+
+  set category(newCategory) {
+    this.shadowRoot.querySelector(".category").innerText = newCategory;
+  }
 }
 
 customElements.define("bullet-entry", BulletEntry);
-
-/**
- * JSON Format:
- * image and audio will only sometimes be there
- *
- * {
- *   title: 'foo',
- *   date: 'foo',
- *   content: 'foo',
- *   image: {
- *     src: 'foo.com/bar.jpg',
- *     alt: 'foo'
- *   },
- *   audio: 'foo.com/bar.mp3'
- * }
- */
