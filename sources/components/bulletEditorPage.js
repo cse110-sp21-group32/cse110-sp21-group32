@@ -131,7 +131,7 @@ class bulletEditorPage extends HTMLElement {
             
           </style>
           <!-- The Modal -->
-          <div id="myModal" class="modal">
+          <div id="my-modal" class="modal">
           
             <!-- Modal content -->
             <div class="modal-content">

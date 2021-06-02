@@ -116,7 +116,7 @@ class categoryEditorPage extends HTMLElement {
             
             }
           </style>
-          <div id="myModal" class="modal">
+          <div id="my-modal" class="modal">
           
 
           <!-- Modal content -->
