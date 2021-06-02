@@ -79,24 +79,26 @@ document.addEventListener("click", (e) => {
   if (e.composedPath()[0].id == "select-all") {
     let categoryElements = document.querySelectorAll("category-entry");
     categoryElements.forEach(element => {
-      element.active="true";
-      storage.updateActiveCategories(element);
+      element.checked=true;
+      storage.updateActiveCategories(element, false);
     });
+    storage.buildCurrent();
   }
 
     // Deselect all categories
     if (e.composedPath()[0].id == "deselect-all") {
       let categoryElements = document.querySelectorAll("category-entry");
       categoryElements.forEach(element => {
-        element.active="false";
-        storage.updateActiveCategories(element);
+        element.checked=false;
+        storage.updateActiveCategories(element, false);
       });
+      storage.buildCurrent();
     }
 
   // Check category event
   if (e.composedPath()[0].id == "category-check") {
     let categoryElement = e.composedPath()[0].getRootNode().host;
-    storage.updateActiveCategories(categoryElement);
+    storage.updateActiveCategories(categoryElement, true);
   }
   // Select date event
   if (e.composedPath()[0].className == "date") {
@@ -122,37 +124,8 @@ function submitBullet(formObj) {
   // If not called from editBullet, create new bullet
   if (!bulletEdit.old) {
     let newEntry = document.createElement("bullet-entry");
-    let mainPane = document.querySelector(".entry-list");
     newEntry.bullet = bulletEdit.bullet;
-    mainPane.appendChild(newEntry);
-    // add bullet storage
     storage.addBullet(newEntry);
-
-    //Update category storage if needed
-    let currentCate = JSON.parse(bulletEdit.bullet.category);
-    if(currentCate.title=="Default"){
-      let noDefault = true;
-      storage.categoryArr.forEach(element => {
-        if(element.title=="Default"){
-          noDefault = false;
-        }
-      });
-      if(noDefault){
-        let newCategory = document.createElement("category-entry");
-        let defaultCategory={
-          title: "Default",
-          color: "blue",
-          checked: true
-        }
-        newCategory.category=defaultCategory;
-        let mainPane = document.querySelector(".category-box");
-        mainPane.appendChild(newCategory);
-        storage.addCategory(newCategory);
-      }
-
-    }
-
-    // TODO maybe shouldnt always be appended??
   }
   // Else if called from editBullet, edit
   else {
@@ -187,15 +160,5 @@ function deleteBullet(bulletObj) {
 }
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
-  if(categoryObj.category.title != "Default"){
-    categoryObj.remove();
-  }
-  
-  // Set all bullets of deleted category to default
-  let bulletElements = document.querySelectorAll("bullet-entry");
-  bulletElements.forEach(element => {
-    if(element.bullet.category == categoryObj.category.title){
-      element.category="Default";
-    }
-  });
+  categoryObj.remove();
 }

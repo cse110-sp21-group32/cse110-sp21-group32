@@ -26,6 +26,24 @@ if (myStorage.getItem("dateArr")) {
   dateArr = [];
 }
 
+// Today's date
+let today = new Date();
+var todayDate;
+if (today.getMonth() + 1 < 10) {
+  todayDate = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-'
+    + today.getDate();
+} else {
+  todayDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
+    + today.getDate();
+}
+if (today.getDate() < 10) {
+  todayDate = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-'
+    + '0' + today.getDate();
+} else {
+  todayDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
+    + today.getDate();
+}
+
 export function updateBullet() {
   myStorage.setItem("bulletArr", JSON.stringify(bulletArr));
 }
@@ -40,16 +58,24 @@ export function updateDate() {
 export function deleteBullet(obj) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
-  bulletArr.forEach(function (item, index, arr) {
-    if (obj.bullet.date == item.date) {
+  let bullet = obj.bullet;
+  bullet.checked = false;
+  
+  // Don't change this, for loop needs to look like this to work with splice
+  let i;
+  for(i = bulletArr.length -1; i >= 0; i -= 1){
+    if (obj.bullet.date == bulletArr[i].date) {
       dateEntryCount++;
     }
-    if (JSON.stringify(obj.bullet) == JSON.stringify(item) && !hasBeenDeleted) {
-      arr.splice(index, 1);
+    let item = bulletArr[i];
+    item.checked = false;
+    if (JSON.stringify(bullet) == JSON.stringify(item) && !hasBeenDeleted) {
+      bulletArr.splice(i, 1);
       hasBeenDeleted = true;
     }
-  });
+  }
   updateBullet();
+  console.log(dateEntryCount);
 
   // If last entry in date, delete date
   if (dateEntryCount == 1) {
@@ -59,11 +85,12 @@ export function deleteBullet(obj) {
         dateArr.splice(i, 1);
         updateDate();
         activeDates.delete(dateItem.date);
+        buildDate();
         break;
       }
       i++;
     }
-    defaultCurrent();
+    buildCurrent();
   }
 }
 // Delete category from storage
@@ -72,19 +99,12 @@ export function deleteCategory(obj) {
   let categoryKey = JSON.stringify(
     { title: obj.category.title, color: obj.category.color });
 
-  // Change old bullets of the deleted category to defualt
-  // Can not delete default
-  if(obj.category.title == "Default"){
-    return
-  }
-
-
   bulletArr.forEach(function (item, index) {
     if (categoryKey == item.category) {
       bulletArr[index].category = '{"title":"Default","color":"blue"}';
     }
   });
-  
+
   updateBullet();
 
   let index = 0;
@@ -107,8 +127,8 @@ export function editBullet(newBullet, oldBullet) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
   oldBullet.checked = false;
-  newBullet.checked = false;
   bulletArr.forEach(function (item, index) {
+    item.checked = false;
     if (oldBullet.date == item.date) {
       dateEntryCount++;
     }
@@ -146,15 +166,18 @@ export function editBullet(newBullet, oldBullet) {
       dateArr.push(newDateObj);
 
       // Update historyPane with new date
-      let historyPane = document.querySelector(".jornal-box-history");
-      let newDate = document.createElement("date-entry");
-      newDate.date = newBullet.date;
-      newDate.active = 'false';
-      historyPane.appendChild(newDate);
+      if (newBullet.date != todayDate) {
+        let historyPane = document.querySelector(".jornal-box-history");
+        let newDate = document.createElement("date-entry");
+        newDate.date = newBullet.date;
+        newDate.active = 'false';
+        historyPane.appendChild(newDate);
+      }
     }
     updateDate();
     buildCurrent();
-  } else if (newBullet.category != oldBullet.category){
+    buildDate();
+  } else if (newBullet.category != oldBullet.category) {
     buildCurrent();
   }
 }
@@ -210,16 +233,18 @@ export function addBullet(obj) {
     dateArr.push(newDateObj);
     updateDate();
     // Update historyPane with new date
-    let historyPane = document.querySelector(".jornal-box-history");
-    let newDate = document.createElement("date-entry");
-    newDate.date = newBullet.date;
-    newDate.active = "false";
-    historyPane.appendChild(newDate);
+    if (newBullet.date != todayDate) {
+      let historyPane = document.querySelector(".jornal-box-history");
+      let newDate = document.createElement("date-entry");
+      newDate.date = newBullet.date;
+      newDate.active = "false";
+      historyPane.appendChild(newDate);
+    }
   }
+  buildCurrent();
 }
 export function addCategory(obj) {
   const newCategory = obj.category;
-  obj.active="true"
   categoryArr.push(newCategory);
   updateCategory();
   // If category is active update activeCategories
@@ -232,31 +257,45 @@ export function addCategory(obj) {
 
 // Build initial screen
 export function buildDefault() {
-  const categoryPane = document.querySelector(".category-box");
   const historyPane = document.querySelector(".jornal-box-history");
+  const categoryPane = document.querySelector(".category-box");
   activeCategories.clear();
   activeDates.clear();
 
-  let noDefault=true;
+  // Build default category
+  let defaultCategory = document.createElement("category-entry");
+  defaultCategory.category = { title: "Default", color: "blue", checked: true };
+  defaultCategory.default = 0;
+  categoryPane.appendChild(defaultCategory);
+  updateActiveCategories(defaultCategory, false);
+
+  // Create each category from storage
   categoryArr.forEach(function (item, index) {
     let newCategory = document.createElement("category-entry");
-    categoryArr[index].checked = true;
+    categoryArr[index].checked = false;
     item.checked = true;
     newCategory.category = item;
     categoryPane.appendChild(newCategory);
-    updateActiveCategories(newCategory);
-    if(item.title == "Default"){
-      noDefault = false;
-    }
+    updateActiveCategories(newCategory, false);
   });
 
+  // Build default Today date
+  let defaultDate = document.createElement("date-entry");
+  defaultDate.date = todayDate;
+  defaultDate.active = "true";
+  activeDates.set(todayDate);
+  historyPane.appendChild(defaultDate);
 
+
+  // Create each date from storage
   dateArr.forEach(function (item, index) {
-    let newDate = document.createElement("date-entry");
-    dateArr[index].active = "false";
-    newDate.date = item.date;
-    newDate.active = "false";
-    historyPane.appendChild(newDate);
+    if (item.date != todayDate) {
+      let newDate = document.createElement("date-entry");
+      dateArr[index].active = "false";
+      newDate.date = item.date;
+      newDate.active = "false";
+      historyPane.appendChild(newDate);
+    }
   });
 
   // default build all from today
@@ -271,40 +310,13 @@ export function buildCurrent() {
     mainPane.firstChild.remove();
   }
 
-  //If no day and category select no entry showup
+  //If no day and category select Today date entry show up
   //If only no day select, show all day with the category
   //If no category select, show no entry
   //Categroy as hard filter, day as soft filter
 
-  // all/today
-  if (activeCategories.size == 0 && activeDates.size == 0) {
-
-    // let today = new Date();
-    // let date;
-    // if (today.getMonth() + 1 < 10) {
-    //   date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-'
-    //     + today.getDate();
-    // } else {
-    //   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
-    //     + today.getDate();
-    // }
-    // bulletArr.forEach(function (item) {
-    //   if (item.date == date) {
-    //     let newBullet = document.createElement('bullet-entry');
-    //     newBullet.bullet = item;
-    //     mainPane.appendChild(newBullet);
-    //   }
-    // });
-  }
-  // all/selected days (TODO PUT SORT FUNCTION HERE)
-  else if (activeCategories.size == 0) {
-    bulletArr.forEach(function (item) {
-      if (activeDates.has(item.date)) {
-        let newBullet = document.createElement("bullet-entry");
-        newBullet.bullet = item;
-        mainPane.appendChild(newBullet);
-      }
-    });
+  if (activeCategories.size == 0) {
+    // nothing
   }
   // all/selected categories
   else if (activeDates.size == 0) {
@@ -328,8 +340,36 @@ export function buildCurrent() {
   }
 }
 
+// Call to update date viewer in real time
+function buildDate() {
+  const historyPane = document.querySelector(".jornal-box-history");
+  while (historyPane.firstChild) {
+    historyPane.firstChild.remove();
+  }
+  // Build default Today date
+  let defaultDate = document.createElement("date-entry");
+  defaultDate.date = todayDate;
+  if(activeDates.has(todayDate)){
+    defaultDate.active = "true";
+  } else { defaultDate.active = "false"; }
+  historyPane.appendChild(defaultDate);
+
+
+  // Create each date from storage
+  dateArr.forEach(function (item, index) {
+    if (item.date != todayDate) {
+      let newDate = document.createElement("date-entry");
+      if(activeDates.has(item.date)){
+        newDate.active = "true";
+      } else{ newDate.active = "false"; }
+      newDate.date = item.date;
+      historyPane.appendChild(newDate);
+    }
+  });
+}
+
 // Update storage when toggling active categories
-export function updateActiveCategories(categoryObj) {
+export function updateActiveCategories(categoryObj, build) {
   let categoryKey = JSON.stringify(
     { title: categoryObj.category.title, color: categoryObj.category.color });
   if (categoryObj.checked) {
@@ -337,7 +377,9 @@ export function updateActiveCategories(categoryObj) {
   } else {
     activeCategories.delete(categoryKey);
   }
-  buildCurrent();
+  if (build) {
+    buildCurrent();
+  }
 }
 
 // Update storage when toggling active dates

@@ -175,7 +175,6 @@ class BulletEntry extends HTMLElement {
     }
   }
 
-  
   //Shortcut to return entry category
   get category() {
     return this.shadowRoot.querySelector(".category").innerText;
