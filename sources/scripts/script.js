@@ -22,7 +22,6 @@ function addCateHandler() {
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
   storage.buildDefault();
-
 });
 
 // Will check for click events in entire document
@@ -78,22 +77,22 @@ document.addEventListener("click", (e) => {
   // Select all categories
   if (e.composedPath()[0].id == "select-all") {
     let categoryElements = document.querySelectorAll("category-entry");
-    categoryElements.forEach(element => {
-      element.checked=true;
+    categoryElements.forEach((element) => {
+      element.checked = true;
       storage.updateActiveCategories(element, false);
     });
     storage.buildCurrent();
   }
 
-    // Deselect all categories
-    if (e.composedPath()[0].id == "deselect-all") {
-      let categoryElements = document.querySelectorAll("category-entry");
-      categoryElements.forEach(element => {
-        element.checked=false;
-        storage.updateActiveCategories(element, false);
-      });
-      storage.buildCurrent();
-    }
+  // Deselect all categories
+  if (e.composedPath()[0].id == "deselect-all") {
+    let categoryElements = document.querySelectorAll("category-entry");
+    categoryElements.forEach((element) => {
+      element.checked = false;
+      storage.updateActiveCategories(element, false);
+    });
+    storage.buildCurrent();
+  }
 
   // Check category event
   if (e.composedPath()[0].id == "category-check") {
@@ -120,37 +119,84 @@ function showDetail(detailButton) {
 // Helper function for submitting new/edited bullet entry
 function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
-  setState("backMain");
-  // If not called from editBullet, create new bullet
-  if (!bulletEdit.old) {
-    let newEntry = document.createElement("bullet-entry");
-    newEntry.bullet = bulletEdit.bullet;
-    storage.addBullet(newEntry);
+  let cateEditor = document.querySelector("bullet-editor-page");
+
+  //Check the length of new title
+  let tooLong = false;
+  let legnth = bulletEdit.bullet.title.length;
+  if (legnth > 10) {
+    tooLong = true;
   }
-  // Else if called from editBullet, edit
-  else {
-    storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
-    lastReferencedElement.bullet = bulletEdit.bullet;
+
+  if (!tooLong) {
+    setState("backMain");
+    // If not called from editBullet, create new bullet
+    if (!bulletEdit.old) {
+      let newEntry = document.createElement("bullet-entry");
+      newEntry.bullet = bulletEdit.bullet;
+      storage.addBullet(newEntry);
+    }
+    // Else if called from editBullet, edit
+    else {
+      storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
+      lastReferencedElement.bullet = bulletEdit.bullet;
+    }
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
 // Helper function for submitting new/edited category entry
 function submitCategory(formObj) {
   let categoryEdit = formObj.getRootNode().host;
-  setState("backMain");
+  //Check if the new category is duplicate
+  let newCategory = categoryEdit.category;
+  let duplicate = false;
+  storage.categoryArr.forEach((category) => {
+    if (
+      newCategory.title == category.title &&
+      newCategory.color == category.color
+    ) {
+      duplicate = true;
+    }
+  });
 
-  // If not called from editBullet, create new bullet
-  if (!categoryEdit.old) {
-    let newEntry = document.createElement("category-entry");
-    let mainPane = document.querySelector(".category-box");
-    newEntry.category = categoryEdit.category;
-    mainPane.appendChild(newEntry);
-    storage.addCategory(newEntry);
+  //Check if new category name is too long
+  let tooLong = false;
+  let length = newCategory.title.length;
+  if (length > 10) {
+    tooLong = true;
   }
-  // Else if called from editCategory, edit
-  else {
-    storage.editCategory(categoryEdit.category, lastReferencedElement.category);
-    lastReferencedElement.category = categoryEdit.category;
+  let cateEditor = document.querySelector("cate-editor-page");
+
+  //Proceed if not duplicate
+  //Stop and show error if one constraint is violated
+  if (!duplicate && !tooLong) {
+    setState("backMain");
+
+    // If not called from editBullet, create new bullet
+    if (!categoryEdit.old) {
+      let newEntry = document.createElement("category-entry");
+      let mainPane = document.querySelector(".category-box");
+      newEntry.category = categoryEdit.category;
+      mainPane.appendChild(newEntry);
+      storage.addCategory(newEntry);
+    }
+    // Else if called from editCategory, edit
+    else {
+      storage.editCategory(
+        categoryEdit.category,
+        lastReferencedElement.category
+      );
+      lastReferencedElement.category = categoryEdit.category;
+    }
+  } else if (duplicate && tooLong) {
+    cateEditor.duplicate = true;
+    cateEditor.lengthViolate = true;
+  } else if (duplicate) {
+    cateEditor.duplicate = true;
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
