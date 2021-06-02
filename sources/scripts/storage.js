@@ -139,7 +139,7 @@ export function editBullet(newBullet, oldBullet) {
   });
   updateBullet();
 
-  // Handle date edit event TODO DELETE IN FINAL VERSION?
+  // Handle date edit event
   if (newBullet.date != oldBullet.date) {
     // If last entry in date, delete date
     if (dateEntryCount == 1) {
@@ -164,15 +164,6 @@ export function editBullet(newBullet, oldBullet) {
     if (!dateExists) {
       let newDateObj = { date: newBullet.date, active: 'false' };
       dateArr.push(newDateObj);
-
-      // Update historyPane with new date
-      if (newBullet.date != todayDate) {
-        let historyPane = document.querySelector(".jornal-box-history");
-        let newDate = document.createElement("date-entry");
-        newDate.date = newBullet.date;
-        newDate.active = 'false';
-        historyPane.appendChild(newDate);
-      }
     }
     updateDate();
     buildCurrent();
@@ -232,14 +223,7 @@ export function addBullet(obj) {
     let newDateObj = { date: newBullet.date, active: "false" };
     dateArr.push(newDateObj);
     updateDate();
-    // Update historyPane with new date
-    if (newBullet.date != todayDate) {
-      let historyPane = document.querySelector(".jornal-box-history");
-      let newDate = document.createElement("date-entry");
-      newDate.date = newBullet.date;
-      newDate.active = "false";
-      historyPane.appendChild(newDate);
-    }
+    buildDate();
   }
   buildCurrent();
 }
@@ -279,24 +263,8 @@ export function buildDefault() {
     updateActiveCategories(newCategory, false);
   });
 
-  // Build default Today date
-  let defaultDate = document.createElement("date-entry");
-  defaultDate.date = todayDate;
-  defaultDate.active = "true";
   activeDates.set(todayDate);
-  historyPane.appendChild(defaultDate);
-
-
-  // Create each date from storage
-  dateArr.forEach(function (item, index) {
-    if (item.date != todayDate) {
-      let newDate = document.createElement("date-entry");
-      dateArr[index].active = "false";
-      newDate.date = item.date;
-      newDate.active = "false";
-      historyPane.appendChild(newDate);
-    }
-  });
+  buildDate();
 
   // default build all from today
   buildCurrent();
@@ -310,6 +278,10 @@ export function buildCurrent() {
     mainPane.firstChild.remove();
   }
 
+  // Sort lmao
+  const sortedBullets = bulletArr.sort((a, b) => new Date(b.date)
+    - new Date(a.date));
+
   //If no day and category select Today date entry show up
   //If only no day select, show all day with the category
   //If no category select, show no entry
@@ -320,7 +292,7 @@ export function buildCurrent() {
   }
   // all/selected categories
   else if (activeDates.size == 0) {
-    bulletArr.forEach(function (item) {
+    sortedBullets.forEach(function (item) {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
@@ -330,7 +302,7 @@ export function buildCurrent() {
   }
   // Get selected intersection of categories/date (TODO SORT)
   else {
-    bulletArr.forEach(function (item) {
+    sortedBullets.forEach(function (item) {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
@@ -346,18 +318,26 @@ function buildDate() {
   while (historyPane.firstChild) {
     historyPane.firstChild.remove();
   }
-  // Build default Today date
-  let defaultDate = document.createElement("date-entry");
-  defaultDate.date = todayDate;
-  if(activeDates.has(todayDate)){
-    defaultDate.active = "true";
-  } else { defaultDate.active = "false"; }
-  historyPane.appendChild(defaultDate);
 
+  // Sort lmao
+  const sortedDates = dateArr.sort((a, b) => new Date(b.date)
+    - new Date(a.date));
 
-  // Create each date from storage
-  dateArr.forEach(function (item, index) {
-    if (item.date != todayDate) {
+  // Create each date from sorted date arr
+  let builtDefault = false;
+  sortedDates.forEach(function (item) {
+    // Put default today Date in correct order
+    if (new Date(item.date) <= new Date(todayDate) && !builtDefault) {
+      let defaultDate = document.createElement("date-entry");
+      defaultDate.date = todayDate;
+      if(activeDates.has(todayDate)){
+        defaultDate.active = "true";
+      } else { defaultDate.active = "false"; }
+      historyPane.appendChild(defaultDate);      
+      builtDefault = true;
+    }
+    // Create all dates from sortedDate
+    if(item.date != todayDate){
       let newDate = document.createElement("date-entry");
       if(activeDates.has(item.date)){
         newDate.active = "true";
@@ -366,6 +346,15 @@ function buildDate() {
       historyPane.appendChild(newDate);
     }
   });
+  // Build default Today date if not built yet
+  if(!builtDefault){
+    let defaultDate = document.createElement("date-entry");
+    defaultDate.date = todayDate;
+    if(activeDates.has(todayDate)){
+      defaultDate.active = "true";
+    } else { defaultDate.active = "false"; }
+    historyPane.appendChild(defaultDate);
+  }
 }
 
 // Update storage when toggling active categories

@@ -105,6 +105,11 @@ document.addEventListener("click", (e) => {
     let dateElement = e.composedPath()[0].getRootNode().host;
     storage.updateActiveDates(dateElement);
   }
+  // Check bullet event
+  if (e.composedPath()[0].id == "bullet-check") {
+    let bulletElement = e.composedPath()[0].getRootNode().host;
+    storage.editBullet(bulletElement.bullet, bulletElement.bullet);
+  }
 });
 
 // Helper function for bullet showDetail button
