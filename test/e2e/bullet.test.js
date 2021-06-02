@@ -2,7 +2,7 @@ const FAIL_NOT_IMPLEMENTED = 'Not yet implemented';
 const FAIL_SHADOW_DOM = 'Unit testing requires shadow DOM interaction, TBD';
 
 beforeAll(async () => {
-  await page.goto('http://127.0.0.1:5501/sources/index.html');
+  await page.goto('http://127.0.0.1:5502/sources/index.html');
   await page.waitForTimeout(500);
 });
 

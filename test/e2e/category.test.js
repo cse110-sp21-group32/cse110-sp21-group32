@@ -4,7 +4,7 @@ const EXPECTED_TITLE = 'Homework';
 const EXPECTED_COLOR = 'red';
 
 beforeAll(async () => {
-  await page.goto('http://127.0.0.1:5501/sources/index.html');
+  await page.goto('http://127.0.0.1:5502/sources/index.html');
   await page.waitForTimeout(500);
 });
 
