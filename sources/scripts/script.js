@@ -327,5 +327,5 @@ function changeActiveDate(date) {
     } else {
       dayEntryiesRaw[i].active = false;
     }
-  });
+  }
 }
