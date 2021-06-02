@@ -22,6 +22,8 @@ body {
 body.main-view main .container {
   height: 90vh;
   width: 97.6vw;
+
+  /* margin: 0rem; */
   display: grid;
   grid-template-areas:
     "history      main cateMa"
@@ -85,7 +87,6 @@ body.main-view main .section-header-main {
   font-size: 5em;
   margin-top: 0.1rem;
   margin-bottom: 8px;
-  margin-top: auto;
 }
 
 /* Styling for the journal entries shown in the history box */
@@ -326,7 +327,6 @@ body.cateEditor cate-editor-page {
   padding-left: 1.2rem;
 }
 
-/* Stlying for category edit button */
 .checkbox {
   -webkit-appearance: none;
   background-color: #fafafa;

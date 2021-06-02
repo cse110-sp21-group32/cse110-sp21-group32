@@ -9,22 +9,11 @@ var lastReferencedElement;
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
-
-/**
- * When the add bullet button is clicked, this function is called to set the state so that the add
- * bullet modal pops up
- */
 function addBulletHandler() {
   setState("BulletEditor", null, storage.categoryArr);
 }
-
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
-
-/**
- * When the add category button is clicked, this function is called to set the state so that the add
- * category modal pops up
- */
 function addCateHandler() {
   setState("CateEditor");
 }
@@ -36,10 +25,8 @@ addEventListener("DOMContentLoaded", () => {
 
 });
 
-/**
- * Will check for click events in entire document
- * Note that submit events also register as clicks
- */
+// Will check for click events in entire document
+// Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
   // console.log(e.composedPath());
@@ -174,11 +161,7 @@ function submitBullet(formObj) {
   }
 }
 
-/**
- * Helper function for submitting new/edited category entry
- * Gets the category from the formObj, sets state to "backMain" and then adds the new category to the category box
- * @param {*} formObj 
- */
+// Helper function for submitting new/edited category entry
 function submitCategory(formObj) {
   let categoryEdit = formObj.getRootNode().host;
   setState("backMain");

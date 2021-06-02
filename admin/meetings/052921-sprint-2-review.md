@@ -40,3 +40,7 @@ On page refresh, all selected categories and dates reset.
 #### Will do
 - Start to work on the user experience
 - Pick pre-select colors
+
+
+
+

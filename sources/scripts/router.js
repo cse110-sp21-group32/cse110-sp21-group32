@@ -4,9 +4,6 @@ export const router = {};
 
 /**
  * Changes the "page" (state) that your SPA app is currently set to
- * @param {*} inputString - Used to help decide what to set state to
- * @param {*} entry - lets the function know if we are adding or editing
- * @param {*} list - The category list
  */
 router.setState = function (inputString,entry,list) {
 

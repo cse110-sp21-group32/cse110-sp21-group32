@@ -120,9 +120,7 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  /**
-   * Return the current bullet information
-   */
+  //Return the current bullet information
   get bullet() {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
@@ -135,9 +133,7 @@ class BulletEntry extends HTMLElement {
     return entryObj;
   }
 
-  /**
-   * Set the bullet information
-   */
+  //Set the bullet information
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
@@ -146,35 +142,36 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
 
-    if (newBullet.category != "Default"){
+    if(newBullet.category != "Default"){
       let category = JSON.parse(newBullet.category);
-      if (category.color=="red"){
+      if(category.color=="red"){
         this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 127, 127,0.925)";
         this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 127, 127,0.925)";
   
-      } else if (category.color=="yellow"){
+      }else if(category.color=="yellow"){
         this.shadowRoot.querySelector('.bullet').style.backgroundColor="rgba(181, 178, 110,0.925)";
         this.shadowRoot.querySelector('.des').style.backgroundColor="rgba(181, 178, 110,0.925)";
       }
     }
 
     //Set the bullet type
-    if (newBullet.type == "note"){
+    if(newBullet.type == "note"){
       this.shadowRoot.querySelector(".checkbox").style.display="none";
       this.shadowRoot.querySelector(".dash").style.display="grid";
       this.shadowRoot.querySelector(".dot").style.display="none";
 
 
-    } else if (newBullet.type == "task"){
+    }else if(newBullet.type == "task"){
       this.shadowRoot.querySelector(".checkbox").style.display="grid";
       this.shadowRoot.querySelector(".dash").style.display="none";
       this.shadowRoot.querySelector(".dot").style.display="none";
 
 
-    } else {
+    }else{
       this.shadowRoot.querySelector(".dot").style.display="grid";
       this.shadowRoot.querySelector(".checkbox").style.display="none";
       this.shadowRoot.querySelector(".dash").style.display="none";
+
     }
   }
 

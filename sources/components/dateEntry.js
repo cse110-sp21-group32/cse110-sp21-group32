@@ -44,16 +44,10 @@ class DateEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  /**
-   * Set the date information
-   */
   set date(date) {
     this.shadowRoot.querySelector(".date").innerText = date;
   }
 
-  /**
-   * Get the date information
-   */
   get date() {
     return this.shadowRoot.querySelector(".date").innerText;
   }
@@ -62,9 +56,7 @@ class DateEntry extends HTMLElement {
     return this.shadowRoot.querySelector(".active").innerText;
   }
 
-  /**
-   * Toggle the active of date
-   */
+  //Toggle the active of date
   set active(active) {
     if (active == 'true') {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
