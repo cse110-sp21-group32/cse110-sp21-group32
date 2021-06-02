@@ -145,7 +145,8 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
-
+  }
+    
   /**
    * Shortcut to return entry category
    */
