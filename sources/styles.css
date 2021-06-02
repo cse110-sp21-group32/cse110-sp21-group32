@@ -90,7 +90,7 @@ body.main-view main .section-header-side {
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
   font-size: 5em;
-  /* margin-top: 0rem; */
+  margin-top: 0.1rem;
   margin-bottom: 8px;
 }
 
