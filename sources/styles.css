@@ -90,7 +90,7 @@ body.main-view main .section-header-main {
 }
 
 /* Styling for the journal entries shown in the history box */
-body.main-view main .jornal-box-history {
+body.main-view main .journal-box-history {
   background-color: rgb(210, 221, 232);
   margin-top: 0.3em;
   padding: 0.5em;
@@ -105,7 +105,7 @@ body.main-view main .jornal-box-history {
 }
 
 /* Setting the display for the history box scrollbar */
-body.main-view main .jornal-box-history::-webkit-scrollbar {
+body.main-view main .journal-box-history::-webkit-scrollbar {
   display: none;
 }
 
@@ -166,7 +166,7 @@ body.main-view main .graph-box::-webkit-scrollbar {
 }
 
 /* Styling for the box that contains journal entries in the main cell, cell 4 (Focus) */
-body.main-view main .jornal-main-box {
+body.main-view main .journal-main-box {
   background-color: rgb(210, 221, 232);
   margin-top: 0.3em;
   padding: 0.5em;
@@ -180,7 +180,7 @@ body.main-view main .jornal-main-box {
 }
 
 /* Setting the display for the graph box scrollbar */
-body.main-view main .jornal-main-box::-webkit-scrollbar {
+body.main-view main .journal-main-box::-webkit-scrollbar {
   display: none;
 }
 

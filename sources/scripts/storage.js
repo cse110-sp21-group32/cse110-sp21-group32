@@ -146,7 +146,7 @@ export function editBullet(newBullet, oldBullet) {
       dateArr.push(newDateObj);
 
       // Update historyPane with new date
-      let historyPane = document.querySelector(".jornal-box-history");
+      let historyPane = document.querySelector(".journal-box-history");
       let newDate = document.createElement("date-entry");
       newDate.date = newBullet.date;
       newDate.active = 'false';
@@ -210,7 +210,7 @@ export function addBullet(obj) {
     dateArr.push(newDateObj);
     updateDate();
     // Update historyPane with new date
-    let historyPane = document.querySelector(".jornal-box-history");
+    let historyPane = document.querySelector(".journal-box-history");
     let newDate = document.createElement("date-entry");
     newDate.date = newBullet.date;
     newDate.active = "false";
@@ -233,7 +233,7 @@ export function addCategory(obj) {
 // Build initial screen
 export function buildDefault() {
   const categoryPane = document.querySelector(".category-box");
-  const historyPane = document.querySelector(".jornal-box-history");
+  const historyPane = document.querySelector(".journal-box-history");
   activeCategories.clear();
   activeDates.clear();
 
