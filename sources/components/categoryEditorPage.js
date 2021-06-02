@@ -89,6 +89,7 @@ class categoryEditorPage extends HTMLElement {
               padding: 3rem;
               border: 1px solid #888;
               width: 50%;
+              height:35%;
             }
             
             /* The Close Button */
@@ -115,6 +116,14 @@ class categoryEditorPage extends HTMLElement {
               color: rgb(130, 130, 130);
             
             }
+
+            .warning {
+              display:none;
+              background-color: rgb(239,223,222);
+              border-radius: 1em; 
+              padding: 10px;
+              color: rgb(157,74,70);
+            }
           </style>
           <div id="myModal" class="modal">
           
@@ -134,7 +143,11 @@ class categoryEditorPage extends HTMLElement {
                 <option value="yellow">Yellow</option>
               </select><br>
               <input type="submit" value="Confirm" id="cate-submit">
-              <input type="reset" id="reset-btn">        
+              <input type="reset" id="reset-btn">    
+              
+              <div class="warning duplicate"><strong>Error: </strong>New category with duplicate name and color</div> 
+              <div class="warning length"><strong>Error: </strong>Category name maximum length is 10 letters</div> 
+
             </form>
             
         
@@ -150,7 +163,7 @@ class categoryEditorPage extends HTMLElement {
   // Store old values in data-old attribute, if editor opened from edit button
   // This is needed if editor is closed w/o submitting
   get old() {
-    if(!this.shadowRoot.getElementById("color").dataset.old){
+    if (!this.shadowRoot.getElementById("color").dataset.old) {
       return null;
     }
     let categoryForm = {
@@ -183,6 +196,29 @@ class categoryEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("name").value = inputCategory.title;
     this.shadowRoot.getElementById("color").value = inputCategory.color;
     this.shadowRoot.querySelector(".checkbox").checked = inputCategory.checked;
+  }
+
+  //Duplicate warning
+  set duplicate(flag) {
+    if (flag) {
+      this.shadowRoot.querySelector(".duplicate").style.display =
+        "grid";
+      setTimeout(() => {
+        this.shadowRoot.querySelector(".duplicate").style.display =
+          "none";
+      }, 3000);
+    }
+  }
+
+  set lengthViolate(flag) {
+    if (flag) {
+      this.shadowRoot.querySelector(".length").style.display =
+        "grid";
+      setTimeout(() => {
+        this.shadowRoot.querySelector(".length").style.display =
+          "none";
+      }, 3000);
+    }
   }
 }
 
