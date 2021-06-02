@@ -171,8 +171,11 @@ class bulletEditorPage extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  // Store old values in data-old attribute, if editor opened from edit button
-  // This is needed if editor is closed w/o submitting
+
+  /**
+   * Store old values in data-old attribute, if editor opened from edit button
+   * This is needed if editor is closed w/o submitting
+   */
   get old() {
     if(!this.shadowRoot.getElementById("name-check-box").dataset.old){
       return null;
@@ -187,7 +190,10 @@ class bulletEditorPage extends HTMLElement {
     };
     return bulletForm;
   }
-
+  
+  /**
+   * Sets the values in the old bullet entry to the values of inputBullet
+   */
   set old(inputBullet) {
     this.shadowRoot.getElementById("description").dataset.old =
       inputBullet.description;
@@ -200,6 +206,9 @@ class bulletEditorPage extends HTMLElement {
      inputBullet.checked;
   }
 
+  /**
+   * Gets and returns a bulletForm
+   */
   get bullet() {
     let bulletForm = {
       title: this.shadowRoot.getElementById("name").value,
@@ -212,6 +221,9 @@ class bulletEditorPage extends HTMLElement {
     return bulletForm;
   }
 
+  /**
+   * Sets this to inputBullet
+   */
   set bullet(inputBullet) {
     this.shadowRoot.getElementById("description").value =
       inputBullet.description;
@@ -233,7 +245,9 @@ class bulletEditorPage extends HTMLElement {
       inputBullet.checked;
   }
 
-  //Set the category list of the editor page
+  /**
+   *  Set the category list of the editor page
+   */
   set catagoryList(inputList) {
     let categorySelect = this.shadowRoot.getElementById("category");
     inputList.forEach(function(item) {

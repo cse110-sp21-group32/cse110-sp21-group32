@@ -74,7 +74,9 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
     
-    //Get the category information
+    /**
+     * Get the category information
+     */
     get category() {
       let categoryObj = {
         title: this.shadowRoot.getElementById('category-title').innerText,
@@ -84,7 +86,9 @@ class CategoryEntry extends HTMLElement {
       return categoryObj;
     }
 
-    //Set the category information
+    /**
+     * Set the category information
+     */
     set category(newCategory) {
       this.shadowRoot.getElementById('category-title').innerText =newCategory.title;
       this.shadowRoot.getElementById('category-color').innerText =newCategory.color;
@@ -93,11 +97,12 @@ class CategoryEntry extends HTMLElement {
       }else if(newCategory.color=="yellow"){
         this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 178, 110,0.925)";
       }
-
-      this.shadowRoot.getElementById('category-check').checked =newCategory.checked;
+      this.shadowRoot.querySelector('.checkbox').checked =true;
     }
 
-    //Quickly check if this category is checked
+    /**
+     * Quickly check if this category is checked
+     */
     get checked(){
       return this.shadowRoot.getElementById('category-check').checked;
     }
@@ -109,10 +114,6 @@ class CategoryEntry extends HTMLElement {
         this.shadowRoot.getElementById('category-check').checked =false;
       }
     }
-
-
-
-  
   }
   
   customElements.define('category-entry', CategoryEntry);
