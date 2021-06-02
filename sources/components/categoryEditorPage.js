@@ -147,8 +147,11 @@ class categoryEditorPage extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  // Store old values in data-old attribute, if editor opened from edit button
-  // This is needed if editor is closed w/o submitting
+  
+  /**
+   * Store old values in data-old attribute, if editor opened from edit button
+   * This is needed if editor is closed w/o submitting
+   */
   get old() {
     if(!this.shadowRoot.getElementById("color").dataset.old){
       return null;
@@ -161,6 +164,9 @@ class categoryEditorPage extends HTMLElement {
     return categoryForm;
   }
 
+  /**
+   * Sets the category to inputCategory
+   */
   set old(inputCategory) {
     this.shadowRoot.getElementById("name").dataset.old = inputCategory.title;
     this.shadowRoot.getElementById("color").dataset.old = inputCategory.color;
@@ -168,7 +174,9 @@ class categoryEditorPage extends HTMLElement {
       inputCategory.checked;
   }
 
-  //Return the current category information on the page
+  /**
+   * Return the current category information on the page
+   */
   get category() {
     let categoryForm = {
       title: this.shadowRoot.getElementById("name").value,
@@ -178,7 +186,9 @@ class categoryEditorPage extends HTMLElement {
     return categoryForm;
   }
 
-  //Set the current category information on the page
+  /**
+   * Set the current category information on the page
+   */
   set category(inputCategory) {
     this.shadowRoot.getElementById("name").value = inputCategory.title;
     this.shadowRoot.getElementById("color").value = inputCategory.color;

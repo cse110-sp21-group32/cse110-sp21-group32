@@ -1,8 +1,7 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
+# We plan on using one workflow to run all the jobs (build, test, linting, and documentation)
 name: CI/CD Pipeline
 
+# The workflow will be activated on every pull request made to main and every push made to [main, Unit-Testing] branches
 on:
   pull_request:
     branches:
@@ -11,61 +10,81 @@ on:
     branches:
       - '*'
 
+# All of our jobs will be tested on ubuntu-latest and node versions [10.x, 12.x, 14.x, 15.x]
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
     - name: npm install and build webpack
       run:
         npm install
         npm run build --if-present
-#     - uses: actions/upload-artifact@main
-#       with:
-#         name: webpack artifacts
-#         path: ~/
-    
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-    steps:
-      - uses: actions/checkout@v2
-#       - uses: actions/download-artifact@main
-#         with: 
-#           name: webpack artifacts
-#           path: ~/
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install, and test
-        run:
-          npm install
-          npm test
-    
+    # Tests are currently being implemented in the Unit-Testing branch. It will be merge once they're stable
+#   test:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [10.x, 12.x, 14.x, 15.x]
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - name: Install npm dependencies
+#         run:
+#           npm install
+#       - name: Install jest
+#         run:
+#           npm install --save-dev jest
+#       - name: Install execa for e2e testing
+#         run:
+#           npm install --save execa
+#       - name: Install babel
+#         run:
+#           npm install --save-dev jest babel-jest @babel/core @babel/preset-env
+#       - name: Run tests
+#         run:
+#           npm run test
+          
+          
   styling:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-        
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
+      - name: Run Super-Linter 
+        uses: docker://ghcr.io/github/super-linter:slim-v4
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_INCLUDE: .*sources/.*
-          CSS_FILE_NAME: .stylelintrc.json
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_JSCPD: false
+          LINTER_RULES_PATH: '.'
+          VALIDATE_CSS: True
+          VALIDATE_HTML: True
+          VALIDATE_JAVASCRIPT_ES: True
+          CSS_FILE_NAME: .stylelintrc.yml
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+          
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build doc generation
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./sources
+          recurse: true
+          output_dir: ./specs/docs
+      - uses: actions/upload-artifact@main
+        with:
+          name: documentation
+          path: ./specs/docs
+
