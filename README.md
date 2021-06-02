@@ -1,6 +1,11 @@
 # Team Name
 **Frozone**
 
+## Pages
+[Relative link](./sources/index.html)
+
+[Published link](https://cse110-sp21-group32.github.io/cse110-sp21-group32/)
+
 ## Initial Brand
 <img src="admin/branding/teamLogo.png" height="200" width="200">
 
@@ -13,5 +18,5 @@
 ## Link to phase2.md
 [admin/cipipeline/phas2.md](admin/cipipeline/phas2.md)
 
-# Project Domain
+## Project Domain
 Task manager
