@@ -189,6 +189,7 @@ function submitCategory(formObj) {
     }
     // Else if called from editCategory, edit
     else {
+      console.log(1);
       storage.editCategory(
         categoryEdit.category,
         lastReferencedElement.category

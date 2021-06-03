@@ -108,6 +108,7 @@ export function deleteCategory(obj) {
   updateBullet();
 
   let index = 0;
+  obj.checked = false;
   for (let item of categoryArr) {
     if (JSON.stringify(obj.category) == JSON.stringify(item)) {
       categoryArr.splice(index, 1);
@@ -128,11 +129,13 @@ export function editBullet(newBullet, oldBullet) {
   let hasBeenDeleted = false;
   oldBullet.checked = false;
   bulletArr.forEach(function (item, index) {
-    item.checked = false;
+    let bulletStr = JSON.parse(JSON.stringify(item));
+    bulletStr.checked = false;
     if (oldBullet.date == item.date) {
       dateEntryCount++;
     }
-    if (JSON.stringify(oldBullet) == JSON.stringify(item) && !hasBeenDeleted) {
+    if (JSON.stringify(oldBullet) == JSON.stringify(bulletStr)
+      && !hasBeenDeleted) {
       bulletArr[index] = newBullet;
       hasBeenDeleted = true;
     }
@@ -257,9 +260,9 @@ export function buildDefault() {
   categoryArr.forEach(function (item, index) {
     let newCategory = document.createElement("category-entry");
     categoryArr[index].checked = false;
-    item.checked = true;
-    newCategory.category = item;
+    newCategory.category = {title:item.title, color:item.color, checked:true};
     categoryPane.appendChild(newCategory);
+    console.log(newCategory.category);
     updateActiveCategories(newCategory, false);
   });
 

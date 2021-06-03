@@ -92,6 +92,8 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 127, 127,0.925)";
     } else if (newCategory.color == "yellow") {
       this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 178, 110,0.925)";
+    } else if (newCategory.color == "blue") {
+      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(167, 200, 220,0.925)";
     }
 
     this.shadowRoot.getElementById('category-check').checked = newCategory.checked;
