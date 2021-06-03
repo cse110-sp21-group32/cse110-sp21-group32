@@ -27,7 +27,13 @@ Team 32 Frozone
 
 ## Notes
 - Team update
- - Next sprint will focus on the inline editor
+    -    Found bug with editing category color and logged it in github
+    -    Need to move index.html to top level directory
+    -    Everyone needs to record their own part of the final video
+        - quick shpeal (~30 sec) about thier role in the project   
+    -   Sent out whentomeet for retro meeting 
+    -   color for categories will stick with a nordic theme
+- Next sprint will focus on the inline editor
 
 
 ## Attendence
@@ -35,9 +41,9 @@ Team 32 Frozone
  - [X] Andres Gutierrez
  - [X] Beilei He
  - [X] Richard Yang
- - [ ] Rudy Thurston
+ - [X] Rudy Thurston
  - [X] Ryan Lay
  - [X] Sanjai Subramanian
- - [ ] Tony Liu
+ - [X] Tony Liu
  - [X] Yotam Blum
 
