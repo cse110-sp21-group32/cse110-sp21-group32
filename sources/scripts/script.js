@@ -129,7 +129,7 @@ function submitBullet(formObj) {
   //Check the length of new title
   let tooLong = false;
   let legnth = bulletEdit.bullet.title.length;
-  if (legnth > 10) {
+  if (legnth > 20) {
     tooLong = true;
   }
 
