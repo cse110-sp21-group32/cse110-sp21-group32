@@ -78,7 +78,7 @@ export function deleteBullet(obj) {
     if (obj.bullet.date == bulletArr[i].date) {
       dateEntryCount++;
     }
-    let item = bulletArr[i];
+    let item = JSON.parse(JSON.stringify(bulletArr[i]));
     item.checked = false;
     if (JSON.stringify(bullet) == JSON.stringify(item) && !hasBeenDeleted) {
       bulletArr.splice(i, 1);
@@ -86,7 +86,6 @@ export function deleteBullet(obj) {
     }
   }
   updateBullet();
-  console.log(dateEntryCount);
 
   // If last entry in date, delete date
   if (dateEntryCount == 1) {
@@ -121,7 +120,6 @@ export function deleteCategory(obj) {
   updateBullet();
 
   let index = 0;
-  obj.checked = false;
   for (let item of categoryArr) {
     //Check title and color for equality
     //May be different in check
