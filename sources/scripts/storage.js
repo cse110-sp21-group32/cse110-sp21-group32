@@ -36,7 +36,10 @@ export function updateDate() {
   myStorage.setItem("dateArr", JSON.stringify(dateArr));
 }
 
-// Delete bullet from storage
+/**
+ * Delete bullet from storage
+ * @param {*} obj - the bullet to delete
+ */
 export function deleteBullet(obj) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
@@ -66,7 +69,12 @@ export function deleteBullet(obj) {
     defaultCurrent();
   }
 }
-// Delete category from storage
+
+/**
+ * Delete category from storage
+ * @param {*} obj - the category to be deleted
+ * @returns - does not return any value
+ */
 export function deleteCategory(obj) {
   // Default all bullets with category to be deleted
   let categoryKey = JSON.stringify(
@@ -102,7 +110,11 @@ export function deleteCategory(obj) {
   buildCurrent();
 }
 
-// Edit bullet in storage
+/**
+ * Edit bullet in storage
+ * @param {*} newBullet - the new bullet whose data should be used
+ * @param {*} oldBullet - the old bullet whose data needs to be updated
+ */
 export function editBullet(newBullet, oldBullet) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
@@ -158,7 +170,12 @@ export function editBullet(newBullet, oldBullet) {
     buildCurrent();
   }
 }
-// Edit category in storage
+
+/**
+ * Edit category in storage
+ * @param {*} newCategory - the new category whose data should be used
+ * @param {*} oldCategory - the old category whose data needs to be updated
+ */
 export function editCategory(newCategory, oldCategory) {
   // Edit all bullets with category
   let oldKey = { title: oldCategory.title, color: oldCategory.color };
@@ -193,6 +210,10 @@ export function editCategory(newCategory, oldCategory) {
   buildCurrent();
 }
 
+/**
+ * adds a new bullet to storage
+ * @param {*} obj - the bullet to add to the storage
+ */
 export function addBullet(obj) {
   const newBullet = obj.bullet;
   bulletArr.push(newBullet);
@@ -217,6 +238,11 @@ export function addBullet(obj) {
     historyPane.appendChild(newDate);
   }
 }
+
+/**
+ * add a new category to storage
+ * @param {*} obj - the category to add to storage
+ */
 export function addCategory(obj) {
   const newCategory = obj.category;
   obj.active="true"
@@ -230,7 +256,9 @@ export function addCategory(obj) {
   }
 }
 
-// Build initial screen
+/**
+ * Build initial screen
+ */
 export function buildDefault() {
   const categoryPane = document.querySelector(".category-box");
   const historyPane = document.querySelector(".journal-box-history");
@@ -263,7 +291,9 @@ export function buildDefault() {
   buildCurrent();
 }
 
-// Build current selection of dates and categories
+/**
+ * Build current selection of dates and categories
+ */
 export function buildCurrent() {
   // Purge all bullet elements
   const mainPane = document.querySelector(".entry-list");
@@ -328,7 +358,10 @@ export function buildCurrent() {
   }
 }
 
-// Update storage when toggling active categories
+/**
+ * Update storage when toggling active categories
+ * @param {*} categoryObj - category object used to update the active Categories
+ */
 export function updateActiveCategories(categoryObj) {
   let categoryKey = JSON.stringify(
     { title: categoryObj.category.title, color: categoryObj.category.color });
@@ -340,7 +373,10 @@ export function updateActiveCategories(categoryObj) {
   buildCurrent();
 }
 
-// Update storage when toggling active dates
+/**
+ * Update storage when toggling active dates
+ * @param {*} dateObj - date object used to update the active dates
+ */
 export function updateActiveDates(dateObj) {
   if (dateObj.active == "true") {
     activeDates.delete(dateObj.date);
