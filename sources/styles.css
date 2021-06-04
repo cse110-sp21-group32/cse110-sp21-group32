@@ -22,7 +22,6 @@ body {
 body.main-view main .container {
   height: 90vh;
   width: 97.6vw;
-  /* margin: 0rem; */
   display: grid;
   grid-template-areas:
     "history      main cateMa"
@@ -37,31 +36,26 @@ body.main-view main .container {
 /* Stlying for the first cell(top left cell, add button) */
 body.main-view main .cell-1 {
   height: 5rem;
-  /* background: rgb(14, 195, 255); */
   grid-area: plus;
 }
 
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
-  /* background-color: aqua; */
   grid-area: history;
 }
 
 /* Stlying for the third cell (Bottom left cell, Graph) */
 body.main-view main .cell-3 {
-  /* background: limegreen; */
   grid-area: footer;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
-  /* background: gold; */
   grid-area: main;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
-  /* background: rgb(250, 151, 230); */
   grid-area: cateMa;
 }
 
@@ -75,7 +69,6 @@ body.main-view main .cell {
 /* Styling for the Section containers */
 body.main-view main .section-container {
   text-align: left;
-  /* margin-top: 0em; */
 }
 
 /* Styling for the headers in the left cells (Overdue and Graph) */
@@ -90,8 +83,8 @@ body.main-view main .section-header-side {
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
   font-size: 5em;
-  margin-top: 0.1rem;
   margin-bottom: 8px;
+  margin-top: auto;
 }
 
 /* Styling for the journal entries shown in the history box */
@@ -124,6 +117,19 @@ body.main-view main .bullet {
   border-radius: 0.5em;
   margin: 0.3rem;
   text-align: left;
+  padding-left: 0.5rem;
+}
+
+/* Styling for date entries */
+body.main-view main .date {
+  display: grid;
+  align-items: center;
+  height: 3em;
+  font-size: 1.3em;
+  background-color: rgba(167, 200, 220, 0.925);
+  border-radius: 0.5em;
+  margin: 0.3rem;
+  text-align: center;
   padding-left: 0.5rem;
 }
 
@@ -215,10 +221,6 @@ body.main-view main .big-button {
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
 body.main-view main .big-button:hover {
   background-color: rgb(72, 116, 142);
-}
-
-body.main-view main .big-button:active {
-  background-color: rgb(47, 77, 94);
 }
 
 /* Stlying for box containing the categories in cell 5 */
@@ -332,6 +334,7 @@ body.cateEditor cate-editor-page {
   padding-left: 1.2rem;
 }
 
+/* Stlying for category edit button */
 .checkbox {
   -webkit-appearance: none;
   background-color: #fafafa;
@@ -341,24 +344,14 @@ body.cateEditor cate-editor-page {
   position: relative;
 }
 
-.checkbox:checked:after {
-  content: '\2714';
+/* Stlying for category edit button */
+.checkbox:checked::after {
+  content: "\2714";
   font-size: 50px;
   position: absolute;
   top: -20px;
   left: 5px;
   color: #0994ff;
-}
-
-body.main-view main .date {
-  display: grid;
-  align-items: center;
-  height: 3em;
-  font-size: 1.3em;
-  background-color: rgba(167, 200, 220, 0.925);
-  border-radius: 0.5em;
-  margin: 0.3rem;
-  text-align: center;
 }
 
 body.main-view main .date:hover {

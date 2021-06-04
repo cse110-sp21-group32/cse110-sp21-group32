@@ -41,6 +41,9 @@ On page refresh, all selected categories and dates reset.
 - Start to work on the user experience
 - Pick pre-select colors
 
-
+### Documentation
+#### What’s done:
+- Have documented most functions in the scripts
+- Documentation auto generation is completed
 
 
