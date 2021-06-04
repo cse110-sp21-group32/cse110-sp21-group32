@@ -269,7 +269,7 @@ export function addCategory(obj) {
 
 // Build initial screen
 export function buildDefault() {
-  const historyPane = document.querySelector(".jornal-box-history");
+  const historyPane = document.querySelector(".journal-box-history");
   const categoryPane = document.querySelector(".category-box");
   activeCategories.clear();
   activeDates.clear();
@@ -343,7 +343,7 @@ export function buildCurrent() {
 
 // Call to update date viewer in real time
 function buildDate() {
-  const historyPane = document.querySelector(".jornal-box-history");
+  const historyPane = document.querySelector(".journal-box-history");
   while (historyPane.firstChild) {
     historyPane.firstChild.remove();
   }
