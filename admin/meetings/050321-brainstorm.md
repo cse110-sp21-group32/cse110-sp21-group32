@@ -18,6 +18,7 @@ Team 32 Frozone
 
 ## Notes
  - Mainly talk about the designs logics of the application
+ - Detials in mirror
 
 
 ## Attendence

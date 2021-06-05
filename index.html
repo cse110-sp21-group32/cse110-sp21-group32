@@ -4,19 +4,17 @@
     <title>Bullet Journal</title>
     <meta name="keywords" content="journal" />
     <meta name="author" content="Frozon" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./sources/styles.css" />
   </head>
 
   <body class="main-view default-view">
-    <div class="header">Bullet journal</div>
+    <div class="header">Bullet Journal</div>
     <main>
       <div class="container">
         <div class="cell cell-2">
           <div class="section-container">
             <h2 class="section-header-side">Day</h2>
             <div class="journal-box-history">
-              <div class="date">4/17</div>
-
             </div>
           </div>
         </div>
@@ -37,8 +35,8 @@
             <h2 class="section-header-side">Categories</h2>
             <div class="category-box"></div>
             <div class="big-button new-button" id="add-cate-button">Add Category</div>
-            <div class="big-button">Select All</div>
-            <div class="big-button">Deselect All</div>
+            <div class="big-button" id="select-all">Select All</div>
+            <div class="big-button" id="deselect-all">Deselect All</div>
           </div>
         </div>
       </div>
@@ -48,15 +46,16 @@
     <cate-editor-page></cate-editor-page>
 
     <!-- journal-entry web component -->
-    <script src="./components/bulletEditorPage.js" type="module"></script>
-    <script src="./components/categoryEditorPage.js" type="module"></script>
-    <script src="./components/bulletEntry.js" type="module"></script>
-    <script src="./components/categoryEntry.js" type="module"></script>
+    <script src="./sources/components/bulletEditorPage.js" type="module"></script>
+    <script src="./sources/components/categoryEditorPage.js" type="module"></script>
+    <script src="./sources/components/bulletEntry.js" type="module"></script>
+    <script src="./sources/components/categoryEntry.js" type="module"></script>
+    <script src="./sources/components/dateEntry.js" type="module"></script>
 
     <!-- Router Script -->
-    <script src="./scripts/router.js" type="module"></script>
+    <script src="./sources/scripts/router.js" type="module"></script>
 
     <!-- Main Script -->
-    <script src="./scripts/script.js" type="module"></script>
+    <script src="./sources/scripts/script.js" type="module"></script>
   </body>
 </html>

@@ -353,3 +353,25 @@ body.cateEditor cate-editor-page {
   left: 5px;
   color: #0994ff;
 }
+
+body.main-view main .date:hover {
+  display: grid;
+  align-items: center;
+  height: 3em;
+  font-size: 1.3em;
+  background-color: rgba(123, 151, 169, 0.925);
+  border-radius: 0.5em;
+  margin: 0.3rem;
+  text-align: center;
+}
+
+body.main-view main .date:active {
+  display: grid;
+  align-items: center;
+  height: 3em;
+  font-size: 1.3em;
+  background-color: rgba(60, 77, 87, 0.925);
+  border-radius: 0.5em;
+  margin: 0.3rem;
+  text-align: center;
+}

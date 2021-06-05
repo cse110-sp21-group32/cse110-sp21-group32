@@ -116,7 +116,7 @@ class categoryEditorPage extends HTMLElement {
             
             }
           </style>
-          <div id="myModal" class="modal">
+          <div id="my-modal" class="modal">
           
 
           <!-- Modal content -->
@@ -129,15 +129,9 @@ class categoryEditorPage extends HTMLElement {
               <input type="checkbox" id="name-check-box" class="checkbox" style="display: none">
               <input type="text" id="name" name="name" placeholder="Name"><br>
               <select id="color" name="color">
-                <option value="placeholder">Select a color</option>
-                <option value="red">Red</option>
                 <option value="blue">Blue</option>
+                <option value="red">Red</option>
                 <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="purple">Purple</option>
-                <option value="pink">Pink</option>
-                <option value="light blue">Light Blue</option>
               </select><br>
               <input type="submit" value="Confirm" id="cate-submit">
               <input type="reset" id="reset-btn">        
@@ -153,10 +147,13 @@ class categoryEditorPage extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  // Store old values in data-old attribute, if editor opened from edit button
-  // This is needed if editor is closed w/o submitting
+  
+  /**
+   * Store old values in data-old attribute, if editor opened from edit button
+   * This is needed if editor is closed w/o submitting
+   */
   get old() {
-    if (!this.shadowRoot.querySelector(".checkbox").dataset.old) {
+    if(!this.shadowRoot.getElementById("color").dataset.old){
       return null;
     }
     let categoryForm = {
@@ -167,6 +164,9 @@ class categoryEditorPage extends HTMLElement {
     return categoryForm;
   }
 
+  /**
+   * Sets the category to inputCategory
+   */
   set old(inputCategory) {
     this.shadowRoot.getElementById("name").dataset.old = inputCategory.title;
     this.shadowRoot.getElementById("color").dataset.old = inputCategory.color;
@@ -174,6 +174,9 @@ class categoryEditorPage extends HTMLElement {
       inputCategory.checked;
   }
 
+  /**
+   * Return the current category information on the page
+   */
   get category() {
     let categoryForm = {
       title: this.shadowRoot.getElementById("name").value,
@@ -183,6 +186,9 @@ class categoryEditorPage extends HTMLElement {
     return categoryForm;
   }
 
+  /**
+   * Set the current category information on the page
+   */
   set category(inputCategory) {
     this.shadowRoot.getElementById("name").value = inputCategory.title;
     this.shadowRoot.getElementById("color").value = inputCategory.color;
