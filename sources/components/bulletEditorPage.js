@@ -98,6 +98,7 @@ class bulletEditorPage extends HTMLElement {
               margin: auto;
               padding: 2rem;
               width: 50%;
+              height:55%
             }
             
             /* The Close Button */
@@ -128,7 +129,14 @@ class bulletEditorPage extends HTMLElement {
             #name-check-box {
               display:none;
             }
-            
+
+            .warning {
+              display:none;
+              background-color: rgb(239,223,222);
+              border-radius: 1em; 
+              padding: 10px;
+              color: rgb(157,74,70);
+            }
           </style>
           <!-- The Modal -->
           <div id="my-modal" class="modal">
@@ -159,6 +167,9 @@ class bulletEditorPage extends HTMLElement {
             
                   <input type="submit" value="Confirm" id="bulletSubmit">
                   <input type="reset" id="reset-btn">
+
+                  <div class="warning length"><strong>Error: </strong>Title maximum length is 10 letters </div> 
+
                 </form>
             
               <!-- Main Script -->
@@ -266,6 +277,17 @@ class bulletEditorPage extends HTMLElement {
         categorySelect.appendChild(opt);
       }
     });
+  }
+
+  set lengthViolate(flag) {
+    if (flag) {
+      this.shadowRoot.querySelector(".length").style.display =
+        "grid";
+      setTimeout(() => {
+        this.shadowRoot.querySelector(".length").style.display =
+          "none";
+      }, 3000);
+    }
   }
 }
 

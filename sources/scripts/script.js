@@ -9,22 +9,11 @@ var lastReferencedElement;
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
-
-/**
- * When the add bullet button is clicked, this function is called to set the state so that the add
- * bullet modal pops up
- */
 function addBulletHandler() {
   setState("BulletEditor", null, storage.categoryArr);
 }
-
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
-
-/**
- * When the add category button is clicked, this function is called to set the state so that the add
- * category modal pops up
- */
 function addCateHandler() {
   setState("CateEditor");
 }
@@ -33,13 +22,10 @@ function addCateHandler() {
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
   storage.buildDefault();
-
 });
 
-/**
- * Will check for click events in entire document
- * Note that submit events also register as clicks
- */
+// Will check for click events in entire document
+// Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
   // console.log(e.composedPath());
@@ -91,30 +77,37 @@ document.addEventListener("click", (e) => {
   // Select all categories
   if (e.composedPath()[0].id == "select-all") {
     let categoryElements = document.querySelectorAll("category-entry");
-    categoryElements.forEach(element => {
-      element.active="true";
-      storage.updateActiveCategories(element);
+    categoryElements.forEach((element) => {
+      element.checked = true;
+      storage.updateActiveCategories(element, false);
     });
+    storage.buildCurrent();
   }
 
-    // Deselect all categories
-    if (e.composedPath()[0].id == "deselect-all") {
-      let categoryElements = document.querySelectorAll("category-entry");
-      categoryElements.forEach(element => {
-        element.active="false";
-        storage.updateActiveCategories(element);
-      });
-    }
+  // Deselect all categories
+  if (e.composedPath()[0].id == "deselect-all") {
+    let categoryElements = document.querySelectorAll("category-entry");
+    categoryElements.forEach((element) => {
+      element.checked = false;
+      storage.updateActiveCategories(element, false);
+    });
+    storage.buildCurrent();
+  }
 
   // Check category event
   if (e.composedPath()[0].id == "category-check") {
     let categoryElement = e.composedPath()[0].getRootNode().host;
-    storage.updateActiveCategories(categoryElement);
+    storage.updateActiveCategories(categoryElement, true);
   }
   // Select date event
   if (e.composedPath()[0].className == "date") {
     let dateElement = e.composedPath()[0].getRootNode().host;
     storage.updateActiveDates(dateElement);
+  }
+  // Check bullet event
+  if (e.composedPath()[0].id == "bullet-check") {
+    let bulletElement = e.composedPath()[0].getRootNode().host;
+    storage.editBullet(bulletElement.bullet, bulletElement.bullet);
   }
 });
 
@@ -131,70 +124,85 @@ function showDetail(detailButton) {
 // Helper function for submitting new/edited bullet entry
 function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
-  setState("backMain");
-  // If not called from editBullet, create new bullet
-  if (!bulletEdit.old) {
-    let newEntry = document.createElement("bullet-entry");
-    let mainPane = document.querySelector(".entry-list");
-    newEntry.bullet = bulletEdit.bullet;
-    mainPane.appendChild(newEntry);
-    // add bullet storage
-    storage.addBullet(newEntry);
+  let cateEditor = document.querySelector("bullet-editor-page");
 
-    //Update category storage if needed
-    let currentCate = JSON.parse(bulletEdit.bullet.category);
-    if(currentCate.title=="Default"){
-      let noDefault = true;
-      storage.categoryArr.forEach(element => {
-        if(element.title=="Default"){
-          noDefault = false;
-        }
-      });
-      if(noDefault){
-        let newCategory = document.createElement("category-entry");
-        let defaultCategory={
-          title: "Default",
-          color: "blue",
-          checked: true
-        }
-        newCategory.category=defaultCategory;
-        let mainPane = document.querySelector(".category-box");
-        mainPane.appendChild(newCategory);
-        storage.addCategory(newCategory);
-      }
-
-    }
-
-    // TODO maybe shouldnt always be appended??
+  //Check the length of new title
+  let tooLong = false;
+  let legnth = bulletEdit.bullet.title.length;
+  if (legnth > 20) {
+    tooLong = true;
   }
-  // Else if called from editBullet, edit
-  else {
-    storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
-    lastReferencedElement.bullet = bulletEdit.bullet;
+
+  if (!tooLong) {
+    setState("backMain");
+    // If not called from editBullet, create new bullet
+    if (!bulletEdit.old) {
+      let newEntry = document.createElement("bullet-entry");
+      newEntry.bullet = bulletEdit.bullet;
+      storage.addBullet(newEntry);
+    }
+    // Else if called from editBullet, edit
+    else {
+      storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
+      lastReferencedElement.bullet = bulletEdit.bullet;
+    }
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
-/**
- * Helper function for submitting new/edited category entry
- * Gets the category from the formObj, sets state to "backMain" and then adds the new category to the category box
- * @param {*} formObj 
- */
+// Helper function for submitting new/edited category entry
 function submitCategory(formObj) {
   let categoryEdit = formObj.getRootNode().host;
-  setState("backMain");
+  //Check if the new category is duplicate
+  let newCategory = categoryEdit.category;
+  let duplicate = false;
+  storage.categoryArr.forEach((category) => {
+    if (
+      newCategory.title == category.title &&
+      newCategory.color == category.color
+    ) {
+      duplicate = true;
+    }
+  });
 
-  // If not called from editBullet, create new bullet
-  if (!categoryEdit.old) {
-    let newEntry = document.createElement("category-entry");
-    let mainPane = document.querySelector(".category-box");
-    newEntry.category = categoryEdit.category;
-    mainPane.appendChild(newEntry);
-    storage.addCategory(newEntry);
+  //Check if new category name is too long
+  let tooLong = false;
+  let length = newCategory.title.length;
+  if (length > 10) {
+    tooLong = true;
   }
-  // Else if called from editCategory, edit
-  else {
-    storage.editCategory(categoryEdit.category, lastReferencedElement.category);
-    lastReferencedElement.category = categoryEdit.category;
+  let cateEditor = document.querySelector("cate-editor-page");
+
+  //Proceed if not duplicate
+  //Stop and show error if one constraint is violated
+  if (!duplicate && !tooLong) {
+    setState("backMain");
+
+    // If not called from editBullet, create new bullet
+    if (!categoryEdit.old) {
+      let newEntry = document.createElement("category-entry");
+      let mainPane = document.querySelector(".category-box");
+      newEntry.category = categoryEdit.category;
+      mainPane.appendChild(newEntry);
+      storage.addCategory(newEntry);
+    }
+    // Else if called from editCategory, edit
+    else {
+      console.log(1);
+      storage.editCategory(
+        categoryEdit.category,
+        lastReferencedElement.category
+      );
+      lastReferencedElement.category = categoryEdit.category;
+    }
+  } else if (duplicate && tooLong) {
+    cateEditor.duplicate = true;
+    cateEditor.lengthViolate = true;
+  } else if (duplicate) {
+    cateEditor.duplicate = true;
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
@@ -204,15 +212,5 @@ function deleteBullet(bulletObj) {
 }
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
-  if(categoryObj.category.title != "Default"){
-    categoryObj.remove();
-  }
-  
-  // Set all bullets of deleted category to default
-  let bulletElements = document.querySelectorAll("bullet-entry");
-  bulletElements.forEach(element => {
-    if(element.bullet.category == categoryObj.category.title){
-      element.category="Default";
-    }
-  });
+  categoryObj.remove();
 }
