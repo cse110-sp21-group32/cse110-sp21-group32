@@ -1,10 +1,10 @@
 class CategoryEntry extends HTMLElement {
-    constructor() {
-      super();
-  
-      const template = document.createElement('template');
-  
-      template.innerHTML = `
+  constructor() {
+    super();
+
+    const template = document.createElement('template');
+
+    template.innerHTML = `
           <style>
            .cate-entry .category-inner-entry{
               height: 3.5em;
@@ -69,68 +69,69 @@ class CategoryEntry extends HTMLElement {
             </div>
           </section>
           `;
-  
-      this.attachShadow({ mode: 'open' })
-      this.shadowRoot.appendChild(template.content.cloneNode(true))
-    }
-    
-    /**
-     * Get the category information
-     */
-    get category() {
-      let categoryObj = {
-        title: this.shadowRoot.getElementById('category-title').innerText,
-        color: this.shadowRoot.getElementById('category-color').innerText,
-        checked: this.shadowRoot.getElementById('category-check').checked,
-      };
-      return categoryObj;
-    }
 
-    /**
-     * Set the category information
-     */
-    set category(newCategory) {
-      this.shadowRoot.getElementById('category-title').innerText =newCategory.title;
-      this.shadowRoot.getElementById('category-color').innerText =newCategory.color;
-      if(newCategory.color=="red"){
-        this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 127, 127,0.925)";
-      }else if(newCategory.color=="yellow"){
-        this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor="rgba(181, 178, 110,0.925)";
-      }
-      this.shadowRoot.querySelector('.checkbox').checked =true;
-    }
-
-    /**
-     * Quickly check if this category is checked
-     */
-    get checked(){
-      return this.shadowRoot.getElementById('category-check').checked;
-    }
-
-    set active(flag){
-      if(flag == "true"){
-        this.shadowRoot.getElementById('category-check').checked =true;
-      }else{
-        this.shadowRoot.getElementById('category-check').checked =false;
-      }
-    }
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
-  
-  customElements.define('category-entry', CategoryEntry);
-  
-  /**
-   * JSON Format:
-   * image and audio will only sometimes be there
-   *
-   * {
-   *   title: 'foo',
-   *   date: 'foo',
-   *   content: 'foo',
-   *   image: {
-   *     src: 'foo.com/bar.jpg',
-   *     alt: 'foo'
-   *   },
-   *   audio: 'foo.com/bar.mp3'
-   * }
-   */
-  
+
+  //Get the category information
+  get category() {
+    let categoryObj = {
+      title: this.shadowRoot.getElementById('category-title').innerText,
+      color: this.shadowRoot.getElementById('category-color').innerText,
+      checked: this.shadowRoot.getElementById('category-check').checked,
+    };
+    return categoryObj;
+  }
+
+  //Set the category information
+  set category(newCategory) {
+    this.shadowRoot.getElementById('category-title').innerText = newCategory.title;
+    this.shadowRoot.getElementById('category-color').innerText = newCategory.color;
+    if (newCategory.color == "red") {
+      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 127, 127,0.925)";
+    } else if (newCategory.color == "yellow") {
+      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 178, 110,0.925)";
+    } else if (newCategory.color == "blue") {
+      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(167, 200, 220,0.925)";
+    }
+
+    this.shadowRoot.getElementById('category-check').checked = newCategory.checked;
+  }
+
+  //Quickly check if this category is checked
+  get checked() {
+    return this.shadowRoot.getElementById('category-check').checked;
+  }
+
+  set checked(flag) {
+    this.shadowRoot.getElementById('category-check').checked = flag;
+  }
+
+  set default(param){
+    this.shadowRoot.getElementById('cate-edit').remove();
+    this.shadowRoot.getElementById('cate-delete').remove();
+  }
+
+
+
+}
+
+customElements.define('category-entry', CategoryEntry);
+
+/**
+ * JSON Format:
+ * image and audio will only sometimes be there
+ *
+ * {
+ *   title: 'foo',
+ *   date: 'foo',
+ *   content: 'foo',
+ *   image: {
+ *     src: 'foo.com/bar.jpg',
+ *     alt: 'foo'
+ *   },
+ *   audio: 'foo.com/bar.mp3'
+ * }
+ */
+

@@ -9,22 +9,11 @@ var lastReferencedElement;
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
-
-/**
- * When the add bullet button is clicked, this function is called to set the state so that the add
- * bullet modal pops up
- */
 function addBulletHandler() {
   setState("BulletEditor", null, storage.categoryArr);
 }
-
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
-
-/**
- * When the add category button is clicked, this function is called to set the state so that the add
- * category modal pops up
- */
 function addCateHandler() {
   setState("CateEditor");
 }
@@ -33,13 +22,10 @@ function addCateHandler() {
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
   storage.buildDefault();
-
 });
 
-/**
- * Will check for click events in entire document
- * Note that submit events also register as clicks
- */
+// Will check for click events in entire document
+// Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
   // console.log(e.composedPath());
@@ -91,52 +77,41 @@ document.addEventListener("click", (e) => {
   // Select all categories
   if (e.composedPath()[0].id == "select-all") {
     let categoryElements = document.querySelectorAll("category-entry");
-    categoryElements.forEach(element => {
-      element.active="true";
-      storage.updateActiveCategories(element);
+    categoryElements.forEach((element) => {
+      element.checked = true;
+      storage.updateActiveCategories(element, false);
     });
+    storage.buildCurrent();
   }
 
-    // Deselect all categories
-    if (e.composedPath()[0].id == "deselect-all") {
-      let categoryElements = document.querySelectorAll("category-entry");
-      categoryElements.forEach(element => {
-        element.active="false";
-        storage.updateActiveCategories(element);
-      });
-    }
+  // Deselect all categories
+  if (e.composedPath()[0].id == "deselect-all") {
+    let categoryElements = document.querySelectorAll("category-entry");
+    categoryElements.forEach((element) => {
+      element.checked = false;
+      storage.updateActiveCategories(element, false);
+    });
+    storage.buildCurrent();
+  }
 
   // Check category event
   if (e.composedPath()[0].id == "category-check") {
     let categoryElement = e.composedPath()[0].getRootNode().host;
-    storage.updateActiveCategories(categoryElement);
+    storage.updateActiveCategories(categoryElement, true);
   }
   // Select date event
   if (e.composedPath()[0].className == "date") {
     let dateElement = e.composedPath()[0].getRootNode().host;
     storage.updateActiveDates(dateElement);
   }
+  // Check bullet event
+  if (e.composedPath()[0].id == "bullet-check") {
+    let bulletElement = e.composedPath()[0].getRootNode().host;
+    storage.editBullet(bulletElement.bullet, bulletElement.bullet);
+  }
 });
 
-/**
- * Helper function for passing right parameters to edit bullet form
- * @param {*} editButton - the edit button on the selected entry
- */
-function editBullet(editButton) {
-  let bullet = editButton.getRootNode().host.bullet;
-  let categoryList = [];
-  let catagories = document.querySelectorAll("category-entry");
-  for (let i = 0; i < catagories.length; i++) {
-    categoryList.push(catagories[i].category.title);
-  }
-  setState("BulletEditor", bullet, categoryList);
-  editButton.getRootNode().host.remove();
-}
-
-/**
- * Helper function for bullet showDetail button
- * @param {*} detailButton - detail button from selected entry
- */
+// Helper function for bullet showDetail button
 function showDetail(detailButton) {
   var des = detailButton.getRootNode().querySelector(".des");
   if (des.style.display == "block") {
@@ -146,186 +121,96 @@ function showDetail(detailButton) {
   }
 }
 
-/**
- * Helper function for passing right parameters to edit category form
- * @param {*} editButton - edit button from selected category
- */
-function editCategory(editButton) {
-  let category = editButton.getRootNode().host.category;
-  setState("CateEditor", category);
-  editButton.getRootNode().host.remove();
-}
-
-/**
- * Helper function for submitting new/edited bullet entry
- * Function creates new entry and populates its feilds then sets its color and refreshes the Date selector
- * It then resetes the active date and refilters the entries 
- * @param {*} formObj 
- */
+// Helper function for submitting new/edited bullet entry
 function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
-  setState("backMain");
-  // If not called from editBullet, create new bullet
-  if (!bulletEdit.old) {
-    let newEntry = document.createElement("bullet-entry");
-    let mainPane = document.querySelector(".entry-list");
-    newEntry.bullet = bulletEdit.bullet;
-    mainPane.appendChild(newEntry);
-    // add bullet storage
-    storage.addBullet(newEntry);
+  let cateEditor = document.querySelector("bullet-editor-page");
 
-    //Update category storage if needed
-    let currentCate = JSON.parse(bulletEdit.bullet.category);
-    if(currentCate.title=="Default"){
-      let noDefault = true;
-      storage.categoryArr.forEach(element => {
-        if(element.title=="Default"){
-          noDefault = false;
-        }
-      });
-      if(noDefault){
-        let newCategory = document.createElement("category-entry");
-        let defaultCategory={
-          title: "Default",
-          color: "blue",
-          checked: true
-        }
-        newCategory.category=defaultCategory;
-        let mainPane = document.querySelector(".category-box");
-        mainPane.appendChild(newCategory);
-        storage.addCategory(newCategory);
-      }
-
-    }
-
-    // TODO maybe shouldnt always be appended??
+  //Check the length of new title
+  let tooLong = false;
+  let legnth = bulletEdit.bullet.title.length;
+  if (legnth > 20) {
+    tooLong = true;
   }
-  // Else if called from editBullet, edit
-  else {
-    storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
-    lastReferencedElement.bullet = bulletEdit.bullet;
+
+  if (!tooLong) {
+    setState("backMain");
+    // If not called from editBullet, create new bullet
+    if (!bulletEdit.old) {
+      let newEntry = document.createElement("bullet-entry");
+      newEntry.bullet = bulletEdit.bullet;
+      storage.addBullet(newEntry);
+    }
+    // Else if called from editBullet, edit
+    else {
+      storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
+      lastReferencedElement.bullet = bulletEdit.bullet;
+    }
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
-/**
- * Helper function for submitting new/edited category entry
- * Gets the category from the formObj, sets state to "backMain" and then adds the new category to the category box
- * @param {*} formObj 
- */
+// Helper function for submitting new/edited category entry
 function submitCategory(formObj) {
-  let category = formObj.getRootNode().host.category;
-  setState("backMain");
+  let categoryEdit = formObj.getRootNode().host;
+  //Check if the new category is duplicate
+  let newCategory = categoryEdit.category;
+  let duplicate = false;
+  storage.categoryArr.forEach((category) => {
+    if (
+      newCategory.title == category.title &&
+      newCategory.color == category.color
+    ) {
+      duplicate = true;
+    }
+  });
 
-  let newEntry = document.createElement("category-entry");
-  let mainPane = document.querySelector(".category-box");
-  newEntry.category = category;
-  mainPane.appendChild(newEntry);
-}
-
-/**
- * This function is used to close the modal, it first checks if the modal appeared from clicking an edit button
- * if it has then it recreates the old entry and adds it
- * @param {*} editorObj 
- */
-function closeModal(editorObj) {
-  setState("backMain");
-
-  // If not called from editBullet, create new bullet
-  if (!categoryEdit.old) {
-    let newEntry = document.createElement("category-entry");
-    let mainPane = document.querySelector(".category-box");
-    newEntry.category = categoryEdit.category;
-    mainPane.appendChild(newEntry);
-    storage.addCategory(newEntry);
+  //Check if new category name is too long
+  let tooLong = false;
+  let length = newCategory.title.length;
+  if (length > 10) {
+    tooLong = true;
   }
-}
+  let cateEditor = document.querySelector("cate-editor-page");
 
-/**
- * This function filters Entries
- * It first filters by the selected categories and then filters by the selected date
- */
-function filterEntries() {
-  let activeCatrgories = [];
-  let catagories = document.querySelectorAll("category-entry");
+  //Proceed if not duplicate
+  //Stop and show error if one constraint is violated
+  if (!duplicate && !tooLong) {
+    setState("backMain");
 
-  //Filter on category
-  if (catagories.length != 0) {
-    for (let i = 0; i < catagories.length; i++) {
-      if (catagories[i].checked) {
-        activeCatrgories.push(catagories[i].category.title);
-      }
+    // If not called from editBullet, create new bullet
+    if (!categoryEdit.old) {
+      let newEntry = document.createElement("category-entry");
+      let mainPane = document.querySelector(".category-box");
+      newEntry.category = categoryEdit.category;
+      mainPane.appendChild(newEntry);
+      storage.addCategory(newEntry);
     }
-
-    let entryList = document.querySelectorAll("bullet-entry");
-    for (let i = 0; i < entryList.length; i++) {
-      if (!activeCatrgories.includes(entryList[i].category)) {
-        entryList[i].style.display = "none";
-      } else {
-        entryList[i].style.display = "grid";
-      }
+    // Else if called from editCategory, edit
+    else {
+      console.log(1);
+      storage.editCategory(
+        categoryEdit.category,
+        lastReferencedElement.category
+      );
+      lastReferencedElement.category = categoryEdit.category;
     }
-  }
-
-  //Filter on date
-  let dayEntryiesRaw = document.querySelectorAll("date-entry");
-  let activeDate;
-
-  for (let i = 0; i < dayEntryiesRaw.length; i++) {
-    if (dayEntryiesRaw[i].checkActive) {
-      activeDate = dayEntryiesRaw[i].date;
-    }
-  }
-
-  let entryList = document.querySelectorAll("bullet-entry");
-  for (let i = 0; i < entryList.length; i++) {
-    if (activeDate != entryList[i].bullet.date) {
-      entryList[i].style.display = "none";
-    } else {
-      if (activeCatrgories.includes(entryList[i].category)) {
-        entryList[i].style.display = "grid";
-      }
-    }
+  } else if (duplicate && tooLong) {
+    cateEditor.duplicate = true;
+    cateEditor.lengthViolate = true;
+  } else if (duplicate) {
+    cateEditor.duplicate = true;
+  } else {
+    cateEditor.lengthViolate = true;
   }
 }
 
-/**
- * This function checks to see if there is a date-entry for every date from the bullet-entries
- * If there is a date associated with a bullet-entry that is not contained in date-entry, then a 
- * new date entry is created and added 
- */
-function refreshDateSelector() {
-  let dayEntryiesRaw = document.querySelectorAll("date-entry");
-  let dayEntryies = [];
-
-  for (let i = 0; i < dayEntryiesRaw.length; i++) {
-    dayEntryies.push(dayEntryiesRaw[i].date);
-  }
-
-  let entryList = document.querySelectorAll("bullet-entry");
-  for (let i = 0; i < entryList.length; i++) {
-    if (!dayEntryies.includes(entryList[i].bullet.date)) {
-      let newDateEntry = document.createElement("date-entry");
-      newDateEntry.date = entryList[i].bullet.date;
-      let historyBox = document.querySelector(".jornal-box-history");
-      historyBox.insertBefore(newDateEntry, historyBox.firstChild);
-    }
-  }
+function deleteBullet(bulletObj) {
+  storage.deleteBullet(bulletObj);
+  bulletObj.remove();
 }
-
-/**
- * This function filters the entries shown so that only the ones with the selected date are active
- * @param {*} date - The date we want to set as active
- */
-function changeActiveDate(date) {
-  let dayEntryiesRaw = document.querySelectorAll("date-entry");
-
-  for (let i = 0; i < dayEntryiesRaw.length; i++) {
-    let currentDate = dayEntryiesRaw[i].date;
-    let targetDate = date.date;
-    if (dayEntryiesRaw[i].date == date.date) {
-      dayEntryiesRaw[i].active = true;
-    } else {
-      dayEntryiesRaw[i].active = false;
-    }
-  }
+function deleteCategory(categoryObj) {
+  storage.deleteCategory(categoryObj);
+  categoryObj.remove();
 }
