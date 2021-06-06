@@ -71,7 +71,7 @@ class DateEntry extends HTMLElement {
   set active(active) {
     if (active == "true") {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
-        "rgba(60, 77, 87, 0.925)";
+        "rgba(107, 140, 160, 0.925)";
     } else {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
         "rgba(167, 200, 220, 0.925)";
@@ -79,12 +79,25 @@ class DateEntry extends HTMLElement {
     this.shadowRoot.querySelector(".active").innerText = active;
   }
 
+  /**
+   * Return the date object
+   */
   get obj() {
     let dateObj = {
       date: this.shadowRoot.querySelector(".date").innerText,
       active: this.shadowRoot.querySelector(".active").innerText,
     };
     return dateObj;
+  }
+
+  set disabled(disabled){
+    if (disabled ==true) {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(160, 177, 187, 0.925)";
+    } else {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(167, 200, 220, 0.925)";
+    }
   }
 }
 

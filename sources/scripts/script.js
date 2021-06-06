@@ -103,6 +103,8 @@ document.addEventListener("click", (e) => {
   if (e.composedPath()[0].className == "date") {
     let dateElement = e.composedPath()[0].getRootNode().host;
     storage.updateActiveDates(dateElement);
+    //Add diabled interface for date selector if no date is selected
+    checkDateSelector();
   }
   // Check bullet event
   if (e.composedPath()[0].id == "bullet-check") {
@@ -110,6 +112,26 @@ document.addEventListener("click", (e) => {
     storage.editBullet(bulletElement.bullet, bulletElement.bullet);
   }
 });
+
+function checkDateSelector() {
+  let dates = document.querySelectorAll("date-entry");
+  let historyBox = document.querySelector(".journal-box-history");
+  if (storage.activeDates.size == 0) {
+    historyBox.style.backgroundColor = "rgb(202, 207, 210)";
+    dates.forEach((date) => {
+      date.disabled = true;
+    });
+  } else {
+    historyBox.style.backgroundColor = "rgb(210, 221, 232)";
+    dates.forEach((date) => {
+      if (storage.activeDates.has(date.date)) {
+        date.active = "true";
+      } else {
+        date.active = "false";
+      }
+    });
+  }
+}
 
 // Helper function for bullet showDetail button
 function showDetail(detailButton) {
