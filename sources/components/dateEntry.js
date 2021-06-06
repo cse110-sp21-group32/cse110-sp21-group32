@@ -61,33 +61,28 @@ class DateEntry extends HTMLElement {
   /**
    * Checks if active is set to true or false
    */
-  get checkActive() {
-    if (this.shadowRoot.querySelector(".active").innerText == "true") {
-      return true;
-    } else {
-      return false;
-    }
+  get active() {
+    return this.shadowRoot.querySelector(".active").innerText;
   }
 
   /**
    * Toggle the active of date
    */
   set active(active) {
-    if (active == 'true') {
+    if (active == "true") {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
         "rgba(60, 77, 87, 0.925)";
-      this.shadowRoot.querySelector(".active").innerText = "true";
     } else {
       this.shadowRoot.querySelector(".date").style.backgroundColor =
         "rgba(167, 200, 220, 0.925)";
-      this.shadowRoot.querySelector(".active").innerHTML = "false";
     }
     this.shadowRoot.querySelector(".active").innerText = active;
   }
+
   get obj() {
     let dateObj = {
       date: this.shadowRoot.querySelector(".date").innerText,
-      active: this.shadowRoot.querySelector('.active').innerText,
+      active: this.shadowRoot.querySelector(".active").innerText,
     };
     return dateObj;
   }
