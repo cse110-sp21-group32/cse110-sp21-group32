@@ -92,7 +92,7 @@ body.main-view main .section-header-main {
 
 /* Styling for the journal entries shown in the history box */
 body.main-view main .journal-box-history {
-  background-color: rgb(247, 249, 250);
+  background-color: rgb(210, 221, 232);
   margin-top: 0.3em;
   padding: 0.5em;
   height: 45rem;
