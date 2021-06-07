@@ -1,7 +1,7 @@
 /* This is a style css to the index.html in the root */
 body {
   overflow-y: auto;
-  overflow-x:hidden;
+  overflow-x: hidden;
   background-color: rgb(173, 210, 244);
   height: 100%;
   width: 100%;
@@ -34,7 +34,6 @@ body.main-view main .container {
   position: relative;
   z-index: initial;
   min-width: 1060px;
-
 }
 
 /* Stlying for the first cell(top left cell, add button) */
