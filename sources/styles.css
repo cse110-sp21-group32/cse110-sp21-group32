@@ -1,8 +1,10 @@
 /* This is a style css to the index.html in the root */
 body {
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   background-color: rgb(173, 210, 244);
+  height: 100%;
+  width: 100%;
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -10,7 +12,7 @@ body {
   margin-top: -0.5rem;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
-  width: 98%;
+  width: 100%;
   background-color: rgb(9, 65, 114);
   text-align: center;
   font-size: 2rem;
@@ -20,8 +22,8 @@ body {
 
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
-  height: 90vh;
-  width: 97.6vw;
+  height: 100%;
+  width: 99%;
   display: grid;
   grid-template-areas:
     "history      main cateMa"
@@ -31,6 +33,7 @@ body.main-view main .container {
   grid-template-columns: 1fr 2fr 1fr;
   position: relative;
   z-index: initial;
+  min-width: 1060px;
 }
 
 /* Stlying for the first cell(top left cell, add button) */

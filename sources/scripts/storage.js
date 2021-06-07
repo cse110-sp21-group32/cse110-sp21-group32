@@ -5,7 +5,7 @@ var dateArr;
 
 // Only store actives in current session
 var activeCategories = new Map();
-var activeDates = new Map();
+export var activeDates = new Map();
 
 if (myStorage.getItem("bulletArr")) {
   bulletArr = JSON.parse(myStorage.getItem("bulletArr"));
