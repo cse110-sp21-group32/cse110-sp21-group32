@@ -232,6 +232,7 @@ function deleteBullet(bulletObj) {
   storage.deleteBullet(bulletObj);
   bulletObj.remove();
 }
+
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
   categoryObj.remove();
