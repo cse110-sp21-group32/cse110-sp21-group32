@@ -2,10 +2,12 @@ const FAIL_NOT_IMPLEMENTED = 'Not yet implemented';
 const FAIL_SHADOW_DOM = 'Unit testing requires shadow DOM interaction, TBD';
 const EXPECTED_TITLE = 'Homework';
 const EXPECTED_COLOR = 'red';
+const PASS = "pass";
 
 beforeAll(async () => {
   await page.goto('https://cse110-sp21-group32.github.io/cse110-sp21-group32/');
   await page.waitForTimeout(500);
+  // Assumes we are using a fresh browser cache
 });
 
 describe('Adding categories', () => {
@@ -25,39 +27,37 @@ describe('Adding categories', () => {
     // Input data into both fields
     const nameField = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#name")`);
     await nameField.focus();
-    // await page.type(nameField, "Name", { delay: 100 });
     await page.keyboard.type('HelloWorld');
     const colField = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#color")`);
     await colField.focus();
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
-    const confirmBtn = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#cate-submit")`);
-    await confirmBtn.click();
-
-    expect("pass").toBe("pass");
   }, 30000);
 
   it('test 3: Form submits and closes dialog', async () => {
-
+    const confirmBtn = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#cate-submit")`);
+    await confirmBtn.click();
     
-    fail(FAIL_SHADOW_DOM);
-    
-    // await page.click('#cate-submit');
-    // const expectedClass = 'main-view default-view';
-    
-    // const bodyClass = await page.$eval('body', (page) => {
-    //   return page.className;
-    // });
-
-    // expect(bodyClass).toBe(expectedClass);
-    
+    // simply accepts the dialog box
   });
 });
 
 describe('Display categories', () => {
   it('test 4: Name of category correctly displayed', async () => {
-    fail(FAIL_SHADOW_DOM);
+    // const catName = page.evaluateHandler(`document.querySelector("body > main > div > div.cell.cell-5 > div > div.category-box > category-entry:nth-child(3)").shadowRoot.querySelector("#category-title")`);
+    const jsHandle = await page.evaluateHandle(() => {
+      const element = document.querySelector('.category-box');
+      // select second entry
+      const newCat = element.childNodes[1];
+      return newCat.shadowRoot.querySelector(".title");
+    });
 
+    const ACTUAL_TITLE = await page.evaluate(e => e.innerHTML, jsHandle);
+    const EXPECTED_TITLE = "HelloWorld";
+
+    expect(ACTUAL_TITLE).toBe(EXPECTED_TITLE);
+
+    // https://stackoverflow.com/questions/48146973/puppeteer-how-to-use-page-evaluatehandle
     // const category = await page.$('category-entry');
     // // const categoryTitle = await page.$eval('category-entry', () => {return category.textContent});
     // const categoryTitle = await page.evaluate(category => category.textContent, category);
@@ -66,13 +66,39 @@ describe('Display categories', () => {
   });
   
   it('test 5: Category displays proper color', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+    const jsHandle = await page.evaluateHandle(() => {
+      const element = document.querySelector('.category-box');
+      // select second entry
+      const newCat = element.childNodes[1];
+      return newCat.shadowRoot.querySelector(".color");
+    });
+
+    const ACTUAL_COLOR = await page.evaluate(e => e.innerHTML, jsHandle);
+    const EXPECTED_COLOR = "red";
+
+    expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
   });
 });
 
 describe('Selecting categories', () => {
   it('test 6: Selected categories show in Focus', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+    // click the box
+    const checkBtn = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-5 > div > div.category-box > category-entry:nth-child(2)").shadowRoot.querySelector("#category-check")`);
+    await checkBtn.click();
+
+    // // check the box
+    // const jsHandle = await page.evaluateHandle(() => {
+    //   const element = document.querySelector('.category-box');
+    //   // select second entry
+    //   const newCat = element.childNodes[1];
+    //   return newCat.shadowRoot.querySelector(".checkbox");
+    // });
+
+    // const ACTUAL_COLOR = await page.evaluate(e => e.innerHTML, jsHandle);
+    // const EXPECTED_COLOR = "::after";
+
+    // expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
+
   });
 
   it('test 7: Select all button functions appropriately', async () => {

@@ -1,2 +1,1 @@
-{"/home/andres/Desktop/cse110-sp21-group32/sources/scripts/sum.js": {"path":"/home/andres/Desktop/cse110-sp21-group32/sources/scripts/sum.js","statementMap":{"0":{"start":{"line":2,"column":4},"end":{"line":2,"column":17}}},"fnMap":{"0":{"name":"sum","decl":{"start":{"line":1,"column":16},"end":{"line":1,"column":19}},"loc":{"start":{"line":1,"column":26},"end":{"line":3,"column":3}},"line":1}},"branchMap":{},"s":{"0":1},"f":{"0":1},"b":{},"_coverageSchema":"1a1c01bbd47fc00a2c39e90264f33305004495a9","hash":"7e9522cb9d8ec62d9ea011510879c07385f3fb99"}
-}
+{}
