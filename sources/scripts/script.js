@@ -12,9 +12,10 @@ bulletAddButton.addEventListener("click", addBulletHandler);
 function addBulletHandler() {
   setState("BulletEditor", null, storage.categoryArr);
 }
+
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
-function addCateHandler() {
+function addCateHandler(e) {
   setState("CateEditor");
 }
 
@@ -29,6 +30,7 @@ addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
   // console.log(e.composedPath());
+
 
   // Click showDetail button
   if (e.composedPath()[0].className == "bullet-button bullet-detail-button") {

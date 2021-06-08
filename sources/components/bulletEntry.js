@@ -53,7 +53,7 @@ class BulletEntry extends HTMLElement {
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
             }
-
+            
             .bullet-entry .bullet-button {
               border: none;
               margin: 0.5rem;
@@ -62,7 +62,11 @@ class BulletEntry extends HTMLElement {
               border-radius: 0.5em;  
               padding: 8px;
               background-color: rgb(204, 225, 243)
-
+              display: inline-block;
+              -webkit-appearance: none;
+              appearance: none;
+              cursor: pointer;
+              position: relative;
 
               vertical-align: middle;
               -webkit-transform: perspective(1px) translateZ(0);
@@ -71,25 +75,25 @@ class BulletEntry extends HTMLElement {
               -webkit-transition-duration: 0.3s;
               transition-duration: 0.3s;
               -webkit-transition-property: transform;
-              transition-property: transform;
+              transition-property: transform;              
             }
-            
+
             .bullet-entry .bullet:hover{
-        
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
             }
-
+            
             .bullet-entry .bullet-button:active {
-              box-shadow: 0 5px #336699;
-              transform: translateY(4px);
+              background-color: white !important;
+              transform: scale(0.98) !important;
             }
 
             .bullet-entry .bullet-button:hover {
-              background-color: rgb(234, 243, 250)
+              background-color: rgb(234, 243, 250);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
             }
+            
             
             .bullet-entry .title {
               text-align: left;

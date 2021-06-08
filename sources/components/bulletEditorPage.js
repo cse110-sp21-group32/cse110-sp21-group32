@@ -43,14 +43,29 @@ class bulletEditorPage extends HTMLElement {
             
             /* Add styling to the submit button */
             input[type="submit"] {
-            
               margin: 0.5rem;
               width: 5rem;
               border: none;
               font-size: 1rem;
               background-color: rgb(75, 164, 220);
               padding: 0.7rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
+
+            input[type="submit"]:hover{
+              background-color: rgb(234, 243, 250);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
             /* Add styling to the reset button */
             input[type="reset"] {
               margin: 1rem;
@@ -59,6 +74,21 @@ class bulletEditorPage extends HTMLElement {
               font-size: 1rem;
               background-color: rgb(75, 164, 220);
               padding: 0.7rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            input[type="reset"]:hover{
+              background-color: rgb(234, 243, 250);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
             }
             /* Add styling to the dropdown options */
             option {

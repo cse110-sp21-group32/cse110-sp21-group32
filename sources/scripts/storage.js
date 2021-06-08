@@ -293,7 +293,6 @@ export function buildDefault() {
       checked: true,
     };
     categoryPane.appendChild(newCategory);
-    console.log(newCategory.category);
     updateActiveCategories(newCategory, false);
   });
 

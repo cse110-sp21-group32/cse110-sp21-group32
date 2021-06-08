@@ -50,7 +50,23 @@ class categoryEditorPage extends HTMLElement {
               border: none;
               background-color: rgb(75, 164, 220);
               padding: 0.7rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
+
+            input[type=submit]:hover{
+              background-color: rgb(234, 243, 250);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
             /* Add styling to the reset button */ 
             input[type=reset]{
               margin: 1rem;
@@ -59,13 +75,27 @@ class categoryEditorPage extends HTMLElement {
             
               background-color: rgb(75, 164, 220);
               padding: 0.7rem;
-            
+              
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
             /* Add styling to the dropdown options */ 
             option{
               background-color: white;
             }
             
+            input[type=reset]:hover{
+              background-color: rgb(234, 243, 250);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
             /* The Modal (background) */
             .modal {
               display: block; /* Hidden by default */

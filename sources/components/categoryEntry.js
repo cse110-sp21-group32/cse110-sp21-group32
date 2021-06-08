@@ -41,7 +41,29 @@ class CategoryEntry extends HTMLElement {
               padding: 8px;
               background-color: rgb(204, 225, 243);
               line-height: 3rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
+
+            .cate-entry .cate-button:hover{
+              background-color: rgb(234, 243, 250);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
+            .cate-entry .cate-button:active{
+              transform: scale(0.98) !important;
+              /* Scaling button to 0.98 to its original size */
+              background-color: white !important;
+            }
+
             .cate-entry .color {
               display:none
             }
