@@ -205,7 +205,12 @@ body.main-view main .MonthSection {
   border-width: 2px;
 }
 
-/* Styling for the big buttons (Add Category, select all, deselect all) */
+.big-button:active {
+  box-shadow: 0 5px #369;
+  transform: translateY(4px);
+}
+
+/* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
 body.main-view main .big-button {
   cursor: pointer;
   font-size: 1.5em;
@@ -219,10 +224,6 @@ body.main-view main .big-button {
   margin-bottom: 1rem;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
-}
-
-/* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
-body.main-view main .big-button {
   vertical-align: middle;
   background-color: rgb(72, 116, 142);
   -webkit-transform: perspective(1px) translateZ(0);
@@ -233,6 +234,7 @@ body.main-view main .big-button {
   -webkit-transition-property: transform;
   transition-property: transform;
 }
+
 body.main-view main .big-button:hover,body.main-view main .big-button:active {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
@@ -369,17 +371,6 @@ body.cateEditor cate-editor-page {
   color: #0994ff;
 }
 
-body.main-view main .date:hover {
-  display: grid;
-  align-items: center;
-  height: 3em;
-  font-size: 1.3em;
-  background-color: rgba(123, 151, 169, 0.925);
-  border-radius: 0.5em;
-  margin: 0.3rem;
-  text-align: center;
-}
-
 body.main-view main .date:active {
   display: grid;
   align-items: center;
@@ -391,10 +382,20 @@ body.main-view main .date:active {
   text-align: center;
 }
 
-.big-button:active {
-  box-shadow: 0 5px #336699;
-  transform: translateY(4px);
+body.main-view main .date:hover {
+  display: grid;
+  align-items: center;
+  height: 3em;
+  font-size: 1.3em;
+  background-color: rgba(123, 151, 169, 0.925);
+  border-radius: 0.5em;
+  margin: 0.3rem;
+  text-align: center;
 }
+
+
+
+
 
 .bullet.new-button {
   vertical-align: middle;
@@ -404,8 +405,6 @@ body.main-view main .date:active {
 }
 
 .bullet.new-button:active {
-  box-shadow: 0 5px #336699;
+  box-shadow: 0 5px #369;
   transform: translateY(4px);
 }
-
-
