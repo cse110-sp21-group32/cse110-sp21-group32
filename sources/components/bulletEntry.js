@@ -144,14 +144,48 @@ class BulletEntry extends HTMLElement {
 
     if (newBullet.category != "Default") {
       let category = JSON.parse(newBullet.category);
-      if (category.color == "red") {
-        this.shadowRoot.querySelector('.bullet').style.backgroundColor = "rgba(181, 127, 127,0.925)";
-        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(181, 127, 127,0.925)";
 
-      } else if (category.color == "yellow") {
-        this.shadowRoot.querySelector('.bullet').style.backgroundColor = "rgba(181, 178, 110,0.925)";
-        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(181, 178, 110,0.925)";
+      if (category.color == "Red") {
+        this.shadowRoot.querySelector(
+          ".bullet"
+        ).style.backgroundColor = "rgba(224, 90, 70,0.8)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(224, 90, 70,0.8)";
+        this.shadowRoot.querySelector('.edit-bullet-button').style.backgroundColor="#ebd8d5";
+        this.shadowRoot.querySelector('.bullet-detail-button').style.backgroundColor="#ebd8d5";
+        this.shadowRoot.querySelector('.bullet-delete-button').style.backgroundColor="#ebd8d5";
+
+      } else if (category.color == "Yellow") {
+        this.shadowRoot.querySelector(
+          ".bullet"
+        ).style.backgroundColor = "rgba(229, 191, 106,0.8)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(229, 191, 106,0.8)";
+        this.shadowRoot.querySelector('.edit-bullet-button').style.backgroundColor="#ebe5d5";
+        this.shadowRoot.querySelector('.bullet-detail-button').style.backgroundColor="#ebe5d5";
+        this.shadowRoot.querySelector('.bullet-delete-button').style.backgroundColor="#ebe5d5";
+      } else if (category.color == "Blue") {
+        this.shadowRoot.querySelector(
+          ".bullet"
+        ).style.backgroundColor = "rgba(167, 200, 220,0.925)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(167, 200, 220,0.925)";
+
+      } else if (category.color == "Orange") {
+        this.shadowRoot.querySelector(
+          ".bullet"
+        ).style.backgroundColor = "rgba(224, 138, 87,0.8)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(224, 138, 87,0.8)";
+        this.shadowRoot.querySelector('.edit-bullet-button').style.backgroundColor="#ebdfd5";
+        this.shadowRoot.querySelector('.bullet-detail-button').style.backgroundColor="#ebdfd5";
+        this.shadowRoot.querySelector('.bullet-delete-button').style.backgroundColor="#ebdfd5";
+      }else if (category.color == "Green") {
+        this.shadowRoot.querySelector(
+          ".bullet"
+        ).style.backgroundColor = "rgba(42, 157, 143,0.8)";
+        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(42, 157, 143,0.8)";
+        this.shadowRoot.querySelector('.edit-bullet-button').style.backgroundColor="#d5ebd7";
+        this.shadowRoot.querySelector('.bullet-detail-button').style.backgroundColor="#d5ebd7";
+        this.shadowRoot.querySelector('.bullet-delete-button').style.backgroundColor="#d5ebd7";
       }
+ 
     }
 
     //Set the bullet type
