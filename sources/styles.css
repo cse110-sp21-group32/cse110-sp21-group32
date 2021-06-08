@@ -218,7 +218,6 @@ body.main-view main .big-button {
   justify-items: center;
   align-items: center;
   height: 2.7rem;
-  background-color: rgb(93, 135, 160);
   border-radius: 0.3em;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -235,7 +234,8 @@ body.main-view main .big-button {
   transition-property: transform;
 }
 
-body.main-view main .big-button:hover,body.main-view main .big-button:active {
+body.main-view main .big-button:hover,
+body.main-view main .big-button:active {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
@@ -392,10 +392,6 @@ body.main-view main .date:hover {
   margin: 0.3rem;
   text-align: center;
 }
-
-
-
-
 
 .bullet.new-button {
   vertical-align: middle;
