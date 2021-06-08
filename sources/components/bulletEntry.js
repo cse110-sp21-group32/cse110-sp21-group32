@@ -14,7 +14,6 @@ class BulletEntry extends HTMLElement {
                   transform: translateY(20px);
               }
               100% {
-                  opacity: 1;
                   transform: translateY(0);
               }
             }
@@ -39,7 +38,6 @@ class BulletEntry extends HTMLElement {
               text-align: left;
               padding-left: 0.5rem;
               animation: slide-up 0.4s ease;
-              opacity: 1;
 
               vertical-align: middle;
               -webkit-transform: perspective(1px) translateZ(0);
