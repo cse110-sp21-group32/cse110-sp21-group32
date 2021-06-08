@@ -26,7 +26,7 @@ class DateEntry extends HTMLElement {
             
             .date:hover, .date:focus, .date:active {
               background-color: rgb(234, 243, 250);
-              filter: brightness(135%);
+              filter: brightness(105%);
               -webkit-transform: scale(1.05);
               transform: scale(1.05);
             }
