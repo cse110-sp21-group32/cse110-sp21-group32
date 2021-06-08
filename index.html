@@ -8,7 +8,29 @@
   </head>
 
   <body class="main-view default-view">
-    <div class="header">Bullet Journal</div>
+    <div class="header">
+      <input type="button" id="change_view_button" value="View" onclick="myFunction()" style="float: left;">
+      Bullet Journal
+    </div>
+    
+    <script>
+      function myFunction() {
+        var day_view = document.querySelector(".cell-2");
+        var cat_view = document.querySelector(".cell-5");
+        var whole_view = document.querySelector(".container");
+        if (day_view.style.display == "none") {
+          day_view.style.display = "inline";
+          cat_view.style.display = "inline";
+          whole_view.style.gridTemplateAreas = "'history main cateMa'";
+        } else {
+          day_view.style.display = "none";
+          cat_view.style.display = "none";
+          whole_view.style.gridTemplateAreas =
+            "'main main main '";
+
+        }
+      }
+    </script>
     <main>
       <div class="container">
         <div class="cell cell-2">
