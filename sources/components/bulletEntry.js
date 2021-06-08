@@ -200,9 +200,9 @@ class BulletEntry extends HTMLElement {
 
       if (category.color == "Red") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(224, 90, 70,0.8)";
+          "rgba(224, 90, 70,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(224, 90, 70,0.8)";
+          "rgba(224, 90, 70,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebd8d5";
@@ -214,9 +214,9 @@ class BulletEntry extends HTMLElement {
         ).style.backgroundColor = "#ebd8d5";
       } else if (category.color == "Yellow") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(229, 191, 106,0.8)";
+          "rgba(229, 191, 106,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(229, 191, 106,0.8)";
+          "rgba(229, 191, 106,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebe5d5";
@@ -233,9 +233,9 @@ class BulletEntry extends HTMLElement {
           "rgba(167, 200, 220,0.925)";
       } else if (category.color == "Orange") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(224, 138, 87,0.8)";
+          "rgba(224, 138, 87,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(224, 138, 87,0.8)";
+          "rgba(224, 138, 87,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebdfd5";
@@ -247,9 +247,9 @@ class BulletEntry extends HTMLElement {
         ).style.backgroundColor = "#ebdfd5";
       } else if (category.color == "Green") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(42, 157, 143,0.8)";
+          "rgba(42, 157, 143,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(42, 157, 143,0.8)";
+          "rgba(42, 157, 143,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#d5ebd7";

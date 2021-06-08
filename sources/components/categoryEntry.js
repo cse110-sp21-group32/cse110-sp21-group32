@@ -143,7 +143,7 @@ class CategoryEntry extends HTMLElement {
     if (newCategory.color == "Red") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
-      ).style.backgroundColor = "rgba(224, 90, 70,0.8)";
+      ).style.backgroundColor = "rgba(224, 90, 70,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebd8d5";
@@ -153,7 +153,7 @@ class CategoryEntry extends HTMLElement {
     } else if (newCategory.color == "Yellow") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
-      ).style.backgroundColor = "rgba(229, 191, 106,0.8)";
+      ).style.backgroundColor = "rgba(229, 191, 106,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebe5d5";
@@ -168,7 +168,7 @@ class CategoryEntry extends HTMLElement {
     } else if (newCategory.color == "Orange") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
-      ).style.backgroundColor = "rgba(224, 138, 87,0.8)";
+      ).style.backgroundColor = "rgba(224, 138, 87,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebdfd5";
@@ -178,7 +178,7 @@ class CategoryEntry extends HTMLElement {
     }else if (newCategory.color == "Green") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
-      ).style.backgroundColor = "rgba(42, 157, 143,0.8)";
+      ).style.backgroundColor = "rgba(42, 157, 143,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#d5ebd7";
