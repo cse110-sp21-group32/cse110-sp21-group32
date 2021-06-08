@@ -222,8 +222,20 @@ body.main-view main .big-button {
 }
 
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
-body.main-view main .big-button:hover {
+body.main-view main .big-button {
+  vertical-align: middle;
   background-color: rgb(72, 116, 142);
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+body.main-view main .big-button:hover,body.main-view main .big-button:active {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Stlying for box containing the categories in cell 5 */
@@ -378,3 +390,22 @@ body.main-view main .date:active {
   margin: 0.3rem;
   text-align: center;
 }
+
+.big-button:active {
+  box-shadow: 0 5px #336699;
+  transform: translateY(4px);
+}
+
+.bullet.new-button {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.bullet.new-button:active {
+  box-shadow: 0 5px #336699;
+  transform: translateY(4px);
+}
+
+

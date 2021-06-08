@@ -6,6 +6,15 @@ class CategoryEntry extends HTMLElement {
 
     template.innerHTML = `
           <style>
+          @keyframes fade-up {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+          }
+
            .cate-entry .category-inner-entry{
               height: 3.5em;
               font-size: 2em;
@@ -56,6 +65,7 @@ class CategoryEntry extends HTMLElement {
               top: -20px;
               left: 5px;
               color: #0994ff;
+              animation: fade-up 0.8s ease;
             }
           </style>
           <section class="cate-entry">
