@@ -19,7 +19,19 @@ body {
   padding: 20px;
   color: rgb(246, 248, 250);
 }
-
+.button {
+background-color:rgb(9, 65, 114);
+border: none;
+color: white;
+text-align: left;
+font-size: 30px;
+cursor: pointer;
+float: left;
+border-radius: 50%
+}
+.button:hover {
+  background-color: rgb(9, 34, 68);
+}
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
   height: 100%;

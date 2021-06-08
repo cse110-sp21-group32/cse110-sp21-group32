@@ -5,6 +5,7 @@ class CategoryEntry extends HTMLElement {
     const template = document.createElement("template");
 
     template.innerHTML = `
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <style>
           @keyframes fade-up {
             0% {
@@ -36,7 +37,7 @@ class CategoryEntry extends HTMLElement {
               border: none;
               margin: 0.5rem;
               line-height: 1rem;
-              font-size: 1rem;
+              font-size: 2rem;
               border-radius: 0.5em;  
               padding: 8px;
               background-color: rgb(204, 225, 243);
@@ -72,8 +73,8 @@ class CategoryEntry extends HTMLElement {
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
               <span class="title" id="category-title">demo</span>
-              <button class="cate-button" id="cate-edit">edit</button>
-              <button class="cate-button" id="cate-delete">delete</button>
+              <button class="cate-button" id="cate-edit"><i class="fa fa-pencil"style="pointer-events:none"  aria-hidden="true"></i></button>
+              <button class="cate-button" id="cate-delete"><i class="fa fa-trash"style="pointer-events:none"  aria-hidden="true"></i></button>
 
               <span class="color" id="category-color">demo</span>
             </div>

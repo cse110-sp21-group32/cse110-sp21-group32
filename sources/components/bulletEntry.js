@@ -7,6 +7,7 @@ class BulletEntry extends HTMLElement {
     const template = document.createElement("template");
 
     template.innerHTML = `
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <style>
             @keyframes slide-up {
               0% {
@@ -59,7 +60,7 @@ class BulletEntry extends HTMLElement {
 
             .bullet-entry .bullet-button {
               border: none;
-              margin: 0.5rem;
+              margin: 0.4rem;
               line-height: 1rem;
               font-size: 1rem;
               border-radius: 0.5em;  
@@ -163,9 +164,9 @@ class BulletEntry extends HTMLElement {
                 <span class="dash">-</span>
                 <span class="dot">&#8226;</span>
                 <span class="title">demo</span>
-                <button class="bullet-button edit-bullet-button">edit</button>
-                <button class="bullet-button bullet-detail-button">detail</button>
-                <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
+                <button class="bullet-button edit-bullet-button"><i class="fa fa-pencil"style="pointer-events:none" aria-hidden="true"></i></button>
+                <button class="bullet-button bullet-detail-button"><i class="fa fa-info"style="pointer-events:none" aria-hidden="true"></i></button>
+              <button class="bullet-button bullet-delete-button" id = "bullet-delete"><i class="fa fa-trash"style="pointer-events:none" aria-hidden="true"></i></button>
 
                 <span class="category">demo</span>
                 <span class="type">demo</span>
