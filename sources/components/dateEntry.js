@@ -29,8 +29,6 @@ class DateEntry extends HTMLElement {
               filter: brightness(135%);
               -webkit-transform: scale(1.05);
               transform: scale(1.05);
-              border-style: solid;
-              border-width: 2px;
             }
 
             .active{

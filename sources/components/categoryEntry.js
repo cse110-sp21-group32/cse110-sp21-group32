@@ -49,7 +49,6 @@ class CategoryEntry extends HTMLElement {
             }
 
             .cate-entry .category-inner-entry:hover{
-              border-style: solid;
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
             }
@@ -81,8 +80,6 @@ class CategoryEntry extends HTMLElement {
               filter: brightness(135%);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
-              border-style: solid;
-              border-width: 2px;
             }
 
             .cate-entry .color {

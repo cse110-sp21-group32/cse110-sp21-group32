@@ -53,7 +53,6 @@ class BulletEntry extends HTMLElement {
             .bullet-entry .bullet:hover{
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
-              border-style: solid;
             }
 
             .bullet-entry .bullet-button {
@@ -86,8 +85,6 @@ class BulletEntry extends HTMLElement {
               filter: brightness(135%);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
-              border-style: solid;
-              border-width: 2px;
             }
             
             .bullet-entry .title {
