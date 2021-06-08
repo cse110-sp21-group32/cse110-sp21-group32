@@ -20,7 +20,19 @@ body {
   padding: 20px;
   color: rgb(246, 248, 250);
 }
-
+.button {
+background-color:rgb(9, 65, 114);
+border: none;
+color: white;
+text-align: left;
+font-size: 30px;
+cursor: pointer;
+float: left;
+border-radius: 50%
+}
+.button:hover {
+  background-color: rgb(9, 34, 68);
+}
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
   height: 100%;
@@ -46,6 +58,7 @@ body.main-view main .cell-1 {
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   grid-area: history;
+   display: inline;
 }
 
 /* Stlying for the third cell (Bottom left cell, Graph) */
@@ -61,6 +74,7 @@ body.main-view main .cell-4 {
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
+   display: inline;
 }
 
 /* Styling for all the non-header text */
