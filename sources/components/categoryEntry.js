@@ -14,6 +14,18 @@ class CategoryEntry extends HTMLElement {
                 opacity: 1;
             }
           }
+          .cate-entry {
+            animation: slide-up 0.4s ease;
+
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+          }
 
            .cate-entry .category-inner-entry{
               height: 3.5em;
@@ -21,13 +33,24 @@ class CategoryEntry extends HTMLElement {
               background-color:  rgba(167, 200, 220, 0.925);
               border-radius: 0.5em;  
               margin:0.3rem;
-          
               display: flex;
               justify-items: center;
               align-items: center;
-          
               padding: 0.5rem;
-          
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            .cate-entry .category-inner-entry:hover{
+              -webkit-transform: scale(1.035);
+              transform: scale(1.035);
             }
           
             .cate-entry .cate-button {
@@ -41,7 +64,24 @@ class CategoryEntry extends HTMLElement {
               padding: 8px;
               background-color: rgb(204, 225, 243);
               line-height: 3rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
+
+            .cate-entry .cate-button:hover {
+              background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
             .cate-entry .color {
               display:none
             }
