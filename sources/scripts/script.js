@@ -139,10 +139,14 @@ function fadeBullet(check) {
   var see = check.getRootNode().querySelector(".bullet");
   var des = check.getRootNode().querySelector(".des");
   if (check.checked == true) {
+    see.style.transition = "opacity 1.5s";
     see.style.opacity = "0.25";
+    des.style.transition = "opacity 1.5s";
     des.style.opacity = "0.25";
   } else {
+    see.style.transition = "opacity 1.5s";
     see.style.opacity = "1";
+    des.style.transition = "opacity 1.5s";
     des.style.opacity = "1";
   }
 }

@@ -50,7 +50,6 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet:hover{
-              background-color: rgba(123, 151, 169, 0.925) !important;
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
             }

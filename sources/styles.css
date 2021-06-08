@@ -5,6 +5,7 @@ body {
   background-color: rgb(173, 210, 244);
   height: 100%;
   width: 100%;
+  font-family: sans-serif;
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -17,7 +18,7 @@ body {
   text-align: center;
   font-size: 2rem;
   padding: 20px;
-  color: rgb(246, 248, 250);
+  color: white;
 }
 
 /* Styling for the main container that will hold all our cells */
