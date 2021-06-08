@@ -51,9 +51,9 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet:hover{
-              background-color: rgba(123, 151, 169, 0.925) !important;
               -webkit-transform: scale(1.035);
               transform: scale(1.035);
+              border-style: solid;
             }
 
             .bullet-entry .bullet-button {
@@ -63,8 +63,8 @@ class BulletEntry extends HTMLElement {
               font-size: 1rem;
               border-radius: 0.5em;  
               padding: 8px;
-              background-color: rgb(204, 225, 243)
-
+              background-color: rgb(204, 225, 243);
+              
 
               vertical-align: middle;
               -webkit-transform: perspective(1px) translateZ(0);
@@ -75,12 +75,6 @@ class BulletEntry extends HTMLElement {
               -webkit-transition-property: transform;
               transition-property: transform;
             }
-            
-            .bullet-entry .bullet:hover{
-        
-              -webkit-transform: scale(1.035);
-              transform: scale(1.035);
-            }
 
             .bullet-entry .bullet-button:active {
               box-shadow: 0 5px #336699;
@@ -88,9 +82,12 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet-button:hover {
-              background-color: rgb(234, 243, 250)
+              background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
+              border-style: solid;
+              border-width: 2px;
             }
             
             .bullet-entry .title {
