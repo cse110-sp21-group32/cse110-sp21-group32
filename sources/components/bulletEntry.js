@@ -193,7 +193,7 @@ class BulletEntry extends HTMLElement {
                 <span class="title" id="bullet-title"
                   onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
                 </span>
-                <i class="fas fa-tag"></i>
+                <i class="fas fa-tags"></i>
                 <i class="fas fa-calendar"></i>
                 <i class="fas fa-info-circle"></i>
                 <i class="fas fa-trash"></i>
