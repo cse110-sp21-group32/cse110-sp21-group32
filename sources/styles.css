@@ -1,18 +1,18 @@
-html,body{
+html,
+body {
   height: 100vh;
   width: 100vw;
-  margin: 0px;
+  margin: 0.01px;
 }
 
 /* This is a style css to the index.html in the root */
 body {
-  margin: 0px;
+  margin: 0.01px;
   overflow-y: auto;
   overflow-x: auto;
   background-color: rgb(173, 210, 244);
   height: 100vh;
   width: 100vw;
-
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -22,26 +22,24 @@ body {
   margin: 0.1px;
   background-color: rgb(9, 65, 114);
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
   color: rgb(246, 248, 250);
   min-height: 52px;
-
 }
 
 main {
   height: 91vh;
   width: 100vw;
   margin: 0.01px;
-
 }
 
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
   height: 91vh;
   width: 97vw;
-  margin:0px;
+  margin: 0.01px;
   padding-left: 1vw;
   padding-right: 1vw;
   display: grid;
@@ -53,33 +51,30 @@ body.main-view main .container {
   grid-template-columns: 1fr 2fr 1fr;
   position: relative;
   z-index: initial;
-
-
 }
 
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   grid-area: history;
   height: 90vh;
-  margin: 0px;
-  padding: 0px;
-
+  margin: 0.01px;
+  padding: 0.01px;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   grid-area: main;
   height: 90vh;
-  margin: 0px;
-  padding: 0px;
+  margin: 0.01px;
+  padding: 0.01px;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
   height: 90vh;
-  margin: 0px;
-  padding: 0px;
+  margin: 0.01px;
+  padding: 0.01px;
 }
 
 /* Styling for all the non-header text */
@@ -88,7 +83,6 @@ body.main-view main .cell {
   text-align: center;
   padding-left: 1vw;
   padding-right: 1vw;
-
 }
 
 /* Styling for the Section containers */
@@ -106,13 +100,12 @@ body.main-view main .section-header-side {
   display: table-cell;
   vertical-align: bottom;
   padding-bottom: 0.7rem;
-  
 }
 
 /* Styling for the headers in the middle and left cells (Focus and Categories) */
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
-  margin: 0px;
+  margin: 0.001px;
   font-size: 9vh;
   height: 11vh;
   display: table-cell;
@@ -132,7 +125,6 @@ body.main-view main .journal-box-history {
   border-style: solid;
   border-color: rgb(40, 25, 3);
   border-radius: 1em;
-  
 }
 
 /* Setting the display for the history box scrollbar */
@@ -273,7 +265,6 @@ body.main-view main .big-button:active {
 body.main-view main .category-box {
   background-color: rgb(210, 221, 232);
   height: 56vh;
-
   padding: 1.5vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -433,4 +424,3 @@ body.main-view main .date:hover {
   box-shadow: 0 5px #369;
   transform: translateY(4px);
 }
-
