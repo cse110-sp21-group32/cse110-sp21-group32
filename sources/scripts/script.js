@@ -6,6 +6,9 @@ const setState = router.setState;
 // Use to handle editBullet and editCategory events
 var lastReferencedElement;
 
+// Use to handle edit inline Title
+var activeTitle;
+
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
@@ -112,6 +115,25 @@ document.addEventListener("click", (e) => {
     let bulletElement = e.composedPath()[0].getRootNode().host;
     storage.editBullet(bulletElement.bullet, bulletElement.bullet);
   }
+
+  // Use to update inline title edit
+  if(activeTitle && e.composedPath()[0].id != "bullet-title"){
+    activeTitle.contentEditable = false;
+    // edit
+    activeTitle = null;
+  }
+});
+
+document.addEventListener("dblclick", (e) => {
+  // Handle edit inline title event
+  if(e.composedPath()[0].id == "bullet-title"){
+    if(activeTitle){
+      activeTitle.contentEditable = false;
+      // edit
+    }
+    e.composedPath()[0].contentEditable = true;
+    activeTitle = e.composedPath()[0];
+  }
 });
 
 function checkDateSelector() {
@@ -149,6 +171,8 @@ function fadeBullet(check) {
 
 // Helper function for bullet showDetail button
 function showDetail(detailButton) {
+  let detailEdit = detailButton.getRootNode().getElementById("detail-editor");
+  detailEdit.contentEditable = false;
   var des = detailButton.getRootNode().querySelector(".des");
   if (des.style.display == "block") {
     des.style.display = "none";

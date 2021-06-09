@@ -7,6 +7,11 @@ class BulletEntry extends HTMLElement {
     const template = document.createElement("template");
 
     template.innerHTML = `
+          <head>
+          <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            crossorigin="anonymous">
+          </head>
           <style>
             @keyframes slide-up {
               0% {
@@ -98,6 +103,9 @@ class BulletEntry extends HTMLElement {
               text-align: left;
               padding-left: 1rem;
               width: 90%;
+              height: 50%;
+              display: flex;
+              align-items: center;
             }
             .bullet-entry .des{
               overflow:expand;
@@ -155,14 +163,36 @@ class BulletEntry extends HTMLElement {
               display:none;
               padding:15px;
             }
-            
+
+            .editor{
+			        border:solid 1px #ccc;
+			        padding: 20px;
+			        min-height:200px;
+              display: block;
+            }
+            .sample-toolbar{
+			        border:solid 1px #ddd;
+			        background:#f4f4f4;
+			        padding: 5px;
+			        border-radius:3px;
+            }
+
+            .sample-toolbar > i{
+			        cursor:pointer;
+		        }
+
+            .sample-toolbar > i:hover{
+              color: #d60e96;
+		        }
           </style>
           <section class="bullet-entry">
             <div class="bullet">
                 <input class="checkbox" type="checkbox" id="bullet-check">
                 <span class="dash">-</span>
                 <span class="dot">&#8226;</span>
-                <span class="title">demo</span>
+                <span class="title" id="bullet-title"
+                  onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
+                </span>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
                 <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
@@ -173,12 +203,27 @@ class BulletEntry extends HTMLElement {
 
             </div>
             <div class="des">
+            	<div class="sample-toolbar">
+                <i class="fas fa-bold fa-fw" onclick="format('bold')"></i>
+                <i class="fas fa-italic fa-fw" onclick="format('italic')"></i>
+                <i class="fas fa-list fa-fw" onclick="format('insertunorderedlist')"></i>
+              </div>
+
+              <div class="editor" id="detail-editor" ondblclick="this.contentEditable = true;">
+	            </div>
             </div>
           </section>
           `;
-
+    var script = document.createElement( 'script' )
+    script.textContent =
+    `
+      function format(command, value) {
+        document.execCommand(command, false, value);
+      }`;
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(script.cloneNode(true));
+    
   }
 
   //Return the current bullet information
@@ -186,7 +231,7 @@ class BulletEntry extends HTMLElement {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
       checked: this.shadowRoot.querySelector(".checkbox").checked,
-      description: this.shadowRoot.querySelector(".des").innerText,
+      description: this.shadowRoot.querySelector(".editor").innerText,
       date: this.shadowRoot.querySelector(".date").innerText,
       category: this.shadowRoot.querySelector(".category").innerText,
       type: this.shadowRoot.querySelector(".type").innerText,
@@ -198,7 +243,7 @@ class BulletEntry extends HTMLElement {
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
-    this.shadowRoot.querySelector(".des").innerText = newBullet.description;
+    this.shadowRoot.querySelector(".editor").innerText = newBullet.description;
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
