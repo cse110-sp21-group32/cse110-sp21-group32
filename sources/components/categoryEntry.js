@@ -5,6 +5,11 @@ class CategoryEntry extends HTMLElement {
     const template = document.createElement("template");
 
     template.innerHTML = `
+          <head>
+          <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            crossorigin="anonymous">
+          </head>
           <style>
           @keyframes fade-up {
             0% {
@@ -54,6 +59,8 @@ class CategoryEntry extends HTMLElement {
             }
           
             .cate-entry .cate-button {
+              display: none;
+
               margin: 0.5rem;
               font-size: 1rem;
               border: none;
@@ -107,11 +114,20 @@ class CategoryEntry extends HTMLElement {
               color: #0994ff;
               animation: fade-up 0.8s ease;
             }
+
+            .category-inner-entry > i{
+              padding-right:5%;
+              padding-left:1%;
+
+              color: #272a3b;
+            }
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
               <span class="title" id="category-title">demo</span>
+              <i class="fas fa-palette"></i>
+              <i class="fas fa-trash"></i>
               <button class="cate-button" id="cate-edit">edit</button>
               <button class="cate-button" id="cate-delete">delete</button>
 

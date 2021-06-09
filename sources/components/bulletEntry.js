@@ -60,6 +60,8 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet-button {
+              display:none;
+
               border: none;
               margin: 0.5rem;
               line-height: 1rem;
@@ -176,6 +178,12 @@ class BulletEntry extends HTMLElement {
             .sample-toolbar > i:hover{
               color: #d60e96;
 		        }
+
+            .bullet > i{
+              padding-right:3.5%;
+              color: #272a3b;
+            }
+
           </style>
           <section class="bullet-entry">
             <div class="bullet">
@@ -185,6 +193,10 @@ class BulletEntry extends HTMLElement {
                 <span class="title" id="bullet-title"
                   onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
                 </span>
+                <i class="fas fa-tag"></i>
+                <i class="fas fa-calendar"></i>
+                <i class="fas fa-info-circle"></i>
+                <i class="fas fa-trash"></i>
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
                 <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
