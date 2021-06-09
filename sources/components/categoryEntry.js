@@ -164,7 +164,6 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
       ).style.backgroundColor = "rgba(167, 200, 220,0.925)";
-      rgb(204, 225, 243);
     } else if (newCategory.color == "Orange") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
