@@ -90,6 +90,9 @@ class DateEntry extends HTMLElement {
     return dateObj;
   }
 
+  /**
+   * Toggles the disabled view
+   */
   set disabled(disabled){
     if (disabled ==true) {
       this.shadowRoot.querySelector(".date").style.backgroundColor =

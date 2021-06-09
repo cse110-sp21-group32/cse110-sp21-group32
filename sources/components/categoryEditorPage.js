@@ -208,7 +208,9 @@ class categoryEditorPage extends HTMLElement {
     this.shadowRoot.querySelector(".checkbox").checked = inputCategory.checked;
   }
 
-  //Duplicate warning
+  /**
+   * Duplicate warning
+   */
   set duplicate(flag) {
     if (flag) {
       this.shadowRoot.querySelector(".duplicate").style.display =
@@ -220,6 +222,9 @@ class categoryEditorPage extends HTMLElement {
     }
   }
 
+  /**
+   * Length warning
+   */
   set lengthViolate(flag) {
     if (flag) {
       this.shadowRoot.querySelector(".length").style.display =
