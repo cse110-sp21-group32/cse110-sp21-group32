@@ -108,6 +108,7 @@ document.addEventListener("click", (e) => {
   }
   // Check bullet event
   if (e.composedPath()[0].id == "bullet-check") {
+    fadeBullet(e.composedPath()[0]);
     let bulletElement = e.composedPath()[0].getRootNode().host;
     storage.editBullet(bulletElement.bullet, bulletElement.bullet);
   }
@@ -130,6 +131,19 @@ function checkDateSelector() {
         date.active = "false";
       }
     });
+  }
+}
+
+//Helper function for bullet to fade if completed
+function fadeBullet(check) {
+  var see = check.getRootNode().querySelector(".bullet");
+  var des = check.getRootNode().querySelector(".des");
+  if (check.checked == true) {
+    see.style.opacity = "0.25";
+    des.style.opacity = "0.25";
+  } else {
+    see.style.opacity = "1";
+    des.style.opacity = "1";
   }
 }
 
@@ -232,6 +246,7 @@ function deleteBullet(bulletObj) {
   storage.deleteBullet(bulletObj);
   bulletObj.remove();
 }
+
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
   categoryObj.remove();
