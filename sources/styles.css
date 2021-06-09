@@ -95,7 +95,7 @@ body.main-view main .section-container {
 body.main-view main .section-header-side {
   color: rgb(120, 120, 120);
   font-size: 5vh;
-  margin: 0px;
+  margin: 0.01px;
   height: 10vh;
   display: table-cell;
   vertical-align: bottom;
