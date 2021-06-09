@@ -8,8 +8,26 @@ class BulletEntry extends HTMLElement {
 
     template.innerHTML = `
           <style>
+            @keyframes slide-up {
+              0% {
+                  opacity: 0;
+                  transform: translateY(20px);
+              }
+              100% {
+                  transform: translateY(0);
+              }
+            }
 
-            .bullet-entry .bullet{
+            @keyframes fade-up {
+              0% {
+                  opacity: 0;
+              }
+              100% {
+                  opacity: 1;
+              }
+            }
+
+            .bullet-entry .bullet {
               display: flex;
               align-items: center;
               height: 3em;
@@ -19,9 +37,23 @@ class BulletEntry extends HTMLElement {
               margin:0.3rem;
               text-align: left;
               padding-left: 0.5rem;
-            
+              animation: slide-up 0.4s ease;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
-            
+
+            .bullet-entry .bullet:hover{
+              -webkit-transform: scale(1.035);
+              transform: scale(1.035);
+            }
+
             .bullet-entry .bullet-button {
               border: none;
               margin: 0.5rem;
@@ -29,11 +61,29 @@ class BulletEntry extends HTMLElement {
               font-size: 1rem;
               border-radius: 0.5em;  
               padding: 8px;
-              background-color: rgb(204, 225, 243)
+              background-color: rgb(204, 225, 243);
+              
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            .bullet-entry .bullet-button:active {
+              box-shadow: 0 5px #336699;
+              transform: translateY(4px);
             }
 
             .bullet-entry .bullet-button:hover {
-              background-color: rgb(234, 243, 250)
+              background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
             }
             
             .bullet-entry .title {
@@ -55,6 +105,7 @@ class BulletEntry extends HTMLElement {
               margin-left: 2rem;
               padding: 0.5rem;
               padding-left: 1.2rem;
+              opacity: 1;
             }
             .bullet-entry .date{
                 display:none;
@@ -84,7 +135,9 @@ class BulletEntry extends HTMLElement {
               top: -20px;
               left: 5px;
               color: #0994ff;
+              animation: fade-up 0.8s ease;
             }
+
             .dash{
               display:none;
               padding:15px;
@@ -144,13 +197,68 @@ class BulletEntry extends HTMLElement {
 
     if (newBullet.category != "Default") {
       let category = JSON.parse(newBullet.category);
-      if (category.color == "red") {
-        this.shadowRoot.querySelector('.bullet').style.backgroundColor = "rgba(181, 127, 127,0.925)";
-        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(181, 127, 127,0.925)";
 
-      } else if (category.color == "yellow") {
-        this.shadowRoot.querySelector('.bullet').style.backgroundColor = "rgba(181, 178, 110,0.925)";
-        this.shadowRoot.querySelector('.des').style.backgroundColor = "rgba(181, 178, 110,0.925)";
+      if (category.color == "Red") {
+        this.shadowRoot.querySelector(".bullet").style.backgroundColor =
+          "rgba(224, 90, 70,0.5)";
+        this.shadowRoot.querySelector(".des").style.backgroundColor =
+          "rgba(224, 90, 70,0.5)";
+        this.shadowRoot.querySelector(
+          ".edit-bullet-button"
+        ).style.backgroundColor = "#ebd8d5";
+        this.shadowRoot.querySelector(
+          ".bullet-detail-button"
+        ).style.backgroundColor = "#ebd8d5";
+        this.shadowRoot.querySelector(
+          ".bullet-delete-button"
+        ).style.backgroundColor = "#ebd8d5";
+      } else if (category.color == "Yellow") {
+        this.shadowRoot.querySelector(".bullet").style.backgroundColor =
+          "rgba(229, 191, 106,0.5)";
+        this.shadowRoot.querySelector(".des").style.backgroundColor =
+          "rgba(229, 191, 106,0.5)";
+        this.shadowRoot.querySelector(
+          ".edit-bullet-button"
+        ).style.backgroundColor = "#ebe5d5";
+        this.shadowRoot.querySelector(
+          ".bullet-detail-button"
+        ).style.backgroundColor = "#ebe5d5";
+        this.shadowRoot.querySelector(
+          ".bullet-delete-button"
+        ).style.backgroundColor = "#ebe5d5";
+      } else if (category.color == "Blue") {
+        this.shadowRoot.querySelector(".bullet").style.backgroundColor =
+          "rgba(167, 200, 220,0.925)";
+        this.shadowRoot.querySelector(".des").style.backgroundColor =
+          "rgba(167, 200, 220,0.925)";
+      } else if (category.color == "Orange") {
+        this.shadowRoot.querySelector(".bullet").style.backgroundColor =
+          "rgba(224, 138, 87,0.5)";
+        this.shadowRoot.querySelector(".des").style.backgroundColor =
+          "rgba(224, 138, 87,0.5)";
+        this.shadowRoot.querySelector(
+          ".edit-bullet-button"
+        ).style.backgroundColor = "#ebdfd5";
+        this.shadowRoot.querySelector(
+          ".bullet-detail-button"
+        ).style.backgroundColor = "#ebdfd5";
+        this.shadowRoot.querySelector(
+          ".bullet-delete-button"
+        ).style.backgroundColor = "#ebdfd5";
+      } else if (category.color == "Green") {
+        this.shadowRoot.querySelector(".bullet").style.backgroundColor =
+          "rgba(42, 157, 143,0.5)";
+        this.shadowRoot.querySelector(".des").style.backgroundColor =
+          "rgba(42, 157, 143,0.5)";
+        this.shadowRoot.querySelector(
+          ".edit-bullet-button"
+        ).style.backgroundColor = "#d5ebd7";
+        this.shadowRoot.querySelector(
+          ".bullet-detail-button"
+        ).style.backgroundColor = "#d5ebd7";
+        this.shadowRoot.querySelector(
+          ".bullet-delete-button"
+        ).style.backgroundColor = "#d5ebd7";
       }
     }
 
@@ -159,19 +267,14 @@ class BulletEntry extends HTMLElement {
       this.shadowRoot.querySelector(".checkbox").style.display = "none";
       this.shadowRoot.querySelector(".dash").style.display = "grid";
       this.shadowRoot.querySelector(".dot").style.display = "none";
-
-
     } else if (newBullet.type == "task") {
       this.shadowRoot.querySelector(".checkbox").style.display = "grid";
       this.shadowRoot.querySelector(".dash").style.display = "none";
       this.shadowRoot.querySelector(".dot").style.display = "none";
-
-
     } else {
       this.shadowRoot.querySelector(".dot").style.display = "grid";
       this.shadowRoot.querySelector(".checkbox").style.display = "none";
       this.shadowRoot.querySelector(".dash").style.display = "none";
-
     }
   }
 
@@ -183,8 +286,19 @@ class BulletEntry extends HTMLElement {
   set category(newCategory) {
     this.shadowRoot.querySelector(".category").innerText = newCategory;
   }
+
   set checked(flag) {
     this.shadowRoot.querySelector(".checkbox").checked = flag;
+  }
+
+  set opacity(newOpacity) {
+    if (this.shadowRoot.querySelector(".checkbox").checked == true) {
+      this.shadowRoot.querySelector(".bullet").style.opacity = "0.25";
+      this.shadowRoot.querySelector(".des").style.opacity = "0.25";
+    } else {
+      this.shadowRoot.querySelector(".bullet").style.opacity = "1";
+      this.shadowRoot.querySelector(".des").style.opacity = "1";
+    }
   }
 }
 

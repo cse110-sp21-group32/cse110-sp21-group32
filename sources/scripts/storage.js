@@ -152,8 +152,10 @@ export function editBullet(newBullet, oldBullet) {
     if (oldBullet.date == item.date) {
       dateEntryCount++;
     }
-    if (JSON.stringify(oldBullet) == JSON.stringify(bulletStr)
-      && !hasBeenDeleted) {
+    if (
+      JSON.stringify(oldBullet) == JSON.stringify(bulletStr) &&
+      !hasBeenDeleted
+    ) {
       bulletArr[index] = newBullet;
       hasBeenDeleted = true;
     }
@@ -285,7 +287,11 @@ export function buildDefault() {
   categoryArr.forEach(function (item, index) {
     let newCategory = document.createElement("category-entry");
     categoryArr[index].checked = false;
-    newCategory.category = {title:item.title, color:item.color, checked:true};
+    newCategory.category = {
+      title: item.title,
+      color: item.color,
+      checked: true,
+    };
     categoryPane.appendChild(newCategory);
     console.log(newCategory.category);
     updateActiveCategories(newCategory, false);
@@ -325,6 +331,11 @@ export function buildCurrent() {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
+        if (newBullet.bullet.checked == true) {
+          newBullet.opacity = true;
+        } else {
+          newBullet.opacity = false;
+        }
         mainPane.appendChild(newBullet);
       }
     });
@@ -335,6 +346,11 @@ export function buildCurrent() {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
+        if (newBullet.bullet.checked == true) {
+          newBullet.opacity = true;
+        } else {
+          newBullet.opacity = false;
+        }
         mainPane.appendChild(newBullet);
       }
     });
