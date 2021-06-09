@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-Originally, we have the add new bullet button on the top right cornor of the screen, but it is unintuitive to locate the button outside of the focuc button. 
+Originally, we had the "add new bullet" button on the top right cornor of the screen, but it is unintuitive to locate the button outside of the Focus.
 
 ## Decision Drivers 
 

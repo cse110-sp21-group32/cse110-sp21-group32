@@ -15,9 +15,9 @@ After implementing the general structures of logistics and UI, we need to choose
 
 ## Considered Options
 
-* Could Storage
+* Cloud Storage
 * Local Storage
 
 ## Decision Outcome
 
-Pending
+No decision was reached, and a later meeting was scheduled to deal with the issue.

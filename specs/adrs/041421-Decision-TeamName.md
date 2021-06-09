@@ -1,7 +1,7 @@
 ### Decision on the team name
 #### Date: 0414
 
-In the meeting on 14th April, we decided our team name to be *frozon*
+In the meeting on 14th April, we decided our team name to be *Frozone*
 
 # Team Name 
 
@@ -11,7 +11,7 @@ In the meeting on 14th April, we decided our team name to be *frozon*
 
 ## Context and Problem Statement
 
-At the starting state of the team formation, it is important to have a team name. It is helpful for the team bound formation as well
+At the starting state of the team formation, it is important to have a team name. It is helpful for the team bonding as well
 
 ## Decision Drivers <!-- optional -->
 
@@ -22,9 +22,9 @@ At the starting state of the team formation, it is important to have a team name
 
 * Team 32
 * Coldie
-* Fronzon
+* Frozone
 
 ## Decision Outcome
 
-Chosen option: "Fronzon", because it is relavent to our team brand image and it is easy to remember.
+Chosen option: "Frozone", because it is relevant to our team brand image and it is easy to remember.
 
