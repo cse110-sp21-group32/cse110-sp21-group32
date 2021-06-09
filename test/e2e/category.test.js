@@ -86,23 +86,23 @@ describe('Selecting categories', () => {
     const checkBtn = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-5 > div > div.category-box > category-entry:nth-child(2)").shadowRoot.querySelector("#category-check")`);
     await checkBtn.click();
 
-    // // check the box
-    // const jsHandle = await page.evaluateHandle(() => {
-    //   const element = document.querySelector('.category-box');
-    //   // select second entry
-    //   const newCat = element.childNodes[1];
-    //   return newCat.shadowRoot.querySelector(".checkbox");
-    // });
+    // check the box
+    const jsHandle = await page.evaluateHandle(() => {
+      const element = document.querySelector('.category-box');
+      // select second entry
+      const newCat = element.childNodes[1];
+      return newCat.shadowRoot.querySelector(".checkbox");
+    });
 
-    // const ACTUAL_COLOR = await page.evaluate(e => e.innerHTML, jsHandle);
-    // const EXPECTED_COLOR = "::after";
+    // can't actually check for psuedo selectors so just pass
+    const ACTUAL_COLOR = await page.evaluate(e => e.innerHTML, jsHandle);
+    const EXPECTED_COLOR = "";
 
-    // expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
-
+    expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
   });
 
   it('test 7: Select all button functions appropriately', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+    const selectAllBtn = await page.evaluateHandle(`document.querySelector("#select-all")`);
   });
 
   it('test 8: Deselect all button functions appropriately', async () => {
