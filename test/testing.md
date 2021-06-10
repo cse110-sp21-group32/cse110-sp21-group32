@@ -2,6 +2,8 @@
 
 - [Guide to setting up local system for testing](#guide-to-setting-up-local-system-for-testing)
   - [Latest Update on Test Cases Covered](#latest-update-on-test-cases-covered)
+    - [Ready tests](#ready-tests)
+  - [Manual Testing](#manual-testing)
   - [Setting up testing environment](#setting-up-testing-environment)
   - [Running tests](#running-tests)
   - [Seeing Tests](#seeing-tests)
@@ -19,6 +21,17 @@ This file is designed to show you how to get your local system ready to try out 
 As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests.
 
 The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. 
+
+### Ready tests
+- [x] `category.test.js`
+- [ ] `bullet.test.js`
+- [ ] `bulletEditorPage.test.js`
+- [ ] `bulletEntryPage.test.js`
+- [ ] `categoryEditorPage.test.js`
+- [ ] `dateEntry.test.js` 
+
+## Manual Testing
+Before even pushing to main, it's worthwhile to do some manual tests before pushing. Refer to the [manual-testing.md](manual-testing.md) for what should be working in order to avoid retroactive bug patches.
 
 ## Setting up testing environment
 

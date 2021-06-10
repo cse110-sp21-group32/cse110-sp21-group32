@@ -17,7 +17,7 @@ Task manager bullet journal.
 ## Learn about contributing
 | Pages | Description |
 |---| ---|
-| [Onboarding Document]() | Find the detailed specs of what you need to know before you can contribute
+| [Onboarding Document](admin/onboarding.md) | Find the detailed specs of what you need to know before you can contribute
 | [Onboarding Video]() | Get a quick introduction on how to get involved before you contribute
 | [Team Contract](admin/misc/rules.md) | Read the rules that our team abided by
 | [Testing]((test/testing.md))| Getting started with automated, unit, and end-2-end testing
