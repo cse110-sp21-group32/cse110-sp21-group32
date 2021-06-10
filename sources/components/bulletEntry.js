@@ -225,7 +225,8 @@ class BulletEntry extends HTMLElement {
               color: #585a5c;
             }
             .bullet > i:hover,
-            .bullet > label:hover{
+            .bullet > label:hover,
+            #bullet-date:hover + #calender {
               color: #272a3b;
             }
             
@@ -261,6 +262,26 @@ class BulletEntry extends HTMLElement {
             #bullet-category:focus{
               outline: none; 
             }
+
+            input[type="date"]::-webkit-calendar-picker-indicator {
+              background: transparent;
+              bottom: 0;
+              color: transparent;
+              cursor: pointer;
+              height: auto;
+              left: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: auto;
+            }
+            #bullet-date {
+              height:0px;
+              width:0px;
+              z-index:1;
+              opacity: 0; 
+              pointer-events: auto;
+            }
           </style>
           <section class="bullet-entry">
             <div class="bullet">
@@ -287,8 +308,8 @@ class BulletEntry extends HTMLElement {
                   <option value='{"title":"c","color":"Blue"}'>c</option>
                 </select><br>
 
-                <input type="date" id="bullet-date" style="opacity: 0; height:0; width:0;">
-                <label for="bullet-date" class="fas fa-calendar" id="calender"></label>
+                <input type="date" id="bullet-date">
+                <label for="bullet-date" class="fas fa-calendar" id="calender" style="z-index:0;"></label>
 
                 <i class="fas fa-info-circle bullet-detail-button"></i>
                 <i class="fas fa-trash" id ="bullet-delete"></i>
@@ -387,7 +408,7 @@ class BulletEntry extends HTMLElement {
       this.shadowRoot.querySelector(".dash").style.display = "grid";
       this.shadowRoot.querySelector(".dot").style.display = "none";
     } else if (newBullet.type == "task") {
-      if(this.shadowRoot.querySelector(".checkbox").checked){
+      if (this.shadowRoot.querySelector(".checkbox").checked) {
         this.shadowRoot.querySelector(".bullet").style.opacity = "0.25";
         this.shadowRoot.querySelector(".des").style.opacity = "0.25";
       }
@@ -432,7 +453,7 @@ class BulletEntry extends HTMLElement {
     categorySelect.appendChild(defaultCategory);
 
     // Append remaining categories
-    inputList.forEach(function(item) {
+    inputList.forEach(function (item) {
       // create new option element
       let opt = document.createElement("option");
 
@@ -440,11 +461,11 @@ class BulletEntry extends HTMLElement {
       opt.appendChild(document.createTextNode(item.title));
 
       // set value property of opt
-      opt.value = JSON.stringify({title: item.title, color: item.color});
+      opt.value = JSON.stringify({ title: item.title, color: item.color });
 
       // add opt to end of select box (sel)
       // Skip default
-      if(item.title != "Default"){
+      if (item.title != "Default") {
         categorySelect.appendChild(opt);
       }
     });

@@ -35,6 +35,7 @@ addEventListener("DOMContentLoaded", () => {
 // composedPath allows us to interact with shadowDom elements
 document.addEventListener("click", (e) => {
   // Handle inline edit category/bullet title event
+  console.log(e.composedPath()[0]);
   if (activeTitle && e.composedPath()[0].id != "bullet-title"
     && e.composedPath()[0].id != "category-title") {
     let entry = activeTitle.getRootNode().host;
@@ -175,7 +176,7 @@ document.addEventListener("click", (e) => {
 
   // Handle bullet/category edit attempt by saving element
   if (e.composedPath()[0].id == "bullet-category"
-    || e.composedPath()[0].id == "calender") {
+    || e.composedPath()[0].id == "bullet-date") {
     let entry = e.composedPath()[0].getRootNode().host;
     oldElement = entry.bullet;
     if (entry.oldDetail !== undefined) {
@@ -186,7 +187,7 @@ document.addEventListener("click", (e) => {
     oldElement = e.composedPath()[0].getRootNode().host.category;
   }
 
-  // Inline edit category/color event
+  // Inline edit category/color event for Firefox
   if (e.composedPath()[0].tagName == "OPTION") {
     let entry = e.composedPath()[0].getRootNode().host;
     // Inline edit bullet category
@@ -214,6 +215,8 @@ document.addEventListener("click", (e) => {
     oldBullet.description = entry.oldDetail;
     storage.editBullet(entry.bullet, oldBullet);
     entry.oldDetail = entry.bullet.description;
+    let detailEdit = entry.shadowRoot.querySelector("#detail-editor");
+    detailEdit.contentEditable = false;
   }
 
 });
@@ -266,6 +269,27 @@ document.addEventListener("input", (e) => {
   if (e.composedPath()[0].id == "bullet-date") {
     let entry = e.composedPath()[0].getRootNode().host;
     editBullet(entry);
+  }
+
+  // Inline edit bullet category/color for Chrome
+  if (e.composedPath()[0].tagName == "SELECT") {
+    let entry = e.composedPath()[0].getRootNode().host;
+    // Inline edit bullet category
+    if(entry.tagName == "BULLET-ENTRY"){
+      let newElement = entry.bullet;
+      newElement.category = e.composedPath()[0].value;
+      if (entry.oldDetail !== undefined) {
+        newElement.description = entry.oldDetail;
+      }
+      storage.editBullet(newElement, oldElement);
+    }
+    // Inline edit category color
+    else{
+      let newElement = entry.category;
+      newElement.color = e.composedPath()[0].value;
+      entry.category = newElement;
+      storage.editCategory(newElement, oldElement);
+    }
   }
 });
 
