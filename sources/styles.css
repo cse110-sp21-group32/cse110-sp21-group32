@@ -3,6 +3,7 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0.01px;
+  
 }
 
 /* This is a style css to the index.html in the root */
@@ -11,9 +12,16 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: rgb(173, 210, 244);
-  height: 100%;
-  width: 100%;
+  min-height: 1000px;
+  height: auto !important;
+  width: 1000px;
+
+  min-width: 700px;
+  width: auto !important;
+  width: 700px;
   font-family: sans-serif;
+  
+  
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -28,6 +36,22 @@ body {
   font-size: 2rem;
   color: rgb(246, 248, 250);
   min-height: 52px;
+}
+
+.header .button{
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.header .button:active{
+  background-color: rgb(102, 204, 255) !important;
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 main {
@@ -246,10 +270,6 @@ body.main-view main .MonthSection {
   border-width: 2px;
 }
 
-.big-button:active {
-  box-shadow: 0 5px #369;
-  transform: translateY(4px);
-}
 
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
 body.main-view main .big-button {
@@ -264,12 +284,7 @@ body.main-view main .big-button {
   margin-bottom: 1.5vh;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
-}
 
-/* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
-body.main-view main .big-button:hover {
-  vertical-align: middle;
-  background-color: rgb(72, 116, 142);
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -279,10 +294,18 @@ body.main-view main .big-button:hover {
   transition-property: transform;
 }
 
-body.main-view main .big-button:hover,
-body.main-view main .big-button:active {
+/* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
+body.main-view main .big-button:hover {
+  vertical-align: middle;
+  background-color: rgb(72, 116, 142);
+  
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
+}
+
+body.main-view main .big-button:active {
+  -webkit-transform: scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Stlying for box containing the categories in cell 5 */
@@ -337,6 +360,14 @@ body.main-view main #add-bullet-button {
 body.main-view main .new-button {
   cursor: pointer;
   background-color: rgb(75, 164, 220);
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
 /* Adding bit "+" symbol to add button */
@@ -346,6 +377,8 @@ body.main-view main .new-button:hover {
 
 body.main-view main .new-button:active {
   background-color: rgb(32, 102, 145);
+  -webkit-transform: scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Default main-view */
@@ -437,14 +470,5 @@ body.main-view main .date:hover {
   text-align: center;
 }
 
-.bullet.new-button {
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
 
-.bullet.new-button:active {
-  box-shadow: 0 5px #369;
-  transform: translateY(4px);
-}
+

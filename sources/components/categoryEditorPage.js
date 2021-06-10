@@ -67,6 +67,12 @@ class categoryEditorPage extends HTMLElement {
               transform: scale(1.1);
             }
 
+            input[type=submit]:active{
+              background-color: gainsboro;
+              -webkit-transform: scale(1.1) !important;
+              transform: scale(0.95) !important;
+            }
+
             /* Add styling to the reset button */ 
             input[type=reset]{
               margin: 1rem;
@@ -85,6 +91,8 @@ class categoryEditorPage extends HTMLElement {
               -webkit-transition-property: transform;
               transition-property: transform;
             }
+
+
             /* Add styling to the dropdown options */ 
             option{
               background-color: white;
@@ -94,6 +102,12 @@ class categoryEditorPage extends HTMLElement {
               background-color: rgb(234, 243, 250);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
+            }
+
+            input[type=reset]:active{
+              background-color: gainsboro;
+              -webkit-transform: scale(1.1) !important;
+              transform: scale(0.95) !important;
             }
 
             /* The Modal (background) */
@@ -180,7 +194,7 @@ class categoryEditorPage extends HTMLElement {
               
               <div class="warning duplicate"><strong>Error: </strong>New category with duplicate name and color</div> 
               <div class="warning length"><strong>Error: </strong>Category name maximum length is 10 letters</div> 
-
+              <div class="warning empty"><strong>Error: </strong>Category name can not be empty </div>
             </form>
             
         
@@ -259,6 +273,17 @@ class categoryEditorPage extends HTMLElement {
         "grid";
       setTimeout(() => {
         this.shadowRoot.querySelector(".length").style.display =
+          "none";
+      }, 3000);
+    }
+  }
+
+  set emptyViolate(flag) {
+    if (flag) {
+      this.shadowRoot.querySelector(".empty").style.display =
+        "grid";
+      setTimeout(() => {
+        this.shadowRoot.querySelector(".empty").style.display =
           "none";
       }, 3000);
     }

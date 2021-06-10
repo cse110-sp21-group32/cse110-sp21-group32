@@ -166,16 +166,19 @@ function showDetail(detailButton) {
 // Helper function for submitting new/edited bullet entry
 function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
-  let cateEditor = document.querySelector("bullet-editor-page");
+  let bulletEditor = document.querySelector("bullet-editor-page");
 
   //Check the length of new title
   let tooLong = false;
-  let legnth = bulletEdit.bullet.title.length;
-  if (legnth > 20) {
+  let titleEmpty = false;
+  let length = bulletEdit.bullet.title.length;
+  if (length > 20) {
     tooLong = true;
+  }else if(length == 0 || !(/\S/.test(bulletEdit.bullet.title))){ //checks to see if length of title is 0 or there's only whitespaces
+    titleEmpty = true;
   }
 
-  if (!tooLong) {
+  if (!tooLong && !titleEmpty) {
     setState("backMain");
     // If not called from editBullet, create new bullet
     if (!bulletEdit.old) {
@@ -188,8 +191,12 @@ function submitBullet(formObj) {
       storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
       lastReferencedElement.bullet = bulletEdit.bullet;
     }
-  } else {
-    cateEditor.lengthViolate = true;
+  } else{
+      if(tooLong)
+        bulletEditor.lengthViolate = true;
+
+      if(titleEmpty)
+        bulletEditor.emptyViolate = true;
   }
 }
 
@@ -210,15 +217,20 @@ function submitCategory(formObj) {
 
   //Check if new category name is too long
   let tooLong = false;
+  let titleEmpty = false;
   let length = newCategory.title.length;
   if (length > 10) {
     tooLong = true;
+  }else if(length == 0 || !(/\S/.test(newCategory.title))){ //checks to see if length of title is 0 or there's only whitespaces
+    titleEmpty = true;
+    console.log("Hi")
   }
+
   let cateEditor = document.querySelector("cate-editor-page");
 
   //Proceed if not duplicate
   //Stop and show error if one constraint is violated
-  if (!duplicate && !tooLong) {
+  if (!duplicate && !tooLong && !titleEmpty) {
     setState("backMain");
 
     // If not called from editBullet, create new bullet
@@ -238,13 +250,15 @@ function submitCategory(formObj) {
       );
       lastReferencedElement.category = categoryEdit.category;
     }
-  } else if (duplicate && tooLong) {
-    cateEditor.duplicate = true;
-    cateEditor.lengthViolate = true;
-  } else if (duplicate) {
-    cateEditor.duplicate = true;
-  } else {
-    cateEditor.lengthViolate = true;
+  }else{
+    if(duplicate)
+      cateEditor.duplicate = true;
+    
+    if(tooLong)
+      cateEditor.lengthViolate = true;
+    
+    if(titleEmpty)
+      cateEditor.emptyViolate = true;
   }
 }
 

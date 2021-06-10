@@ -24,11 +24,15 @@ class DateEntry extends HTMLElement {
               transition-property: transform;
             }
             
-            .date:hover, .date:focus, .date:active {
+            .date:hover, .date:focus  {
               background-color: rgb(234, 243, 250);
               filter: brightness(105%);
               -webkit-transform: scale(1.05);
               transform: scale(1.05);
+            }
+            .date:active{
+              -webkit-transform: scale(0.95) !important;
+              transform: scale(0.95) !important;
             }
 
             .active{

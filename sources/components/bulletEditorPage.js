@@ -66,6 +66,12 @@ class bulletEditorPage extends HTMLElement {
               transform: scale(1.1);
             }
 
+            input[type="submit"]:active{
+              background-color: gainsboro !important;
+              -webkit-transform: scale(0.95) !important;
+              transform: scale(0.95) !important;
+            }
+
             /* Add styling to the reset button */
             input[type="reset"] {
               margin: 1rem;
@@ -90,6 +96,13 @@ class bulletEditorPage extends HTMLElement {
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
             }
+
+            input[type="reset"]:active{
+              background-color: gainsboro !important;
+              -webkit-transform: scale(0.95) !important;
+              transform: scale(0.95) !important;
+            }
+
             /* Add styling to the dropdown options */
             option {
               background-color: white;
@@ -199,7 +212,7 @@ class bulletEditorPage extends HTMLElement {
                   <input type="reset" id="reset-btn">
 
                   <div class="warning length"><strong>Error: </strong>Title maximum length is 10 letters </div> 
-
+                  <div class="warning empty"><strong>Error: </strong>Task name can not be empty </div>
                 </form>
             
               <!-- Main Script -->
@@ -315,6 +328,17 @@ class bulletEditorPage extends HTMLElement {
         "grid";
       setTimeout(() => {
         this.shadowRoot.querySelector(".length").style.display =
+          "none";
+      }, 3000);
+    }
+  }
+
+  set emptyViolate(flag) {
+    if (flag) {
+      this.shadowRoot.querySelector(".empty").style.display =
+        "grid";
+      setTimeout(() => {
+        this.shadowRoot.querySelector(".empty").style.display =
           "none";
       }, 3000);
     }
