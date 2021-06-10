@@ -1,29 +1,48 @@
+html,body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+}
+
 /* This is a style css to the index.html in the root */
 body {
+  margin: 0px;
   overflow-y: auto;
   overflow-x: auto;
   background-color: rgb(173, 210, 244);
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  min-width:700px;
+  font-family: sans-serif;
 }
 
 /* Stlying for the first cell(top left cell, add button) */
 .header {
-  margin-top: -0.5rem;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  width: 100%;
+  width: 100vw;
+  height: 8vh;
+  margin: 0.1px;
   background-color: rgb(9, 65, 114);
-  text-align: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
   font-size: 2rem;
-  padding: 20px;
   color: rgb(246, 248, 250);
+  min-height: 52px;
+}
+
+main {
+  height: 91vh;
+  width: 100vw;
+  margin: 0.01px;
 }
 
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
-  height: 100%;
-  width: 99%;
+  height: 89vh;
+  width: 97vw;
+  margin:0px;
+  padding-left: 1vw;
+  padding-right: 1vw;
   display: grid;
   grid-template-areas:
     "history      main cateMa"
@@ -33,69 +52,74 @@ body.main-view main .container {
   grid-template-columns: 1fr 2fr 1fr;
   position: relative;
   z-index: initial;
-  min-width: 1060px;
 }
 
-/* Stlying for the first cell(top left cell, add button) */
-body.main-view main .cell-1 {
-  height: 5rem;
-  grid-area: plus;
-}
 
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   grid-area: history;
-}
-
-/* Stlying for the third cell (Bottom left cell, Graph) */
-body.main-view main .cell-3 {
-  grid-area: footer;
+  height: 88vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   grid-area: main;
+  height: 88vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
+  height: 88vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Styling for all the non-header text */
 body.main-view main .cell {
   color: black;
   text-align: center;
-  padding: 1em;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 /* Styling for the Section containers */
 body.main-view main .section-container {
   text-align: left;
+  height: inherit;
 }
 
 /* Styling for the headers in the left cells (Overdue and Graph) */
 body.main-view main .section-header-side {
   color: rgb(120, 120, 120);
-  font-size: 3em;
-  margin-top: 2rem;
-  margin-bottom: 15px;
+  font-size: 5vh;
+  margin: 0px;
+  height: 10vh;
+  display: table-cell;
+  vertical-align: bottom;
+  padding-bottom: 0.7rem;
 }
 
 /* Styling for the headers in the middle and left cells (Focus and Categories) */
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
-  font-size: 5em;
-  margin-bottom: 8px;
-  margin-top: auto;
+  margin: 0px;
+  font-size: 9vh;
+  height: 11vh;
+  display: table-cell;
+  vertical-align: bottom;
+  min-height: 75px;
 }
 
 /* Styling for the journal entries shown in the history box */
 body.main-view main .journal-box-history {
   background-color: rgb(210, 221, 232);
-  margin-top: 0.3em;
-  padding: 0.5em;
-  height: 45rem;
+  height: 75vh;
+  padding: 1.5vh;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
@@ -182,9 +206,8 @@ body.main-view main .graph-box::-webkit-scrollbar {
 /* Styling for the box that contains journal entries in the main cell, cell 4 (Focus) */
 body.main-view main .journal-main-box {
   background-color: rgb(210, 221, 232);
-  margin-top: 0.3em;
-  padding: 0.5em;
-  height: 45rem;
+  height: 75vh;
+  padding: 1.5vh;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
@@ -207,7 +230,8 @@ body.main-view main .MonthSection {
 
 .big-button:active {
   box-shadow: 0 5px #369;
-  transform: translateY(4px);
+  -webkit-transform: scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
@@ -217,10 +241,10 @@ body.main-view main .big-button {
   display: grid;
   justify-items: center;
   align-items: center;
-  height: 2.7rem;
+  height: 4.6vh;
   border-radius: 0.3em;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
   vertical-align: middle;
@@ -243,9 +267,8 @@ body.main-view main .big-button:active {
 /* Stlying for box containing the categories in cell 5 */
 body.main-view main .category-box {
   background-color: rgb(210, 221, 232);
-  margin-top: 0.3em;
-  padding: 0.5em;
-  height: 32rem;
+  height: 56vh;
+  padding: 1.5vh;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
@@ -286,7 +309,8 @@ body.main-view main .cate-button {
 body.main-view main #add-bullet-button {
   display: grid;
   justify-items: center;
-  align-items: center;
+  align-items: cente;
+  text-align: justify;
   padding: 1px;
 }
 
@@ -294,6 +318,10 @@ body.main-view main .new-button {
   cursor: pointer;
   background-color: rgb(75, 164, 220);
 }
+
+
+
+
 
 /* Adding bit "+" symbol to add button */
 body.main-view main .new-button:hover {
@@ -351,6 +379,25 @@ body.cateEditor cate-editor-page {
   padding-left: 1.2rem;
 }
 
+.plus-div{
+  /*display:flex;
+  align-items: center;
+  text-align: left;
+  left: -35%;
+  top: 0%;
+  position:relative;
+  float:left;*/
+  width:30px;
+  display: flex;
+  align-items: center;
+}
+
+.new-button > span > div{
+  display:inline-block;
+}
+
+
+
 /* Stlying for category edit button */
 .checkbox {
   -webkit-appearance: none;
@@ -398,9 +445,20 @@ body.main-view main .date:hover {
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: transparent !important;
 }
 
+.bullet.new-button:hover {
+  background-color: rgba(255, 255, 255, 0.379) !important;
+}
+
+
 .bullet.new-button:active {
-  box-shadow: 0 5px #369;
-  transform: translateY(4px);
+  background-color: white !important;
 }
