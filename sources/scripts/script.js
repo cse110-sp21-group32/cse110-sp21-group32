@@ -16,12 +16,37 @@ var oldElement;
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
 function addBulletHandler() {
-  setState("BulletEditor", null, storage.categoryArr);
+  let defaultCategory = {
+    title: "Default",
+    color: "Blue",
+  };
+  let newBullet = {
+    title: "",
+    checked: false,
+    description: "",
+    date: "2021-06-11",
+    category: JSON.stringify(defaultCategory),
+    type: "task",
+  };
+  let newObj = {
+    bullet: newBullet,
+  };
+  storage.addBullet(newObj);
 }
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
 function addCateHandler() {
-  setState("CateEditor");
+  let defaultCategory = {
+    title: "",
+    color: "Blue",
+    checked: false
+  };
+  let mainPane = document.querySelector(".category-box");
+  let newEntry = document.createElement("category-entry");
+  newEntry.category=defaultCategory;
+  storage.addCategory(newEntry);
+  mainPane.appendChild(newEntry);
+  // setState("CateEditor");
 }
 
 // Build from local storage
@@ -36,8 +61,11 @@ addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", (e) => {
   // Handle inline edit category/bullet title event
   console.log(e.composedPath()[0]);
-  if (activeTitle && e.composedPath()[0].id != "bullet-title"
-    && e.composedPath()[0].id != "category-title") {
+  if (
+    activeTitle &&
+    e.composedPath()[0].id != "bullet-title" &&
+    e.composedPath()[0].id != "category-title"
+  ) {
     let entry = activeTitle.getRootNode().host;
     activeTitle.contentEditable = false;
 
@@ -81,12 +109,12 @@ document.addEventListener("click", (e) => {
     let bulletObj = e.composedPath()[0].getRootNode().host;
     let oldBullet = bulletObj.bullet;
     let newBullet = bulletObj.bullet;
-    if(oldBullet.type == "note"){
-      newBullet.type="event";
-    }else if(oldBullet.type == "event"){
-      newBullet.type="task";
-    }else{
-      newBullet.type="note";
+    if (oldBullet.type == "note") {
+      newBullet.type = "event";
+    } else if (oldBullet.type == "event") {
+      newBullet.type = "task";
+    } else {
+      newBullet.type = "note";
     }
     bulletObj.bullet = newBullet;
 
@@ -175,8 +203,10 @@ document.addEventListener("click", (e) => {
   }
 
   // Handle bullet/category edit attempt by saving element
-  if (e.composedPath()[0].id == "bullet-category"
-    || e.composedPath()[0].id == "bullet-date") {
+  if (
+    e.composedPath()[0].id == "bullet-category" ||
+    e.composedPath()[0].id == "bullet-date"
+  ) {
     let entry = e.composedPath()[0].getRootNode().host;
     oldElement = entry.bullet;
     if (entry.oldDetail !== undefined) {
@@ -191,7 +221,7 @@ document.addEventListener("click", (e) => {
   if (e.composedPath()[0].tagName == "OPTION") {
     let entry = e.composedPath()[0].getRootNode().host;
     // Inline edit bullet category
-    if(entry.tagName == "BULLET-ENTRY"){
+    if (entry.tagName == "BULLET-ENTRY") {
       let newElement = entry.bullet;
       newElement.category = e.composedPath()[1].value;
       if (entry.oldDetail !== undefined) {
@@ -200,7 +230,7 @@ document.addEventListener("click", (e) => {
       storage.editBullet(newElement, oldElement);
     }
     // Inline edit category color
-    else{
+    else {
       let newElement = entry.category;
       newElement.color = e.composedPath()[1].value;
       entry.category = newElement;
@@ -218,7 +248,6 @@ document.addEventListener("click", (e) => {
     let detailEdit = entry.shadowRoot.querySelector("#detail-editor");
     detailEdit.contentEditable = false;
   }
-
 });
 
 document.addEventListener("dblclick", (e) => {
@@ -245,8 +274,10 @@ document.addEventListener("dblclick", (e) => {
   }
 
   // Handle edit inline category title event
-  if (e.composedPath()[0].id == "category-title"
-    && e.composedPath()[0].name != "default-category") {
+  if (
+    e.composedPath()[0].id == "category-title" &&
+    e.composedPath()[0].name != "default-category"
+  ) {
     // If reached after editing another title
     if (activeTitle) {
       activeTitle.contentEditable = false;
@@ -275,7 +306,7 @@ document.addEventListener("input", (e) => {
   if (e.composedPath()[0].tagName == "SELECT") {
     let entry = e.composedPath()[0].getRootNode().host;
     // Inline edit bullet category
-    if(entry.tagName == "BULLET-ENTRY"){
+    if (entry.tagName == "BULLET-ENTRY") {
       let newElement = entry.bullet;
       newElement.category = e.composedPath()[0].value;
       if (entry.oldDetail !== undefined) {
@@ -284,7 +315,7 @@ document.addEventListener("input", (e) => {
       storage.editBullet(newElement, oldElement);
     }
     // Inline edit category color
-    else{
+    else {
       let newElement = entry.category;
       newElement.color = e.composedPath()[0].value;
       entry.category = newElement;
@@ -425,7 +456,7 @@ function submitCategory(formObj) {
   }
 }
 
-function editBullet(entry){
+function editBullet(entry) {
   let newElement = entry.bullet;
   if (entry.oldDetail !== undefined) {
     newElement.description = entry.oldDetail;

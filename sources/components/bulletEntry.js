@@ -100,6 +100,8 @@ class BulletEntry extends HTMLElement {
               height: 50%;
               display: flex;
               align-items: center;
+              min-width:30px;
+              min-hight:30px;
             }
             .bullet-entry .des{
               overflow:expand;

@@ -95,6 +95,8 @@ class CategoryEntry extends HTMLElement {
             .cate-entry .title {
               text-align: center;
               width: 70%;
+              min-width: 30px;
+              min-height: 30px;
             }
             .checkbox {
               -webkit-appearance: none;
@@ -144,6 +146,7 @@ class CategoryEntry extends HTMLElement {
               padding:1%;
               width: 35%;
               height: 50%;
+              min-width: 55px;
 
               text-align-last:center;
               padding-right: 5px;
@@ -153,8 +156,6 @@ class CategoryEntry extends HTMLElement {
               font-size: 15px;
               cursor: inherit;
               line-height: inherit;
-
-              bac
             }
 
             #color:hover{
@@ -168,7 +169,7 @@ class CategoryEntry extends HTMLElement {
           <section class="cate-entry">
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
-              <span class="title" id="category-title">demo</span>
+              <span class="title" id="category-title" onkeydown="if(event.key == 'Enter'){event.preventDefault()}">demo</span>
               <select id="color" name="color">
                 <option value="Blue">Blue</option>
                 <option value="Red">Red</option>
