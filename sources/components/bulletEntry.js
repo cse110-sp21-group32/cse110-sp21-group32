@@ -62,12 +62,8 @@ class BulletEntry extends HTMLElement {
               font-size: 1rem;
               border-radius: 0.5em;  
               padding: 8px;
-              background-color: rgb(204, 225, 243)
-              display: inline-block;
-              -webkit-appearance: none;
-              appearance: none;
-              cursor: pointer;
-              position: relative;
+              background-color: rgb(204, 225, 243);
+              
 
               vertical-align: middle;
               -webkit-transform: perspective(1px) translateZ(0);
@@ -91,6 +87,7 @@ class BulletEntry extends HTMLElement {
 
             .bullet-entry .bullet-button:hover {
               background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
               -webkit-transform: scale(1.1);
               transform: scale(1.1);
             }
@@ -210,9 +207,9 @@ class BulletEntry extends HTMLElement {
 
       if (category.color == "Red") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(224, 90, 70,0.8)";
+          "rgba(224, 90, 70,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(224, 90, 70,0.8)";
+          "rgba(224, 90, 70,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebd8d5";
@@ -224,9 +221,9 @@ class BulletEntry extends HTMLElement {
         ).style.backgroundColor = "#ebd8d5";
       } else if (category.color == "Yellow") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(229, 191, 106,0.8)";
+          "rgba(229, 191, 106,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(229, 191, 106,0.8)";
+          "rgba(229, 191, 106,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebe5d5";
@@ -243,9 +240,9 @@ class BulletEntry extends HTMLElement {
           "rgba(167, 200, 220,0.925)";
       } else if (category.color == "Orange") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(224, 138, 87,0.8)";
+          "rgba(224, 138, 87,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(224, 138, 87,0.8)";
+          "rgba(224, 138, 87,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#ebdfd5";
@@ -257,9 +254,9 @@ class BulletEntry extends HTMLElement {
         ).style.backgroundColor = "#ebdfd5";
       } else if (category.color == "Green") {
         this.shadowRoot.querySelector(".bullet").style.backgroundColor =
-          "rgba(42, 157, 143,0.8)";
+          "rgba(42, 157, 143,0.5)";
         this.shadowRoot.querySelector(".des").style.backgroundColor =
-          "rgba(42, 157, 143,0.8)";
+          "rgba(42, 157, 143,0.5)";
         this.shadowRoot.querySelector(
           ".edit-bullet-button"
         ).style.backgroundColor = "#d5ebd7";

@@ -330,7 +330,7 @@ export function buildCurrent() {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
-        if (newBullet.checked == true) {
+        if (newBullet.bullet.checked == true) {
           newBullet.opacity = true;
         } else {
           newBullet.opacity = false;
@@ -345,7 +345,7 @@ export function buildCurrent() {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
-        if (newBullet.checked == true) {
+        if (newBullet.bullet.checked == true) {
           newBullet.opacity = true;
         } else {
           newBullet.opacity = false;
