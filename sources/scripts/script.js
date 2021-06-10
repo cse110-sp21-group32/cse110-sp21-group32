@@ -31,7 +31,12 @@ addEventListener("DOMContentLoaded", () => {
 // Note that submit events also register as clicks
 document.addEventListener("click", (e) => {
   // composedPath allows us to interact with shadowDom elements
-  // console.log(e.composedPath());
+
+  //Show category
+  if (e.composedPath()[0].id == "category-toggle") {
+    let bullet = e.composedPath()[0].getRootNode().host;
+    bullet.showCategoryList = true;
+  }
 
   // Click showDetail button
   if (e.composedPath()[0].className == "fas fa-info-circle bullet-detail-button") {

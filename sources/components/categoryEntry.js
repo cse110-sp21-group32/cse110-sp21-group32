@@ -94,7 +94,7 @@ class CategoryEntry extends HTMLElement {
             }
             .cate-entry .title {
               text-align: center;
-              width: 90%;
+              width: 70%;
             }
             .checkbox {
               -webkit-appearance: none;
@@ -123,12 +123,52 @@ class CategoryEntry extends HTMLElement {
             .category-inner-entry > i:hover{
               color: #272a3b;
             }
+
+            #color{
+              appearance: none;
+              background-color: #d1d7de;
+              border-radius: 8px;
+
+              border: none;
+              border-color: coral;
+              
+              margin-left: 3%;
+              margin-right: 3%;
+              padding:1%;
+              width: 35%;
+              height: 50%;
+
+              text-align-last:center;
+              padding-right: 5px;
+              direction: rtl;
+
+              font-family: inherit;
+              font-size: 15px;
+              cursor: inherit;
+              line-height: inherit;
+
+              bac
+            }
+
+            #color:hover{
+              background-color:#a7b4c2;
+            }
+
+            #color:focus{
+              outline: none; 
+            }
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
               <span class="title" id="category-title">demo</span>
-              <i class="fas fa-palette"></i>
+              <select id="color" name="color">
+                <option value="Blue">Blue</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Orange">Orange</option>
+                <option value="Green">Green</option>
+              </select><br>
               <i class="fas fa-trash" id="cate-delete"></i>
               <button class="cate-button" id="cate-edit">edit</button>
               <button class="cate-button" id="cate-delete">delete</button>

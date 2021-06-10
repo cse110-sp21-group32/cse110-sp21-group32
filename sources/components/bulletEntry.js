@@ -187,6 +187,42 @@ class BulletEntry extends HTMLElement {
               color: #272a3b;
             }
 
+            #category{
+              appearance: none;
+              background-color: #d1d7de;
+              border-radius: 8px;
+
+              border: none;
+              border-color: coral;
+              
+              margin-left: 3%;
+              margin-right: 3%;
+              padding:1%;
+              width: 20%;
+
+              text-align-last:center;
+              padding-right: 5px;
+              direction: rtl;
+
+              font-family: inherit;
+              font-size: inherit;
+              cursor: inherit;
+              line-height: inherit;
+
+              bac
+            }
+
+            #category:hover{
+              background-color:#a7b4c2;
+            }
+
+            #category:focus{
+              outline: none; 
+            }
+
+
+
+
           </style>
           <section class="bullet-entry">
             <div class="bullet">
@@ -196,15 +232,17 @@ class BulletEntry extends HTMLElement {
                 <span class="title" id="bullet-title"
                   onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
                 </span>
-                <select id="type" name="type">
-                  <option value="task">Task</option>
-                  <option value="note">Note</option>
-                  <option value="event">Event</option>
+                <select id="category" name="category">
+                  <option value='{"title":"Default","color":"blue"}'>Default</option>
+                  <option value='{"title":"a","color":"blue"}'>a</option>
+                  <option value='{"title":"v","color":"blue"}'>v</option>
+                  <option value='{"title":"c","color":"blue"}'>c</option>
                 </select><br>
-                <i class="fas fa-tags"></i>
                 <i class="fas fa-calendar"></i>
                 <i class="fas fa-info-circle bullet-detail-button"></i>
                 <i class="fas fa-trash" id ="bullet-delete"></i>
+
+
                 <button class="bullet-button edit-bullet-button">edit</button>
                 <button class="bullet-button bullet-detail-button">detail</button>
                 <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
@@ -327,6 +365,12 @@ class BulletEntry extends HTMLElement {
     } else {
       this.shadowRoot.querySelector(".bullet").style.opacity = "1";
       this.shadowRoot.querySelector(".des").style.opacity = "1";
+    }
+  }
+
+  set showCategoryList(flag){
+    if(flag){
+      console.log("Check");
     }
   }
 }
