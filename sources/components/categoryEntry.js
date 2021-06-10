@@ -118,7 +118,9 @@ class CategoryEntry extends HTMLElement {
             .category-inner-entry > i{
               padding-right:5%;
               padding-left:1%;
-
+              color: #585a5c;
+            }
+            .category-inner-entry > i:hover{
               color: #272a3b;
             }
           </style>

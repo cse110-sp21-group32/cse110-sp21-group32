@@ -181,6 +181,9 @@ class BulletEntry extends HTMLElement {
 
             .bullet > i{
               padding-right:3.5%;
+              color: #585a5c;
+            }
+            .bullet > i:hover{
               color: #272a3b;
             }
 
