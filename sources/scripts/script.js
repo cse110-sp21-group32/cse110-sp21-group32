@@ -39,7 +39,9 @@ document.addEventListener("click", (e) => {
   }
 
   // Click showDetail button
-  if (e.composedPath()[0].className == "fas fa-info-circle bullet-detail-button") {
+  if (
+    e.composedPath()[0].className == "fas fa-info-circle bullet-detail-button"
+  ) {
     showDetail(e.composedPath()[0]);
   }
 
@@ -49,6 +51,23 @@ document.addEventListener("click", (e) => {
     setState("BulletEditor", bulletObj, storage.categoryArr);
     lastReferencedElement = bulletObj;
   }
+
+  //Swtich the type of bullet
+  if (e.composedPath()[0].className == "fas fa-chevron-down fa-xs") {
+    let bulletObj = e.composedPath()[0].getRootNode().host;
+    let oldBullet = bulletObj.bullet;
+    let newBullet = bulletObj.bullet;
+    if(oldBullet.type == "note"){
+      newBullet.type="event";
+    }else if(oldBullet.type == "event"){
+      newBullet.type="task";
+    }else{
+      newBullet.type="note";
+    }
+    bulletObj.bullet = newBullet;
+    console.log("CHeck");
+  }
+
   // Click editCategory button
   if (e.composedPath()[0].id == "cate-edit") {
     let categoryObj = e.composedPath()[0].getRootNode().host;
@@ -122,7 +141,7 @@ document.addEventListener("click", (e) => {
   }
 
   // Use to update inline title edit
-  if(activeTitle && e.composedPath()[0].id != "bullet-title"){
+  if (activeTitle && e.composedPath()[0].id != "bullet-title") {
     activeTitle.contentEditable = false;
     // edit
     activeTitle = null;
@@ -131,8 +150,8 @@ document.addEventListener("click", (e) => {
 
 document.addEventListener("dblclick", (e) => {
   // Handle edit inline title event
-  if(e.composedPath()[0].id == "bullet-title"){
-    if(activeTitle){
+  if (e.composedPath()[0].id == "bullet-title") {
+    if (activeTitle) {
       activeTitle.contentEditable = false;
       // edit
     }

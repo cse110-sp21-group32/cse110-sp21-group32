@@ -132,7 +132,8 @@ class BulletEntry extends HTMLElement {
             .checkbox {
               -webkit-appearance: none;
               background-color: #fafafa;
-              padding: 15px;
+              padding: 10px;
+              margin-left:9px;
               border-radius: 3px;
               display: inline-block;
               position: relative;
@@ -140,21 +141,47 @@ class BulletEntry extends HTMLElement {
             
             .checkbox:checked:after {
               content: "\u2714";
-              font-size: 50px;
+              font-size: 30px;
               position: absolute;
-              top: -20px;
-              left: 5px;
+              top: -10px;
+              left: 3px;
               color: #0994ff;
               animation: fade-up 0.8s ease;
             }
-
-            .dash{
-              display:none;
-              padding:15px;
+            
+            .check-container{
+              display: flex;
+              align-items: center;
             }
 
             .dot{
-              display:none;
+              display: flex;
+              width:5%;
+              align-items: center;
+            }
+
+            .dash{
+              display: flex;
+              width:5%;
+              align-items: center;
+            }
+
+            #dash-text{
+              width:100%;
+              padding:15px;
+            }
+
+            .down{
+              position:absolute;
+              bottom:0%;
+              margin-left:12px;
+            }
+
+            .fa-chevron-down{
+              color:#727375;
+            }
+
+            #dot-text{
               padding:15px;
             }
 
@@ -217,8 +244,6 @@ class BulletEntry extends HTMLElement {
               font-size: inherit;
               cursor: inherit;
               line-height: inherit;
-
-              bac
             }
 
             #category:hover{
@@ -228,18 +253,22 @@ class BulletEntry extends HTMLElement {
             #category:focus{
               outline: none; 
             }
-
-
-
-
-
-
           </style>
           <section class="bullet-entry">
             <div class="bullet">
-                <input class="checkbox" type="checkbox" id="bullet-check">
-                <span class="dash">-</span>
-                <span class="dot">&#8226;</span>
+                <span class="check-container">
+                  <input class="checkbox" type="checkbox" id="bullet-check">
+                  <div class="down"><i class="fas fa-chevron-down fa-xs"></i></div>
+                </span>
+                <span class="dash">
+                  <div id="dash-text">-</div>
+                  <div class="down"><i class="fas fa-chevron-down fa-xs"></i></div>
+                </span>
+                <span class="dot">
+                  <div id="dot-text">&#8226;</div>
+                  <div class="down"><i class="fas fa-chevron-down fa-xs"></i></div>
+                </span>
+
                 <span class="title" id="bullet-title"
                   onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
                 </span>
@@ -342,16 +371,16 @@ class BulletEntry extends HTMLElement {
 
     //Set the bullet type
     if (newBullet.type == "note") {
-      this.shadowRoot.querySelector(".checkbox").style.display = "none";
+      this.shadowRoot.querySelector(".check-container").style.display = "none";
       this.shadowRoot.querySelector(".dash").style.display = "grid";
       this.shadowRoot.querySelector(".dot").style.display = "none";
     } else if (newBullet.type == "task") {
-      this.shadowRoot.querySelector(".checkbox").style.display = "grid";
+      this.shadowRoot.querySelector(".check-container").style.display = "grid";
       this.shadowRoot.querySelector(".dash").style.display = "none";
       this.shadowRoot.querySelector(".dot").style.display = "none";
     } else {
       this.shadowRoot.querySelector(".dot").style.display = "grid";
-      this.shadowRoot.querySelector(".checkbox").style.display = "none";
+      this.shadowRoot.querySelector(".check-container").style.display = "none";
       this.shadowRoot.querySelector(".dash").style.display = "none";
     }
   }
