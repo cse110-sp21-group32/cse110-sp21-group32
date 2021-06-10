@@ -38,7 +38,7 @@ main {
 
 /* Styling for the main container that will hold all our cells */
 body.main-view main .container {
-  height: 91vh;
+  height: 89vh;
   width: 97vw;
   margin:0px;
   padding-left: 1vw;
@@ -58,7 +58,7 @@ body.main-view main .container {
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   grid-area: history;
-  height: 90vh;
+  height: 88vh;
   margin: 0px;
   padding: 0px;
 }
@@ -66,7 +66,7 @@ body.main-view main .cell-2 {
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   grid-area: main;
-  height: 90vh;
+  height: 88vh;
   margin: 0px;
   padding: 0px;
 }
@@ -74,7 +74,7 @@ body.main-view main .cell-4 {
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
-  height: 90vh;
+  height: 88vh;
   margin: 0px;
   padding: 0px;
 }
