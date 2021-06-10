@@ -1,4 +1,4 @@
-import "/sources/scripts/storage.js";
+import "../../sources/scripts/storage.js";
 
 const bulletName = 'bulletName';
 
