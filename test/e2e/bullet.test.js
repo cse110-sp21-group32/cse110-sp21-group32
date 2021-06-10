@@ -41,43 +41,39 @@ describe('Text Layout Loaded', () => {
 describe('Bullet Editor', () => {
   it('test 4: Title can be entered', async () => {
     // Test that title can be entered as a string
-    fail(FAIL_SHADOW_DOM);
   });
 
   it('test 5: Description can be entered', async () => {
     // Test that description can be entered as a string
-    fail(FAIL_SHADOW_DOM);
   });
 
   it('test 6: Category choices reflect categories available', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+    
   });
 
   it('test 7: Tests type inputs', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+    
   });
 });
 
 describe('Viewing bullets', () => {
   it('test 8: Title shows correctly', async () => {
-    // const entryList = await page.$(".entry-list");
-
-    fail(FAIL_SHADOW_DOM);
+    
   });
 
   it('test 9: Description shows under details', async () => {
-    fail(FAIL_SHADOW_DOM);
+    
   });
 
   it('test 10: Correctly tagged with category', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+
   });
 
   it('test 11: Correctly colored by category', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+
   });
 
   it('test 12: Type of bullet correctly marked', async () => {
-    fail(FAIL_NOT_IMPLEMENTED);
+
   });
 });

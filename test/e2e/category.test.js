@@ -42,7 +42,7 @@ describe('Adding categories', () => {
 
 describe('Display categories', () => {
   it('test 4: Name of category correctly displayed', async () => {
-    // const catName = page.evaluateHandler(`document.querySelector("body > main > div > div.cell.cell-5 > div > div.category-box > category-entry:nth-child(3)").shadowRoot.querySelector("#category-title")`);
+    // https://stackoverflow.com/questions/48146973/puppeteer-how-to-use-page-evaluatehandle
     const jsHandle = await page.evaluateHandle(() => {
       const element = document.querySelector('.category-box');
       // select second entry
@@ -54,13 +54,6 @@ describe('Display categories', () => {
     const EXPECTED_TITLE = "HelloWorld";
 
     expect(ACTUAL_TITLE).toBe(EXPECTED_TITLE);
-
-    // https://stackoverflow.com/questions/48146973/puppeteer-how-to-use-page-evaluatehandle
-    // const category = await page.$('category-entry');
-    // // const categoryTitle = await page.$eval('category-entry', () => {return category.textContent});
-    // const categoryTitle = await page.evaluate(category => category.textContent, category);
-
-    // expect(categoryTitle).toBe(expectedTitle);
   });
   
   it('test 5: Category displays proper color', async () => {
@@ -165,8 +158,6 @@ describe('Deleting categories', () => {
     //   await cateDelBtn.click();
     // };
     // expect(test).toThrow(new Error);
-
-
   });
   
   // writing this test out because it should be handled in a separate file where
@@ -255,16 +246,3 @@ describe('Editing categories', () => {
     expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
   });
 });
-
-
-// it('test 2: Options to edit are Name and Color', async () => {
-
-//   // Input data into both fields
-//   const nameField = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#name")`);
-//   await nameField.focus();
-//   await page.keyboard.type('HelloWorld');
-//   const colField = await page.evaluateHandle(`document.querySelector("body > cate-editor-page").shadowRoot.querySelector("#color")`);
-//   await colField.focus();
-//   await page.keyboard.press("ArrowDown");
-//   await page.keyboard.press("Enter");
-// }, 30000);
