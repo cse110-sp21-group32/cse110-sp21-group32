@@ -21,7 +21,7 @@ describe('Adding elements', () => {
 });
 
 describe('Editing elements', () => {
-  it('test 3: Editing bullet', async () => {
+  it('test 3: E diting bullet', async () => {
 
   });
 
