@@ -37,7 +37,7 @@ document.addEventListener("click", (e) => {
   // console.log(e.composedPath());
 
   // Click showDetail button
-  if (e.composedPath()[0].className == "bullet-button bullet-detail-button") {
+  if (e.composedPath()[0].className == "fas fa-info-circle bullet-detail-button") {
     showDetail(e.composedPath()[0]);
   }
 
