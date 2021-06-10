@@ -132,6 +132,8 @@ class BulletEntry extends HTMLElement {
             .checkbox {
               -webkit-appearance: none;
               background-color: #fafafa;
+              width:15px;
+              height:15px;
               padding: 10px;
               margin-left:9px;
               border-radius: 3px;
@@ -150,19 +152,20 @@ class BulletEntry extends HTMLElement {
             }
             
             .check-container{
+              width:30px;
               display: flex;
               align-items: center;
             }
 
             .dot{
               display: flex;
-              width:5%;
+              width:30px;
               align-items: center;
             }
 
             .dash{
               display: flex;
-              width:5%;
+              width:30px;
               align-items: center;
             }
 
@@ -172,6 +175,7 @@ class BulletEntry extends HTMLElement {
             }
 
             .down{
+              opacity:0;
               position:absolute;
               bottom:0%;
               margin-left:12px;
@@ -199,7 +203,8 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet:hover i,
-            .bullet-entry .bullet:hover #category{
+            .bullet-entry .bullet:hover #category,
+            .bullet-entry .bullet:hover .down{
               opacity:1;
             }
 
