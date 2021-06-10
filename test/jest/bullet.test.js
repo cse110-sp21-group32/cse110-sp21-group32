@@ -1,3 +1,7 @@
+/**
+ * Tests basic bullet functionality and interaction
+ */
+
 const FAIL_NOT_IMPLEMENTED = 'Not yet implemented';
 const FAIL_SHADOW_DOM = 'Unit testing requires shadow DOM interaction, TBD';
 

@@ -1,3 +1,8 @@
+/**
+ * Tests the functions in bulletEntryPage that are called in scripts.js
+ */
+
+
 const EXPECTED = 'string';
 const ACTUAL = 'string';
 
