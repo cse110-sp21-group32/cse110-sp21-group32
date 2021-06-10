@@ -22,8 +22,8 @@ body {
   margin: 0.1px;
   background-color: rgb(9, 65, 114);
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
   color: rgb(246, 248, 250);
   min-height: 52px;
@@ -51,7 +51,6 @@ body.main-view main .container {
   position: relative;
   z-index: initial;
 }
-
 
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
@@ -373,13 +372,13 @@ body.cateEditor cate-editor-page {
   top: 0%;
   position:relative;
   float:left; */
-  width:30px;
+  width: 30px;
   display: flex;
   align-items: center;
 }
 
 .new-button > span > div {
-  display:inline-block;
+  display: inline-block;
 }
 
 /* Stlying for category edit button */
