@@ -9,6 +9,9 @@ var lastReferencedElement;
 // Use to handle edit inline Title
 var activeTitle;
 
+// Use to handle inline editBullet and editCategory
+var oldElement;
+
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
@@ -134,6 +137,11 @@ document.addEventListener("dblclick", (e) => {
     e.composedPath()[0].contentEditable = true;
     activeTitle = e.composedPath()[0];
   }
+});
+
+document.addEventListener("change", (e) => {
+  // Handle edit inline title event
+  console.log(e.composedPath()[0]);
 });
 
 function checkDateSelector() {

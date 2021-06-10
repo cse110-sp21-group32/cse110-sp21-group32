@@ -196,9 +196,9 @@ class BulletEntry extends HTMLElement {
             </div>
             <div class="des">
             	<div class="sample-toolbar">
-                <i class="fas fa-bold fa-fw" onclick="format('bold')"></i>
-                <i class="fas fa-italic fa-fw" onclick="format('italic')"></i>
-                <i class="fas fa-list fa-fw" onclick="format('insertunorderedlist')"></i>
+                <i class="fas fa-bold fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('bold', false);"></i>
+                <i class="fas fa-italic fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('italic', false);"></i>
+                <i class="fas fa-list fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('insertunorderedlist', false);"></i>
               </div>
 
               <div class="editor" id="detail-editor" ondblclick="this.contentEditable = true;">
@@ -206,16 +206,8 @@ class BulletEntry extends HTMLElement {
             </div>
           </section>
           `;
-    var script = document.createElement( 'script' )
-    script.textContent =
-    `
-      function format(command, value) {
-        document.execCommand(command, false, value);
-      }`;
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.shadowRoot.appendChild(script.cloneNode(true));
-    
   }
 
   //Return the current bullet information
@@ -223,7 +215,7 @@ class BulletEntry extends HTMLElement {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
       checked: this.shadowRoot.querySelector(".checkbox").checked,
-      description: this.shadowRoot.querySelector(".editor").innerText,
+      description: this.shadowRoot.querySelector(".editor").innerHTML,
       date: this.shadowRoot.querySelector(".date").innerText,
       category: this.shadowRoot.querySelector(".category").innerText,
       type: this.shadowRoot.querySelector(".type").innerText,
@@ -235,7 +227,7 @@ class BulletEntry extends HTMLElement {
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
-    this.shadowRoot.querySelector(".editor").innerText = newBullet.description;
+    this.shadowRoot.querySelector(".editor").innerHTML = newBullet.description;
     this.shadowRoot.querySelector(".date").innerText = newBullet.date;
     this.shadowRoot.querySelector(".category").innerText = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
