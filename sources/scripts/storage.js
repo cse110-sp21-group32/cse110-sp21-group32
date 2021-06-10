@@ -317,11 +317,6 @@ export function buildCurrent() {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
-        if (newBullet.bullet.checked == true) {
-          newBullet.opacity = true;
-        } else {
-          newBullet.opacity = false;
-        }
         mainPane.appendChild(newBullet);
       }
     });
@@ -333,11 +328,6 @@ export function buildCurrent() {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
-        if (newBullet.bullet.checked == true) {
-          newBullet.opacity = true;
-        } else {
-          newBullet.opacity = false;
-        }
         mainPane.appendChild(newBullet);
       }
     });

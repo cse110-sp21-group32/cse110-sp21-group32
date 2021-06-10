@@ -379,12 +379,18 @@ class BulletEntry extends HTMLElement {
       }
     }
 
-    //Set the bullet type
+    //Set the bullet type and opacity
+    this.shadowRoot.querySelector(".bullet").style.opacity = "1";
+    this.shadowRoot.querySelector(".des").style.opacity = "1";
     if (newBullet.type == "note") {
       this.shadowRoot.querySelector(".check-container").style.display = "none";
       this.shadowRoot.querySelector(".dash").style.display = "grid";
       this.shadowRoot.querySelector(".dot").style.display = "none";
     } else if (newBullet.type == "task") {
+      if(this.shadowRoot.querySelector(".checkbox").checked){
+        this.shadowRoot.querySelector(".bullet").style.opacity = "0.25";
+        this.shadowRoot.querySelector(".des").style.opacity = "0.25";
+      }
       this.shadowRoot.querySelector(".check-container").style.display = "grid";
       this.shadowRoot.querySelector(".dash").style.display = "none";
       this.shadowRoot.querySelector(".dot").style.display = "none";
@@ -406,16 +412,6 @@ class BulletEntry extends HTMLElement {
 
   set checked(flag) {
     this.shadowRoot.querySelector(".checkbox").checked = flag;
-  }
-
-  set opacity(newOpacity) {
-    if (this.shadowRoot.querySelector(".checkbox").checked == true) {
-      this.shadowRoot.querySelector(".bullet").style.opacity = "0.25";
-      this.shadowRoot.querySelector(".des").style.opacity = "0.25";
-    } else {
-      this.shadowRoot.querySelector(".bullet").style.opacity = "1";
-      this.shadowRoot.querySelector(".des").style.opacity = "1";
-    }
   }
 
   set showCategoryList(flag) {
