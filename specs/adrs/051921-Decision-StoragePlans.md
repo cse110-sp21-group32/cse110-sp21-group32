@@ -15,7 +15,7 @@ After implementing the general structures of logistics and UI, we need to choose
 
 ## Considered Options
 
-* Could Storage
+* Cloud Storage
 * Local Storage
 
 ## Decision Outcome

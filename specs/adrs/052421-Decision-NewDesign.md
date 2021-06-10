@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-The original design of the main page is very primitive is mainly. After achieving the core functionality of adding entries, it is time to improve the interface of the main page.
+The original design of the main page is very primitive. After achieving the core functionality of adding entries, we need to improve the interface of the main page.
 
 ## Decision Drivers 
 
@@ -15,6 +15,7 @@ The original design of the main page is very primitive is mainly. After achievin
 ## Considered Options
 
 * Old primitive design scheme
+* New design outlined below
 
 ## Decision Outcome
 
