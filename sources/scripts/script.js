@@ -152,6 +152,22 @@ function checkDateSelector() {
 }
 
 /**
+ * Helper function for bullet to fade if completed
+ * @param {*} check  - Check whether or not the box has been checked
+ */
+function fadeBullet(check) {
+  var see = check.getRootNode().querySelector(".bullet");
+  var des = check.getRootNode().querySelector(".des");
+  if (check.checked == true) {
+    see.style.opacity = "0.25";
+    des.style.opacity = "0.25";
+  } else {
+    see.style.opacity = "1";
+    des.style.opacity = "1";
+  }
+}
+
+/**
  * Helper function for bullet showDetail button
  * @param {*} detailButton  - The detail button clicked on 
  */
