@@ -11,14 +11,10 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: rgb(173, 210, 244);
-<<<<<<< HEAD
-  height: 100%;
-  width: 100%;
+
   font-family: sans-serif;
-=======
   height: 100vh;
   width: 100vw;
->>>>>>> origin/main
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -74,18 +70,15 @@ body.main-view main .container {
 /* Stlying for the second cell (Middle left cell, Overdue) */
 body.main-view main .cell-2 {
   grid-area: history;
-<<<<<<< HEAD
    display: inline;
 }
 
 /* Stlying for the third cell (Bottom left cell, Graph) */
 body.main-view main .cell-3 {
   grid-area: footer;
-=======
   height: 90vh;
   margin: 0.01px;
   padding: 0.01px;
->>>>>>> origin/main
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
@@ -99,13 +92,10 @@ body.main-view main .cell-4 {
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
-<<<<<<< HEAD
    display: inline;
-=======
   height: 90vh;
   margin: 0.01px;
   padding: 0.01px;
->>>>>>> origin/main
 }
 
 /* Styling for all the non-header text */
