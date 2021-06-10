@@ -1,8 +1,11 @@
+/**
+ * Outmoded due to planned changes
+ */
+
 const EXPECTED = 'string';
 const ACTUAL = 'string';
 
 it('test 1: get old null case', () => {
-
   expect(EXPECTED).toBe(ACTUAL);
 });
 

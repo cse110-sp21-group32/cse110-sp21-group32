@@ -1,3 +1,7 @@
+/**
+ * Outmoded due to planned changes
+ */
+
 const EXPECTED = 'string';
 const ACTUAL = 'string';
 
