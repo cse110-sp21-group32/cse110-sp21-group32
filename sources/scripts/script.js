@@ -122,6 +122,7 @@ document.addEventListener("click", (e) => {
   }
   // Check bullet event
   if (e.composedPath()[0].id == "bullet-check") {
+    fadeBullet(e.composedPath()[0]);
     let bulletElement = e.composedPath()[0].getRootNode().host;
     storage.editBullet(bulletElement.bullet, bulletElement.bullet);
   }

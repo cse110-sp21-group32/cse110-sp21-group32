@@ -2,23 +2,55 @@ class CategoryEntry extends HTMLElement {
   constructor() {
     super();
 
-    const template = document.createElement('template');
+    const template = document.createElement("template");
 
     template.innerHTML = `
           <style>
+          @keyframes fade-up {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+          }
+          .cate-entry {
+            animation: slide-up 0.4s ease;
+
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+          }
+
            .cate-entry .category-inner-entry{
               height: 3.5em;
               font-size: 2em;
               background-color:  rgba(167, 200, 220, 0.925);
               border-radius: 0.5em;  
               margin:0.3rem;
-          
               display: flex;
               justify-items: center;
               align-items: center;
-          
               padding: 0.5rem;
-          
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            .cate-entry .category-inner-entry:hover{
+              -webkit-transform: scale(1.035);
+              transform: scale(1.035);
             }
           
             .cate-entry .cate-button {
@@ -32,7 +64,24 @@ class CategoryEntry extends HTMLElement {
               padding: 8px;
               background-color: rgb(204, 225, 243);
               line-height: 3rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
             }
+
+            .cate-entry .cate-button:hover {
+              background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
             .cate-entry .color {
               display:none
             }
@@ -56,6 +105,7 @@ class CategoryEntry extends HTMLElement {
               top: -20px;
               left: 5px;
               color: #0994ff;
+              animation: fade-up 0.8s ease;
             }
           </style>
           <section class="cate-entry">
@@ -70,8 +120,8 @@ class CategoryEntry extends HTMLElement {
           </section>
           `;
 
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   /**
@@ -79,9 +129,9 @@ class CategoryEntry extends HTMLElement {
    */
   get category() {
     let categoryObj = {
-      title: this.shadowRoot.getElementById('category-title').innerText,
-      color: this.shadowRoot.getElementById('category-color').innerText,
-      checked: this.shadowRoot.getElementById('category-check').checked,
+      title: this.shadowRoot.getElementById("category-title").innerText,
+      color: this.shadowRoot.getElementById("category-color").innerText,
+      checked: this.shadowRoot.getElementById("category-check").checked,
     };
     return categoryObj;
   }
@@ -90,31 +140,72 @@ class CategoryEntry extends HTMLElement {
    * Set the category information
    */
   set category(newCategory) {
-    this.shadowRoot.getElementById('category-title').innerText = newCategory.title;
-    this.shadowRoot.getElementById('category-color').innerText = newCategory.color;
-    if (newCategory.color == "red") {
-      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 127, 127,0.925)";
-    } else if (newCategory.color == "yellow") {
-      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(181, 178, 110,0.925)";
-    } else if (newCategory.color == "blue") {
-      this.shadowRoot.querySelector('.category-inner-entry').style.backgroundColor = "rgba(167, 200, 220,0.925)";
+    this.shadowRoot.getElementById("category-title").innerText =
+      newCategory.title;
+    this.shadowRoot.getElementById("category-color").innerText =
+      newCategory.color;
+    if (newCategory.color == "Red") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(224, 90, 70,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebd8d5";
+      this.shadowRoot.getElementById(
+        "cate-delete"
+      ).style.backgroundColor = "#ebd8d5";
+    } else if (newCategory.color == "Yellow") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(229, 191, 106,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebe5d5";
+      this.shadowRoot.getElementById(
+        "cate-delete"
+      ).style.backgroundColor = "#ebe5d5";
+    } else if (newCategory.color == "Blue") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(167, 200, 220,0.925)";
+    } else if (newCategory.color == "Orange") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(224, 138, 87,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebdfd5";
+      this.shadowRoot.getElementById(
+        "cate-delete"
+      ).style.backgroundColor = "#ebdfd5";
+    }else if (newCategory.color == "Green") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(42, 157, 143,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#d5ebd7";
+      this.shadowRoot.getElementById(
+        "cate-delete"
+      ).style.backgroundColor = "#d5ebd7";
     }
 
-    this.shadowRoot.getElementById('category-check').checked = newCategory.checked;
+    this.shadowRoot.getElementById("category-check").checked =
+      newCategory.checked;
   }
 
   /**
    * Quickly check if this category is checked
    */
   get checked() {
-    return this.shadowRoot.getElementById('category-check').checked;
+    return this.shadowRoot.getElementById("category-check").checked;
   }
 
   /**
    * Set the the check box
    */
   set checked(flag) {
-    this.shadowRoot.getElementById('category-check').checked = flag;
+    this.shadowRoot.getElementById("category-check").checked = flag;
   }
 
   /**
@@ -124,12 +215,9 @@ class CategoryEntry extends HTMLElement {
     this.shadowRoot.getElementById('cate-edit').remove();
     this.shadowRoot.getElementById('cate-delete').remove();
   }
-
-
-
 }
 
-customElements.define('category-entry', CategoryEntry);
+customElements.define("category-entry", CategoryEntry);
 
 /**
  * JSON Format:
@@ -146,4 +234,3 @@ customElements.define('category-entry', CategoryEntry);
  *   audio: 'foo.com/bar.mp3'
  * }
  */
-

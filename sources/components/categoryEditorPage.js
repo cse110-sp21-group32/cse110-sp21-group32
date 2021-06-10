@@ -138,9 +138,12 @@ class categoryEditorPage extends HTMLElement {
               <input type="checkbox" id="name-check-box" class="checkbox" style="display: none">
               <input type="text" id="name" name="name" placeholder="Name"><br>
               <select id="color" name="color">
-                <option value="blue">Blue</option>
-                <option value="red">Red</option>
-                <option value="yellow">Yellow</option>
+                <option value="Blue">Blue</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Orange">Orange</option>
+                <option value="Green">Green</option>
+
               </select><br>
               <input type="submit" value="Confirm" id="cate-submit">
               <input type="reset" id="reset-btn">    
