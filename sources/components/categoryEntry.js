@@ -107,10 +107,11 @@ class CategoryEntry extends HTMLElement {
             
             .checkbox:checked:after {
               content: "\u2714";
-              font-size: 50px;
+              font-size: 4em;
               position: absolute;
+              line-height: 100%;
               top: -20px;
-              left: 5px;
+              left: 0em;
               color: #0994ff;
               animation: fade-up 0.8s ease;
             }
