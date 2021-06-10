@@ -93,7 +93,9 @@ class CategoryEntry extends HTMLElement {
               display:none
             }
             .cate-entry .title {
-              text-align: center;
+              text-align: left;
+              padding-left: 20px;
+              padding-right: 10px;
               width: 70%;
               min-width: 30px;
               min-height: 30px;

@@ -245,7 +245,7 @@ class BulletEntry extends HTMLElement {
               margin-right: 3%;
               padding:1%;
               width: 20%;
-              min-width:80px;
+              min-width:120px;
 
               text-align-last:center;
               padding-right: 5px;
