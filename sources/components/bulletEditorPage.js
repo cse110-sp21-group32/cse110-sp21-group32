@@ -123,7 +123,6 @@ class bulletEditorPage extends HTMLElement {
               margin-bottom: 10px;
               background-color: white;
               color: rgb(130, 130, 130);
-            
             }
 
             #name-check-box {
@@ -152,8 +151,8 @@ class bulletEditorPage extends HTMLElement {
                   <input type="text" id="description" name="description" placeholder="Detail"><br>
         
         
-                  <select id="category" name="category">
-                    <option value='{"title":"Default","color":"blue"}'>Default</option>
+                  <select id="select-category" name="category">
+                    <option value='{"title":"Default","color":"Blue"}'>Default</option>
                   </select><br>
             
                   <select id="type" name="type">
@@ -194,7 +193,7 @@ class bulletEditorPage extends HTMLElement {
     let bulletForm = {
       description: this.shadowRoot.getElementById("description").dataset.old,
       title: this.shadowRoot.getElementById("name").dataset.old,
-      category: this.shadowRoot.getElementById("category").dataset.old,
+      category: this.shadowRoot.getElementById("select-category").dataset.old,
       type: this.shadowRoot.getElementById("type").dataset.old,
       date: this.shadowRoot.getElementById("due-date").dataset.old,
       checked: this.shadowRoot.getElementById("name-check-box").dataset.old,
@@ -209,7 +208,7 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("description").dataset.old =
       inputBullet.description;
     this.shadowRoot.getElementById("name").dataset.old = inputBullet.title;
-    this.shadowRoot.getElementById("category").dataset.old =
+    this.shadowRoot.getElementById("select-category").dataset.old =
       inputBullet.category;
     this.shadowRoot.getElementById("type").dataset.old = inputBullet.type;
     this.shadowRoot.getElementById("due-date").dataset.old = inputBullet.date;
@@ -226,7 +225,7 @@ class bulletEditorPage extends HTMLElement {
       checked: this.shadowRoot.getElementById("name-check-box").checked,
       description: this.shadowRoot.getElementById("description").value,
       date: this.shadowRoot.getElementById("due-date").value,
-      category: this.shadowRoot.getElementById("category").value,
+      category: this.shadowRoot.getElementById("select-category").value,
       type: this.shadowRoot.getElementById("type").value,
     };
     return bulletForm;
@@ -241,7 +240,7 @@ class bulletEditorPage extends HTMLElement {
     this.shadowRoot.getElementById("name").value = inputBullet.title;
 
     //Set the correct category
-    let sel = this.shadowRoot.getElementById("category");
+    let sel = this.shadowRoot.getElementById("select-category");
     let opts = sel.options;
     for (var opt, j = 0; (opt = opts[j]); j++) {
       if (opt.value == inputBullet.category) {
@@ -260,13 +259,13 @@ class bulletEditorPage extends HTMLElement {
    *  Set the category list of the editor page
    */
   set catagoryList(inputList) {
-    let categorySelect = this.shadowRoot.getElementById("category");
+    let categorySelect = this.shadowRoot.getElementById("select-category");
     inputList.forEach(function(item) {
       // create new option element
       var opt = document.createElement("option");
 
       // create text node to add to option element (opt)
-      opt.appendChild(document.createTextNode(item.title+' ('+item.color+')'));
+      opt.appendChild(document.createTextNode(item.title));
 
       // set value property of opt
       opt.value = JSON.stringify({title: item.title, color: item.color});
@@ -295,19 +294,3 @@ class bulletEditorPage extends HTMLElement {
 }
 
 customElements.define("bullet-editor-page", bulletEditorPage);
-
-/**
- * JSON Format:
- * image and audio will only sometimes be there
- *
- * {
- *   title: 'foo',
- *   date: 'foo',
- *   content: 'foo',
- *   image: {
- *     src: 'foo.com/bar.jpg',
- *     alt: 'foo'
- *   },
- *   audio: 'foo.com/bar.mp3'
- * }
- */

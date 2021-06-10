@@ -6,6 +6,26 @@ const setState = router.setState;
 // Use to handle editBullet and editCategory events
 var lastReferencedElement;
 
+// Use to handle edit inline Title category/bullet
+var activeTitle;
+
+// Use to handle inline editBullet and editCategory
+var oldElement;
+
+//Date of today
+let today = new Date();
+var todayDate = today.getFullYear();
+if (today.getMonth() + 1 < 10) {
+  todayDate += "-0" + (today.getMonth()+1);
+} else {
+  todayDate += "-" + (today.getMonth()+1);
+}
+if (today.getDate() < 10) {
+  todayDate += "-0" + today.getDate();
+} else {
+  todayDate += "-" + today.getDate();
+}
+
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
@@ -15,7 +35,22 @@ bulletAddButton.addEventListener("click", addBulletHandler);
  * bullet modal pops up
  */
 function addBulletHandler() {
-  setState("BulletEditor", null, storage.categoryArr);
+  let defaultCategory = {
+    title: "Default",
+    color: "Blue",
+  };
+  let newBullet = {
+    title: "",
+    checked: false,
+    description: "",
+    date: todayDate,
+    category: JSON.stringify(defaultCategory),
+    type: "task",
+  };
+  let newObj = {
+    bullet: newBullet,
+  };
+  storage.addBullet(newObj);
 }
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
@@ -25,7 +60,17 @@ cateAddButton.addEventListener("click", addCateHandler);
  * category modal pops up
  */
 function addCateHandler() {
-  setState("CateEditor");
+  let defaultCategory = {
+    title: "",
+    color: "Blue",
+    checked: false
+  };
+  let mainPane = document.querySelector(".category-box");
+  let newEntry = document.createElement("category-entry");
+  newEntry.category=defaultCategory;
+  storage.addCategory(newEntry);
+  mainPane.appendChild(newEntry);
+  // setState("CateEditor");
 }
 
 /**
@@ -41,11 +86,41 @@ addEventListener("DOMContentLoaded", () => {
  * Note that submit events also register as clicks
  */
 document.addEventListener("click", (e) => {
-  // composedPath allows us to interact with shadowDom elements
-  // console.log(e.composedPath());
+  // Handle inline edit category/bullet title event
+  console.log(e.composedPath()[0]);
+  if (
+    activeTitle &&
+    e.composedPath()[0].id != "bullet-title" &&
+    e.composedPath()[0].id != "category-title"
+  ) {
+    let entry = activeTitle.getRootNode().host;
+    activeTitle.contentEditable = false;
+
+    // editBullet storage
+    if (activeTitle.id == "bullet-title") {
+      let newElement = entry.bullet;
+      if (entry.oldDetail !== undefined) {
+        newElement.description = entry.oldDetail;
+      }
+      storage.editBullet(newElement, oldElement);
+    }
+    // editCategory storage
+    else {
+      storage.editCategory(entry.category, oldElement);
+    }
+    activeTitle = null;
+  }
+
+  //Show category
+  if (e.composedPath()[0].id == "category-toggle") {
+    let bullet = e.composedPath()[0].getRootNode().host;
+    bullet.showCategoryList = true;
+  }
 
   // Click showDetail button
-  if (e.composedPath()[0].className == "bullet-button bullet-detail-button") {
+  if (
+    e.composedPath()[0].className == "fas fa-info-circle bullet-detail-button"
+  ) {
     showDetail(e.composedPath()[0]);
   }
 
@@ -55,6 +130,29 @@ document.addEventListener("click", (e) => {
     setState("BulletEditor", bulletObj, storage.categoryArr);
     lastReferencedElement = bulletObj;
   }
+
+  //Swtich the type of bullet
+  if (e.composedPath()[0].className == "fas fa-chevron-down fa-xs") {
+    let bulletObj = e.composedPath()[0].getRootNode().host;
+    let oldBullet = bulletObj.bullet;
+    let newBullet = bulletObj.bullet;
+    if (oldBullet.type == "note") {
+      newBullet.type = "event";
+    } else if (oldBullet.type == "event") {
+      newBullet.type = "task";
+    } else {
+      newBullet.type = "note";
+    }
+    bulletObj.bullet = newBullet;
+
+    // Handle when detail has been changed w/o saving
+    if (bulletObj.oldDetail !== undefined) {
+      newBullet.description = bulletObj.oldDetail;
+      oldBullet.description = bulletObj.oldDetail;
+    }
+    storage.editBullet(newBullet, oldBullet);
+  }
+
   // Click editCategory button
   if (e.composedPath()[0].id == "cate-edit") {
     let categoryObj = e.composedPath()[0].getRootNode().host;
@@ -123,8 +221,133 @@ document.addEventListener("click", (e) => {
   // Check bullet event
   if (e.composedPath()[0].id == "bullet-check") {
     fadeBullet(e.composedPath()[0]);
-    let bulletElement = e.composedPath()[0].getRootNode().host;
-    storage.editBullet(bulletElement.bullet, bulletElement.bullet);
+    let entry = e.composedPath()[0].getRootNode().host;
+    let newElement = entry.bullet;
+    if (entry.oldDetail !== undefined) {
+      newElement.description = entry.oldDetail;
+    }
+    storage.editBullet(newElement, newElement);
+  }
+
+  // Handle bullet/category edit attempt by saving element
+  if (
+    e.composedPath()[0].id == "bullet-category" ||
+    e.composedPath()[0].id == "bullet-date"
+  ) {
+    let entry = e.composedPath()[0].getRootNode().host;
+    oldElement = entry.bullet;
+    if (entry.oldDetail !== undefined) {
+      oldElement.description = entry.oldDetail;
+    }
+  }
+  if (e.composedPath()[0].id == "color") {
+    oldElement = e.composedPath()[0].getRootNode().host.category;
+  }
+
+  // Inline edit category/color event for Firefox
+  if (e.composedPath()[0].tagName == "OPTION") {
+    let entry = e.composedPath()[0].getRootNode().host;
+    // Inline edit bullet category
+    if (entry.tagName == "BULLET-ENTRY") {
+      let newElement = entry.bullet;
+      newElement.category = e.composedPath()[1].value;
+      if (entry.oldDetail !== undefined) {
+        newElement.description = entry.oldDetail;
+      }
+      storage.editBullet(newElement, oldElement);
+    }
+    // Inline edit category color
+    else {
+      let newElement = entry.category;
+      newElement.color = e.composedPath()[1].value;
+      entry.category = newElement;
+      storage.editCategory(newElement, oldElement);
+    }
+  }
+
+  // Inline edit bullet description save button event
+  if (e.composedPath()[0].id == "detail-save") {
+    let entry = e.composedPath()[0].getRootNode().host;
+    let oldBullet = entry.bullet;
+    oldBullet.description = entry.oldDetail;
+    storage.editBullet(entry.bullet, oldBullet);
+    entry.oldDetail = entry.bullet.description;
+    let detailEdit = entry.shadowRoot.querySelector("#detail-editor");
+    detailEdit.contentEditable = false;
+  }
+});
+
+document.addEventListener("dblclick", (e) => {
+  // Handle edit inline bullet title event
+  if (e.composedPath()[0].id == "bullet-title") {
+    // If reached after editing another title
+    if (activeTitle) {
+      activeTitle.contentEditable = false;
+      let entry = activeTitle.getRootNode().host;
+      if (activeTitle.id == "bullet-title") {
+        editBullet(entry);
+      } else {
+        storage.editCategory(entry.category, oldElement);
+      }
+    }
+    // Set reference to activeTitle element and store pre-edited data
+    e.composedPath()[0].contentEditable = true;
+    activeTitle = e.composedPath()[0];
+    let entry = e.composedPath()[0].getRootNode().host;
+    oldElement = entry.bullet;
+    if (entry.oldDetail !== undefined) {
+      oldElement.description = entry.oldDetail;
+    }
+  }
+
+  // Handle edit inline category title event
+  if (
+    e.composedPath()[0].id == "category-title" &&
+    e.composedPath()[0].name != "default-category"
+  ) {
+    // If reached after editing another title
+    if (activeTitle) {
+      activeTitle.contentEditable = false;
+      let entry = activeTitle.getRootNode().host;
+      if (activeTitle.id == "bullet-title") {
+        editBullet(entry);
+      } else {
+        storage.editCategory(entry.category, oldElement);
+      }
+    }
+    // Set reference to activeTitle element and store pre-edited data
+    e.composedPath()[0].contentEditable = true;
+    activeTitle = e.composedPath()[0];
+    oldElement = e.composedPath()[0].getRootNode().host.category;
+  }
+});
+
+document.addEventListener("input", (e) => {
+  // Inline edit bullet date
+  if (e.composedPath()[0].id == "bullet-date") {
+    let entry = e.composedPath()[0].getRootNode().host;
+    editBullet(entry);
+  }
+
+  // Inline edit bullet category/color for Chrome
+  if (e.composedPath()[0].tagName == "SELECT") {
+    let entry = e.composedPath()[0].getRootNode().host;
+    // Inline edit bullet category
+    if (entry.tagName == "BULLET-ENTRY") {
+      let newElement = entry.bullet;
+      newElement.category = e.composedPath()[0].value;
+      if (entry.oldDetail !== undefined) {
+        newElement.description = entry.oldDetail;
+      }
+      storage.editBullet(newElement, oldElement);
+    }
+    // Inline edit category color
+    else {
+      let newElement = entry.category;
+      newElement.color = e.composedPath()[0].value;
+      entry.category = newElement;
+      storage.editCategory(newElement, oldElement);
+    }
   }
 });
 
@@ -156,8 +379,8 @@ function checkDateSelector() {
  * @param {*} check  - Check whether or not the box has been checked
  */
 function fadeBullet(check) {
-  var see = check.getRootNode().querySelector(".bullet");
-  var des = check.getRootNode().querySelector(".des");
+  let see = check.getRootNode().querySelector(".bullet");
+  let des = check.getRootNode().querySelector(".des");
   if (check.checked == true) {
     see.style.opacity = "0.25";
     des.style.opacity = "0.25";
@@ -172,7 +395,13 @@ function fadeBullet(check) {
  * @param {*} detailButton  - The detail button clicked on 
  */
 function showDetail(detailButton) {
-  var des = detailButton.getRootNode().querySelector(".des");
+  let detailEdit = detailButton.getRootNode().getElementById("detail-editor");
+  let bulletEntry = detailButton.getRootNode().host;
+  let des = detailButton.getRootNode().querySelector(".des");
+  detailEdit.contentEditable = false;
+  if (bulletEntry.oldDetail === undefined) {
+    bulletEntry.oldDetail = bulletEntry.bullet.description;
+  }
   if (des.style.display == "block") {
     des.style.display = "none";
   } else {
@@ -199,9 +428,7 @@ function submitBullet(formObj) {
     setState("backMain");
     // If not called from editBullet, create new bullet
     if (!bulletEdit.old) {
-      let newEntry = document.createElement("bullet-entry");
-      newEntry.bullet = bulletEdit.bullet;
-      storage.addBullet(newEntry);
+      storage.addBullet(bulletEdit);
     }
     // Else if called from editBullet, edit
     else {
@@ -216,6 +443,7 @@ function submitBullet(formObj) {
 /**
  * Helper function for submitting new/edited category entry
  * @param {*} formObj - The form from the new/edited category enrty that is being submited
+ * Composed path allows access to shadow dom
  */
 function submitCategory(formObj) {
   let categoryEdit = formObj.getRootNode().host;
@@ -272,11 +500,27 @@ function submitCategory(formObj) {
 }
 
 /**
+ * Edit bullet from page
+ * @param {*} entry - the bullet to be edited
+ */
+function editBullet(entry) {
+  let newElement = entry.bullet;
+  if (entry.oldDetail !== undefined) {
+    newElement.description = entry.oldDetail;
+  }
+  storage.editBullet(newElement, oldElement);
+}
+
+/**
  * Delete bullet from page
  * @param {*} bulletObj - the bullet to be deleted
  */
 function deleteBullet(bulletObj) {
-  storage.deleteBullet(bulletObj);
+  let bullet = bulletObj.bullet;
+  if (bulletObj.oldDetail !== undefined) {
+    bullet.description = bulletObj.oldDetail;
+  }
+  storage.deleteBullet(bullet);
   bulletObj.remove();
 }
 
