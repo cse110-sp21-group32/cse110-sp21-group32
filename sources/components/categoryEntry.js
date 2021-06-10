@@ -124,7 +124,9 @@ class CategoryEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  //Get the category information
+  /**
+   * Get the category information
+   */
   get category() {
     let categoryObj = {
       title: this.shadowRoot.getElementById("category-title").innerText,
@@ -134,7 +136,9 @@ class CategoryEntry extends HTMLElement {
     return categoryObj;
   }
 
-  //Set the category information
+  /**
+   * Set the category information
+   */
   set category(newCategory) {
     this.shadowRoot.getElementById("category-title").innerText =
       newCategory.title;
@@ -190,18 +194,26 @@ class CategoryEntry extends HTMLElement {
       newCategory.checked;
   }
 
-  //Quickly check if this category is checked
+  /**
+   * Quickly check if this category is checked
+   */
   get checked() {
     return this.shadowRoot.getElementById("category-check").checked;
   }
 
+  /**
+   * Set the the check box
+   */
   set checked(flag) {
     this.shadowRoot.getElementById("category-check").checked = flag;
   }
 
-  set default(param) {
-    this.shadowRoot.getElementById("cate-edit").remove();
-    this.shadowRoot.getElementById("cate-delete").remove();
+  /**
+   * Set the defualt category 
+   */
+  set default(param){
+    this.shadowRoot.getElementById('cate-edit').remove();
+    this.shadowRoot.getElementById('cate-delete').remove();
   }
 }
 

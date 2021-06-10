@@ -279,6 +279,9 @@ class bulletEditorPage extends HTMLElement {
     });
   }
 
+  /**
+   * Length warning
+   */
   set lengthViolate(flag) {
     if (flag) {
       this.shadowRoot.querySelector(".length").style.display =

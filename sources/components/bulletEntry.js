@@ -173,7 +173,9 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  //Return the current bullet information
+  /**
+   * Return the current bullet information
+   */
   get bullet() {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
@@ -186,7 +188,9 @@ class BulletEntry extends HTMLElement {
     return entryObj;
   }
 
-  //Set the bullet information
+  /**
+   * Set the bullet information
+   */
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
@@ -278,15 +282,23 @@ class BulletEntry extends HTMLElement {
     }
   }
 
-  //Shortcut to return entry category
+  /**
+   * Shortcut to return entry category
+   */
   get category() {
     return this.shadowRoot.querySelector(".category").innerText;
   }
 
+  /**
+   * Set the new category 
+   */
   set category(newCategory) {
     this.shadowRoot.querySelector(".category").innerText = newCategory;
   }
-
+  
+  /**
+   * Set the check box entry
+   */
   set checked(flag) {
     this.shadowRoot.querySelector(".checkbox").checked = flag;
   }
