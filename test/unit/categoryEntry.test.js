@@ -1,22 +1,22 @@
 const EXPECTED = 'string';
 const ACTUAL = 'string';
 
-it('test 1: get category', async () => {
+it('test 1: get category', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 2: set category', async () => {
+it('test 2: set category', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 3: get checked', async () => {
+it('test 3: get checked', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 4: set checked', async () => {
+it('test 4: set checked', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 5: set default', async () => {
+it('test 5: set default', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });

@@ -1,40 +1,40 @@
 const EXPECTED = 'string';
 const ACTUAL = 'string';
 
-it('test 1: get bullet', async () => {
+it('test 1: get bullet', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
 describe('setting bullets', () => {
-  it('test 2: set bullet red', async () => {
+  it('test 2: set bullet red', () => {
     expect(EXPECTED).toBe(ACTUAL);
   });
 
-  it('test 3: set bullet blue', async () => {
+  it('test 3: set bullet blue', () => {
     expect(EXPECTED).toBe(ACTUAL);
   });
 
-  it('test 4: set bullet as task', async () => {
+  it('test 4: set bullet as task', () => {
     expect(EXPECTED).toBe(ACTUAL);
   });
 
-  it('test 5: set bullet as note', async () => {
+  it('test 5: set bullet as note', () => {
     expect(EXPECTED).toBe(ACTUAL);
   });
 });
 
-it('test 6: get category', async () => {
+it('test 6: get category', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 7: set category', async () => {
+it('test 7: set category', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 8: set checked', async () => {
+it('test 8: set checked', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
 
-it('test 9: set opacity', async () => {
+it('test 9: set opacity', () => {
   expect(EXPECTED).toBe(ACTUAL);
 });
