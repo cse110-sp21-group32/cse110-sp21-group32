@@ -1,7 +1,6 @@
 import "/sources/scripts/storage.js";
 
 const bulletName = 'bulletName';
-const bullet
 
 const categoryName = 'categoryName';
 const categoryColor = 'red';
