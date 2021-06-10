@@ -59,8 +59,6 @@ body.main-view main .container {
 body.main-view main .cell-2 {
   grid-area: history;
   height: 88vh;
-  margin: 0px;
-  padding: 0px;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
