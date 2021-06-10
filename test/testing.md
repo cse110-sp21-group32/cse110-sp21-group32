@@ -1,10 +1,24 @@
 # Guide to setting up local system for testing
 
+- [Guide to setting up local system for testing](#guide-to-setting-up-local-system-for-testing)
+  - [Latest Update on Test Cases Covered](#latest-update-on-test-cases-covered)
+  - [Setting up testing environment](#setting-up-testing-environment)
+  - [Running tests](#running-tests)
+  - [Seeing Tests](#seeing-tests)
+    - [For GitHub Actions](#for-github-actions)
+    - [For Local Testing](#for-local-testing)
+
 The repo was designed to run some automated tests through GitHub actions and will run these silently in the background of most of the main commits. However, sometimes you'll need to see how it fails and actually run the test on your local machine to see what's up with the code.
 
 This file is designed to show you how to get your local system ready to try out the testing. We use the Jest and Puppeteer testing framework to write our tests.
 
 ** *NOTE: new tests should be opened in a new branch*
+
+## Latest Update on Test Cases Covered
+
+As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests.
+
+The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. 
 
 ## Setting up testing environment
 
