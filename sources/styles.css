@@ -5,6 +5,8 @@ body {
   background-color: rgb(173, 210, 244);
   height: 100%;
   width: 100%;
+  min-width:700px;
+  font-family: sans-serif;
 }
 
 /* Stlying for the first cell(top left cell, add button) */
@@ -207,7 +209,8 @@ body.main-view main .MonthSection {
 
 .big-button:active {
   box-shadow: 0 5px #369;
-  transform: translateY(4px);
+  -webkit-transform: scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Styling for the big buttons when mouse is hovered over (Add Category, select all, deselect all) */
@@ -286,7 +289,8 @@ body.main-view main .cate-button {
 body.main-view main #add-bullet-button {
   display: grid;
   justify-items: center;
-  align-items: center;
+  align-items: cente;
+  text-align: justify;
   padding: 1px;
 }
 
@@ -294,6 +298,10 @@ body.main-view main .new-button {
   cursor: pointer;
   background-color: rgb(75, 164, 220);
 }
+
+
+
+
 
 /* Adding bit "+" symbol to add button */
 body.main-view main .new-button:hover {
@@ -351,6 +359,25 @@ body.cateEditor cate-editor-page {
   padding-left: 1.2rem;
 }
 
+.plus-div{
+  /*display:flex;
+  align-items: center;
+  text-align: left;
+  left: -35%;
+  top: 0%;
+  position:relative;
+  float:left;*/
+  width:30px;
+  display: flex;
+  align-items: center;
+}
+
+.new-button > span > div{
+  display:inline-block;
+}
+
+
+
 /* Stlying for category edit button */
 .checkbox {
   -webkit-appearance: none;
@@ -398,9 +425,20 @@ body.main-view main .date:hover {
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: transparent !important;
 }
 
+.bullet.new-button:hover {
+  background-color: rgba(255, 255, 255, 0.379) !important;
+}
+
+
 .bullet.new-button:active {
-  box-shadow: 0 5px #369;
-  transform: translateY(4px);
+  background-color: white !important;
 }
