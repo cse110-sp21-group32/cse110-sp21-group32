@@ -12,6 +12,20 @@ var activeTitle;
 // Use to handle inline editBullet and editCategory
 var oldElement;
 
+//Date of today
+let today = new Date();
+var todayDate = today.getFullYear();
+if (today.getMonth() + 1 < 10) {
+  todayDate += "-0" + (today.getMonth()+1);
+} else {
+  todayDate += "-" + (today.getMonth()+1);
+}
+if (today.getDate() < 10) {
+  todayDate += "-0" + today.getDate();
+} else {
+  todayDate += "-" + today.getDate();
+}
+
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
@@ -24,7 +38,7 @@ function addBulletHandler() {
     title: "",
     checked: false,
     description: "",
-    date: "2021-06-11",
+    date: todayDate,
     category: JSON.stringify(defaultCategory),
     type: "task",
   };
