@@ -29,6 +29,11 @@ if (today.getDate() < 10) {
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
 bulletAddButton.addEventListener("click", addBulletHandler);
+
+/**
+ * When the add bullet button is clicked, this function is called to set the state so that the add
+ * bullet modal pops up
+ */
 function addBulletHandler() {
   let defaultCategory = {
     title: "Default",
@@ -49,6 +54,11 @@ function addBulletHandler() {
 }
 var cateAddButton = document.getElementById("add-cate-button");
 cateAddButton.addEventListener("click", addCateHandler);
+
+/**
+ * When the add category button is clicked, this function is called to set the state so that the add
+ * category modal pops up
+ */
 function addCateHandler() {
   let defaultCategory = {
     title: "",
@@ -63,15 +73,18 @@ function addCateHandler() {
   // setState("CateEditor");
 }
 
-// Build from local storage
+/**
+ * build from local storage
+ */
 addEventListener("DOMContentLoaded", () => {
   setState("backMain", false);
   storage.buildDefault();
 });
 
-// Will check for click events in entire document
-// Note that submit events also register as clicks
-// composedPath allows us to interact with shadowDom elements
+/**
+ * Will check for click events in entire document
+ * Note that submit events also register as clicks
+ */
 document.addEventListener("click", (e) => {
   // Handle inline edit category/bullet title event
   console.log(e.composedPath()[0]);
@@ -338,6 +351,9 @@ document.addEventListener("input", (e) => {
   }
 });
 
+/**
+ * Checks if any dates are selected and colors them accordingly
+ */
 function checkDateSelector() {
   let dates = document.querySelectorAll("date-entry");
   let historyBox = document.querySelector(".journal-box-history");
@@ -358,7 +374,10 @@ function checkDateSelector() {
   }
 }
 
-//Helper function for bullet to fade if completed
+/**
+ * Helper function for bullet to fade if completed
+ * @param {*} check  - Check whether or not the box has been checked
+ */
 function fadeBullet(check) {
   let see = check.getRootNode().querySelector(".bullet");
   let des = check.getRootNode().querySelector(".des");
@@ -371,7 +390,10 @@ function fadeBullet(check) {
   }
 }
 
-// Helper function for bullet showDetail button
+/**
+ * Helper function for bullet showDetail button
+ * @param {*} detailButton  - The detail button clicked on 
+ */
 function showDetail(detailButton) {
   let detailEdit = detailButton.getRootNode().getElementById("detail-editor");
   let bulletEntry = detailButton.getRootNode().host;
@@ -387,7 +409,10 @@ function showDetail(detailButton) {
   }
 }
 
-// Helper function for submitting new/edited bullet entry
+/**
+ * Helper function for submitting new/edited bullet entry
+ * @param {*} formObj - The form from the new/edited bullet enrty that is being submited
+ */
 function submitBullet(formObj) {
   let bulletEdit = formObj.getRootNode().host;
   let cateEditor = document.querySelector("bullet-editor-page");
@@ -415,7 +440,11 @@ function submitBullet(formObj) {
   }
 }
 
-// Helper function for submitting new/edited category entry
+/**
+ * Helper function for submitting new/edited category entry
+ * @param {*} formObj - The form from the new/edited category enrty that is being submited
+ * Composed path allows access to shadow dom
+ */
 function submitCategory(formObj) {
   let categoryEdit = formObj.getRootNode().host;
   //Check if the new category is duplicate
@@ -470,6 +499,10 @@ function submitCategory(formObj) {
   }
 }
 
+/**
+ * Edit bullet from page
+ * @param {*} entry - the bullet to be edited
+ */
 function editBullet(entry) {
   let newElement = entry.bullet;
   if (entry.oldDetail !== undefined) {
@@ -478,6 +511,10 @@ function editBullet(entry) {
   storage.editBullet(newElement, oldElement);
 }
 
+/**
+ * Delete bullet from page
+ * @param {*} bulletObj - the bullet to be deleted
+ */
 function deleteBullet(bulletObj) {
   let bullet = bulletObj.bullet;
   if (bulletObj.oldDetail !== undefined) {
@@ -487,6 +524,10 @@ function deleteBullet(bulletObj) {
   bulletObj.remove();
 }
 
+/**
+ * Delete category from page
+ * @param {*} categoryObj - the category to be deleted
+ */
 function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
   categoryObj.remove();

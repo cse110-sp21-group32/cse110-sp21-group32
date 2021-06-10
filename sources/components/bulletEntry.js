@@ -341,15 +341,24 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  /**
+   * Get old detail 
+   */
   get oldDetail() {
     return this.shadowRoot.getElementById("detail-editor").dataset.old;
   }
 
+  /**
+   * Change the old value of bullet 
+   * @param {*} input  - New value of bullet
+   */
   set oldDetail(input) {
     this.shadowRoot.getElementById("detail-editor").dataset.old = input;
   }
 
-  //Return the current bullet information
+  /**
+   * Return the current bullet information
+   */
   get bullet() {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
@@ -362,7 +371,9 @@ class BulletEntry extends HTMLElement {
     return entryObj;
   }
 
-  //Set the bullet information
+  /**
+   * Set the bullet information
+   */
   set bullet(newBullet) {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
@@ -424,15 +435,23 @@ class BulletEntry extends HTMLElement {
     }
   }
 
-  //Shortcut to return entry category
+  /**
+   * Shortcut to return entry category
+   */
   get category() {
     return this.shadowRoot.getElementById("bullet-category").name;
   }
 
+  /**
+   * Set the new category 
+   */
   set category(newCategory) {
     this.shadowRoot.getElementById("bullet-category").name = newCategory;
   }
-
+  
+  /**
+   * Set the check box entry
+   */
   set checked(flag) {
     this.shadowRoot.querySelector(".checkbox").checked = flag;
   }
