@@ -30,13 +30,13 @@ Next install the required library. We don't have this on our repo because it's s
 
 2. `npm install --save-dev jest babel-jest @babel/core @babel/preset-env`
 
-Our tests are all stored in the `tests/` directory. Unit tests are stored in `unit/` and End-to-End tests are stored in `e2e/`.  We need to know this in order to run our Jest/Puppeteer tests.
+Our tests are all stored in the `test/` directory. Unit tests are stored in `unit/` and End-to-End tests are stored in `e2e/`.  We need to know this in order to run our Jest/Puppeteer tests.
 
 ## Running tests
 
 We can actually run our tests like so (assuming we're in the top most directory level)
 
-3. `npm test test/type/feature.test.js`
+3. `npm test test/<test-type>/feature.test.js`
 
 If we wanted to run our e2e `category.test.js` file, the command would look like this:
 
@@ -114,7 +114,7 @@ module.exports = {
     launch: {
        headless: false,
        slowMo: 500,
-      //  args: ['--no-sandbox']
+       // args: ['--no-sandbox']
       }
     }
 
