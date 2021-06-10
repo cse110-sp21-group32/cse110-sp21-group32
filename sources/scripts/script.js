@@ -65,7 +65,6 @@ document.addEventListener("click", (e) => {
       newBullet.type="note";
     }
     bulletObj.bullet = newBullet;
-    console.log("CHeck");
   }
 
   // Click editCategory button
