@@ -178,7 +178,6 @@ class BulletEntry extends HTMLElement {
 
 
             .sample-toolbar > i{
-              opacity:0;
 			        cursor:pointer;
 		        }
 
