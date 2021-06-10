@@ -88,6 +88,13 @@ document.addEventListener("click", (e) => {
       newBullet.type="note";
     }
     bulletObj.bullet = newBullet;
+
+    // Handle when detail has been changed w/o saving
+    if (bulletObj.oldDetail !== undefined) {
+      newBullet.description = bulletObj.oldDetail;
+      oldBullet.description = bulletObj.oldDetail;
+    }
+    storage.editBullet(newBullet, oldBullet);
   }
 
   // Click editCategory button
