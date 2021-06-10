@@ -6,7 +6,7 @@
 
 ## Context and Problem Statement
 
-We have implemented the core functionality of bullet and category filtering. However, we did not decide whether to hide the detial box after hiding the bullet entry.
+We have implemented the core functionality of bullet and category filtering. However, we did not decide whether to hide the detail box after hiding a bullet entry, or if the detail should remember its state and show back up in the same state.
 
 ## Decision Drivers 
 
@@ -14,9 +14,9 @@ We have implemented the core functionality of bullet and category filtering. How
 
 ## Considered Options
 
-* The detial box visibility remains the same after checking or unchecking the category
-* The detial box visibility collapses after unchecking the category
+* The detail box visibility remains the same after checking or unchecking the category
+* The detail box visibility collapses after unchecking the category
 
 ## Decision Outcome
 
-We have decided to collapse detial box visibility after unchecking the category to make the focus view cleaner
+We have decided to collapse detail box visibility after unchecking the category to make the focus view cleaner. If the user deselects a bullet, then they have signalled disinterest in that bullet, so it should be acceptable to collapse the detail as well.

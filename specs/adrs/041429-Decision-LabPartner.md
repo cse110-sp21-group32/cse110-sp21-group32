@@ -1,7 +1,7 @@
 # Decide on Lab partners (potentially programming pairs)
 
 * Status: [accepted ]
-* Deciders: [Rudy, Amen,Beilei, Tony, Richar, Yotam ,Sanjai, Ryan,Andres] 
+* Deciders: [Rudy, Aman, Beilei, Tony, Richard, Yotam, Sanjai, Ryan, Andres] 
 * Date: [2021-04-29] 
 
 ## Context and Problem Statement
@@ -11,18 +11,18 @@ Based on the announcement on canvas, for the future labs, we are allowed to pair
 ## Decision Drivers
 
 * Schedule
-* Techniqual skill level (may not be accurate)
+* Technical skill level (may not be accurate)
 
 ## Considered Options
 
-* All possible combinations of teamates
+* All possible combinations of teammates
 
 ## Decision Outcome
 
-Based on the response from teamates, including their usuall working time and preferences, the lab partners and programming pairs (groups) are: \
-    - Rudy, Amen \
+Based on the response from teammates, including their usual working times and preferences, the lab partners and programming pairs (groups) are: \
+    - Rudy, Aman \
     - Beilei, Tony \
-    - Richar, Yotam \
+    - Richard, Yotam \
     - Sanjai, Ryan, Andres
 
 

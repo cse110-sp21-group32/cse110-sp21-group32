@@ -6,17 +6,17 @@
 
 ## Context and Problem Statement
 
-Previously, we choose to put every entry in the focus window. One selector we have is catorgy. However, since the number of categories is limited, the numebr of entries in the focus is still likely to be a lot. 
+Previously, we chose to put every entry in the Focus window. One selector we have is the category selector. However, since the number of categories is limited, the number of entries in the focus is still likely to be a lot, which is overwhelming to the user. 
 
 ## Decision Drivers 
 
-* User should quickly locate the entry they want
+* User should be able to quickly locate the entry they want
 
 ## Considered Options
 
-* Drop down electors to switch views in focus window
+* Drop down selectors to switch views in Focus window
 * Still only use single category filter
 
 ## Decision Outcome
 
-We have decided to implement duo selector: day and cateogry. What ever category and days get selected, their intersect entries will show up in the focus window.
+We have decided to implement two selectors: day and category. Essentially, the day and category function as two different sets, and the Focus will show the intersection of the two.
