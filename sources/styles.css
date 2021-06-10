@@ -1,18 +1,17 @@
-html,body{
+html,
+body {
   height: 100vh;
   width: 100vw;
-  margin: 0px;
 }
 
 /* This is a style css to the index.html in the root */
 body {
-  margin: 0px;
   overflow-y: auto;
   overflow-x: auto;
   background-color: rgb(173, 210, 244);
   height: 100vh;
   width: 100vw;
-  min-width:700px;
+  min-width: 700px;
   font-family: sans-serif;
 }
 
@@ -40,7 +39,6 @@ main {
 body.main-view main .container {
   height: 89vh;
   width: 97vw;
-  margin:0px;
   padding-left: 1vw;
   padding-right: 1vw;
   display: grid;
@@ -59,24 +57,18 @@ body.main-view main .container {
 body.main-view main .cell-2 {
   grid-area: history;
   height: 88vh;
-  margin: 0px;
-  padding: 0px;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   grid-area: main;
   height: 88vh;
-  margin: 0px;
-  padding: 0px;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
 body.main-view main .cell-5 {
   grid-area: cateMa;
   height: 88vh;
-  margin: 0px;
-  padding: 0px;
 }
 
 /* Styling for all the non-header text */
@@ -97,7 +89,6 @@ body.main-view main .section-container {
 body.main-view main .section-header-side {
   color: rgb(120, 120, 120);
   font-size: 5vh;
-  margin: 0px;
   height: 10vh;
   display: table-cell;
   vertical-align: bottom;
@@ -107,7 +98,6 @@ body.main-view main .section-header-side {
 /* Styling for the headers in the middle and left cells (Focus and Categories) */
 body.main-view main .section-header-main {
   color: rgb(9, 44, 82);
-  margin: 0px;
   font-size: 9vh;
   height: 11vh;
   display: table-cell;
@@ -319,10 +309,6 @@ body.main-view main .new-button {
   background-color: rgb(75, 164, 220);
 }
 
-
-
-
-
 /* Adding bit "+" symbol to add button */
 body.main-view main .new-button:hover {
   background-color: rgb(35, 137, 201);
@@ -379,24 +365,22 @@ body.cateEditor cate-editor-page {
   padding-left: 1.2rem;
 }
 
-.plus-div{
-  /*display:flex;
+.plus-div {
+  /* display:flex;
   align-items: center;
   text-align: left;
   left: -35%;
   top: 0%;
   position:relative;
-  float:left;*/
+  float:left; */
   width:30px;
   display: flex;
   align-items: center;
 }
 
-.new-button > span > div{
+.new-button > span > div {
   display:inline-block;
 }
-
-
 
 /* Stlying for category edit button */
 .checkbox {
@@ -457,7 +441,6 @@ body.main-view main .date:hover {
 .bullet.new-button:hover {
   background-color: rgba(255, 255, 255, 0.379) !important;
 }
-
 
 .bullet.new-button:active {
   background-color: white !important;
