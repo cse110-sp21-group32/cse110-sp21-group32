@@ -180,7 +180,6 @@ class CategoryEntry extends HTMLElement {
               <button class="cate-button" id="cate-edit">edit</button>
               <button class="cate-button" id="cate-delete">delete</button>
 
-              <span class="color" id="category-color">demo</span>
             </div>
           </section>
           `;
@@ -193,7 +192,7 @@ class CategoryEntry extends HTMLElement {
   get category() {
     let categoryObj = {
       title: this.shadowRoot.getElementById("category-title").innerText,
-      color: this.shadowRoot.getElementById("category-color").innerText,
+      color: this.shadowRoot.getElementById("color").value,
       checked: this.shadowRoot.getElementById("category-check").checked,
     };
     return categoryObj;
@@ -203,7 +202,7 @@ class CategoryEntry extends HTMLElement {
   set category(newCategory) {
     this.shadowRoot.getElementById("category-title").innerText =
       newCategory.title;
-    this.shadowRoot.getElementById("category-color").innerText =
+    this.shadowRoot.getElementById("color").value =
       newCategory.color;
     if (newCategory.color == "Red") {
       this.shadowRoot.querySelector(
@@ -253,8 +252,9 @@ class CategoryEntry extends HTMLElement {
   }
 
   set default(param) {
-    this.shadowRoot.getElementById("cate-edit").remove();
+    this.shadowRoot.getElementById("color").style.display = "none";
     this.shadowRoot.getElementById("cate-delete").remove();
+    this.shadowRoot.getElementById("category-title").name = "default-category";
   }
 }
 

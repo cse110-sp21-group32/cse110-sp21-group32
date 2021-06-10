@@ -172,7 +172,8 @@ class BulletEntry extends HTMLElement {
             }
 
             .bullet-entry .bullet:hover i,
-            .bullet-entry .bullet:hover #category{
+            .bullet-entry .bullet:hover #bullet-category,
+            .bullet-entry .bullet:hover label{
               opacity:1;
             }
 
@@ -185,16 +186,18 @@ class BulletEntry extends HTMLElement {
               color: #d60e96;
 		        }
 
-            .bullet > i{
+            .bullet > i,
+            .bullet > label{
               opacity:0;
               padding-right:3.5%;
               color: #585a5c;
             }
-            .bullet > i:hover{
+            .bullet > i:hover,
+            .bullet > label:hover{
               color: #272a3b;
             }
-
-            #category{
+            
+            #bullet-category{
               opacity:0;
               appearance: none;
               background-color: #d1d7de;
@@ -221,14 +224,13 @@ class BulletEntry extends HTMLElement {
               bac
             }
 
-            #category:hover{
+            #bullet-category:hover{
               background-color:#a7b4c2;
             }
 
-            #category:focus{
+            #bullet-category:focus{
               outline: none; 
             }
-
 
 
 
@@ -243,13 +245,16 @@ class BulletEntry extends HTMLElement {
                 <span class="title" id="bullet-title"
                   onkeydown="if(event.key == 'Enter'){event.preventDefault()}">
                 </span>
-                <select id="category" name="category">
-                  <option value='{"title":"Default","color":"blue"}'>Default</option>
-                  <option value='{"title":"a","color":"blue"}'>a</option>
-                  <option value='{"title":"v","color":"blue"}'>v</option>
-                  <option value='{"title":"c","color":"blue"}'>c</option>
+                <select id="bullet-category" name="category">
+                  <option value='{"title":"Default","color":"Blue"}'>Default</option>
+                  <option value='{"title":"a","color":"Blue"}'>a</option>
+                  <option value='{"title":"v","color":"Blue"}'>v</option>
+                  <option value='{"title":"c","color":"Blue"}'>c</option>
                 </select><br>
-                <i class="fas fa-calendar"></i>
+
+                <input type="date" id="bullet-date" style="opacity: 0; height:0; width:0;">
+                <label for="bullet-date" class="fas fa-calendar" id="calender"></label>
+
                 <i class="fas fa-info-circle bullet-detail-button"></i>
                 <i class="fas fa-trash" id ="bullet-delete"></i>
 
@@ -258,9 +263,7 @@ class BulletEntry extends HTMLElement {
                 <button class="bullet-button bullet-detail-button">detail</button>
                 <button class="bullet-button bullet-delete-button" id = "bullet-delete">delete</button>
 
-                <span class="category">demo</span>
                 <span class="type">demo</span>
-                <span class="date">demo</span>
 
             </div>
             <div class="des">
@@ -268,6 +271,7 @@ class BulletEntry extends HTMLElement {
                 <i class="fas fa-bold fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('bold', false);"></i>
                 <i class="fas fa-italic fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('italic', false);"></i>
                 <i class="fas fa-list fa-fw" onmousedown="event.preventDefault();" onclick="document.execCommand('insertunorderedlist', false);"></i>
+                <i class="fas fa-save fa-fw" id="detail-save" style="float: right"></i>
               </div>
 
               <div class="editor" id="detail-editor" ondblclick="this.contentEditable = true;">
@@ -279,14 +283,22 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  get oldDetail() {
+    return this.shadowRoot.getElementById("detail-editor").dataset.old;
+  }
+
+  set oldDetail(input) {
+    this.shadowRoot.getElementById("detail-editor").dataset.old = input;
+  }
+
   //Return the current bullet information
   get bullet() {
     let entryObj = {
       title: this.shadowRoot.querySelector(".title").innerText,
       checked: this.shadowRoot.querySelector(".checkbox").checked,
       description: this.shadowRoot.querySelector(".editor").innerHTML,
-      date: this.shadowRoot.querySelector(".date").innerText,
-      category: this.shadowRoot.querySelector(".category").innerText,
+      date: this.shadowRoot.getElementById("bullet-date").value,
+      category: this.shadowRoot.getElementById("bullet-category").name,
       type: this.shadowRoot.querySelector(".type").innerText,
     };
     return entryObj;
@@ -297,8 +309,8 @@ class BulletEntry extends HTMLElement {
     this.shadowRoot.querySelector(".title").innerText = newBullet.title;
     this.shadowRoot.querySelector(".checkbox").checked = newBullet.checked;
     this.shadowRoot.querySelector(".editor").innerHTML = newBullet.description;
-    this.shadowRoot.querySelector(".date").innerText = newBullet.date;
-    this.shadowRoot.querySelector(".category").innerText = newBullet.category;
+    this.shadowRoot.getElementById("bullet-date").value = newBullet.date;
+    this.shadowRoot.getElementById("bullet-category").name = newBullet.category;
     this.shadowRoot.querySelector(".type").innerText = newBullet.type;
 
     if (newBullet.category != "Default") {
@@ -350,11 +362,11 @@ class BulletEntry extends HTMLElement {
 
   //Shortcut to return entry category
   get category() {
-    return this.shadowRoot.querySelector(".category").innerText;
+    return this.shadowRoot.getElementById("bullet-category").name;
   }
 
   set category(newCategory) {
-    this.shadowRoot.querySelector(".category").innerText = newCategory;
+    this.shadowRoot.getElementById("bullet-category").name = newCategory;
   }
 
   set checked(flag) {
@@ -371,11 +383,43 @@ class BulletEntry extends HTMLElement {
     }
   }
 
-  set showCategoryList(flag){
-    if(flag){
+  set showCategoryList(flag) {
+    if (flag) {
       console.log("Check");
     }
   }
+
+  set categoryList(inputList) {
+    let categorySelect = this.shadowRoot.getElementById("bullet-category");
+    // Delete all current options
+    while (categorySelect.options.length) categorySelect.remove(0);
+
+    // Append default category
+    let defaultCategory = document.createElement("option");
+    defaultCategory.append(document.createTextNode("Default"));
+    defaultCategory.value = '{"title":"Default","color":"Blue"}';
+    categorySelect.appendChild(defaultCategory);
+
+    // Append remaining categories
+    inputList.forEach(function(item) {
+      // create new option element
+      let opt = document.createElement("option");
+
+      // create text node to add to option element (opt)
+      opt.appendChild(document.createTextNode(item.title));
+
+      // set value property of opt
+      opt.value = JSON.stringify({title: item.title, color: item.color});
+
+      // add opt to end of select box (sel)
+      // Skip default
+      if(item.title != "Default"){
+        categorySelect.appendChild(opt);
+      }
+    });
+    categorySelect.value = categorySelect.name;
+  }
 }
+
 
 customElements.define("bullet-entry", BulletEntry);
