@@ -2,10 +2,12 @@ html,
 body {
   height: 100vh;
   width: 100vw;
+  margin: 0.01px;
 }
 
 /* This is a style css to the index.html in the root */
 body {
+  margin: 0.01px;
   overflow-y: auto;
   overflow-x: auto;
   background-color: rgb(173, 210, 244);
@@ -39,6 +41,7 @@ main {
 body.main-view main .container {
   height: 89vh;
   width: 97vw;
+  margin: 0.01px;
   padding-left: 1vw;
   padding-right: 1vw;
   display: grid;
@@ -56,12 +59,16 @@ body.main-view main .container {
 body.main-view main .cell-2 {
   grid-area: history;
   height: 88vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Stlying for the fourth cell (Center cell, Focus) */
 body.main-view main .cell-4 {
   grid-area: main;
   height: 88vh;
+  margin: 0.01px;
+  padding: 0.01px;
 }
 
 /* Stlying for the fith cell(right cell, Categories) */
@@ -92,6 +99,7 @@ body.main-view main .section-header-side {
   display: table-cell;
   vertical-align: bottom;
   padding-bottom: 0.7rem;
+  margin: 0.01px;
 }
 
 /* Styling for the headers in the middle and left cells (Focus and Categories) */
@@ -102,6 +110,7 @@ body.main-view main .section-header-main {
   display: table-cell;
   vertical-align: bottom;
   min-height: 75px;
+  margin: 0.01px;
 }
 
 /* Styling for the journal entries shown in the history box */
