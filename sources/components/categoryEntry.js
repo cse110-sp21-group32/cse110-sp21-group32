@@ -115,7 +115,13 @@ class CategoryEntry extends HTMLElement {
               animation: fade-up 0.8s ease;
             }
 
+            .category-inner-entry:hover i,
+            .category-inner-entry:hover #color{
+              opacity:1;
+            }
+
             .category-inner-entry > i{
+              opacity:0;
               padding-right:5%;
               padding-left:1%;
               color: #585a5c;
@@ -125,6 +131,7 @@ class CategoryEntry extends HTMLElement {
             }
 
             #color{
+              opacity:0;
               appearance: none;
               background-color: #d1d7de;
               border-radius: 8px;

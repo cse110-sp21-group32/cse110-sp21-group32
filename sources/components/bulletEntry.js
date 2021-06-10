@@ -171,7 +171,14 @@ class BulletEntry extends HTMLElement {
 			        border-radius:3px;
             }
 
+            .bullet-entry .bullet:hover i,
+            .bullet-entry .bullet:hover #category{
+              opacity:1;
+            }
+
+
             .sample-toolbar > i{
+              opacity:0;
 			        cursor:pointer;
 		        }
 
@@ -180,6 +187,7 @@ class BulletEntry extends HTMLElement {
 		        }
 
             .bullet > i{
+              opacity:0;
               padding-right:3.5%;
               color: #585a5c;
             }
@@ -188,6 +196,7 @@ class BulletEntry extends HTMLElement {
             }
 
             #category{
+              opacity:0;
               appearance: none;
               background-color: #d1d7de;
               border-radius: 8px;
@@ -199,6 +208,7 @@ class BulletEntry extends HTMLElement {
               margin-right: 3%;
               padding:1%;
               width: 20%;
+              min-width:80px;
 
               text-align-last:center;
               padding-right: 5px;
@@ -219,6 +229,8 @@ class BulletEntry extends HTMLElement {
             #category:focus{
               outline: none; 
             }
+
+
 
 
 
