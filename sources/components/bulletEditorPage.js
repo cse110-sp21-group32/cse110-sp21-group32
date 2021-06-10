@@ -123,7 +123,6 @@ class bulletEditorPage extends HTMLElement {
               margin-bottom: 10px;
               background-color: white;
               color: rgb(130, 130, 130);
-            
             }
 
             #name-check-box {

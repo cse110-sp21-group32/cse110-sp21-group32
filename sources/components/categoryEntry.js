@@ -129,7 +129,7 @@ class CategoryEntry extends HTMLElement {
               <input class="checkbox" type="checkbox" id="category-check">
               <span class="title" id="category-title">demo</span>
               <i class="fas fa-palette"></i>
-              <i class="fas fa-trash"></i>
+              <i class="fas fa-trash" id="cate-delete"></i>
               <button class="cate-button" id="cate-edit">edit</button>
               <button class="cate-button" id="cate-delete">delete</button>
 
@@ -165,18 +165,12 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebd8d5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
-      ).style.backgroundColor = "#ebd8d5";
     } else if (newCategory.color == "Yellow") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
       ).style.backgroundColor = "rgba(229, 191, 106,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
-      ).style.backgroundColor = "#ebe5d5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
       ).style.backgroundColor = "#ebe5d5";
     } else if (newCategory.color == "Blue") {
       this.shadowRoot.querySelector(
@@ -189,18 +183,12 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebdfd5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
-      ).style.backgroundColor = "#ebdfd5";
     }else if (newCategory.color == "Green") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
       ).style.backgroundColor = "rgba(42, 157, 143,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
-      ).style.backgroundColor = "#d5ebd7";
-      this.shadowRoot.getElementById(
-        "cate-delete"
       ).style.backgroundColor = "#d5ebd7";
     }
 
