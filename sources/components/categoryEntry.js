@@ -5,6 +5,11 @@ class CategoryEntry extends HTMLElement {
     const template = document.createElement("template");
 
     template.innerHTML = `
+          <head>
+          <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            crossorigin="anonymous">
+          </head>
           <style>
           @keyframes fade-up {
             0% {
@@ -54,6 +59,8 @@ class CategoryEntry extends HTMLElement {
             }
           
             .cate-entry .cate-button {
+              display: none;
+
               margin: 0.5rem;
               font-size: 1rem;
               border: none;
@@ -87,7 +94,9 @@ class CategoryEntry extends HTMLElement {
             }
             .cate-entry .title {
               text-align: center;
-              width: 90%;
+              width: 70%;
+              min-width: 30px;
+              min-height: 30px;
             }
             .checkbox {
               -webkit-appearance: none;
@@ -107,15 +116,71 @@ class CategoryEntry extends HTMLElement {
               color: #0994ff;
               animation: fade-up 0.8s ease;
             }
+
+            .category-inner-entry:hover i,
+            .category-inner-entry:hover #color{
+              opacity:1;
+            }
+
+            .category-inner-entry > i{
+              opacity:0;
+              padding-right:5%;
+              padding-left:1%;
+              color: #585a5c;
+            }
+            .category-inner-entry > i:hover{
+              color: #272a3b;
+            }
+
+            #color{
+              opacity:0;
+              appearance: none;
+              background-color: #d1d7de;
+              border-radius: 8px;
+
+              border: none;
+              border-color: coral;
+              
+              margin-left: 3%;
+              margin-right: 3%;
+              padding:1%;
+              width: 35%;
+              height: 50%;
+              min-width: 55px;
+
+              text-align-last:center;
+              padding-right: 5px;
+              direction: rtl;
+
+              font-family: inherit;
+              font-size: 15px;
+              cursor: inherit;
+              line-height: inherit;
+            }
+
+            #color:hover{
+              background-color:#a7b4c2;
+            }
+
+            #color:focus{
+              outline: none; 
+            }
           </style>
           <section class="cate-entry">
             <div class="category-inner-entry">
               <input class="checkbox" type="checkbox" id="category-check">
-              <span class="title" id="category-title">demo</span>
+              <span class="title" id="category-title" onkeydown="if(event.key == 'Enter'){event.preventDefault()}">demo</span>
+              <select id="color" name="color">
+                <option value="Blue">Blue</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Orange">Orange</option>
+                <option value="Green">Green</option>
+              </select><br>
+              <i class="fas fa-trash" id="cate-delete"></i>
               <button class="cate-button" id="cate-edit">edit</button>
               <button class="cate-button" id="cate-delete">delete</button>
 
-              <span class="color" id="category-color">demo</span>
             </div>
           </section>
           `;
@@ -124,21 +189,25 @@ class CategoryEntry extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  //Get the category information
+  /**
+   * Get the category information
+   */
   get category() {
     let categoryObj = {
       title: this.shadowRoot.getElementById("category-title").innerText,
-      color: this.shadowRoot.getElementById("category-color").innerText,
+      color: this.shadowRoot.getElementById("color").value,
       checked: this.shadowRoot.getElementById("category-check").checked,
     };
     return categoryObj;
   }
 
-  //Set the category information
+  /**
+   * Set the category information
+   */
   set category(newCategory) {
     this.shadowRoot.getElementById("category-title").innerText =
       newCategory.title;
-    this.shadowRoot.getElementById("category-color").innerText =
+    this.shadowRoot.getElementById("color").value =
       newCategory.color;
     if (newCategory.color == "Red") {
       this.shadowRoot.querySelector(
@@ -147,18 +216,12 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebd8d5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
-      ).style.backgroundColor = "#ebd8d5";
     } else if (newCategory.color == "Yellow") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
       ).style.backgroundColor = "rgba(229, 191, 106,0.5)";
       this.shadowRoot.getElementById(
         "cate-edit"
-      ).style.backgroundColor = "#ebe5d5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
       ).style.backgroundColor = "#ebe5d5";
     } else if (newCategory.color == "Blue") {
       this.shadowRoot.querySelector(
@@ -171,9 +234,6 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#ebdfd5";
-      this.shadowRoot.getElementById(
-        "cate-delete"
-      ).style.backgroundColor = "#ebdfd5";
     }else if (newCategory.color == "Green") {
       this.shadowRoot.querySelector(
         ".category-inner-entry"
@@ -181,27 +241,33 @@ class CategoryEntry extends HTMLElement {
       this.shadowRoot.getElementById(
         "cate-edit"
       ).style.backgroundColor = "#d5ebd7";
-      this.shadowRoot.getElementById(
-        "cate-delete"
-      ).style.backgroundColor = "#d5ebd7";
     }
 
     this.shadowRoot.getElementById("category-check").checked =
       newCategory.checked;
   }
 
-  //Quickly check if this category is checked
+  /**
+   * Quickly check if this category is checked
+   */
   get checked() {
     return this.shadowRoot.getElementById("category-check").checked;
   }
 
+  /**
+   * Set the the check box
+   */
   set checked(flag) {
     this.shadowRoot.getElementById("category-check").checked = flag;
   }
 
+  /**
+   * Set the defualt category 
+   */
   set default(param) {
-    this.shadowRoot.getElementById("cate-edit").remove();
+    this.shadowRoot.getElementById("color").style.display = "none";
     this.shadowRoot.getElementById("cate-delete").remove();
+    this.shadowRoot.getElementById("category-title").name = "default-category";
   }
 }
 

@@ -28,31 +28,16 @@ if (myStorage.getItem("dateArr")) {
 
 // Today's date
 let today = new Date();
-var todayDate;
+var todayDate = today.getFullYear();
 if (today.getMonth() + 1 < 10) {
-  todayDate =
-    today.getFullYear() +
-    "-" +
-    "0" +
-    (today.getMonth() + 1) +
-    "-" +
-    today.getDate();
+  todayDate += "-0" + (today.getMonth()+1);
 } else {
-  todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  todayDate += "-" + (today.getMonth()+1);
 }
 if (today.getDate() < 10) {
-  todayDate =
-    today.getFullYear() +
-    "-" +
-    "0" +
-    (today.getMonth() + 1) +
-    "-" +
-    "0" +
-    today.getDate();
+  todayDate += "-0" + today.getDate();
 } else {
-  todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  todayDate += "-" + today.getDate();
 }
 
 export function updateBullet() {
@@ -65,17 +50,19 @@ export function updateDate() {
   myStorage.setItem("dateArr", JSON.stringify(dateArr));
 }
 
-// Delete bullet from storage
-export function deleteBullet(obj) {
+/**
+ * Delete bullet from storage
+ * @param {*} bullet - the bullet to delete
+ */
+export function deleteBullet(bullet) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
-  let bullet = obj.bullet;
   bullet.checked = false;
 
   // Don't change this, for loop needs to look like this to work with splice
   let i;
   for (i = bulletArr.length - 1; i >= 0; i -= 1) {
-    if (obj.bullet.date == bulletArr[i].date) {
+    if (bullet.date == bulletArr[i].date) {
       dateEntryCount++;
     }
     let item = JSON.parse(JSON.stringify(bulletArr[i]));
@@ -91,7 +78,7 @@ export function deleteBullet(obj) {
   if (dateEntryCount == 1) {
     let i = 0;
     for (let dateItem of dateArr) {
-      if (dateItem.date == obj.bullet.date) {
+      if (dateItem.date == bullet.date) {
         dateArr.splice(i, 1);
         updateDate();
         activeDates.delete(dateItem.date);
@@ -103,7 +90,12 @@ export function deleteBullet(obj) {
     buildCurrent();
   }
 }
-// Delete category from storage
+
+/**
+ * Delete category from storage
+ * @param {*} obj - the category to be deleted
+ * @returns - does not return any value
+ */
 export function deleteCategory(obj) {
   // Default all bullets with category to be deleted
   let categoryKey = JSON.stringify({
@@ -113,7 +105,7 @@ export function deleteCategory(obj) {
 
   bulletArr.forEach(function (item, index) {
     if (categoryKey == item.category) {
-      bulletArr[index].category = '{"title":"Default","color":"blue"}';
+      bulletArr[index].category = '{"title":"Default","color":"Blue"}';
     }
   });
 
@@ -141,10 +133,15 @@ export function deleteCategory(obj) {
   buildCurrent();
 }
 
-// Edit bullet in storage
+/**
+ * Edit bullet in storage
+ * @param {*} newBullet - the new bullet whose data should be used
+ * @param {*} oldBullet - the old bullet whose data needs to be updated
+ */
 export function editBullet(newBullet, oldBullet) {
   let dateEntryCount = 0;
   let hasBeenDeleted = false;
+  newBullet = JSON.parse(JSON.stringify(newBullet));
   oldBullet.checked = false;
   bulletArr.forEach(function (item, index) {
     let bulletStr = JSON.parse(JSON.stringify(item));
@@ -195,7 +192,12 @@ export function editBullet(newBullet, oldBullet) {
     buildCurrent();
   }
 }
-// Edit category in storage
+
+/**
+ * Edit category in storage
+ * @param {*} newCategory - the new category whose data should be used
+ * @param {*} oldCategory - the old category whose data needs to be updated
+ */
 export function editCategory(newCategory, oldCategory) {
   // Edit all bullets with category
   let oldKey = { title: oldCategory.title, color: oldCategory.color };
@@ -235,6 +237,10 @@ export function editCategory(newCategory, oldCategory) {
   buildCurrent();
 }
 
+/**
+ * adds a new bullet to storage
+ * @param {*} obj - the bullet to add to the storage
+ */
 export function addBullet(obj) {
   const newBullet = obj.bullet;
   bulletArr.push(newBullet);
@@ -255,6 +261,11 @@ export function addBullet(obj) {
   }
   buildCurrent();
 }
+
+/**
+ * add a new category to storage
+ * @param {*} obj - the category to add to storage
+ */
 export function addCategory(obj) {
   const newCategory = obj.category;
   categoryArr.push(newCategory);
@@ -267,9 +278,12 @@ export function addCategory(obj) {
     });
     activeCategories.set(categoryKey);
   }
+  buildCurrent();
 }
 
-// Build initial screen
+/**
+ * Build initial screen
+ */
 export function buildDefault() {
   const historyPane = document.querySelector(".journal-box-history");
   const categoryPane = document.querySelector(".category-box");
@@ -278,7 +292,7 @@ export function buildDefault() {
 
   // Build default category
   let defaultCategory = document.createElement("category-entry");
-  defaultCategory.category = { title: "Default", color: "blue", checked: true };
+  defaultCategory.category = { title: "Default", color: "Blue", checked: true };
   defaultCategory.default = 0;
   categoryPane.appendChild(defaultCategory);
   updateActiveCategories(defaultCategory, false);
@@ -293,7 +307,6 @@ export function buildDefault() {
       checked: true,
     };
     categoryPane.appendChild(newCategory);
-    console.log(newCategory.category);
     updateActiveCategories(newCategory, false);
   });
 
@@ -304,7 +317,9 @@ export function buildDefault() {
   buildCurrent();
 }
 
-// Build current selection of dates and categories
+/**
+ * Build current selection of dates and categories
+ */
 export function buildCurrent() {
   // Purge all bullet elements
   const mainPane = document.querySelector(".entry-list");
@@ -331,11 +346,7 @@ export function buildCurrent() {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
-        if (newBullet.bullet.checked == true) {
-          newBullet.opacity = true;
-        } else {
-          newBullet.opacity = false;
-        }
+        newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
       }
     });
@@ -346,18 +357,16 @@ export function buildCurrent() {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
         newBullet.bullet = item;
-        if (newBullet.bullet.checked == true) {
-          newBullet.opacity = true;
-        } else {
-          newBullet.opacity = false;
-        }
+        newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
       }
     });
   }
 }
 
-// Call to update date viewer in real time
+/**
+ * Call to update date viewer in real time
+ */
 function buildDate() {
   const historyPane = document.querySelector(".journal-box-history");
   while (historyPane.firstChild) {
@@ -409,7 +418,10 @@ function buildDate() {
   }
 }
 
-// Update storage when toggling active categories
+/**
+ * Update storage when toggling active categories
+ * @param {*} categoryObj - category object used to update the active Categories
+ */
 export function updateActiveCategories(categoryObj, build) {
   let categoryKey = JSON.stringify({
     title: categoryObj.category.title,
@@ -425,7 +437,10 @@ export function updateActiveCategories(categoryObj, build) {
   }
 }
 
-// Update storage when toggling active dates
+/**
+ * Update storage when toggling active dates
+ * @param {*} dateObj - date object used to update the active dates
+ */
 export function updateActiveDates(dateObj) {
   if (dateObj.active == "true") {
     activeDates.delete(dateObj.date);
