@@ -12,14 +12,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: rgb(173, 210, 244);
-  min-height: 1000px;
-  height: auto !important;
-  width: 1000px;
-
-  min-width: 700px;
-  width: auto !important;
-  width: 700px;
-  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
   
   
 }
