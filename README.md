@@ -1,4 +1,5 @@
 # Frozone
+> Coolest devs in town since '21
 
 <img src="admin/branding/teamLogo.png" height="100" width="100">
 
