@@ -1,30 +1,11 @@
 // script.js
 import * as storage from "./storage.js";
-import { router } from "./router.js"; // Router imported so you can use it to manipulate your SPA app here
-const setState = router.setState;
-
-// Use to handle editBullet and editCategory events
-var lastReferencedElement;
 
 // Use to handle edit inline Title category/bullet
 var activeTitle;
 
 // Use to handle inline editBullet and editCategory
 var oldElement;
-
-//Date of today
-let today = new Date();
-var todayDate = today.getFullYear();
-if (today.getMonth() + 1 < 10) {
-  todayDate += "-0" + (today.getMonth()+1);
-} else {
-  todayDate += "-" + (today.getMonth()+1);
-}
-if (today.getDate() < 10) {
-  todayDate += "-0" + today.getDate();
-} else {
-  todayDate += "-" + today.getDate();
-}
 
 // We can move these to other event listener if we want
 var bulletAddButton = document.getElementById("add-bullet-button");
@@ -43,7 +24,7 @@ function addBulletHandler() {
     title: "",
     checked: false,
     description: "",
-    date: todayDate,
+    date: storage.todayDate,
     category: JSON.stringify(defaultCategory),
     type: "task",
   };
@@ -70,14 +51,12 @@ function addCateHandler() {
   newEntry.category=defaultCategory;
   storage.addCategory(newEntry);
   mainPane.appendChild(newEntry);
-  // setState("CateEditor");
 }
 
 /**
  * build from local storage
  */
 addEventListener("DOMContentLoaded", () => {
-  setState("backMain", false);
   storage.buildDefault();
 });
 
@@ -124,13 +103,6 @@ document.addEventListener("click", (e) => {
     showDetail(e.composedPath()[0]);
   }
 
-  // Click editBullet button
-  if (e.composedPath()[0].className == "bullet-button edit-bullet-button") {
-    let bulletObj = e.composedPath()[0].getRootNode().host;
-    setState("BulletEditor", bulletObj, storage.categoryArr);
-    lastReferencedElement = bulletObj;
-  }
-
   //Swtich the type of bullet
   if (e.composedPath()[0].className == "fas fa-chevron-down fa-xs") {
     let bulletObj = e.composedPath()[0].getRootNode().host;
@@ -153,22 +125,6 @@ document.addEventListener("click", (e) => {
     storage.editBullet(newBullet, oldBullet);
   }
 
-  // Click editCategory button
-  if (e.composedPath()[0].id == "cate-edit") {
-    let categoryObj = e.composedPath()[0].getRootNode().host;
-    setState("CateEditor", categoryObj, null);
-    lastReferencedElement = categoryObj;
-  }
-
-  // Submit bullet editor event
-  if (e.composedPath()[0].id == "bulletSubmit") {
-    submitBullet(e.composedPath()[1]);
-  }
-  // Submit category editor event
-  if (e.composedPath()[0].id == "cate-submit") {
-    submitCategory(e.composedPath()[1]);
-  }
-
   // Delete bullet event
   if (e.composedPath()[0].id == "bullet-delete") {
     deleteBullet(e.composedPath()[0].getRootNode().host);
@@ -176,14 +132,6 @@ document.addEventListener("click", (e) => {
   // Delete category event
   if (e.composedPath()[0].id == "cate-delete") {
     deleteCategory(e.composedPath()[0].getRootNode().host);
-  }
-
-  // Close bulletEditor or categoryEditor modal
-  if (
-    e.composedPath()[0].className == "modal" ||
-    e.composedPath()[0].className == "close"
-  ) {
-    setState("backMain");
   }
 
   // Select all categories
@@ -215,8 +163,7 @@ document.addEventListener("click", (e) => {
   if (e.composedPath()[0].className == "date") {
     let dateElement = e.composedPath()[0].getRootNode().host;
     storage.updateActiveDates(dateElement);
-    //Add diabled interface for date selector if no date is selected
-    checkDateSelector();
+    storage.updateDateBackground();
   }
   // Check bullet event
   if (e.composedPath()[0].id == "bullet-check") {
@@ -351,26 +298,17 @@ document.addEventListener("input", (e) => {
   }
 });
 
-/**
- * Checks if any dates are selected and colors them accordingly
- */
-function checkDateSelector() {
+// Grey out historyPane background if no active dates
+function updateDateBackground() {
+  let historyPane = document.querySelector(".journal-box-history");
   let dates = document.querySelectorAll("date-entry");
-  let historyBox = document.querySelector(".journal-box-history");
   if (storage.activeDates.size == 0) {
-    historyBox.style.backgroundColor = "rgb(202, 207, 210)";
+    historyPane.style.backgroundColor = "rgb(202, 207, 210)";
     dates.forEach((date) => {
       date.disabled = true;
     });
   } else {
-    historyBox.style.backgroundColor = "rgb(210, 221, 232)";
-    dates.forEach((date) => {
-      if (storage.activeDates.has(date.date)) {
-        date.active = "true";
-      } else {
-        date.active = "false";
-      }
-    });
+    historyPane.style.backgroundColor = "rgb(210, 221, 232)";
   }
 }
 
@@ -410,12 +348,12 @@ function showDetail(detailButton) {
 }
 
 /**
- * Helper function for submitting new/edited bullet entry
+ * TODO
+ * Helper function for checking validity of edited bullet entry
  * @param {*} formObj - The form from the new/edited bullet enrty that is being submited
  */
-function submitBullet(formObj) {
+function bulletCheck(formObj) {
   let bulletEdit = formObj.getRootNode().host;
-  let cateEditor = document.querySelector("bullet-editor-page");
 
   //Check the length of new title
   let tooLong = false;
@@ -425,27 +363,16 @@ function submitBullet(formObj) {
   }
 
   if (!tooLong) {
-    setState("backMain");
-    // If not called from editBullet, create new bullet
-    if (!bulletEdit.old) {
-      storage.addBullet(bulletEdit);
-    }
-    // Else if called from editBullet, edit
-    else {
-      storage.editBullet(bulletEdit.bullet, lastReferencedElement.bullet);
-      lastReferencedElement.bullet = bulletEdit.bullet;
-    }
   } else {
-    cateEditor.lengthViolate = true;
   }
 }
 
 /**
- * Helper function for submitting new/edited category entry
+ * TODO
+ * Helper function for checking validity of edited category entry
  * @param {*} formObj - The form from the new/edited category enrty that is being submited
- * Composed path allows access to shadow dom
  */
-function submitCategory(formObj) {
+function categoryCheck(formObj) {
   let categoryEdit = formObj.getRootNode().host;
   //Check if the new category is duplicate
   let newCategory = categoryEdit.category;
@@ -465,37 +392,13 @@ function submitCategory(formObj) {
   if (length > 10) {
     tooLong = true;
   }
-  let cateEditor = document.querySelector("cate-editor-page");
 
   //Proceed if not duplicate
   //Stop and show error if one constraint is violated
   if (!duplicate && !tooLong) {
-    setState("backMain");
-
-    // If not called from editBullet, create new bullet
-    if (!categoryEdit.old) {
-      let newEntry = document.createElement("category-entry");
-      let mainPane = document.querySelector(".category-box");
-      newEntry.category = categoryEdit.category;
-      mainPane.appendChild(newEntry);
-      storage.addCategory(newEntry);
-    }
-    // Else if called from editCategory, edit
-    else {
-      console.log(1);
-      storage.editCategory(
-        categoryEdit.category,
-        lastReferencedElement.category
-      );
-      lastReferencedElement.category = categoryEdit.category;
-    }
   } else if (duplicate && tooLong) {
-    cateEditor.duplicate = true;
-    cateEditor.lengthViolate = true;
   } else if (duplicate) {
-    cateEditor.duplicate = true;
   } else {
-    cateEditor.lengthViolate = true;
   }
 }
 
