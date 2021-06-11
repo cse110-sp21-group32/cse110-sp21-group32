@@ -5,7 +5,9 @@
 
 ## Project Domain
 [Public Video](https://youtu.be/PQr6d_wbea0)
+
 [Private Video](https://www.youtube.com/watch?v=2_-LjXbEd_U)
+
 Task manager bullet journal.
 
 ## Learn about our project
