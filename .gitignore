@@ -2,3 +2,4 @@
 .DS_Store
 **/.DS_Store
 node_modules
+__tests__/unit/lab8.md

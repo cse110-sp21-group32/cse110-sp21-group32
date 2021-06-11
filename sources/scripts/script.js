@@ -435,3 +435,5 @@ function deleteCategory(categoryObj) {
   storage.deleteCategory(categoryObj);
   categoryObj.remove();
 }
+
+export { updateDateBackground, fadeBullet, showDetail, deleteBullet, deleteCategory };
