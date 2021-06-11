@@ -436,4 +436,4 @@ function deleteCategory(categoryObj) {
   categoryObj.remove();
 }
 
-export { checkDateSelector, fadeBullet, showDetail, submitBullet, submitCategory, deleteBullet, deleteCategory };
+export { updateDateBackground, fadeBullet, showDetail, deleteBullet, deleteCategory };

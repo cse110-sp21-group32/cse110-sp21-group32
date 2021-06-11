@@ -1,7 +1,6 @@
 import "../../sources/scripts/script.js";
 
-import { checkDateSelector, fadeBullet, showDetail, submitBullet, 
-  submitCategory, deleteBullet, deleteCategory } from "../../sources/scripts/script.js";
+import { updateDateBackground, fadeBullet, showDetail, deleteBullet, deleteCategory } from "../../sources/scripts/script.js";
 
 beforeAll(async () => {
   // Assumes we are using a fresh browser cache

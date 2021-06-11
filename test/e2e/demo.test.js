@@ -15,5 +15,5 @@ const puppeteer = require('puppeteer');
   const input = await page.evaluateHandle(`document.querySelector('body > div > demo-snippet:nth-child(2) > paper-input:nth-child(2)').shadowRoot.querySelector('#input-2 > input')`);
   await input.focus();
   await input.type('.foo', 'woof woof!');
-//  await browser.close();
+  await browser.close();
 })();
