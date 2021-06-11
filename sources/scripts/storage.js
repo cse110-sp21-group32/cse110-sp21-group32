@@ -28,7 +28,7 @@ if (myStorage.getItem("dateArr")) {
 
 // Today's date
 let today = new Date();
-var todayDate = today.getFullYear();
+export var todayDate = today.getFullYear();
 if (today.getMonth() + 1 < 10) {
   todayDate += "-0" + (today.getMonth()+1);
 } else {
@@ -246,6 +246,17 @@ export function addBullet(obj) {
   bulletArr.push(newBullet);
   updateBullet();
 
+  // Update activeCategories and Dates so that a new bullet entry is displayed
+  let defaultCategory = document.createElement("category-entry");
+  defaultCategory.category = { title: "Default", color: "Blue", checked: true };
+  updateActiveCategories(defaultCategory, false);
+  let entry = document.querySelector(".category-box").firstChild.shadowRoot;
+  entry.getElementById("category-check").checked = true;
+  if(activeDates.size > 0){
+    activeDates.set(todayDate);
+    buildDate();
+  }
+
   // Add new date if it does not exist
   let dateExists = false;
   dateArr.forEach(function (item) {
@@ -345,17 +356,20 @@ export function buildCurrent() {
     sortedBullets.forEach(function (item) {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
+        
+
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
       }
     });
   }
-  // Get selected intersection of categories/date (TODO SORT)
+  // Get selected intersection of categories/date
   else {
     sortedBullets.forEach(function (item) {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
+  
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
@@ -415,6 +429,28 @@ function buildDate() {
       defaultDate.active = "false";
     }
     historyPane.appendChild(defaultDate);
+  }
+
+  updateDateBackground();
+}
+// Grey out historyPane background if no active dates
+export function updateDateBackground() {
+  let historyPane = document.querySelector(".journal-box-history");
+  let dates = document.querySelectorAll("date-entry");
+  if (activeDates.size == 0) {
+    historyPane.style.backgroundColor = "rgb(202, 207, 210)";
+    dates.forEach((date) => {
+      date.disabled = true;
+    });
+  } else {
+    historyPane.style.backgroundColor = "rgb(210, 221, 232)";
+    dates.forEach((date) => {
+      if (activeDates.has(date.date)) {
+	date.active = "true";
+      } else {
+	date.active = "false";
+      }
+    });
   }
 }
 

@@ -43,6 +43,7 @@ class BulletEntry extends HTMLElement {
               text-align: left;
               padding-left: 0.5rem;
               animation: slide-up 0.4s ease;
+              position: relative;
 
               vertical-align: middle;
               -webkit-transform: perspective(1px) translateZ(0);
@@ -266,18 +267,23 @@ class BulletEntry extends HTMLElement {
             }
 
             input[type="date"]::-webkit-calendar-picker-indicator {
-              background: transparent;
-              bottom: 0;
-              color: transparent;
+              background: red ;
+              color: red ;
               cursor: pointer;
-              height: auto;
-              left: 0;
+              
               position: absolute;
               right: 0;
               top: 0;
-              width: auto;
+              left: -75%;
+              bottom: 0;
             }
-            #bullet-date {
+
+            #calender{
+              position: relative !important;
+              top: 15%;
+            }
+
+            #bullet-date{
               height:0px;
               width:0px;
               z-index:1;
@@ -310,8 +316,12 @@ class BulletEntry extends HTMLElement {
                   <option value='{"title":"c","color":"Blue"}'>c</option>
                 </select><br>
 
-                <input type="date" id="bullet-date">
-                <label for="bullet-date" class="fas fa-calendar" id="calender" style="z-index:0;"></label>
+                
+                
+                
+                <label for="bullet-date" class="fas fa-calendar" id="calender" style="z-index:0;"><input type="date" id="bullet-date"></label>
+                
+                
 
                 <i class="fas fa-info-circle bullet-detail-button"></i>
                 <i class="fas fa-trash" id ="bullet-delete"></i>
@@ -492,6 +502,8 @@ class BulletEntry extends HTMLElement {
     });
     categorySelect.value = categorySelect.name;
   }
+
+  
 }
 
 
