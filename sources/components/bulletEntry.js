@@ -276,6 +276,7 @@ class BulletEntry extends HTMLElement {
               top: 0;
               left: -75%;
               bottom: 0;
+              margin:0 auto;
             }
 
             #calender{
