@@ -34,7 +34,7 @@ describe('Text Layout Loaded', () => {
   it('test 3: Read Categories header', async () => {
     const objHeaderList = await page.$$('h2');
     const objHeader = objHeaderList[2];
-    const strExpected = 'Categories'
+    const strExpected = 'Categories';
 
     const strHeader = await page.evaluate(objHeader => objHeader.textContent, objHeader);
 

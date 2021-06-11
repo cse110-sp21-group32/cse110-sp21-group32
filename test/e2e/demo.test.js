@@ -1,3 +1,9 @@
+/**
+ * This test file should always work as long as we have internet connection since
+ * it doesn't test the funcionality of our website. This can be used to confirm
+ * the local testing environment has been set up appropriately.
+ */
+
 const puppeteer = require('puppeteer');
 
 (async () => {
