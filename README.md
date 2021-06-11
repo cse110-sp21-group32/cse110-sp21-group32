@@ -22,7 +22,7 @@ Task manager bullet journal.
 | [Team Contract](./admin/misc/rules.md) | Read the rules that our team abided by
 | [Testing]((test/testing.md))| Getting started with automated, unit, and end-2-end testing
 | [Slack](https://cse110-sp21-group32.slack.com/)| Get in contact with us on Slack 
-| [JSDoc Function Documentation]() | Learn about the functions we use here
+| [JSDoc Function Documentation](specs/documentation/index.html) | Learn about the functions we use here
 | [Style Guide](style-guide.md) | Learn about how we style our code to stay consistent with existing code base
 
 ## Learn about what we've done

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/categoryEntry.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/categoryEntry.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class CategoryEntry extends HTMLElement {
+  constructor() {
+    super();
+
+    const template = document.createElement("template");
+
+    template.innerHTML = `
+          &lt;head>
+          &lt;link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            crossorigin="anonymous">
+          &lt;/head>
+          &lt;style>
+          @keyframes fade-up {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+          }
+          .cate-entry {
+            animation: slide-up 0.4s ease;
+
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+          }
+
+           .cate-entry .category-inner-entry{
+              height: 3.5em;
+              font-size: 2em;
+              background-color:  rgba(167, 200, 220, 0.925);
+              border-radius: 0.5em;  
+              margin:0.3rem;
+              display: flex;
+              justify-items: center;
+              align-items: center;
+              padding: 0.5rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            .cate-entry .category-inner-entry:hover{
+              -webkit-transform: scale(1.035);
+              transform: scale(1.035);
+            }
+          
+            .cate-entry .cate-button {
+              display: none;
+
+              margin: 0.5rem;
+              font-size: 1rem;
+              border: none;
+              margin: 0.5rem;
+              line-height: 1rem;
+              font-size: 1rem;
+              border-radius: 0.5em;  
+              padding: 8px;
+              background-color: rgb(204, 225, 243);
+              line-height: 3rem;
+
+              vertical-align: middle;
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+
+            .cate-entry .cate-button:hover {
+              background-color: rgb(234, 243, 250);
+              filter: brightness(135%);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+
+            .cate-entry .color {
+              display:none
+            }
+            .cate-entry .title {
+              text-align: left;
+              padding-left: 20px;
+              padding-right: 10px;
+              width: 70%;
+              min-width: 30px;
+              min-height: 30px;
+            }
+            .checkbox {
+              -webkit-appearance: none;
+              background-color: #fafafa;
+              padding: 15px;
+              border-radius: 3px;
+              display: inline-block;
+              position: relative;
+            }
+            
+            .checkbox:checked:after {
+              content: "\u2714";
+              font-size: 50px;
+              position: absolute;
+              top: -20px;
+              left: 5px;
+              color: #0994ff;
+              animation: fade-up 0.8s ease;
+            }
+
+            .category-inner-entry:hover i,
+            .category-inner-entry:hover #color{
+              opacity:1;
+            }
+
+            .category-inner-entry > i{
+              opacity:0;
+              padding-right:5%;
+              padding-left:1%;
+              color: #585a5c;
+            }
+            .category-inner-entry > i:hover{
+              color: #272a3b;
+            }
+
+            #color{
+              opacity:0;
+              appearance: none;
+              background-color: #d1d7de;
+              border-radius: 8px;
+
+              border: none;
+              border-color: coral;
+              
+              margin-left: 3%;
+              margin-right: 3%;
+              padding:1%;
+              width: 35%;
+              height: 50%;
+              min-width: 55px;
+
+              text-align-last:center;
+              padding-right: 5px;
+              direction: rtl;
+
+              font-family: inherit;
+              font-size: 15px;
+              cursor: inherit;
+              line-height: inherit;
+            }
+
+            #color:hover{
+              background-color:#a7b4c2;
+            }
+
+            #color:focus{
+              outline: none; 
+            }
+          &lt;/style>
+          &lt;section class="cate-entry">
+            &lt;div class="category-inner-entry">
+              &lt;input class="checkbox" type="checkbox" id="category-check">
+              &lt;span class="title" id="category-title" onkeydown="if(event.key == 'Enter'){event.preventDefault()}">demo&lt;/span>
+              &lt;select id="color" name="color">
+                &lt;option value="Blue">Blue&lt;/option>
+                &lt;option value="Red">Red&lt;/option>
+                &lt;option value="Yellow">Yellow&lt;/option>
+                &lt;option value="Orange">Orange&lt;/option>
+                &lt;option value="Green">Green&lt;/option>
+              &lt;/select>&lt;br>
+              &lt;i class="fas fa-trash" id="cate-delete">&lt;/i>
+              &lt;button class="cate-button" id="cate-edit">edit&lt;/button>
+              &lt;button class="cate-button" id="cate-delete">delete&lt;/button>
+
+            &lt;/div>
+          &lt;/section>
+          `;
+
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  /**
+   * Get the category information
+   */
+  get category() {
+    let categoryObj = {
+      title: this.shadowRoot.getElementById("category-title").innerText,
+      color: this.shadowRoot.getElementById("color").value,
+      checked: this.shadowRoot.getElementById("category-check").checked,
+    };
+    return categoryObj;
+  }
+
+  /**
+   * Set the category information
+   */
+  set category(newCategory) {
+    this.shadowRoot.getElementById("category-title").innerText =
+      newCategory.title;
+    this.shadowRoot.getElementById("color").value =
+      newCategory.color;
+    if (newCategory.color == "Red") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(224, 90, 70,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebd8d5";
+    } else if (newCategory.color == "Yellow") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(229, 191, 106,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebe5d5";
+    } else if (newCategory.color == "Blue") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(167, 200, 220,0.925)";
+    } else if (newCategory.color == "Orange") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(224, 138, 87,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#ebdfd5";
+    }else if (newCategory.color == "Green") {
+      this.shadowRoot.querySelector(
+        ".category-inner-entry"
+      ).style.backgroundColor = "rgba(42, 157, 143,0.5)";
+      this.shadowRoot.getElementById(
+        "cate-edit"
+      ).style.backgroundColor = "#d5ebd7";
+    }
+
+    this.shadowRoot.getElementById("category-check").checked =
+      newCategory.checked;
+  }
+
+  /**
+   * Quickly check if this category is checked
+   */
+  get checked() {
+    return this.shadowRoot.getElementById("category-check").checked;
+  }
+
+  /**
+   * Set the the check box
+   */
+  set checked(flag) {
+    this.shadowRoot.getElementById("category-check").checked = flag;
+  }
+
+  /**
+   * Set the defualt category 
+   */
+  set default(param) {
+    this.shadowRoot.getElementById("color").style.display = "none";
+    this.shadowRoot.getElementById("cate-delete").remove();
+    this.shadowRoot.getElementById("category-title").name = "default-category";
+  }
+}
+
+customElements.define("category-entry", CategoryEntry);
+
+/**
+ * JSON Format:
+ * image and audio will only sometimes be there
+ *
+ * {
+ *   title: 'foo',
+ *   date: 'foo',
+ *   content: 'foo',
+ *   image: {
+ *     src: 'foo.com/bar.jpg',
+ *     alt: 'foo'
+ *   },
+ *   audio: 'foo.com/bar.mp3'
+ * }
+ */
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addBullet">addBullet</a></li><li><a href="global.html#addBulletHandler">addBulletHandler</a></li><li><a href="global.html#addCategory">addCategory</a></li><li><a href="global.html#addCateHandler">addCateHandler</a></li><li><a href="global.html#buildCurrent">buildCurrent</a></li><li><a href="global.html#buildDate">buildDate</a></li><li><a href="global.html#buildDefault">buildDefault</a></li><li><a href="global.html#bulletCheck">bulletCheck</a></li><li><a href="global.html#categoryCheck">categoryCheck</a></li><li><a href="global.html#deleteBullet">deleteBullet</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#editBullet">editBullet</a></li><li><a href="global.html#editCategory">editCategory</a></li><li><a href="global.html#fadeBullet">fadeBullet</a></li><li><a href="global.html#showDetail">showDetail</a></li><li><a href="global.html#updateActiveCategories">updateActiveCategories</a></li><li><a href="global.html#updateActiveDates">updateActiveDates</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Jun 11 2021 06:06:01 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
