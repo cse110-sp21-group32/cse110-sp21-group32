@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/dateEntry.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/dateEntry.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class DateEntry extends HTMLElement {
+  constructor() {
+    super();
+    const template = document.createElement("template");
+
+    template.innerHTML = `
+          &lt;style>
+            .date {
+              vertical-align: middle;
+              display: grid;
+              align-items: center;
+              height: 3em;
+              font-size: 1.3em;
+              border-radius: 0.5em;
+              margin: 0.3rem;
+              text-align: center;
+              background-color: rgba(167, 200, 220, 0.925);
+              -webkit-transform: perspective(1px) translateZ(0);
+              transform: perspective(1px) translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform;
+              transition-property: transform;
+            }
+            
+            .date:hover, .date:focus{
+              background-color: rgb(234, 243, 250);
+              filter: brightness(105%);
+              -webkit-transform: scale(1.05);
+              transform: scale(1.05);
+            }
+
+            .date:active {
+              -webkit-transform: scale(0.95) !important;
+              transform: scale(0.95) !important;
+            }
+
+            .active{
+                display:none ;
+            }
+
+
+          &lt;/style>
+          &lt;section class="date-entry">
+            &lt;div class="date-inner-entry">
+                &lt;div class="date">Time&lt;/div>
+                &lt;div class="active">false&lt;/div>
+            &lt;/div>
+          &lt;/section>
+          `;
+
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  /**
+   * Set the date information
+   */
+  set date(date) {
+    this.shadowRoot.querySelector(".date").innerText = date;
+  }
+
+  /**
+   * Get the date information
+   */
+  get date() {
+    return this.shadowRoot.querySelector(".date").innerText;
+  }
+
+  /**
+   * Checks if active is set to true or false
+   */
+  get active() {
+    return this.shadowRoot.querySelector(".active").innerText;
+  }
+
+  /**
+   * Toggle the active of date
+   */
+  set active(active) {
+    if (active == "true") {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(107, 140, 160, 0.925)";
+    } else {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(167, 200, 220, 0.925)";
+    }
+    this.shadowRoot.querySelector(".active").innerText = active;
+  }
+
+  /**
+   * Return the date object
+   */
+  get obj() {
+    let dateObj = {
+      date: this.shadowRoot.querySelector(".date").innerText,
+      active: this.shadowRoot.querySelector(".active").innerText,
+    };
+    return dateObj;
+  }
+
+  /**
+   * Toggles the disabled view
+   */
+  set disabled(disabled){
+    if (disabled ==true) {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(160, 177, 187, 0.925)";
+    } else {
+      this.shadowRoot.querySelector(".date").style.backgroundColor =
+        "rgba(167, 200, 220, 0.925)";
+    }
+  }
+}
+
+customElements.define("date-entry", DateEntry);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addBullet">addBullet</a></li><li><a href="global.html#addBulletHandler">addBulletHandler</a></li><li><a href="global.html#addCategory">addCategory</a></li><li><a href="global.html#addCateHandler">addCateHandler</a></li><li><a href="global.html#buildCurrent">buildCurrent</a></li><li><a href="global.html#buildDate">buildDate</a></li><li><a href="global.html#buildDefault">buildDefault</a></li><li><a href="global.html#bulletCheck">bulletCheck</a></li><li><a href="global.html#categoryCheck">categoryCheck</a></li><li><a href="global.html#deleteBullet">deleteBullet</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#editBullet">editBullet</a></li><li><a href="global.html#editCategory">editCategory</a></li><li><a href="global.html#fadeBullet">fadeBullet</a></li><li><a href="global.html#showDetail">showDetail</a></li><li><a href="global.html#updateActiveCategories">updateActiveCategories</a></li><li><a href="global.html#updateActiveDates">updateActiveDates</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Jun 11 2021 06:06:01 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
