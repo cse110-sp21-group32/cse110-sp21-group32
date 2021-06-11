@@ -345,6 +345,8 @@ export function buildCurrent() {
     sortedBullets.forEach(function (item) {
       if (activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
+        
+
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
@@ -356,6 +358,7 @@ export function buildCurrent() {
     sortedBullets.forEach(function (item) {
       if (activeDates.has(item.date) && activeCategories.has(item.category)) {
         let newBullet = document.createElement("bullet-entry");
+  
         newBullet.bullet = item;
         newBullet.categoryList = categoryArr;
         mainPane.appendChild(newBullet);
