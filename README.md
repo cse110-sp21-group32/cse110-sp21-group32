@@ -4,13 +4,15 @@
 <img src="admin/branding/teamLogo.png" height="100" width="100">
 
 ## Project Domain
+[Public Video](https://youtu.be/PQr6d_wbea0)
+[Private Video](https://www.youtube.com/watch?v=2_-LjXbEd_U)
 Task manager bullet journal.
 
 ## Learn about our project
 | Pages | Description |
 |---| ---|
 |[Published Version](https://cse110-sp21-group32.github.io/cse110-sp21-group32/)| Find our published website running the latest build here
-| [Sizzle Reel]() | Find our demo of how the latest version works here!|
+| [Public Video Sizzle Reel](https://youtu.be/PQr6d_wbea0) | Find our demo of how the latest version works here!|
 | [Meet the team](./admin/team.md)| Learn about the founding dev team of this project here!
 | [Pitch Document](specs/pitch/Starting%20Pitch.pdf) | Learn about our vision and expected challenges here!
 
@@ -18,7 +20,7 @@ Task manager bullet journal.
 | Pages | Description |
 |---| ---|
 | [Onboarding Document](./admin/onboarding.md) | Find the detailed specs of what you need to know before you can contribute
-| [Onboarding Video]() | Get a quick introduction on how to get involved before you contribute
+| [Private Onboarding Video](https://www.youtube.com/watch?v=2_-LjXbEd_U) | Get a quick introduction on how to get involved before you contribute
 | [Team Contract](./admin/misc/rules.md) | Read the rules that our team abided by
 | [Testing]((test/testing.md))| Getting started with automated, unit, and end-2-end testing
 | [Slack](https://cse110-sp21-group32.slack.com/)| Get in contact with us on Slack 
