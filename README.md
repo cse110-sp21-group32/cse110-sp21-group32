@@ -40,3 +40,5 @@ The majority of our tests will not work because they were written for the previo
 The newest version was pushed late June 10, 2021, the day of the due date. The testing team did not have the time to edit all the related tests. The core functionlity and interaction method was changed.
 
 More information on the testing coverage can be found in the [Testing]((test/testing.md)) document.
+
+**Works best on Firefox**
