@@ -1,7 +1,5 @@
-# We plan on using one workflow to run all the jobs (build, test, linting, and documentation)
 name: CI/CD Pipeline
 
-# The workflow will be activated on every pull request made to main and every push made to [main, Unit-Testing] branches
 on:
   pull_request:
     branches:
@@ -24,7 +22,7 @@ jobs:
       run:
         npm install
         npm run build --if-present
-    # Tests are currently being implemented in the Unit-Testing branch. It will be merge once they're stable
+
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -52,8 +50,7 @@ jobs:
       - name: Run tests
         run:
           npm run test
-          
-          
+
   styling:
     name: Lint code base
     runs-on: ubuntu-latest
@@ -87,3 +84,4 @@ jobs:
         with:
           name: documentation
           path: ./specs/docs
+
