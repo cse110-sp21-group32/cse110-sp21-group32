@@ -2,7 +2,7 @@
 
 - [Guide to setting up local system for testing](#guide-to-setting-up-local-system-for-testing)
   - [Latest Update on Test Cases Covered](#latest-update-on-test-cases-covered)
-    - [Ready tests](#ready-tests)
+    - [Written tests](#written-tests)
   - [Manual Testing](#manual-testing)
   - [Setting up testing environment](#setting-up-testing-environment)
   - [Running tests](#running-tests)
@@ -18,13 +18,16 @@ This file is designed to show you how to get your local system ready to try out 
 
 ## Latest Update on Test Cases Covered
 
+**As of June 10, 2021, the editor menu was removed and the e2e tests, anything that relied on running the editor menu no longer works. All tests should be re-written to account for this change.**
+
 As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests.
 
 The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. 
 
-### Ready tests
+### Written tests
 - [x] `category.test.js`
-- [ ] `bullet.test.js`
+- [X] `bullet.test.js`
+- [X] `script.test.js`
 - [ ] `bulletEditorPage.test.js`
 - [ ] `bulletEntryPage.test.js`
 - [ ] `categoryEditorPage.test.js`

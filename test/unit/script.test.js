@@ -28,20 +28,42 @@ beforeAll(async () => {
 describe("checkDateSelector", () => {
   // allows for soft selection
   it("if active dates is 0", async () => {
+    // deselects current date
+    const date = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-2 > div > div > date-entry:nth-child(2)").shadowRoot.querySelector("section > div > div.date")`);
+    await date.click();
+
     // the current date is automatically selected
-    // set 
     checkDateSelector();
+    const EXPECTED_ACTIVE = "true";
+    const ACTUAL_ACTIVE = date.active;
+    expect(ACTUAL_ACTIVE).toBe(EXPECTED_ACTIVE);
   });
 
   it("if active dates is not 0", () => {
+    // reselects current date
+    const date = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-2 > div > div > date-entry:nth-child(2)").shadowRoot.querySelector("section > div > div.date")`);
+    await date.click();
+
     checkDateSelector();
+    const EXPECTED_ACTIVE = "false";
+    const ACTUAL_ACTIVE = date.active;
+    expect(ACTUAL_ACTIVE).toBe(EXPECTED_ACTIVE);
   });
 });
 
 it("fadeBullet", async () => {
+  // checks off task
+  const checkBtn = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-4 > div > div > div.entry-list > bullet-entry:nth-child(2)").shadowRoot.querySelector("#bullet-check")`);
+  await checkBtn.click();
+
+  // check opacity
+  const EXPECTED_OPA = "0.25";
+  const ACTUAL_OPA = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-4 > div > div > div.entry-list > bullet-entry:nth-child(2)").shadowRoot.querySelector("section > div.bullet")`);
+  expect(ACTUAL_OPA).toBe(EXPECTED_OPA);
 });
 
 it("showDetail", async () => {
+
 });
 
 it("something", async () => {
