@@ -1,7 +1,7 @@
 var myStorage = window.localStorage;
-var bulletArr;
+export var bulletArr;
 export var categoryArr;
-var dateArr;
+export var dateArr;
 
 // Only store actives in current session
 var activeCategories = new Map();
