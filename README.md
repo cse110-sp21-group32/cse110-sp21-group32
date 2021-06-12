@@ -7,6 +7,8 @@
 Task manager bullet journal.
 
 ## Learn about our project
+![demo](./assets/Final-version-demo.png)
+
 | Pages | Description |
 |---| ---|
 |[Published Version](https://cse110-sp21-group32.github.io/cse110-sp21-group32/)| Find our published website running the latest build here
