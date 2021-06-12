@@ -46,3 +46,9 @@ The category items are the place holders for users custom categories
 The files are in editors-layout branch
 
 ---
+### Current Apearance of application:
+![demo](./Assets/first-appearance.png)
+
+---
+### Note:
+All the contents were inclucded in the meeting folder and we decided to sepereate them from the folder to clear structure

@@ -15,7 +15,7 @@ Team 32 Frozone
     - 2 - private vs public
     - onboarding, template for personal reports on private  
     - another retro?
-- Sprint 4 Development
+- Sprint 3 Development
     - finish inline, testing, icons
     - volunteers only
 - Continued Development

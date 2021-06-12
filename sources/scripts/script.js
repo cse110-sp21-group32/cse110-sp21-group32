@@ -348,61 +348,6 @@ function showDetail(detailButton) {
 }
 
 /**
- * TODO
- * Helper function for checking validity of edited bullet entry
- * @param {*} formObj - The form from the new/edited bullet enrty that is being submited
- */
-function bulletCheck(formObj) {
-  let bulletEdit = formObj.getRootNode().host;
-
-  //Check the length of new title
-  let tooLong = false;
-  let legnth = bulletEdit.bullet.title.length;
-  if (legnth > 20) {
-    tooLong = true;
-  }
-
-  if (!tooLong) {
-  } else {
-  }
-}
-
-/**
- * TODO
- * Helper function for checking validity of edited category entry
- * @param {*} formObj - The form from the new/edited category enrty that is being submited
- */
-function categoryCheck(formObj) {
-  let categoryEdit = formObj.getRootNode().host;
-  //Check if the new category is duplicate
-  let newCategory = categoryEdit.category;
-  let duplicate = false;
-  storage.categoryArr.forEach((category) => {
-    if (
-      newCategory.title == category.title &&
-      newCategory.color == category.color
-    ) {
-      duplicate = true;
-    }
-  });
-
-  //Check if new category name is too long
-  let tooLong = false;
-  let length = newCategory.title.length;
-  if (length > 10) {
-    tooLong = true;
-  }
-
-  //Proceed if not duplicate
-  //Stop and show error if one constraint is violated
-  if (!duplicate && !tooLong) {
-  } else if (duplicate && tooLong) {
-  } else if (duplicate) {
-  } else {
-  }
-}
-
-/**
  * Edit bullet from page
  * @param {*} entry - the bullet to be edited
  */

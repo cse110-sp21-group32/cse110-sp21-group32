@@ -8,6 +8,10 @@ const EXPECTED_TITLE = 'Homework';
 const EXPECTED_COLOR = 'red';
 const PASS = "pass";
 
+/**
+ * The reason why we have a ton of commented code here is because we wanted to show how much changed as a result of the new version being pushed which outmoded like 50% of the tester code we wrote.
+ */
+
 beforeAll(async () => {
   await page.goto('https://cse110-sp21-group32.github.io/cse110-sp21-group32/');
   await page.waitForTimeout(500);
@@ -48,7 +52,15 @@ describe('Adding categories', () => {
 
   it('test 3: Check for existence by checking category count', async () => {
     // check count of categories array
-    
+    const jsHandle = await page.evaluateHandle(() => {
+      const element = document.querySelector('.category-box');
+      return element.childNodes;
+    });
+
+    const ACTUAL_COUNT = await page.evaluate(e => e.length, jsHandle);
+    const EXPECTED_COUNT = 3;
+
+    expect(ACTUAL_COUNT).toBe(EXPECTED_COUNT);
   });
 });
 
@@ -270,11 +282,11 @@ describe('Editing categories', () => {
       const element = document.querySelector('.category-box');
       // select second entry
       const newCat = element.childNodes[1];
-      return newCat.shadowRoot.querySelector(".color");
+      return newCat.shadowRoot.querySelector("#color");
     });
 
     const ACTUAL_COLOR = await page.evaluate(e => e.selectedIndex, jsHandle);
-    const EXPECTED_COLOR = 1;
+    const EXPECTED_COLOR = 0;
 
     expect(ACTUAL_COLOR).toBe(EXPECTED_COLOR);
   });
