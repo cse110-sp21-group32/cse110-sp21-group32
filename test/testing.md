@@ -122,6 +122,15 @@ So unit tests are finnicky in our repo because most of our functions have a co-d
 
 To handle for this, the only way to run unit tests appropriately is to temporarliy edit out functions such as `buildCurrent()` when running our unit tests. We also need to comment out `buildDate()` in `storage.js`. This shrinks the scope of our unit tests.
 
+Additionally unit tests needs:
+```json
+"jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  }
+```
+
 ## Seeing Tests
 
 Depending on the last person to make a commit, the configuration files may or may not allow the chromium tab to open up. That is because GitHub actions won't allow us to run a GUI on a server that doesn't have a GUI. However, that isn't useful for testers because we can't see how our program is behaving. The following two snippets are for both cases.
