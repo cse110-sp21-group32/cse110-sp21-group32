@@ -4,17 +4,13 @@
 <img src="admin/branding/teamLogo.png" height="100" width="100">
 
 ## Project Domain
-[Public Video](https://youtu.be/PQr6d_wbea0)
-
-[Private Video](https://www.youtube.com/watch?v=2_-LjXbEd_U)
-
 Task manager bullet journal.
 
 ## Learn about our project
 | Pages | Description |
 |---| ---|
 |[Published Version](https://cse110-sp21-group32.github.io/cse110-sp21-group32/)| Find our published website running the latest build here
-| [Public Video Sizzle Reel](https://youtu.be/PQr6d_wbea0) | Find our demo of how the latest version works here!|
+| [Sizzle Reel]() | Find our demo of how the latest version works here!|
 | [Meet the team](./admin/team.md)| Learn about the founding dev team of this project here!
 | [Pitch Document](specs/pitch/Starting%20Pitch.pdf) | Learn about our vision and expected challenges here!
 
@@ -22,7 +18,7 @@ Task manager bullet journal.
 | Pages | Description |
 |---| ---|
 | [Onboarding Document](./admin/onboarding.md) | Find the detailed specs of what you need to know before you can contribute
-| [Private Onboarding Video](https://www.youtube.com/watch?v=2_-LjXbEd_U) | Get a quick introduction on how to get involved before you contribute
+| [Onboarding Video]() | Get a quick introduction on how to get involved before you contribute
 | [Team Contract](./admin/misc/rules.md) | Read the rules that our team abided by
 | [Testing]((test/testing.md))| Getting started with automated, unit, and end-2-end testing
 | [Slack](https://cse110-sp21-group32.slack.com/)| Get in contact with us on Slack 
@@ -43,6 +39,15 @@ The majority of our tests will not work because they were written for the previo
 
 The newest version was pushed late June 10, 2021, the day of the due date. The testing team did not have the time to edit all the related tests. The core functionlity and interaction method was changed.
 
+Some tests have been re-written since then. 
+
 More information on the testing coverage can be found in the [Testing]((test/testing.md)) document.
 
-**Works best on Chorme**
+### Known working versions/systems
+
+- Firefox 89.0 on Ubuntu
+- Chrome Version 90.0.4430.93 (Official Build) (x86_64) on MacOs
+- Chrome on Windows
+
+### Known not working version/systems
+- Chromium Version 91.0.4472.77 (Official Build) (64-bit) on Ubuntu
