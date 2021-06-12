@@ -289,7 +289,7 @@ export function addCategory(obj) {
     });
     activeCategories.set(categoryKey);
   }
-  // buildCurrent();
+  buildCurrent();
 }
 
 /**
