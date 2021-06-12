@@ -22,11 +22,16 @@
     "@babel/preset-env": "^7.14.4",
     "babel-jest": "^27.0.2",
     "jest": "^27.0.4",
+    "jest-localstorage-mock": "^2.4.14",
     "jest-puppeteer": "^5.0.3",
     "puppeteer": "^9.1.1"
   },
   "jest": {
     "preset": "jest-puppeteer",
-    "verbose": true
+    "verbose": true,
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }

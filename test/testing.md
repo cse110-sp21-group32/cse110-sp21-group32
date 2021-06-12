@@ -2,6 +2,7 @@
 
 - [Guide to setting up local system for testing](#guide-to-setting-up-local-system-for-testing)
   - [Latest Update on Test Cases Covered](#latest-update-on-test-cases-covered)
+    - [June 09, 2021 - 16 Working Tests](#june-09-2021---16-working-tests)
     - [Written tests](#written-tests)
     - [Framed tests](#framed-tests)
   - [Manual Testing](#manual-testing)
@@ -18,12 +19,16 @@ This file is designed to show you how to get your local system ready to try out 
 ** *NOTE: new tests should be opened in a new branch*
 
 ## Latest Update on Test Cases Covered
-
-> **DISCLAIMER: As of June 10, 2021, the editor menu was removed and the e2e tests, anything that relied on running the editor menu no longer works. All tests should be re-written to account for this change.**
-
 As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests.
 
-The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. 
+### June 11, 2021 - Some test rewritten
+We have 14 working e2e tests. We rewrote many of the tests and at least 5 of them were no longer relevant after the new version. Unit tests have had troubles since they rely on localstorage. Instead of importing a library for that, we are simulating localstorage ourselves. It looks like 2 of our e2e tests are failing due to known compatability problems with chromium on ubuntu machines and our website. 
+
+### June 10, 2021 - New Version -> Needs New Tests
+**DISCLAIMER: As of June 10, 2021, the editor menu was removed and the e2e tests, anything that relied on running the editor menu no longer works. All tests should be re-written to account for this change.**
+
+### June 09, 2021 - 16 Working E2E Tests
+The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. We have 3 unit tests written but not yet functioning.
 
 ### Written tests
 - `category.test.js` -> outmoded by latest version

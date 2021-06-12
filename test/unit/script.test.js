@@ -1,5 +1,3 @@
-import "../../sources/scripts/script.js";
-
 import { updateDateBackground, fadeBullet, showDetail, deleteBullet, deleteCategory } from "../../sources/scripts/script.js";
 
 beforeAll(async () => {
@@ -14,6 +12,8 @@ beforeAll(async () => {
   // opens editor
   const newBulletBtn = await page.evaluateHandle(`document.querySelector("#add-bullet-button")`);
   await newBulletBtn.click();
+  
+  /*
   // adds title
   const titleField = await page.evaluateHandle(`document.querySelector("body > bullet-editor-page").shadowRoot.querySelector("#name")`);
   await titleField.focus();
@@ -22,6 +22,9 @@ beforeAll(async () => {
   // accepts bullet
   const submitBullet = await page.evaluateHandle(`document.querySelector("body > bullet-editor-page").shadowRoot.querySelector("#bulletSubmit")`);
   await submitBullet.click();
+  */
+  const mock = jest.fn(() => undefined);
+  window.alert = mock;
 }, 30000);
 
 describe("checkDateSelector", () => {
@@ -32,13 +35,13 @@ describe("checkDateSelector", () => {
     await date.click();
 
     // the current date is automatically selected
-    checkDateSelector();
+    updateDateBackground();
     const EXPECTED_ACTIVE = "true";
     const ACTUAL_ACTIVE = date.active;
     expect(ACTUAL_ACTIVE).toBe(EXPECTED_ACTIVE);
   });
 
-  it("if active dates is not 0", () => {
+  it("if active dates is not 0", async () => {
     // reselects current date
     const date = await page.evaluateHandle(`document.querySelector("body > main > div > div.cell.cell-2 > div > div > date-entry:nth-child(2)").shadowRoot.querySelector("section > div > div.date")`);
     await date.click();

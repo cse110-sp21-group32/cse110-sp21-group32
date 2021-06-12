@@ -39,6 +39,15 @@ The majority of our tests will not work because they were written for the previo
 
 The newest version was pushed late June 10, 2021, the day of the due date. The testing team did not have the time to edit all the related tests. The core functionlity and interaction method was changed.
 
+Some tests have been re-written since then. 
+
 More information on the testing coverage can be found in the [Testing]((test/testing.md)) document.
 
-**Works best on Firefox**
+### Known working versions/systems
+
+- Firefox 89.0 on Ubuntu
+- Chrome Version 90.0.4430.93 (Official Build) (x86_64) on MacOs
+- Chrome on Windows
+
+### Known not working version/systems
+- Chromium Version 91.0.4472.77 (Official Build) (64-bit) on Ubuntu
