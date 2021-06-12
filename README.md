@@ -45,4 +45,4 @@ The newest version was pushed late June 10, 2021, the day of the due date. The t
 
 More information on the testing coverage can be found in the [Testing]((test/testing.md)) document.
 
-**Works best on Firefox**
+**Works best on Chorme**
