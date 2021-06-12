@@ -42,6 +42,7 @@ describe('Text Layout Loaded', () => {
   });
 });
 
+// These are place holders for the future tests
 describe('Bullet Editor', () => {
   it('test 4: Title can be entered', async () => {
     // Test that title can be entered as a string
@@ -60,6 +61,7 @@ describe('Bullet Editor', () => {
   });
 });
 
+// These are place holders for the future tests
 describe('Viewing bullets', () => {
   it('test 8: Title shows correctly', async () => {
     

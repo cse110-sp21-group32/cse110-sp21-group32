@@ -25,7 +25,7 @@ Task manager bullet journal.
 | [Testing]((test/testing.md))| Getting started with automated, unit, and end-2-end testing
 | [Slack](https://cse110-sp21-group32.slack.com/)| Get in contact with us on Slack 
 | [JSDoc Function Documentation](specs/documentation/index.html) | Learn about the functions we use here
-| [Style Guide](style-guide.md) | Learn about how we style our code to stay consistent with existing code base
+| [Style Guide](admin/style-guide.md) | Learn about how we style our code to stay consistent with existing code base
 
 ## Learn about what we've done
 |Pages | Description|
@@ -53,3 +53,4 @@ More information on the testing coverage can be found in the [Testing]((test/tes
 
 ### Known not working version/systems
 - Chromium Version 91.0.4472.77 (Official Build) (64-bit) on Ubuntu
+- Firefox on MacOs 

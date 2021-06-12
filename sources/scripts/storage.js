@@ -1,10 +1,10 @@
 var myStorage = window.localStorage;
-var bulletArr;
+export var bulletArr;
 export var categoryArr;
-var dateArr;
+export var dateArr;
 
 // Only store actives in current session
-var activeCategories = new Map();
+export var activeCategories = new Map();
 export var activeDates = new Map();
 
 if (myStorage.getItem("bulletArr")) {
@@ -289,7 +289,7 @@ export function addCategory(obj) {
     });
     activeCategories.set(categoryKey);
   }
-  buildCurrent();
+  // buildCurrent();
 }
 
 /**
@@ -433,7 +433,11 @@ function buildDate() {
 
   updateDateBackground();
 }
-// Grey out historyPane background if no active dates
+
+/**
+ * Checks how many active days are selected
+ * If none are selected, greys out the whole date selector box
+ */
 export function updateDateBackground() {
   let historyPane = document.querySelector(".journal-box-history");
   let dates = document.querySelectorAll("date-entry");

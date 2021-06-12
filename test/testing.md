@@ -2,11 +2,15 @@
 
 - [Guide to setting up local system for testing](#guide-to-setting-up-local-system-for-testing)
   - [Latest Update on Test Cases Covered](#latest-update-on-test-cases-covered)
+    - [June 11, 2021 - Some test rewritten](#june-11-2021---some-test-rewritten)
+    - [June 10, 2021 - New Version -> Needs New Tests](#june-10-2021---new-version---needs-new-tests)
+    - [June 09, 2021 - 16 Working E2E Tests](#june-09-2021---16-working-e2e-tests)
     - [Written tests](#written-tests)
     - [Framed tests](#framed-tests)
   - [Manual Testing](#manual-testing)
   - [Setting up testing environment](#setting-up-testing-environment)
   - [Running tests](#running-tests)
+  - [Unit tests - Special note](#unit-tests---special-note)
   - [Seeing Tests](#seeing-tests)
     - [For GitHub Actions](#for-github-actions)
     - [For Local Testing](#for-local-testing)
@@ -18,22 +22,30 @@ This file is designed to show you how to get your local system ready to try out 
 ** *NOTE: new tests should be opened in a new branch*
 
 ## Latest Update on Test Cases Covered
+As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests. You can see the [current coverage here](coverage.md).
 
-> **DISCLAIMER: As of June 10, 2021, the editor menu was removed and the e2e tests, anything that relied on running the editor menu no longer works. All tests should be re-written to account for this change.**
+### June 11, 2021 - Some test rewritten
+We have 14 working e2e tests. We rewrote many of the tests and at least 5 of them were no longer relevant after the new version. Unit tests have had troubles since they rely on localstorage. Instead of importing a library for that, we are simulating localstorage ourselves. It looks like 2 of our e2e tests are failing due to known compatability problems with chromium on ubuntu machines and our website. 
 
-As the project grows in complexity, so does the tests. When the fundamental method from which the users interact with the website, we will have to update the tests.
+Due to the complexity of our functions, unit tests are very, very difficult to write since the functions will break when used outside of a browser because of their reliance on storage, styling, and other function calls. As this is the case, when running unit tests locally, comment out calls to `buildCurrent()` for the functions called.
 
-The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. 
+### June 10, 2021 - New Version -> Needs New Tests
+**DISCLAIMER: As of June 10, 2021, the editor menu was removed and the e2e tests, anything that relied on running the editor menu no longer works. All tests should be re-written to account for this change.**
+
+### June 09, 2021 - 16 Working E2E Tests
+The [latest commit to main](https://github.com/cse110-sp21-group32/cse110-sp21-group32/tree/7f6af568ce1241747a128f8c43bb39e9e986b69b) that this test suite currently works for is from June 09, 2021. We have 3 unit tests written but not yet functioning.
 
 ### Written tests
-- `category.test.js` -> outmoded by latest version
+
+> Something to note is that we have a lot of test "frames" or test cases that are set up but not yet implemented. Many of these still remain in `bullet.test.js`
+- `category.test.js` -> effected by latest version
 - `bullet.test.js`
-- `script.test.js` -> outmoded by latest version
+- `storage.test.js`
 
 ### Framed tests
-- ~~`bulletEditorPage.test.js`~~ removed by latest version
+- ~~`bulletEditorPage.test.js`~~ outdated by latest version
 - `bulletEntryPage.test.js`
-- ~~`categoryEditorPage.test.js`~~ removed by latest version
+- ~~`categoryEditorPage.test.js`~~ outdated by latest version
 - `dateEntry.test.js` 
 
 ## Manual Testing
@@ -103,6 +115,20 @@ Tests:       14 passed, 14 total
 Snapshots:   0 total
 Time:        82.458 s
 Ran all test suites matching /test\/e2e\/category.test.js/i
+```
+
+## Unit tests - Special note
+So unit tests are finnicky in our repo because most of our functions have a co-dependence on each other and global variables such as local storage. 
+
+To handle for this, the only way to run unit tests appropriately is to temporarliy edit out functions such as `buildCurrent()` when running our unit tests. We also need to comment out `buildDate()` in `storage.js`. This shrinks the scope of our unit tests.
+
+Additionally unit tests needs:
+```json
+"jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  }
 ```
 
 ## Seeing Tests
