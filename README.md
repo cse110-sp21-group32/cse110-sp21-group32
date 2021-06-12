@@ -37,13 +37,12 @@ Task manager bullet journal.
 
 ## TESTING DISCLAIMER
 
-The majority of our tests will not work because they were written for the previous version of the webapp that still relied on using editor menus. Since the latest published version got rid of these editor menus, tests will have to be rewritten.
-
-The newest version was pushed late June 10, 2021, the day of the due date. The testing team did not have the time to edit all the related tests. The core functionlity and interaction method was changed.
-
-Some tests have been re-written since then. 
+The newest version was pushed late June 10, 2021, the day of the due date. 
+The testing team strive to edit all the related tests to make most of the tests working for our latest version.
 
 More information on the testing coverage can be found in the [Testing]((test/testing.md)) document.
+
+Also the test, inclucing unit/e2e testings, are functional and working locally following the procedure in [Testing]((test/testing.md)) document. However these tesstings are not working in the github actions and we took the suggestions from TA that it is ok.
 
 ### Known working versions/systems
 
